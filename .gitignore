@@ -1,0 +1,54 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# wordpress source material (not part of the build)
+/extracted/
+*.wpress
+/BTL-Media-Kit-Final-2026-1.pdf
+
+# agent tooling / local scratch
+/.gg/
+
+# root-level source material / scratch (not part of the build)
+/IMG_*.jpeg
+/BroadwayTheLyricist_MediaKit_Updated_NoBrands.html

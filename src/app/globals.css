@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces */
+  --color-bg: #0a0e17;
+  --color-panel: #0d1320;
+  --color-panel-2: #111827;
+  --color-line: rgba(255, 255, 255, 0.08);
+
+  /* Accent */
+  --color-accent: #ff5a1f;
+  --color-accent-light: #ff6a2b;
+  --color-accent-dark: #ff4d0f;
+
+  /* Text */
+  --color-muted: #9aa4b2;
+
+  /* Fonts */
+  --font-display: var(--font-anton), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Animations */
+  --animate-marquee: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Offset anchored scroll for the sticky header */
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: #ffffff;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #0a0e17;
+}
+
+/* Heavy condensed poster headings */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* Thin orange section kicker label */
+.kicker {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+}
+
+/* Orange gradient CTA */
+.btn-accent {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-accent-light),
+    var(--color-accent-dark)
+  );
+  box-shadow: 0 10px 30px -10px rgba(255, 90, 31, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Print / Save-as-PDF: keep the dark theme, drop chrome and interactive bits */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  header,
+  footer {
+    display: none !important;
+  }
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  section {
+    break-inside: avoid;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+}
