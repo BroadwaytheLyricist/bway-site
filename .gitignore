@@ -51,4 +51,7 @@ next-env.d.ts
 
 # root-level source material / scratch (not part of the build)
 /IMG_*.jpeg
+/IMG_*.mov
+/IMG_*.mp4
+/IMG_*
 /BroadwayTheLyricist_MediaKit_Updated_NoBrands.html

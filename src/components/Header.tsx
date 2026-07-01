@@ -37,14 +37,11 @@ export default function Header() {
           <Image
             src="/images/logo.png"
             alt="Broadway The Lyricist"
-            width={48}
-            height={48}
+            width={72}
+            height={72}
             priority
-            className="h-10 w-auto lg:h-12"
+            className="h-14 w-auto lg:h-16"
           />
-          <span className="hidden font-display text-lg leading-none tracking-wide sm:block">
-            Broadway<span className="text-accent">.</span>
-          </span>
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">

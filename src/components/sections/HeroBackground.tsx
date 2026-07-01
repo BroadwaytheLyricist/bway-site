@@ -28,7 +28,7 @@ export default function HeroBackground() {
       // Clamp to the hero's own height so the parallax only runs while it is
       // in view, and keep the shift well within the layer's vertical slack.
       const offset = Math.min(window.scrollY, window.innerHeight);
-      el.style.transform = `translate3d(0, ${offset * 0.15}px, 0)`;
+      el.style.transform = `translate3d(0, ${offset * 0.08}px, 0)`;
     };
 
     const onScroll = () => {
@@ -50,7 +50,7 @@ export default function HeroBackground() {
       {/* Parallax image layer — oversized vertically so the drift never gaps. */}
       <div
         ref={layerRef}
-        className="absolute inset-x-0 -top-[20%] -bottom-[20%] will-change-transform"
+        className="absolute inset-x-0 -top-[10%] -bottom-[10%] will-change-transform"
       >
         <Image
           src="/images/hero.png"
@@ -58,7 +58,7 @@ export default function HeroBackground() {
           fill
           preload
           sizes="100vw"
-          className="scale-x-[-1] object-cover object-[30%_center] sm:object-[50%_center]"
+          className="scale-x-[-1] object-cover object-[35%_top] sm:object-[50%_top]"
         />
       </div>
 

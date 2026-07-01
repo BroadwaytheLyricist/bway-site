@@ -3,12 +3,26 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import SectionHeading from "@/components/SectionHeading";
-import { ArrowIcon, MailIcon } from "@/components/icons";
+import {
+  ArrowIcon,
+  FacebookIcon,
+  InstagramIcon,
+  MailIcon,
+  TikTokIcon,
+  YouTubeIcon,
+} from "@/components/icons";
 import { submitContact } from "@/app/actions";
 import type { ContactState } from "@/lib/contact-schema";
 import { links } from "@/lib/site";
 
 const initialState: ContactState = { status: "idle", message: "" };
+
+const socials = [
+  { label: "YouTube", href: links.youtube, Icon: YouTubeIcon },
+  { label: "Instagram", href: links.instagram, Icon: InstagramIcon },
+  { label: "TikTok", href: links.tiktok, Icon: TikTokIcon },
+  { label: "Facebook", href: links.facebook, Icon: FacebookIcon },
+];
 
 const fieldBase =
   "w-full rounded-xl border bg-panel-2 px-4 py-3 text-white placeholder:text-muted/70 outline-none transition-colors focus:border-accent";
@@ -58,6 +72,27 @@ export default function Contact() {
               </span>
               {links.email}
             </a>
+
+            {/* Follow — merged in so "reach out" and "follow along" live together */}
+            <div className="mt-10">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+                Follow along
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {socials.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-panel-2 text-white transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-accent"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Right: form */}

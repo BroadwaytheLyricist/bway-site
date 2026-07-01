@@ -25,9 +25,34 @@ const parser = new XMLParser({
 });
 
 /**
+ * Detects whether a YouTube video id is a Short.
+ *
+ * Neither the RSS feed nor the Data API expose Short status, so we probe the
+ * canonical `/shorts/<id>` URL: a Short responds 200 and stays on that path,
+ * while a regular upload redirects (3xx) to `/watch?v=<id>`. Revalidated hourly
+ * like the feed. Never throws — on any error we assume NOT a Short so a valid
+ * upload is never wrongly hidden.
+ */
+async function isShort(id: string): Promise<boolean> {
+  try {
+    const res = await fetch(`https://www.youtube.com/shorts/${id}`, {
+      redirect: "manual",
+      next: { revalidate: 3600 },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; BroadwayTheLyricist/1.0)" },
+    });
+    // A 2xx (opaqueredirect counts as non-redirect here) means it stayed on
+    // /shorts → it's a Short. A 3xx redirect to /watch means a regular video.
+    return res.status >= 200 && res.status < 300;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Server-side fetch of the channel's RSS feed, revalidated hourly (ISR).
- * Returns the latest `count` videos. Never throws — on any failure it
- * returns an empty array so the UI can render a graceful fallback.
+ * Returns the latest `count` regular uploads, excluding Shorts. Never throws —
+ * on any failure it returns an empty array so the UI can render a graceful
+ * fallback.
  */
 export async function getLatestVideos(count = 2): Promise<YouTubeVideo[]> {
   try {
@@ -45,7 +70,10 @@ export async function getLatestVideos(count = 2): Promise<YouTubeVideo[]> {
 
     const entries = data.feed?.entry ?? [];
 
-    return entries
+    // Consider a wider window of recent entries, then probe each in order and
+    // keep the first `count` that are NOT Shorts. Stop probing once we have
+    // enough to bound the number of extra requests per revalidation.
+    const candidates = entries
       .map((entry): YouTubeVideo | null => {
         const id = entry["yt:videoId"];
         if (!id) return null;
@@ -58,7 +86,15 @@ export async function getLatestVideos(count = 2): Promise<YouTubeVideo[]> {
         };
       })
       .filter((v): v is YouTubeVideo => v !== null)
-      .slice(0, count);
+      .slice(0, 15);
+
+    const regular: YouTubeVideo[] = [];
+    for (const video of candidates) {
+      if (regular.length >= count) break;
+      if (!(await isShort(video.id))) regular.push(video);
+    }
+
+    return regular;
   } catch {
     return [];
   }

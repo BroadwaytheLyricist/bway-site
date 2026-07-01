@@ -5,15 +5,15 @@ export default function About() {
   return (
     <section id="about" className="bg-bg py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
           {/* Photo */}
           <div className="relative order-1">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-line">
               <Image
                 src="/images/about.jpg"
                 alt="Broadway The Lyricist behind the mic in his studio"
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent" />

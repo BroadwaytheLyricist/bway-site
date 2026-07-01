@@ -32,7 +32,7 @@ export default function Playlists() {
         </p>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {playlists.map((playlist) => (
+          {playlists.slice(0, 3).map((playlist) => (
             <a
               key={playlist.url}
               href={playlist.url}
