@@ -1,6 +1,11 @@
+import Image from "next/image";
 import SectionHeading from "@/components/SectionHeading";
 import { ArrowIcon, PlayIcon } from "@/components/icons";
 import { links, playlists } from "@/lib/site";
+
+type Playlist = (typeof playlists)[number];
+const hasImage = (p: Playlist): p is Playlist & { image: string } =>
+  "image" in p && typeof p.image === "string";
 
 export default function Playlists() {
   return (
@@ -40,20 +45,35 @@ export default function Playlists() {
               rel="noopener noreferrer"
               className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-panel-2 transition-all hover:-translate-y-1 hover:border-accent/50"
             >
-              {/* Asset-free gradient thumbnail with the series title */}
-              <div className="relative flex aspect-video flex-col justify-between overflow-hidden bg-gradient-to-br from-accent/35 via-panel-2 to-bg p-5">
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-black/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
-                    <PlayIcon className="h-3 w-3" />
-                    {playlist.count} videos
-                  </span>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-accent text-white shadow-lg transition-transform group-hover:scale-110">
-                    <PlayIcon className="h-5 w-5" />
+              <div className="relative aspect-video overflow-hidden">
+                {hasImage(playlist) ? (
+                  <Image
+                    src={playlist.image}
+                    alt={playlist.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-end bg-gradient-to-br from-accent/35 via-panel-2 to-bg p-5">
+                    <h3 className="font-display text-2xl leading-[0.95] text-white">
+                      {playlist.title}
+                    </h3>
+                  </div>
+                )}
+
+                {/* Play affordance: darken + centered circle on hover */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/30">
+                  <span className="inline-flex h-14 w-14 scale-90 items-center justify-center rounded-full bg-accent text-white opacity-0 shadow-lg transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+                    <PlayIcon className="h-6 w-6" />
                   </span>
                 </div>
-                <h3 className="font-display text-2xl leading-[0.95] text-white">
-                  {playlist.title}
-                </h3>
+
+                {/* Count badge — YouTube-style, bottom-right corner */}
+                <span className="absolute bottom-2.5 right-2.5 inline-flex items-center gap-1.5 rounded-md bg-black/75 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-white backdrop-blur">
+                  <PlayIcon className="h-3 w-3" />
+                  {playlist.count} videos
+                </span>
               </div>
 
               <div className="flex items-center justify-between gap-4 p-5">

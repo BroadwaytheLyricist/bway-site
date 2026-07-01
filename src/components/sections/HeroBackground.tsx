@@ -58,14 +58,17 @@ export default function HeroBackground() {
           fill
           preload
           sizes="100vw"
-          className="scale-x-[-1] object-cover object-[35%_top] sm:object-[50%_top]"
+          className="scale-x-[-1] object-cover object-[35%_center] sm:object-[50%_center]"
         />
       </div>
 
-      {/* Cinematic scrims — kept static so the headline stays legible.
-          Darkens the left (text) while the right (subject) reads bright. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/75 to-bg/10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-bg/85 via-transparent to-transparent" />
+      {/* Cinematic scrims — just enough to keep the headline legible while the
+          stage lights and the rainy-street reflections read through. Kept static
+          so they don't drift with the parallax. The horizontal wash only darkens
+          the left third (behind the copy); the vertical wash is light so the
+          bottom reflections stay visible. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-bg/90 via-bg/45 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-bg/45 via-transparent to-transparent" />
     </div>
   );
 }

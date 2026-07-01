@@ -57,11 +57,19 @@ export const playlists = [
     title: "Albums We Don't Talk About Enough",
     count: 21,
     url: "https://www.youtube.com/playlist?list=PL-XCphQVML5rF7JfxRu4qfJ3MZ5sJPbr4",
+    image: "/images/playlists/albums-we-dont-talk-about-enough.jpg",
   },
   {
     title: "Hip Hop Didn't Tell You",
     count: 18,
     url: "https://www.youtube.com/playlist?list=PL-XCphQVML5oTIfxhp3-1kSwtF7EXOCEH",
+    image: "/images/playlists/hip-hop-didnt-tell-you.jpg",
+  },
+  {
+    title: "Where Are They Now?",
+    count: 9,
+    url: "https://www.youtube.com/playlist?list=PL-XCphQVML5pI1a4c1_j1i9k8D5zq0LOz",
+    image: "/images/playlists/where-are-they-now.jpg",
   },
   {
     title: "Rappers We Don't Talk About Enough",
@@ -77,10 +85,5 @@ export const playlists = [
     title: "Your Favorite Artists' Worst Songs",
     count: 11,
     url: "https://www.youtube.com/playlist?list=PL-XCphQVML5rwTYRrTAeboSw3zoi8tJ1a",
-  },
-  {
-    title: "Where Are They Now?",
-    count: 9,
-    url: "https://www.youtube.com/playlist?list=PL-XCphQVML5pI1a4c1_j1i9k8D5zq0LOz",
   },
 ] as const;

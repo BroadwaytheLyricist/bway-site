@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import SectionHeading from "@/components/SectionHeading";
 import {
   ArrowIcon,
+  DocIcon,
   FacebookIcon,
   InstagramIcon,
   MailIcon,
@@ -25,7 +27,7 @@ const socials = [
 ];
 
 const fieldBase =
-  "w-full rounded-xl border bg-panel-2 px-4 py-3 text-white placeholder:text-muted/70 outline-none transition-colors focus:border-accent";
+  "w-full rounded-xl border bg-bg px-4 py-3 text-white placeholder:text-muted/70 outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -47,9 +49,9 @@ export default function Contact() {
   return (
     <section id="contact" className="bg-panel py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
-          {/* Left: intro */}
-          <div>
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
+          {/* Left: intro + contact detail cards */}
+          <div className="flex flex-col">
             <SectionHeading
               index="05"
               kicker="Contact"
@@ -60,21 +62,53 @@ export default function Contact() {
               }
             />
             <p className="mt-6 text-lg leading-relaxed text-muted">
-              Got a collaboration, booking, or just want to weigh in on the
-              culture? Send a message and it&apos;ll land straight in the inbox.
+              Interviews, podcast appearances, brand partnerships, bookings, or
+              just want to weigh in on the culture? Send a message and it&apos;ll
+              land straight in the inbox — partnership and media materials are in
+              the kit below.
             </p>
-            <a
-              href={`mailto:${links.email}`}
-              className="mt-8 inline-flex items-center gap-3 text-sm font-medium text-white transition-colors hover:text-accent"
-            >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
-                <MailIcon className="h-5 w-5" />
-              </span>
-              {links.email}
-            </a>
+
+            {/* Contact detail cards — matched surfaces so the column carries weight */}
+            <div className="mt-8 flex flex-col gap-4">
+              <a
+                href={`mailto:${links.email}`}
+                className="group flex items-center gap-4 rounded-2xl border border-line bg-panel-2 p-5 transition-colors hover:border-accent/50"
+              >
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
+                  <MailIcon className="h-5 w-5" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+                    Email
+                  </span>
+                  <span className="block truncate text-sm font-medium text-white">
+                    {links.email}
+                  </span>
+                </span>
+                <ArrowIcon className="ml-auto h-5 w-5 shrink-0 text-muted transition-colors group-hover:text-accent" />
+              </a>
+
+              <Link
+                href={links.mediaKit}
+                className="group flex items-center gap-4 rounded-2xl border border-line bg-panel-2 p-5 transition-colors hover:border-accent/50"
+              >
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
+                  <DocIcon className="h-5 w-5" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+                    Partnerships
+                  </span>
+                  <span className="block text-sm font-medium text-white">
+                    View Media Kit
+                  </span>
+                </span>
+                <ArrowIcon className="ml-auto h-5 w-5 shrink-0 text-muted transition-colors group-hover:text-accent" />
+              </Link>
+            </div>
 
             {/* Follow — merged in so "reach out" and "follow along" live together */}
-            <div className="mt-10">
+            <div className="mt-8">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
                 Follow along
               </p>
@@ -95,8 +129,12 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right: form */}
-          <form action={formAction} className="flex flex-col gap-5" noValidate>
+          {/* Right: form card */}
+          <form
+            action={formAction}
+            className="flex flex-col gap-5 rounded-3xl border border-line bg-panel-2 p-6 shadow-xl shadow-black/20 sm:p-8"
+            noValidate
+          >
             {/* Honeypot — visually hidden, off the tab order */}
             <div className="absolute left-[-9999px]" aria-hidden="true">
               <label htmlFor="company">Company</label>

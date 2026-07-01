@@ -17,22 +17,27 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="border-t border-line bg-panel">
-      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8">
-        <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-center md:justify-between md:text-left">
-          <a href="/#home" className="flex items-center gap-3" aria-label="Broadway The Lyricist — home">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+        {/* Centered stack: logo → quote (centerpiece) → nav → socials */}
+        <div className="flex flex-col items-center text-center">
+          <a href="/#home" aria-label="Broadway The Lyricist — home">
             <Image
               src="/images/logo.png"
               alt="Broadway The Lyricist"
-              width={48}
-              height={48}
-              className="h-11 w-auto"
+              width={64}
+              height={64}
+              className="h-14 w-auto"
             />
-            <span className="font-display text-xl tracking-wide">
-              Broadway<span className="text-accent">.</span>
-            </span>
           </a>
 
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2" aria-label="Footer">
+          <p className="mt-8 max-w-3xl font-display text-2xl leading-tight tracking-wide text-white sm:text-3xl lg:text-4xl">
+            &ldquo;The Hip Hop Conversations We <span className="text-accent">Should</span> Be Having<span className="text-accent">.</span>&rdquo;
+          </p>
+
+          <nav
+            className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+            aria-label="Footer"
+          >
             {nav.map((item) => (
               <a
                 key={item.label}
@@ -46,7 +51,7 @@ export default function Footer() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="mt-8 flex items-center gap-3">
             {socials.map(({ label, href, Icon }) => (
               <a
                 key={label}
@@ -62,7 +67,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-line pt-6 text-center text-sm text-muted">
+        <div className="mt-12 border-t border-line pt-8 text-center text-sm text-muted">
           © {new Date().getFullYear()} Broadway The Lyricist. All rights reserved.
         </div>
       </div>

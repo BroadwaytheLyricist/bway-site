@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { links } from "@/lib/site";
 import { DocIcon, PlayIcon } from "@/components/icons";
@@ -11,23 +12,32 @@ export default function Hero() {
 
       <div className="mx-auto w-full max-w-7xl px-5 pt-28 pb-20 sm:px-8">
         <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          <span className="hero-reveal inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             Hip-Hop History &amp; Commentary
           </span>
 
-          <h1 className="mt-6 font-display text-5xl leading-[0.92] sm:text-7xl lg:text-8xl">
+          <h1
+            className="hero-reveal mt-6 font-display text-5xl leading-[0.92] sm:text-7xl lg:text-8xl"
+            style={{ "--reveal-delay": "120ms" } as CSSProperties}
+          >
             Broadway
             <br />
             The <span className="text-accent">Lyricist</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+          <p
+            className="hero-reveal mt-6 max-w-xl text-lg leading-relaxed text-muted"
+            style={{ "--reveal-delay": "260ms" } as CSSProperties}
+          >
             Deep dives. Reactions. Debates. The hip-hop conversations we should be
             having — long-form, unfiltered, on record.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div
+            className="hero-reveal mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
+            style={{ "--reveal-delay": "380ms" } as CSSProperties}
+          >
             <a
               href={links.youtube}
               target="_blank"
