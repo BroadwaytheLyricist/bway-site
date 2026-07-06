@@ -270,55 +270,42 @@ export default async function MediaKitPage() {
             voices across hip-hop, media, film, and culture.
           </p>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {mediaKit.recognition.featured.map((r) => (
-              <div
+          <div className="mt-10 columns-1 gap-6 lg:columns-2">
+            {mediaKit.recognition.map((r) => (
+              <article
                 key={r.name}
-                className="rounded-2xl border border-line bg-panel p-6"
+                className="mb-6 break-inside-avoid overflow-hidden rounded-2xl border border-line bg-panel shadow-2xl shadow-black/10"
               >
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent">
-                  Featured Recognition
-                </p>
-                <h3 className="mt-2 font-display text-2xl text-white">{r.name}</h3>
-                <p className="mt-1 text-sm text-muted">{r.credit}</p>
-                <p className="mt-3 text-sm text-white/80">{r.note}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {mediaKit.recognition.validation.map((r) => (
-              <div
-                key={r.name}
-                className="rounded-2xl border border-line bg-panel-2 p-5"
-              >
-                <h4 className="font-display text-lg text-white">{r.name}</h4>
-                <p className="mt-1 text-sm text-muted">{r.credit}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Screenshot social proof */}
-          <div className="mt-12">
-            <p className="kicker mb-5">Seen In The Comments</p>
-            <div className="grid gap-5 sm:grid-cols-2">
-              {mediaKit.socialProof.map((s) => (
-                <div
-                  key={s.src}
-                  className="overflow-hidden rounded-2xl border border-line bg-[#0c0c0c]"
-                >
+                <div className="flex items-center justify-center bg-[#070707] p-3">
                   <Image
-                    src={s.src}
-                    alt={s.alt}
-                    width={1320}
-                    height={600}
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    className="h-full w-full object-contain"
+                    src={r.proof.src}
+                    alt={r.proof.alt}
+                    width={r.proof.width}
+                    height={r.proof.height}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    loading="eager"
+                    className="max-h-[460px] max-w-full rounded-xl object-contain sm:max-h-[560px]"
                   />
                 </div>
-              ))}
-            </div>
+                <div className="p-6">
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent">
+                    Featured Recognition
+                  </p>
+                  <h3 className="mt-2 font-display text-3xl leading-none text-white">
+                    {r.name}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{r.credit}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-white/80">
+                    {r.note}
+                  </p>
+                </div>
+              </article>
+            ))}
           </div>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
+            Recognition includes engagement from respected voices across music,
+            media, film, television, journalism, and hip-hop culture.
+          </p>
         </div>
       </section>
 

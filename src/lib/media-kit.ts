@@ -83,55 +83,106 @@ export const mediaKit = {
     },
   ],
 
-  recognition: {
-    featured: [
-      {
-        name: "Questlove",
-        credit: "Musician • Producer • Academy Award–Winning Filmmaker • The Roots",
-        note: "Engaged directly with Broadway The Lyricist content.",
-      },
-      {
-        name: "Cam'ron",
-        credit: "Hip-Hop Artist • Co-Host of It Is What It Is • ESPN Contributor",
-        note: "Engaged directly with Broadway The Lyricist content.",
-      },
-      {
-        name: "Grandmaster Flash",
-        credit: "Hip-Hop Pioneer • Grandmaster Flash & The Furious Five",
-        note: "Engaged directly with Broadway The Lyricist content.",
-      },
-      {
-        name: "Posdnuos (Plug One)",
-        credit: "Legendary Hip-Hop Artist • Founding Member of De La Soul",
-        note: "Followed Broadway The Lyricist after discovering his content.",
-      },
-    ],
-    validation: [
-      { name: "A-Plus", credit: "Souls of Mischief • Hieroglyphics" },
-      { name: "Ishmael Butler", credit: "Digable Planets • Shabazz Palaces" },
-      { name: "Nature", credit: "Queensbridge Veteran • The Firm Affiliate" },
-      { name: "Radha Blank", credit: "Actress • Filmmaker • Playwright • Rapper" },
-      { name: "Lyric Perez", credit: "Revolt • Complex • Red Bull Media House" },
-    ],
-  },
-
-  /** Screenshot social proof — real engagement, shown as-is. */
-  socialProof: [
+  /** Proof-backed recognition cards — each screenshot stays attached to its person. */
+  recognition: [
     {
-      src: "/images/media-kit/social/questlove.jpg",
-      alt: "Questlove engaging with Broadway The Lyricist on Instagram",
+      name: "Questlove",
+      credit: "Musician • Producer • Academy Award–Winning Filmmaker • The Roots",
+      note: "Engaged directly with Broadway The Lyricist content.",
+      proof: {
+        src: "/images/media-kit/social/questlove.jpg",
+        alt: "Questlove commenting on Broadway The Lyricist's Instagram content",
+        width: 1320,
+        height: 599,
+      },
     },
     {
-      src: "/images/media-kit/social/hieroaplus.jpg",
-      alt: "A-Plus (Souls of Mischief) engaging with Broadway The Lyricist",
+      name: "Cam'ron",
+      credit: "Hip-Hop Artist • Media Personality • Co-Host of It Is What It Is • ESPN Contributor",
+      note: "Engaged directly with Broadway The Lyricist content.",
+      proof: {
+        src: "/images/media-kit/social/camron.jpg",
+        alt: "Cam'ron engaging with Broadway The Lyricist on Instagram",
+        width: 1320,
+        height: 498,
+      },
     },
     {
-      src: "/images/media-kit/social/djflash.jpg",
-      alt: "DJ Flash engaging with Broadway The Lyricist on a DJ culture post",
+      name: "Grandmaster Flash",
+      credit: "Hip-Hop Pioneer • Founding Member of Grandmaster Flash & The Furious Five",
+      note: "Engaged directly with Broadway The Lyricist content.",
+      proof: {
+        src: "/images/media-kit/social/djflash.jpg",
+        alt: "Grandmaster Flash engaging directly with Broadway The Lyricist",
+        width: 1320,
+        height: 672,
+      },
     },
     {
-      src: "/images/media-kit/social/camron.jpg",
-      alt: "Direct audience engagement on a Broadway The Lyricist reel",
+      name: "Posdnuos (Plug One)",
+      credit: "Legendary Hip-Hop Artist • Founding Member of De La Soul",
+      note: "Followed Broadway The Lyricist after discovering his content.",
+      proof: {
+        src: "/images/media-kit/social/posdnuos.jpg",
+        alt: "Posdnuos from De La Soul following Broadway The Lyricist from his reel",
+        width: 1320,
+        height: 202,
+      },
+    },
+    {
+      name: "A-Plus",
+      credit: "Hip-Hop Artist • Founding Member of Souls of Mischief",
+      note: "Engaged directly with Broadway The Lyricist content.",
+      proof: {
+        src: "/images/media-kit/social/hieroaplus.jpg",
+        alt: "A-Plus from Souls of Mischief commenting on Broadway The Lyricist's content",
+        width: 1320,
+        height: 320,
+      },
+    },
+    {
+      name: "Ishmael Butler",
+      credit: "Hip-Hop Artist • Digable Planets • Shabazz Palaces",
+      note: "Connected directly with Broadway The Lyricist through Instagram.",
+      proof: {
+        src: "/images/media-kit/social/ishmael-butler.jpg",
+        alt: "Ishmael Butler of Shabazz Palaces messaging with Broadway The Lyricist",
+        width: 1320,
+        height: 2450,
+      },
+    },
+    {
+      name: "Nature",
+      credit: "Hip-Hop Artist • Queensbridge Veteran • The Firm Affiliate",
+      note: "Shared direct conversation and engagement with Broadway The Lyricist.",
+      proof: {
+        src: "/images/media-kit/social/nature.jpg",
+        alt: "Nature messaging with Broadway The Lyricist on Instagram",
+        width: 1113,
+        height: 1955,
+      },
+    },
+    {
+      name: "Radha Blank",
+      credit: "Actress • Filmmaker • Playwright • Rapper",
+      note: "Shared encouragement and direct support for Broadway The Lyricist.",
+      proof: {
+        src: "/images/media-kit/social/radha-blank.jpg",
+        alt: "Radha Blank sending encouragement to Broadway The Lyricist",
+        width: 1320,
+        height: 2123,
+      },
+    },
+    {
+      name: "Lyric Perez",
+      credit: "Creative Producer • Revolt • Complex Networks • Red Bull Media House",
+      note: "Verified creative producer engaged with Broadway The Lyricist content.",
+      proof: {
+        src: "/images/media-kit/social/lyric-perez.jpg",
+        alt: "Lyric Perez commenting on Broadway The Lyricist's Instagram content",
+        width: 1320,
+        height: 556,
+      },
     },
   ],
 
