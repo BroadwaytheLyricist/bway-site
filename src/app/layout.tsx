@@ -18,6 +18,12 @@ const inter = Inter({
 });
 
 const siteUrl = "https://broadwaythelyricist.com";
+const socialPreviewImage = {
+  url: "/images/og/broadway-social-preview.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Broadway The Lyricist social preview",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,7 +43,7 @@ export const metadata: Metadata = {
       "Deep dives. Reactions. Debates. The hip-hop conversations we should be having — long-form, unfiltered, on record.",
     url: siteUrl,
     siteName: "Broadway The Lyricist",
-    images: [{ url: "/images/hero.png", width: 1535, height: 1024 }],
+    images: [socialPreviewImage],
     type: "website",
   },
   twitter: {
@@ -45,7 +51,7 @@ export const metadata: Metadata = {
     title: "Broadway The Lyricist — Hip-Hop History & Commentary",
     description:
       "Deep dives. Reactions. Debates. The hip-hop conversations we should be having.",
-    images: ["/images/hero.png"],
+    images: [socialPreviewImage],
   },
 };
 

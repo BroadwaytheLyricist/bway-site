@@ -16,11 +16,34 @@ import { getChannelStats, formatCompact } from "@/lib/youtube";
 
 export const revalidate = 3600;
 
+const socialPreviewImage = {
+  url: "/images/og/broadway-social-preview.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Broadway The Lyricist social preview",
+};
+
 export const metadata: Metadata = {
   title: "Media Kit — Broadway The Lyricist",
   description:
     "Partnership media kit for Broadway The Lyricist — audience, performance, industry recognition, studio setup, and collaboration opportunities.",
   alternates: { canonical: "/media-kit" },
+  openGraph: {
+    title: "Media Kit — Broadway The Lyricist",
+    description:
+      "Partnership media kit for Broadway The Lyricist — audience, performance, industry recognition, studio setup, and collaboration opportunities.",
+    url: "/media-kit",
+    siteName: "Broadway The Lyricist",
+    images: [socialPreviewImage],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Media Kit — Broadway The Lyricist",
+    description:
+      "Partnership media kit for Broadway The Lyricist — audience, performance, industry recognition, studio setup, and collaboration opportunities.",
+    images: [socialPreviewImage],
+  },
 };
 
 type Stat = { label: string; value: string; live?: boolean };
