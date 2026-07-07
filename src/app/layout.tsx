@@ -17,7 +17,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = "https://bway-site.vercel.app";
+const siteUrl = "https://bway-site-mocha.vercel.app";
 const socialPreviewImage = {
   url: "/images/og/broadway-social-preview.jpg",
   width: 1200,
