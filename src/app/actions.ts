@@ -24,8 +24,9 @@ export async function submitContact(
   // Silently succeed on honeypot hits so bots get no signal — checked before
   // validation so a bot that fills only this field can't learn which fields
   // are required.
-  const honeypot = String(formData.get("company") ?? "");
+  const honeypot = String(formData.get("contact_time") ?? "");
   if (honeypot) {
+    console.log("[contact] honeypot tripped");
     return { status: "success", message: "Thanks — your message was sent." };
   }
 

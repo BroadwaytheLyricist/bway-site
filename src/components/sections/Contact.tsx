@@ -135,15 +135,17 @@ export default function Contact() {
             className="flex flex-col gap-5 rounded-3xl border border-line bg-panel-2 p-6 shadow-xl shadow-black/20 sm:p-8"
             noValidate
           >
-            {/* Honeypot — visually hidden, off the tab order */}
+            {/* Honeypot — visually hidden, off the tab order. Named to avoid
+                browser autofill (a "company" field gets autofilled, causing
+                silent fake-success submissions from real users). */}
             <div className="absolute left-[-9999px]" aria-hidden="true">
-              <label htmlFor="company">Company</label>
+              <label htmlFor="contact_time">Leave this field empty</label>
               <input
-                id="company"
-                name="company"
+                id="contact_time"
+                name="contact_time"
                 type="text"
                 tabIndex={-1}
-                autoComplete="off"
+                autoComplete="one-time-code"
               />
             </div>
 
