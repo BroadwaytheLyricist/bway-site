@@ -11,7 +11,7 @@ export const links = {
   tiktok: "https://www.tiktok.com/@broadwaythelyricist",
   facebook:
     "https://www.facebook.com/people/Broadway-The-Lyricist/61571489602613/",
-  email: "RamcorpManagment@gmail.com",
+  email: "Ramcorpmanagement@gmail.com",
   mediaKit: "/media-kit",
 } as const;
 
