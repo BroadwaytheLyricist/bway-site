@@ -45,7 +45,7 @@ export default function Playlists() {
               rel="noopener noreferrer"
               className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-panel-2 transition-all hover:-translate-y-1 hover:border-accent/50"
             >
-              <div className="relative aspect-video overflow-hidden">
+              <div className="relative aspect-[3/2] overflow-hidden">
                 {hasImage(playlist) ? (
                   <Image
                     src={playlist.image}
