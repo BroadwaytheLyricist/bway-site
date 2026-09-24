@@ -25,6 +25,46 @@ const socialPreviewImage = {
   alt: "Broadway The Lyricist social preview",
 };
 
+// Structured data: tells Google this "Broadway" is a hip-hop creator (not a
+// theater lyricist) and links every profile to one identity.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      name: "Broadway The Lyricist",
+      alternateName: "Broadway the Lyricist",
+      url: siteUrl,
+      jobTitle: "Hip-Hop Commentator & Content Creator",
+      description:
+        "Hip-hop history, commentary, and cultural storytelling — deep dives, reactions, and debates.",
+      knowsAbout: [
+        "Hip-hop",
+        "Hip-hop history",
+        "Rap music",
+        "Music commentary",
+      ],
+      sameAs: [
+        "https://www.youtube.com/channel/UCSReMFrM5-41HxZoT5FAmSg",
+        "https://www.instagram.com/broadwaythelyricist",
+        "https://www.tiktok.com/@broadwaythelyricist",
+        "https://www.facebook.com/people/Broadway-The-Lyricist/61571489602613/",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Broadway The Lyricist",
+      description:
+        "Deep dives. Reactions. Debates. The hip-hop conversations we should be having.",
+      inLanguage: "en-US",
+      publisher: { "@id": `${siteUrl}/#person` },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Broadway The Lyricist — Hip-Hop History & Commentary",
@@ -75,6 +115,10 @@ export default function RootLayout({
       className={`${anton.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-white font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
