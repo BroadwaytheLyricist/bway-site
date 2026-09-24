@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { links, nav } from "@/lib/site";
 import {
   FacebookIcon,
@@ -18,9 +19,8 @@ export default function Footer() {
   return (
     <footer className="border-t border-line bg-panel">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-        {/* Centered stack: logo → quote (centerpiece) → nav → socials */}
         <div className="flex flex-col items-center text-center">
-          <a href="/#home" aria-label="Broadway The Lyricist — home">
+          <Link href="/#home" aria-label="Broadway The Lyricist home">
             <Image
               src="/images/logo.png"
               alt="Broadway The Lyricist"
@@ -28,10 +28,12 @@ export default function Footer() {
               height={64}
               className="h-14 w-auto"
             />
-          </a>
+          </Link>
 
           <p className="mt-8 max-w-3xl font-display text-2xl leading-tight tracking-wide text-white sm:text-3xl lg:text-4xl">
-            &ldquo;The Hip Hop Conversations We <span className="text-accent">Should</span> Be Having<span className="text-accent">.</span>&rdquo;
+            &ldquo;The Hip-Hop Conversations We{" "}
+            <span className="text-accent">Should</span> Be Having
+            <span className="text-accent">.</span>&rdquo;
           </p>
 
           <nav
@@ -39,15 +41,19 @@ export default function Footer() {
             aria-label="Footer"
           >
             {nav.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                rel={
+                  item.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
                 className="text-sm font-medium text-muted transition-colors hover:text-white"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -68,7 +74,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-line pt-8 text-center text-sm text-muted">
-          © {new Date().getFullYear()} Broadway The Lyricist. All rights reserved.
+          © {new Date().getFullYear()} Broadway The Lyricist. All rights
+          reserved.
         </div>
       </div>
     </footer>
