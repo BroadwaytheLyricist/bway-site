@@ -57,21 +57,21 @@ export const playlists = [
     title: "Rappers We Don't Talk About Enough",
     description:
       "Long-form spotlights on great MCs who deserve more conversation.",
-    href: `${links.youtube}/playlists`,
+    url: `${links.youtube}/playlists`,
     image: "/images/playlists/rappers.jpg",
   },
   {
     title: "Albums We Don't Talk About Enough",
     description:
       "Revisiting overlooked albums, context, and why the music still matters.",
-    href: `${links.youtube}/playlists`,
+    url: `${links.youtube}/playlists`,
     image: "/images/playlists/albums.jpg",
   },
   {
     title: "Hip Hop Didn't Tell You",
     description:
       "Context, debates, and the culture conversations hiding in plain sight.",
-    href: `${links.youtube}/playlists`,
+    url: `${links.youtube}/playlists`,
     image: "/images/playlists/hh-didnt-tell-you.jpg",
   },
 ] as const;
@@ -83,6 +83,6 @@ export const stats = [
 ] as const;
 
 export const channelTagline =
-  "Deep dives. Reactions. Debates. The hip-hop conversations we should be having.";
+  "Deep dives. Reactions. Debates. The Hip-Hop conversations we should be having.";
 
 export const businessEmail = links.email;
