@@ -40,39 +40,52 @@ export const marqueeTags = [
 export const featuredVideos = [
   {
     id: "dojslb4-TYU",
-    title: "Hip-Hop Fans Are Their Own Worst Enemy",
+    title: "Who Really Controls Hip Hop? The Prison Money Trail No One Talks About",
   },
   {
-    id: "frc26xh_FlE",
-    title: "Hip-Hop Snobs Are the Worst Thing About Hip-Hop",
-  },
-  {
-    id: "QzJHQpv8j4w",
-    title: "The Co-Sign Paradox",
+    id: "HbVsTl3A-tg",
+    title: "Hip Hop Is The Only Genre That Tells Rappers To Retire",
   },
 ] as const;
 
+/**
+ * Curated channel playlists surfaced on the homepage. Titles, video counts,
+ * and IDs are the channel's real playlists (verified from the public
+ * /playlists listing); `url` deep-links to each individual playlist.
+ */
 export const playlists = [
   {
-    title: "Rappers We Don't Talk About Enough",
-    description:
-      "Long-form spotlights on great MCs who deserve more conversation.",
-    url: `${links.youtube}/playlists`,
-    image: "/images/playlists/rappers.jpg",
-  },
-  {
     title: "Albums We Don't Talk About Enough",
-    description:
-      "Revisiting overlooked albums, context, and why the music still matters.",
-    url: `${links.youtube}/playlists`,
-    image: "/images/playlists/albums.jpg",
+    count: 21,
+    url: "https://www.youtube.com/playlist?list=PL-XCphQVML5rF7JfxRu4qfJ3MZ5sJPbr4",
+    image: "/images/playlists/albums-we-dont-talk-about-enough.jpg",
   },
   {
     title: "Hip Hop Didn't Tell You",
-    description:
-      "Context, debates, and the culture conversations hiding in plain sight.",
-    url: `${links.youtube}/playlists`,
-    image: "/images/playlists/hh-didnt-tell-you.jpg",
+    count: 18,
+    url: "https://www.youtube.com/playlist?list=PL-XCphQVML5oTIfxhp3-1kSwtF7EXOCEH",
+    image: "/images/playlists/hip-hop-didnt-tell-you.jpg",
+  },
+  {
+    title: "Where Are They Now?",
+    count: 9,
+    url: "https://www.youtube.com/playlist?list=PL-XCphQVML5pI1a4c1_j1i9k8D5zq0LOz",
+    image: "/images/playlists/where-are-they-now.jpg",
+  },
+  {
+    title: "Rappers We Don't Talk About Enough",
+    count: 17,
+    url: "https://www.youtube.com/playlist?list=PL-XCphQVML5q0MkQlXg1kXe3fzZGVY3RU",
+  },
+  {
+    title: "Lyric Videos",
+    count: 13,
+    url: "https://www.youtube.com/playlist?list=PL-XCphQVML5px0xGcaiNcae2rdNz5Wdlf",
+  },
+  {
+    title: "Your Favorite Artists' Worst Songs",
+    count: 11,
+    url: "https://www.youtube.com/playlist?list=PL-XCphQVML5rwTYRrTAeboSw3zoi8tJ1a",
   },
 ] as const;
 
