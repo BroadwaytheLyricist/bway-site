@@ -78,13 +78,12 @@ export default async function PostPage({ params }: PostPageProps) {
     mainEntityOfPage: url,
     author: {
       "@type": "Person",
+      "@id": "https://broadwaythelyricist.com/#person",
       name: "Broadway The Lyricist",
       url: "https://broadwaythelyricist.com",
     },
     publisher: {
-      "@type": "Person",
-      name: "Broadway The Lyricist",
-      url: "https://broadwaythelyricist.com",
+      "@id": "https://broadwaythelyricist.com/#person",
     },
   };
 
