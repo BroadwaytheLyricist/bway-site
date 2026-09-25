@@ -22,16 +22,27 @@ export default function About() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
           {/* Photo */}
           <div className="relative order-1 isolate">
-            <div className="absolute inset-[8%] -z-10 rounded-[3rem] bg-[radial-gradient(circle,rgba(255,90,31,.24),rgba(20,108,180,.12)_44%,transparent_72%)] blur-3xl" />
-            <div className="about-portrait relative aspect-[4/5] overflow-hidden">
+            <div className="absolute inset-[10%] -z-10 rounded-[3rem] bg-[radial-gradient(circle,rgba(255,90,31,.3),rgba(20,108,180,.16)_46%,transparent_72%)] blur-3xl" />
+            <div className="relative aspect-[4/5] overflow-visible">
+              {/* Soft environmental plate: recognizable, but recessed. */}
+              <Image
+                src="/images/about.jpg"
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="about-environment object-cover object-center"
+              />
+
+              {/* Sharp foreground is the exact same source photograph, masked
+                  around Broadway, the microphone, and boom arm for depth. */}
               <Image
                 src="/images/about.jpg"
                 alt="Broadway The Lyricist behind the mic in his studio"
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover object-center"
+                className="about-subject object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg/65 via-transparent to-bg/10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg/55 via-transparent to-transparent" />
             </div>
             {/* Accent frame accent */}
             <div className="absolute -bottom-4 -right-4 -z-10 hidden h-32 w-32 rounded-2xl bg-accent/20 blur-2xl sm:block" />

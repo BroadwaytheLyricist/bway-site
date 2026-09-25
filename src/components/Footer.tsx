@@ -24,7 +24,7 @@ export default function Footer() {
           alt=""
           fill
           sizes="100vw"
-          className="scale-x-[-1] object-contain opacity-[0.09] blur-2xl"
+          className="scale-x-[-1] object-contain opacity-[0.14] blur-md"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,90,31,.12),rgba(13,19,32,.82)_48%,#0d1320_78%)]" />
       </div>

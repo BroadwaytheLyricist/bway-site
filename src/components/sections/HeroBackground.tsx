@@ -62,11 +62,6 @@ export default function HeroBackground() {
         />
       </div>
 
-      {/* Slow translucent veils make the existing stage haze feel alive while
-          leaving the portrait itself completely untouched. */}
-      <div aria-hidden="true" className="hero-smoke hero-smoke-one" />
-      <div aria-hidden="true" className="hero-smoke hero-smoke-two" />
-
       {/* Cinematic scrims — just enough to keep the headline legible while the
           stage lights and the rainy-street reflections read through. Kept static
           so they don't drift with the parallax. The horizontal wash only darkens
@@ -74,6 +69,11 @@ export default function HeroBackground() {
           bottom reflections stay visible. */}
       <div className="absolute inset-0 bg-gradient-to-r from-bg/90 via-bg/45 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-bg/45 via-transparent to-transparent" />
+
+      {/* These brighter smoke veils sit above the dark scrims so their slow
+          drift is visible, while remaining behind every piece of hero copy. */}
+      <div aria-hidden="true" className="hero-smoke hero-smoke-one" />
+      <div aria-hidden="true" className="hero-smoke hero-smoke-two" />
     </div>
   );
 }
