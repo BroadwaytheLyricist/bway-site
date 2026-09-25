@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import SmokeDrift from "@/components/SmokeDrift";
 
 /**
  * Client-only hero background: the spotlit portrait plus legibility scrims.
@@ -10,6 +11,10 @@ import { useEffect, useRef } from "react";
  * (`scale-x-[-1]`) to place him on the right while the headline sits on the
  * left. A clamped, transform-only scroll parallax drifts the image as the hero
  * scrolls; it is disabled entirely under `prefers-reduced-motion`.
+ *
+ * On top of the photo, a slow drifting smoke layer (SmokeDrift) keeps the
+ * stage haze subtly alive. It sits below the scrims so the headline stays
+ * legible, and it holds still for reduced-motion visitors.
  */
 export default function HeroBackground() {
   const layerRef = useRef<HTMLDivElement>(null);
@@ -61,6 +66,10 @@ export default function HeroBackground() {
           className="scale-x-[-1] object-cover object-[35%_center] sm:object-[50%_center]"
         />
       </div>
+
+      {/* Drifting stage smoke, placed in the orange smoke column (left of his
+          face in the mirrored photo) and the blue light spill behind the copy. */}
+      <SmokeDrift warmX="50%" coolX="36%" />
 
       {/* Cinematic scrims — just enough to keep the headline legible while the
           stage lights and the rainy-street reflections read through. Kept static
