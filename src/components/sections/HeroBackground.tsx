@@ -50,24 +50,36 @@ export default function HeroBackground() {
       {/* Parallax image layer — oversized vertically so the drift never gaps. */}
       <div
         ref={layerRef}
-        className="absolute inset-x-0 -top-[10%] -bottom-[10%] will-change-transform"
+        className="hero-portrait-layer absolute -bottom-[10%] -right-[8%] -top-[10%] w-[76%] will-change-transform sm:-right-[4%] sm:w-[68%] lg:right-0 lg:w-[62%]"
       >
         <Image
           src="/images/hero.png"
           alt="Broadway The Lyricist on a dark, spotlit stage"
           fill
           preload
-          sizes="100vw"
-          className="scale-x-[-1] object-cover object-[35%_center] sm:object-[50%_center]"
+          sizes="(max-width: 640px) 76vw, (max-width: 1024px) 68vw, 62vw"
+          className="scale-x-[-1] object-cover object-[42%_center]"
         />
       </div>
+
+      <video
+        className="hero-smoke-video absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source src="/videos/hero-smoke.mp4" type="video/mp4" />
+      </video>
 
       {/* Cinematic scrims — just enough to keep the headline legible while the
           stage lights and the rainy-street reflections read through. Kept static
           so they don't drift with the parallax. The horizontal wash only darkens
           the left third (behind the copy); the vertical wash is light so the
           bottom reflections stay visible. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-bg/90 via-bg/45 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/78 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-bg/45 via-transparent to-transparent" />
     </div>
   );

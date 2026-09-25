@@ -47,8 +47,12 @@ export default function Contact() {
   const [state, formAction] = useActionState(submitContact, initialState);
 
   return (
-    <section id="contact" className="bg-panel py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="contact" className="relative isolate overflow-hidden bg-panel py-24 sm:py-32">
+      <div aria-hidden="true" className="absolute inset-0 -z-30 bg-[url('/images/about-stage.webp')] bg-cover bg-center opacity-45" />
+      <div aria-hidden="true" className="absolute -bottom-[18%] -right-[5%] -z-20 h-[92%] w-[48%] bg-[url('/images/about-subject.png')] bg-contain bg-bottom bg-no-repeat opacity-[0.13] [mask-image:linear-gradient(to_bottom,black_65%,transparent)]" />
+      <MailIcon aria-hidden="true" className="absolute right-[8%] top-1/2 -z-10 h-72 w-72 -translate-y-1/2 text-white/[0.055] lg:h-96 lg:w-96" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-panel/95 via-panel/91 to-panel/82" />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Left: intro + contact detail cards */}
           <div className="flex flex-col">
@@ -110,7 +114,7 @@ export default function Contact() {
             {/* Follow — merged in so "reach out" and "follow along" live together */}
             <div className="mt-8">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
-                Follow along
+                Follow Me
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 {socials.map(({ label, href, Icon }) => (
@@ -120,7 +124,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-panel-2 text-white transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-accent"
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-panel-2 text-accent transition-all hover:-translate-y-1 hover:border-accent hover:bg-accent/10"
                   >
                     <Icon className="h-5 w-5" />
                   </a>

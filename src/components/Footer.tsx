@@ -65,7 +65,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-accent"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-accent transition-colors hover:border-accent hover:bg-accent/10"
               >
                 <Icon className="h-5 w-5" />
               </a>

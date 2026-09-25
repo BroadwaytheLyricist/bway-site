@@ -13,25 +13,22 @@ export const links = {
     "https://www.facebook.com/people/Broadway-The-Lyricist/61571489602613/",
   email: "Ramcorpmanagement@gmail.com",
   mediaKit: "/media-kit",
+  appleMusic: "https://music.apple.com/us/album/off-broadway-single/1482177233",
+  tidal: "https://tidal.com/video/356030437",
+  deezer: "https://www.deezer.com/en/artist/6865951",
 } as const;
 
 export const nav = [
   { label: "Home", href: "/#home" },
   { label: "About", href: "/#about" },
   { label: "Videos", href: "/#videos" },
-  { label: "Playlists", href: "/#playlists" },
   { label: "Blog", href: "/blog" },
+  { label: "Music", href: "/#music" },
   { label: "Media Kit", href: "/media-kit" },
   { label: "Contact", href: "/#contact" },
 ] as const;
 
-export const marqueeTags = [
-  "Culture",
-  "History",
-  "Deep Dives",
-  "Reactions",
-  "Debates",
-] as const;
+export const brandTagline = "The Hip-Hop Conversations We Should Be Having";
 
 /**
  * Hand-picked featured deep-dive uploads (full long-form videos, not Shorts).
@@ -53,18 +50,28 @@ export const featuredVideos = [
  * and IDs are the channel's real playlists (verified from the public
  * /playlists listing); `url` deep-links to each individual playlist.
  */
-export const playlists = [
-  {
-    title: "Albums We Don't Talk About Enough",
-    count: 21,
-    url: "https://www.youtube.com/playlist?list=PL-XCphQVML5rF7JfxRu4qfJ3MZ5sJPbr4",
-    image: "/images/playlists/albums-we-dont-talk-about-enough.jpg",
-  },
+type Playlist = {
+  title: string;
+  count?: number;
+  url: string;
+  image?: string;
+};
+
+export const playlists: Playlist[] = [
   {
     title: "Hip Hop Didn't Tell You",
-    count: 18,
     url: "https://www.youtube.com/playlist?list=PL-XCphQVML5oTIfxhp3-1kSwtF7EXOCEH",
-    image: "/images/playlists/hip-hop-didnt-tell-you.jpg",
+    image: "/images/playlists-v3/hip-hop-didnt-tell-you.webp",
+  },
+  {
+    title: "Hip Hop, Sports & Culture",
+    url: "https://www.youtube.com/playlist?list=PLH_y27XKyoFE",
+    image: "/images/playlists-v3/hip-hop-sports-culture.webp",
+  },
+  {
+    title: "Albums We Don't Talk About Enough",
+    url: "https://www.youtube.com/playlist?list=PL-XCphQVML5rF7JfxRu4qfJ3MZ5sJPbr4",
+    image: "/images/playlists-v3/albums-we-dont-talk-about-enough.webp",
   },
   {
     title: "Where Are They Now?",
