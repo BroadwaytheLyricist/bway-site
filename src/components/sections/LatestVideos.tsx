@@ -3,6 +3,7 @@ import VideoEmbed from "@/components/VideoEmbed";
 import { ArrowIcon, PlayIcon } from "@/components/icons";
 import { links } from "@/lib/site";
 import { getLatestVideos } from "@/lib/youtube";
+import SectionBackdrop from "@/components/SectionBackdrop";
 
 function formatDate(iso: string) {
   if (!iso) return "";
@@ -17,10 +18,14 @@ function formatDate(iso: string) {
 
 export default async function LatestVideos() {
   const videos = await getLatestVideos(2);
+  const backdropImage = videos[0]
+    ? `https://i.ytimg.com/vi/${videos[0].id}/maxresdefault.jpg`
+    : "/images/hero.png";
 
   return (
-    <section id="videos" className="bg-panel py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="videos" className="relative isolate overflow-hidden bg-panel py-24 sm:py-32">
+      <SectionBackdrop image={backdropImage} position="center 35%" />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             kicker="Latest Uploads"

@@ -3,20 +3,35 @@ import SectionHeading from "@/components/SectionHeading";
 
 export default function About() {
   return (
-    <section id="about" className="bg-bg py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="about" className="relative isolate overflow-hidden bg-bg py-24 sm:py-32">
+      {/* A soft, full-width echo lets the studio environment dissolve into the
+          section while the untouched source photo stays crisp in front. */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden">
+        <Image
+          src="/images/about.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="scale-110 object-cover object-center opacity-25 blur-3xl"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,14,23,.62),rgba(10,14,23,.88)_56%,#0a0e17_88%)]" />
+        <div className="absolute inset-0 bg-gradient-to-y from-bg/80 via-transparent to-bg/90" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
           {/* Photo */}
-          <div className="relative order-1">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-line">
+          <div className="relative order-1 isolate">
+            <div className="absolute inset-[8%] -z-10 rounded-[3rem] bg-[radial-gradient(circle,rgba(255,90,31,.24),rgba(20,108,180,.12)_44%,transparent_72%)] blur-3xl" />
+            <div className="about-portrait relative aspect-[4/5] overflow-hidden">
               <Image
                 src="/images/about.jpg"
                 alt="Broadway The Lyricist behind the mic in his studio"
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover"
+                className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg/65 via-transparent to-bg/10" />
             </div>
             {/* Accent frame accent */}
             <div className="absolute -bottom-4 -right-4 -z-10 hidden h-32 w-32 rounded-2xl bg-accent/20 blur-2xl sm:block" />

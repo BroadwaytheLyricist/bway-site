@@ -17,8 +17,18 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-panel">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+    <footer className="relative isolate overflow-hidden border-t border-line bg-panel">
+      <div aria-hidden="true" className="absolute inset-0 -z-10">
+        <Image
+          src="/images/logo.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className="scale-x-[-1] object-contain opacity-[0.09] blur-2xl"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,90,31,.12),rgba(13,19,32,.82)_48%,#0d1320_78%)]" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="flex flex-col items-center text-center">
           <Link href="/#home" aria-label="Broadway The Lyricist home">
             <Image

@@ -16,6 +16,7 @@ import {
 import { submitContact } from "@/app/actions";
 import type { ContactState } from "@/lib/contact-schema";
 import { links } from "@/lib/site";
+import SectionBackdrop from "@/components/SectionBackdrop";
 
 const initialState: ContactState = { status: "idle", message: "" };
 
@@ -47,8 +48,21 @@ export default function Contact() {
   const [state, formAction] = useActionState(submitContact, initialState);
 
   return (
-    <section id="contact" className="bg-panel py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="contact" className="relative isolate overflow-hidden bg-panel py-24 sm:py-32">
+      <SectionBackdrop className="contact-atmosphere" />
+      <div aria-hidden="true" className="contact-ghost absolute inset-y-[12%] right-[-8%] -z-[5] hidden w-[58%] rotate-[-4deg] lg:block">
+        <div className="h-full rounded-[3rem] border border-white/15 bg-panel-2/80 p-10">
+          <div className="h-12 w-2/3 rounded-2xl bg-white/12" />
+          <div className="mt-10 grid grid-cols-2 gap-5">
+            <div className="h-16 rounded-2xl bg-white/10" />
+            <div className="h-16 rounded-2xl bg-white/10" />
+          </div>
+          <div className="mt-5 h-16 rounded-2xl bg-white/10" />
+          <div className="mt-5 h-40 rounded-2xl bg-white/10" />
+          <div className="mt-7 h-14 w-44 rounded-full bg-accent/45" />
+        </div>
+      </div>
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Left: intro + contact detail cards */}
           <div className="flex flex-col">

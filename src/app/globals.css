@@ -45,6 +45,108 @@
   }
 }
 
+@keyframes smoke-drift-one {
+  0%, 100% { transform: translate3d(-4%, 2%, 0) scale(1); opacity: 0.2; }
+  50% { transform: translate3d(7%, -4%, 0) scale(1.08); opacity: 0.34; }
+}
+
+@keyframes smoke-drift-two {
+  0%, 100% { transform: translate3d(5%, -2%, 0) scale(1.05); opacity: 0.15; }
+  50% { transform: translate3d(-6%, 4%, 0) scale(0.98); opacity: 0.28; }
+}
+
+.hero-smoke {
+  position: absolute;
+  width: 58vw;
+  height: 58vw;
+  min-width: 34rem;
+  min-height: 34rem;
+  border-radius: 9999px;
+  filter: blur(70px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.hero-smoke-one {
+  left: 10%;
+  top: 4%;
+  background: radial-gradient(circle, rgba(255, 90, 31, 0.18), transparent 66%);
+  animation: smoke-drift-one 18s ease-in-out infinite;
+}
+
+.hero-smoke-two {
+  right: -12%;
+  top: 8%;
+  background: radial-gradient(circle, rgba(35, 139, 209, 0.2), transparent 67%);
+  animation: smoke-drift-two 24s ease-in-out infinite;
+}
+
+.about-portrait {
+  border-radius: 1.25rem;
+  border: 1px solid var(--color-line);
+  box-shadow: 0 28px 80px -38px rgba(0, 0, 0, 0.92);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 84%, transparent 100%);
+}
+
+.section-atmosphere {
+  z-index: -10;
+  pointer-events: none;
+}
+
+.section-atmosphere-image {
+  opacity: 0.18;
+  filter: blur(34px) saturate(1.15);
+}
+
+.section-atmosphere-wash {
+  background:
+    linear-gradient(180deg, var(--color-panel) 0%, rgba(13, 19, 32, 0.62) 48%, var(--color-panel) 100%),
+    linear-gradient(90deg, rgba(10, 14, 23, 0.76), transparent 48%, rgba(10, 14, 23, 0.68));
+}
+
+.section-atmosphere-glow {
+  position: absolute;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.13;
+}
+
+.section-atmosphere-glow-left {
+  left: -12rem;
+  top: 8%;
+  background: #167bb5;
+}
+
+.section-atmosphere-glow-right {
+  right: -13rem;
+  bottom: 4%;
+  background: var(--color-accent);
+}
+
+.contact-ghost {
+  filter: blur(18px);
+  opacity: 0.17;
+  transform: scaleX(-1) rotate(-4deg);
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .hero-smoke {
+    min-width: 25rem;
+    min-height: 25rem;
+    filter: blur(54px);
+  }
+
+  .section-atmosphere-image {
+    opacity: 0.13;
+    filter: blur(28px) saturate(1.05);
+  }
+}
+
 .hero-reveal {
   opacity: 0;
   animation: hero-slide-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -104,6 +206,9 @@ body {
   /* Show hero copy immediately — no slide/fade for reduced-motion users. */
   .hero-reveal {
     opacity: 1;
+    animation: none;
+  }
+  .hero-smoke {
     animation: none;
   }
 }

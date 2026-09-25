@@ -2,6 +2,7 @@ import Image from "next/image";
 import SectionHeading from "@/components/SectionHeading";
 import { ArrowIcon, PlayIcon } from "@/components/icons";
 import { links, playlists } from "@/lib/site";
+import SectionBackdrop from "@/components/SectionBackdrop";
 
 type Playlist = (typeof playlists)[number];
 const hasImage = (p: Playlist): p is Playlist & { image: string } =>
@@ -9,8 +10,12 @@ const hasImage = (p: Playlist): p is Playlist & { image: string } =>
 
 export default function Playlists() {
   return (
-    <section id="playlists" className="bg-panel py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="playlists" className="relative isolate overflow-hidden bg-panel py-24 sm:py-32">
+      <SectionBackdrop
+        image="/images/playlists/hip-hop-didnt-tell-you.jpg"
+        position="center"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             kicker="Playlists"
