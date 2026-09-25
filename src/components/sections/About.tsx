@@ -1,14 +1,25 @@
-import AboutPhoto from "@/components/sections/AboutPhoto";
+import Image from "next/image";
 import SectionHeading from "@/components/SectionHeading";
 
 export default function About() {
   return (
-    <section id="about" className="relative isolate overflow-hidden bg-bg py-24 sm:py-32">
+    <section id="about" className="bg-bg py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-12">
-          {/* Photo: layered like the hero (stage background + cut-out) */}
+        <div className="grid items-center gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+          {/* Photo */}
           <div className="relative order-1">
-            <AboutPhoto />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-line">
+              <Image
+                src="/images/about.jpg"
+                alt="Broadway The Lyricist behind the mic in his studio"
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent" />
+            </div>
+            {/* Accent frame accent */}
+            <div className="absolute -bottom-4 -right-4 -z-10 hidden h-32 w-32 rounded-2xl bg-accent/20 blur-2xl sm:block" />
           </div>
 
           {/* Copy */}

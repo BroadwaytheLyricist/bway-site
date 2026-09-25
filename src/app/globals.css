@@ -51,80 +51,6 @@
   animation-delay: var(--reveal-delay, 0ms);
 }
 
-/* ------------------------------------------------------------------
-   Drifting stage smoke. Procedural wisps (SVG fractal noise, no image
-   download) tinted to match the orange/blue stage lights. Each layer is a
-   fixed, soft-edged window (the mask) with the smoke texture sliding slowly
-   through it, so the haze appears to roll rather than the whole blob moving.
-   Only transform animates, so it stays on the GPU and cheap on phones.
-   ------------------------------------------------------------------ */
-@keyframes smoke-drift-a {
-  0%,
-  100% {
-    transform: translate3d(-5%, 2%, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(4%, -3%, 0) scale(1.08);
-  }
-}
-
-@keyframes smoke-drift-b {
-  0%,
-  100% {
-    transform: translate3d(4%, -2%, 0) scale(1.05);
-  }
-  50% {
-    transform: translate3d(-4%, 3%, 0) scale(1);
-  }
-}
-
-.smoke-layer {
-  position: absolute;
-  inset: -10%;
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-
-.smoke-layer > span {
-  position: absolute;
-  inset: -12%;
-  display: block;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  will-change: transform;
-}
-
-/* Warm wisp: sits in the orange smoke column of the stage. */
-.smoke-warm {
-  opacity: 0.75;
-  -webkit-mask-image: radial-gradient(ellipse 30% 40% at var(--smoke-warm-x, 50%) 60%, #000 0%, transparent 70%);
-  mask-image: radial-gradient(ellipse 30% 40% at var(--smoke-warm-x, 50%) 60%, #000 0%, transparent 70%);
-}
-.smoke-warm > span {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1200'%3E%3Cfilter id='f' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.009' numOctaves='4' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.42 0 0 0 0 0.16 0 0 0 2.2 -1.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
-  animation: smoke-drift-a 38s ease-in-out infinite;
-}
-
-/* Cool haze: blue spill from the stage lights. */
-.smoke-cool {
-  opacity: 0.7;
-  -webkit-mask-image: radial-gradient(ellipse 45% 40% at var(--smoke-cool-x, 36%) 42%, #000 0%, transparent 70%);
-  mask-image: radial-gradient(ellipse 45% 40% at var(--smoke-cool-x, 36%) 42%, #000 0%, transparent 70%);
-}
-.smoke-cool > span {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1200'%3E%3Cfilter id='f' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.005 0.008' numOctaves='4' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.55 0 0 0 0 1 0 0 0 2.2 -1.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
-  animation: smoke-drift-b 52s ease-in-out infinite;
-}
-
-/* About portrait rim light: soft colored glows that follow the cut-out's
-   edges (drop-shadow traces transparency), plus a depth shadow. Matches the
-   mirrored stage: orange smoke on the right, blue lights on the left. */
-.about-rim {
-  filter: drop-shadow(3px -3px 7px rgba(255, 112, 45, 0.38))
-    drop-shadow(-4px -2px 9px rgba(90, 160, 255, 0.32))
-    drop-shadow(0 24px 36px rgba(0, 0, 0, 0.55));
-}
-
 html {
   scroll-behavior: smooth;
   /* Offset anchored scroll for the sticky header */
@@ -173,10 +99,6 @@ body {
     scroll-behavior: auto;
   }
   .animate-marquee {
-    animation: none;
-  }
-  /* Smoke holds still: a static haze, no drift. */
-  .smoke-layer > span {
     animation: none;
   }
   /* Show hero copy immediately — no slide/fade for reduced-motion users. */
