@@ -25,7 +25,7 @@ export default function LatestBlog() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
-            index="02"
+            index="03"
             kicker="From the Blog"
             title={<>More Than <span className="text-accent">The Video</span></>}
           />
