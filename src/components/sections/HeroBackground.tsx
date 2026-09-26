@@ -64,7 +64,7 @@ export default function HeroBackground() {
       {/* Full stage plate remains fixed while the portrait moves independently. */}
       <div
         ref={layerRef}
-        className="hero-stage-layer absolute -inset-y-[6%] inset-x-0 will-change-transform"
+        className="hero-stage-layer absolute -inset-y-[6%] inset-x-0 z-0 will-change-transform"
       >
         <Image
           src="/images/stage-bg-v2.jpg"
@@ -77,7 +77,7 @@ export default function HeroBackground() {
       </div>
 
       <video
-        className="hero-smoke-video hero-smoke-a absolute inset-0 h-full w-full object-cover"
+        className="hero-smoke-video hero-smoke-a absolute inset-0 z-10 h-full w-full object-cover"
         autoPlay
         muted
         loop
@@ -89,7 +89,7 @@ export default function HeroBackground() {
       </video>
       <video
         ref={smokeBRef}
-        className="hero-smoke-video hero-smoke-b absolute inset-0 h-full w-full object-cover"
+        className="hero-smoke-video hero-smoke-b absolute inset-0 z-10 h-full w-full object-cover"
         autoPlay
         muted
         loop
@@ -103,7 +103,7 @@ export default function HeroBackground() {
 
       <div
         ref={subjectRef}
-        className="hero-subject-layer absolute inset-y-0 right-[-2%] w-[76%] will-change-transform sm:w-[68%] lg:right-[1%] lg:w-[61%]"
+        className="hero-subject-layer absolute inset-y-[4%] right-[-1%] z-30 w-[78%] will-change-transform sm:w-[69%] lg:inset-y-[3%] lg:right-[2%] lg:w-[60%]"
       >
         <Image
           src="/images/hero-subject-v2.png"
@@ -111,7 +111,7 @@ export default function HeroBackground() {
           fill
           preload
           sizes="(max-width: 640px) 76vw, (max-width: 1024px) 68vw, 61vw"
-          className="object-contain object-bottom"
+          className="object-contain object-right-bottom"
         />
       </div>
 
@@ -120,8 +120,8 @@ export default function HeroBackground() {
           so they don't drift with the parallax. The horizontal wash only darkens
           the left third (behind the copy); the vertical wash is light so the
           bottom reflections stay visible. */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg/90 via-bg/32 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/24 via-transparent to-bg/10" />
+      <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-bg/90 via-bg/32 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-bg/24 via-transparent to-bg/10" />
     </div>
   );
 }
