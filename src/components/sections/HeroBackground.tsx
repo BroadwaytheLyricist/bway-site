@@ -103,15 +103,16 @@ export default function HeroBackground() {
 
       <div
         ref={subjectRef}
-        className="hero-subject-layer absolute inset-y-[4%] right-[-1%] z-30 w-[78%] will-change-transform sm:w-[69%] lg:inset-y-[3%] lg:right-[2%] lg:w-[60%]"
+        className="hero-subject-layer absolute bottom-0 right-[-2%] z-30 w-[94vw] max-w-[1536px] will-change-transform sm:w-[82vw] lg:right-[1%] lg:w-[72vw]"
       >
         <Image
           src="/images/hero-subject-v2.png"
           alt="Broadway The Lyricist facing the homepage introduction"
-          fill
+          width={1536}
+          height={1024}
           preload
-          sizes="(max-width: 640px) 76vw, (max-width: 1024px) 68vw, 61vw"
-          className="object-contain object-right-bottom"
+          sizes="(max-width: 640px) 94vw, (max-width: 1024px) 82vw, 72vw"
+          className="block h-auto w-full"
         />
       </div>
 
