@@ -13,15 +13,11 @@ import { useEffect, useRef } from "react";
  */
 export default function HeroBackground() {
   const layerRef = useRef<HTMLDivElement>(null);
-  const subjectRef = useRef<HTMLDivElement>(null);
   const smokeBRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const el = layerRef.current;
-    const subject = subjectRef.current;
-    if (!el || !subject) return;
-
-    requestAnimationFrame(() => subject.setAttribute("data-ready", "true"));
+    if (!el) return;
 
     // Respect reduced-motion: leave the background static.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -34,8 +30,6 @@ export default function HeroBackground() {
       // in view, and keep the shift well within the layer's vertical slack.
       const offset = Math.min(window.scrollY, window.innerHeight);
       el.style.setProperty("--hero-parallax-y", `${offset * 0.045}px`);
-      subject.style.setProperty("--hero-scroll-x", `${offset * 0.18}px`);
-      subject.style.setProperty("--hero-scroll-opacity", `${Math.max(0.25, 1 - offset / (window.innerHeight * 1.12))}`);
     };
 
     const onScroll = () => {
@@ -60,20 +54,19 @@ export default function HeroBackground() {
   };
 
   return (
-    <>
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* The stage, smoke and scrims are confined to one background context. */}
+    <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Use the original approved hero as one immutable composition. */}
         <div
           ref={layerRef}
           className="hero-stage-layer absolute -inset-y-[6%] inset-x-0 z-0 will-change-transform"
         >
           <Image
-            src="/images/stage-bg-v2.jpg"
-            alt="A stage lit with orange and blue spotlights"
+            src="/images/hero.png"
+            alt="Broadway The Lyricist on a stage lit with orange and blue spotlights"
             fill
             preload
             sizes="100vw"
-            className="object-cover object-center"
+            className="scale-x-[-1] object-cover object-center"
           />
         </div>
 
@@ -102,26 +95,8 @@ export default function HeroBackground() {
           <source src="/videos/hero-smoke.mp4" type="video/mp4" />
         </video>
 
-        <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-bg/90 via-bg/32 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-bg/92 via-bg/42 to-transparent" />
         <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-bg/24 via-transparent to-bg/10" />
-      </div>
-
-      {/* The portrait is a sibling of the video context, so smoke can never
-          composite over the subject. */}
-      <div
-        ref={subjectRef}
-        className="hero-subject-layer absolute bottom-0 right-[-2%] z-30 w-[94vw] max-w-[1536px] will-change-transform sm:w-[82vw] lg:right-[1%] lg:w-[72vw]"
-      >
-        <Image
-          src="/images/hero-subject-v2.png"
-          alt="Broadway The Lyricist facing the homepage introduction"
-          width={1536}
-          height={1024}
-          preload
-          sizes="(max-width: 640px) 94vw, (max-width: 1024px) 82vw, 72vw"
-          className="block h-auto w-full"
-        />
-      </div>
-    </>
+    </div>
   );
 }
