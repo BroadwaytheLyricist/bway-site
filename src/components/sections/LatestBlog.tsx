@@ -17,10 +17,10 @@ export default function LatestBlog() {
           fill
           sizes="100vw"
           aria-hidden="true"
-          className="pointer-events-none object-cover opacity-[0.11] blur-[3px] saturate-50"
+          className="pointer-events-none object-cover opacity-[0.25] blur-[3px] saturate-75"
         />
       )}
-      <div className="absolute inset-0 bg-bg/88" />
+      <div className="absolute inset-0 bg-bg/70" />
       <div className="pointer-events-none absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-accent/10 blur-[120px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">

@@ -50,15 +50,15 @@ export default function HeroBackground() {
       {/* Parallax image layer — oversized vertically so the drift never gaps. */}
       <div
         ref={layerRef}
-        className="hero-portrait-layer absolute -bottom-[10%] -right-[8%] -top-[10%] w-[76%] will-change-transform sm:-right-[4%] sm:w-[68%] lg:right-0 lg:w-[62%]"
+        className="hero-portrait-layer absolute -inset-y-[10%] inset-x-0 will-change-transform"
       >
         <Image
           src="/images/hero.png"
           alt="Broadway The Lyricist on a dark, spotlit stage"
           fill
           preload
-          sizes="(max-width: 640px) 76vw, (max-width: 1024px) 68vw, 62vw"
-          className="scale-x-[-1] object-cover object-[42%_center]"
+          sizes="100vw"
+          className="scale-x-[-1] object-cover object-center"
         />
       </div>
 
@@ -79,8 +79,8 @@ export default function HeroBackground() {
           so they don't drift with the parallax. The horizontal wash only darkens
           the left third (behind the copy); the vertical wash is light so the
           bottom reflections stay visible. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/78 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-bg/45 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-bg/92 via-bg/38 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-bg/28 via-transparent to-bg/10" />
     </div>
   );
 }

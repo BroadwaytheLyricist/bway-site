@@ -5,7 +5,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative isolate min-h-[760px] overflow-hidden bg-bg py-24 sm:py-32 lg:min-h-[820px]"
+      className="relative isolate min-h-[820px] overflow-hidden bg-bg py-24 sm:py-32 lg:min-h-[940px]"
     >
       <Image
         src="/images/about-stage.webp"
@@ -14,19 +14,19 @@ export default function About() {
         sizes="100vw"
         className="-z-30 object-cover object-center"
       />
-      <div className="absolute inset-0 -z-20 bg-gradient-to-l from-bg/96 via-bg/64 to-bg/12" />
-      <div className="absolute inset-0 -z-20 bg-gradient-to-t from-bg via-transparent to-bg/25" />
+      <div className="absolute inset-0 -z-20 bg-gradient-to-l from-bg/84 via-bg/42 to-transparent" />
+      <div className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/48 via-transparent to-bg/10" />
 
       <div
         aria-hidden="true"
-        className="about-subject absolute -bottom-[7%] -left-[28%] -z-10 h-[112%] w-[112%] sm:-left-[18%] sm:w-[92%] lg:-bottom-[9%] lg:-left-[9%] lg:h-[122%] lg:w-[68%]"
+        className="about-subject absolute -bottom-[2%] -left-[34%] -z-10 h-[105%] w-[132%] sm:-left-[22%] sm:w-[108%] lg:-bottom-[1%] lg:-left-[5%] lg:h-[108%] lg:w-[72%]"
       >
         <Image
-          src="/images/about-subject.png"
+          src="/images/about-subject-v2.png"
           alt=""
           fill
-          sizes="(max-width: 640px) 112vw, (max-width: 1024px) 92vw, 68vw"
-          className="object-contain object-bottom drop-shadow-[0_0_16px_rgba(31,182,255,0.28)]"
+          sizes="(max-width: 640px) 132vw, (max-width: 1024px) 108vw, 72vw"
+          className="object-contain object-bottom"
         />
       </div>
 

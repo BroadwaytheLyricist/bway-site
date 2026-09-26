@@ -25,12 +25,12 @@ export default async function LatestVideos() {
         {videos.map((video) => (
           <div
             key={video.id}
-            className="bg-cover bg-center opacity-[0.19] blur-[4px] scale-[1.025]"
+            className="scale-[1.025] bg-cover bg-center opacity-[0.34] blur-[3px] saturate-90"
             style={{ backgroundImage: `url(https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg)` }}
           />
         ))}
       </div>
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-panel/86" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-panel/64" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
