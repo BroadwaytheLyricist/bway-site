@@ -157,22 +157,6 @@ body {
   opacity: var(--about-opacity, 0.18);
   transform: translate3d(var(--about-x, -180px), 0, 0);
   will-change: transform, opacity;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    black 0%,
-    black 91%,
-    rgba(0, 0, 0, 0.92) 94%,
-    rgba(0, 0, 0, 0.45) 97%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    black 0%,
-    black 91%,
-    rgba(0, 0, 0, 0.92) 94%,
-    rgba(0, 0, 0, 0.45) 97%,
-    transparent 100%
-  );
   filter:
     drop-shadow(-3px 0 8px rgba(28, 167, 255, 0.2))
     drop-shadow(3px 0 8px rgba(255, 90, 31, 0.14));
