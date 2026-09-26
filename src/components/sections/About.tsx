@@ -59,18 +59,19 @@ export default function About() {
       <div className="absolute inset-0 -z-20 bg-gradient-to-l from-bg/84 via-bg/42 to-transparent" />
       <div className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/48 via-transparent to-bg/10" />
 
-      <div
-        ref={subjectRef}
-        aria-hidden="true"
-        className="about-subject absolute -bottom-[2%] -left-[34%] -z-10 h-[105%] w-[132%] sm:-left-[22%] sm:w-[108%] lg:-bottom-[1%] lg:-left-[5%] lg:h-[108%] lg:w-[72%]"
-      >
-        <Image
-          src="/images/about-subject-v3.png"
-          alt=""
-          fill
-          sizes="(max-width: 640px) 132vw, (max-width: 1024px) 108vw, 72vw"
-          className="object-contain object-bottom"
-        />
+      <div aria-hidden="true" className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden lg:w-[56%]">
+        <div
+          ref={subjectRef}
+          className="about-subject absolute -bottom-[1%] -left-[42%] h-[106%] w-[150%] sm:-left-[28%] sm:w-[128%] lg:-bottom-[2%] lg:-left-[16%] lg:h-[112%] lg:w-[132%]"
+        >
+          <Image
+            src="/images/about-subject-v3.png"
+            alt=""
+            fill
+            sizes="(max-width: 640px) 150vw, (max-width: 1024px) 128vw, 74vw"
+            className="object-contain object-bottom"
+          />
+        </div>
       </div>
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
