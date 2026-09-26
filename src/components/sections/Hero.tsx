@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Parallax photo + legibility scrims (client component) */}
       <HeroBackground />
 
-      <div className="mx-auto w-full max-w-7xl px-5 pt-28 pb-28 sm:px-8 sm:pb-36">
+      <div className="relative z-40 mx-auto w-full max-w-7xl px-5 pt-28 pb-28 sm:px-8 sm:pb-36">
         <div className="max-w-2xl">
           <span className="hero-reveal inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
