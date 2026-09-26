@@ -60,47 +60,54 @@ export default function HeroBackground() {
   };
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden">
-      {/* Full stage plate remains fixed while the portrait moves independently. */}
-      <div
-        ref={layerRef}
-        className="hero-stage-layer absolute -inset-y-[6%] inset-x-0 z-0 will-change-transform"
-      >
-        <Image
-          src="/images/stage-bg-v2.jpg"
-          alt="A stage lit with orange and blue spotlights"
-          fill
-          preload
-          sizes="100vw"
-          className="object-cover object-center"
-        />
+    <>
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* The stage, smoke and scrims are confined to one background context. */}
+        <div
+          ref={layerRef}
+          className="hero-stage-layer absolute -inset-y-[6%] inset-x-0 z-0 will-change-transform"
+        >
+          <Image
+            src="/images/stage-bg-v2.jpg"
+            alt="A stage lit with orange and blue spotlights"
+            fill
+            preload
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </div>
+
+        <video
+          className="hero-smoke-video hero-smoke-a absolute inset-0 z-10 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source src="/videos/hero-smoke.mp4" type="video/mp4" />
+        </video>
+        <video
+          ref={smokeBRef}
+          className="hero-smoke-video hero-smoke-b absolute inset-0 z-10 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          onLoadedMetadata={offsetSecondSmoke}
+        >
+          <source src="/videos/hero-smoke.mp4" type="video/mp4" />
+        </video>
+
+        <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-bg/90 via-bg/32 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-bg/24 via-transparent to-bg/10" />
       </div>
 
-      <video
-        className="hero-smoke-video hero-smoke-a absolute inset-0 z-10 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-      >
-        <source src="/videos/hero-smoke.mp4" type="video/mp4" />
-      </video>
-      <video
-        ref={smokeBRef}
-        className="hero-smoke-video hero-smoke-b absolute inset-0 z-10 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        onLoadedMetadata={offsetSecondSmoke}
-      >
-        <source src="/videos/hero-smoke.mp4" type="video/mp4" />
-      </video>
-
+      {/* The portrait is a sibling of the video context, so smoke can never
+          composite over the subject. */}
       <div
         ref={subjectRef}
         className="hero-subject-layer absolute bottom-0 right-[-2%] z-30 w-[94vw] max-w-[1536px] will-change-transform sm:w-[82vw] lg:right-[1%] lg:w-[72vw]"
@@ -115,14 +122,6 @@ export default function HeroBackground() {
           className="block h-auto w-full"
         />
       </div>
-
-      {/* Cinematic scrims — just enough to keep the headline legible while the
-          stage lights and the rainy-street reflections read through. Kept static
-          so they don't drift with the parallax. The horizontal wash only darkens
-          the left third (behind the copy); the vertical wash is light so the
-          bottom reflections stay visible. */}
-      <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-bg/90 via-bg/32 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-bg/24 via-transparent to-bg/10" />
-    </div>
+    </>
   );
 }
