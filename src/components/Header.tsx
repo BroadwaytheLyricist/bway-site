@@ -65,7 +65,7 @@ export default function Header() {
                   ? "noopener noreferrer"
                   : undefined
               }
-              className="text-sm font-medium text-muted transition-colors hover:text-white"
+              className="text-sm font-medium text-muted transition-colors hover:text-accent"
             >
               {item.label}
             </Link>
@@ -117,7 +117,7 @@ export default function Header() {
                   : undefined
               }
               onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-3 text-base font-medium text-muted transition-colors hover:bg-panel hover:text-white"
+              className="rounded-md px-3 py-3 text-base font-medium text-muted transition-colors hover:bg-panel hover:text-accent"
             >
               {item.label}
             </Link>
