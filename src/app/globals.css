@@ -160,17 +160,17 @@ body {
   -webkit-mask-image: linear-gradient(
     to bottom,
     black 0%,
-    black 82%,
-    rgba(0, 0, 0, 0.96) 88%,
-    rgba(0, 0, 0, 0.48) 95%,
+    black 91%,
+    rgba(0, 0, 0, 0.92) 94%,
+    rgba(0, 0, 0, 0.45) 97%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to bottom,
     black 0%,
-    black 82%,
-    rgba(0, 0, 0, 0.96) 88%,
-    rgba(0, 0, 0, 0.48) 95%,
+    black 91%,
+    rgba(0, 0, 0, 0.92) 94%,
+    rgba(0, 0, 0, 0.45) 97%,
     transparent 100%
   );
   filter:
