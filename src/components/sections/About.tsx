@@ -62,16 +62,18 @@ export default function About() {
       <div aria-hidden="true" className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden lg:w-[56%]">
         <div
           ref={subjectRef}
-          className="about-subject absolute -bottom-[1%] -left-[42%] h-[106%] w-[150%] sm:-left-[28%] sm:w-[128%] lg:-bottom-[2%] lg:-left-[16%] lg:h-[112%] lg:w-[132%]"
+          className="about-subject absolute bottom-0 -left-[42vw] w-[154vw] sm:-left-[30vw] sm:w-[132vw] lg:-left-[18vw] lg:w-[88vw] lg:max-w-[1690px]"
         >
           <Image
             src="/images/about-subject-v3.png"
             alt=""
-            fill
-            sizes="(max-width: 640px) 150vw, (max-width: 1024px) 128vw, 74vw"
-            className="object-contain object-bottom"
+            width={2048}
+            height={1152}
+            sizes="(max-width: 640px) 154vw, (max-width: 1024px) 132vw, 88vw"
+            className="block h-auto w-full"
           />
         </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[18%] bg-gradient-to-b from-transparent via-bg/35 to-bg" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
