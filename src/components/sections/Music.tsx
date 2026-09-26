@@ -14,7 +14,7 @@ export default function Music() {
       <div className="absolute inset-0 opacity-45 [background:radial-gradient(circle_at_75%_30%,rgba(255,90,31,.38),transparent_36%),radial-gradient(circle_at_18%_72%,rgba(37,155,220,.2),transparent_34%),linear-gradient(120deg,transparent_15%,rgba(255,255,255,.04)_50%,transparent_80%)]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          index="03"
+          index="04"
           kicker="Original Music"
           title={<>Broadway <span className="text-accent">On Record</span></>}
         />
