@@ -48,8 +48,8 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative isolate overflow-hidden bg-panel py-24 sm:py-32">
-      <div aria-hidden="true" className="absolute inset-0 -z-30 bg-[url('/images/about-stage.webp')] bg-cover bg-center opacity-70" />
-      <div aria-hidden="true" className="absolute -bottom-[18%] -right-[5%] -z-20 h-[92%] w-[48%] bg-[url('/images/about-subject-v2.png')] bg-contain bg-bottom bg-no-repeat opacity-[0.14] [mask-image:linear-gradient(to_bottom,black_65%,transparent)]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-30 bg-[url('/images/stage-bg-v2.jpg')] bg-cover bg-center opacity-70" />
+      <div aria-hidden="true" className="absolute -bottom-[18%] -right-[5%] -z-20 h-[92%] w-[48%] bg-[url('/images/about-subject-v3.png')] bg-contain bg-bottom bg-no-repeat opacity-[0.14] [mask-image:linear-gradient(to_bottom,black_65%,transparent)]" />
       <MailIcon aria-hidden="true" className="absolute right-[8%] top-1/2 -z-10 h-72 w-72 -translate-y-1/2 text-white/[0.055] lg:h-96 lg:w-96" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-panel/86 via-panel/74 to-panel/62" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">

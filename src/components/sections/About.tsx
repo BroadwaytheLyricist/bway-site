@@ -1,14 +1,56 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 
 export default function About() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const subjectRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const subject = subjectRef.current;
+    if (!section || !subject) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      subject.style.setProperty("--about-x", "0px");
+      subject.style.setProperty("--about-opacity", "1");
+      return;
+    }
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = section.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      const progress = Math.min(1, Math.max(0, (viewport - rect.top) / (viewport * 0.72)));
+      const eased = 1 - Math.pow(1 - progress, 3);
+      subject.style.setProperty("--about-x", `${(eased - 1) * 180}px`);
+      subject.style.setProperty("--about-opacity", `${0.18 + eased * 0.82}`);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="about"
       className="relative isolate min-h-[820px] overflow-hidden bg-bg py-24 sm:py-32 lg:min-h-[940px]"
     >
       <Image
-        src="/images/about-stage.webp"
+        src="/images/stage-bg-v2.jpg"
         alt="A dark stage lit in teal and orange"
         fill
         sizes="100vw"
@@ -18,11 +60,12 @@ export default function About() {
       <div className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/48 via-transparent to-bg/10" />
 
       <div
+        ref={subjectRef}
         aria-hidden="true"
         className="about-subject absolute -bottom-[2%] -left-[34%] -z-10 h-[105%] w-[132%] sm:-left-[22%] sm:w-[108%] lg:-bottom-[1%] lg:-left-[5%] lg:h-[108%] lg:w-[72%]"
       >
         <Image
-          src="/images/about-subject-v2.png"
+          src="/images/about-subject-v3.png"
           alt=""
           fill
           sizes="(max-width: 640px) 132vw, (max-width: 1024px) 108vw, 72vw"

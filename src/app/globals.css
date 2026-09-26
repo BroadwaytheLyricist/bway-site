@@ -98,10 +98,48 @@ body {
    keeps the brightest motion away from the portrait while letting it roll
    through the open copy-side and lower edge of the frame. */
 .hero-smoke-video {
-  opacity: 0.58;
   mix-blend-mode: screen;
   filter: contrast(1.28) brightness(1.12) saturate(0.9);
   transform: scale(1.04);
+  will-change: opacity;
+}
+
+@keyframes smoke-crossfade-a {
+  0%, 42% { opacity: 0.58; }
+  50%, 92% { opacity: 0.14; }
+  100% { opacity: 0.58; }
+}
+
+@keyframes smoke-crossfade-b {
+  0%, 42% { opacity: 0.14; }
+  50%, 92% { opacity: 0.58; }
+  100% { opacity: 0.14; }
+}
+
+.hero-smoke-a {
+  animation: smoke-crossfade-a 18s ease-in-out infinite;
+}
+
+.hero-smoke-b {
+  animation: smoke-crossfade-b 18s ease-in-out infinite;
+}
+
+.hero-stage-layer {
+  transform: translate3d(0, var(--hero-parallax-y, 0px), 0) scale(1.025);
+}
+
+.hero-subject-layer {
+  --hero-enter-x: 180px;
+  --hero-scroll-x: 0px;
+  --hero-scroll-opacity: 1;
+  opacity: 0;
+  transform: translate3d(calc(var(--hero-enter-x) + var(--hero-scroll-x)), 0, 0);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), opacity 700ms ease;
+}
+
+.hero-subject-layer[data-ready="true"] {
+  --hero-enter-x: 0px;
+  opacity: var(--hero-scroll-opacity);
 }
 
 .section-media-backdrop {
@@ -116,6 +154,9 @@ body {
 }
 
 .about-subject {
+  opacity: var(--about-opacity, 0.18);
+  transform: translate3d(var(--about-x, -180px), 0, 0);
+  will-change: transform, opacity;
   -webkit-mask-image: linear-gradient(
     to bottom,
     black 0%,
@@ -139,7 +180,9 @@ body {
 
 @media (max-width: 1023px) {
   .about-subject {
-    opacity: 0.5;
+    filter:
+      drop-shadow(-2px 0 6px rgba(28, 167, 255, 0.16))
+      drop-shadow(2px 0 6px rgba(255, 90, 31, 0.1));
   }
 }
 
@@ -190,6 +233,12 @@ body {
   }
   .hero-smoke-video {
     display: none;
+  }
+  .hero-subject-layer,
+  .about-subject {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
