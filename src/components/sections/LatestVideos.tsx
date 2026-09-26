@@ -34,6 +34,7 @@ export default async function LatestVideos() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
+            index="02"
             kicker="Latest Uploads"
             title={
               <>
