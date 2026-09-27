@@ -110,13 +110,13 @@ body {
 }
 
 .hero-haze-left {
-  opacity: 0.52;
+  opacity: 0.37;
   -webkit-mask-image: radial-gradient(ellipse 78% 105% at 0% 0%, black 0%, rgba(0, 0, 0, 0.7) 42%, transparent 83%);
   mask-image: radial-gradient(ellipse 78% 105% at 0% 0%, black 0%, rgba(0, 0, 0, 0.7) 42%, transparent 83%);
 }
 
 .hero-haze-right {
-  opacity: 0.38;
+  opacity: 0.26;
   -webkit-mask-image: radial-gradient(ellipse 62% 94% at 100% 0%, black 0%, rgba(0, 0, 0, 0.62) 42%, transparent 83%);
   mask-image: radial-gradient(ellipse 62% 94% at 100% 0%, black 0%, rgba(0, 0, 0, 0.62) 42%, transparent 83%);
 }
