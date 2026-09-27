@@ -149,10 +149,11 @@ export default async function MediaKitPage() {
             <Image
               src="/images/media-kit/profile-shadow-cutout.webp"
               alt="Broadway The Lyricist in a dark blue side profile facing left"
-              fill
+              width={1040}
+              height={1513}
               preload
               sizes="(max-width: 1024px) 100vw, 45vw"
-              className="media-kit-profile-subject object-contain object-bottom"
+              className="media-kit-profile-subject"
             />
           </div>
         </div>
