@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionHeading from "@/components/SectionHeading";
+import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 import { ArrowIcon, PlayIcon } from "@/components/icons";
 import { links, playlists } from "@/lib/site";
 
@@ -9,8 +10,10 @@ const hasImage = (p: Playlist): p is Playlist & { image: string } =>
 
 export default function Playlists() {
   return (
-    <section id="playlists" className="bg-panel py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="playlists" className="relative isolate overflow-hidden bg-bg py-24 sm:py-32">
+      <Image src="/images/stage-bg-v2.jpg" alt="" fill sizes="100vw" className="-z-30 object-cover object-[58%_center]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-b from-bg/45 via-bg/40 to-bg/65" />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             kicker="Playlists"
@@ -36,10 +39,11 @@ export default function Playlists() {
           full run on YouTube.
         </p>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ScrollRevealGroup direction="side" className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {playlists.slice(0, 3).map((playlist) => (
             <a
               key={playlist.url}
+              data-reveal-item
               href={playlist.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -72,7 +76,7 @@ export default function Playlists() {
                 {/* Count badge — YouTube-style, bottom-right corner */}
                 <span className="absolute bottom-2.5 right-2.5 inline-flex items-center gap-1.5 rounded-md bg-black/75 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-white backdrop-blur">
                   <PlayIcon className="h-3 w-3" />
-                  {playlist.count} videos
+                  {playlist.count ? `${playlist.count} videos` : "Playlist"}
                 </span>
               </div>
 
@@ -82,7 +86,7 @@ export default function Playlists() {
               </div>
             </a>
           ))}
-        </div>
+        </ScrollRevealGroup>
       </div>
     </section>
   );

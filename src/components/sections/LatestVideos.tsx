@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionHeading from "@/components/SectionHeading";
+import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 import VideoEmbed from "@/components/VideoEmbed";
 import { ArrowIcon, PlayIcon } from "@/components/icons";
 import { links, playlists } from "@/lib/site";
@@ -20,17 +21,9 @@ export default async function LatestVideos() {
   const videos = await getLatestVideos(2);
 
   return (
-    <section id="videos" className="relative isolate overflow-hidden bg-panel py-24 sm:py-32">
-      <div aria-hidden="true" className="absolute inset-0 -z-20 grid md:grid-cols-2">
-        {videos.map((video) => (
-          <div
-            key={video.id}
-            className="scale-[1.025] bg-cover bg-center opacity-[0.34] blur-[3px] saturate-90"
-            style={{ backgroundImage: `url(https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg)` }}
-          />
-        ))}
-      </div>
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-panel/64" />
+    <section id="videos" className="relative isolate overflow-hidden bg-bg py-24 sm:py-32">
+      <Image src="/images/stage-bg-v2.jpg" alt="" fill sizes="100vw" className="-z-30 object-cover object-[44%_center]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-b from-bg/35 via-bg/45 to-bg/65" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
@@ -54,9 +47,9 @@ export default async function LatestVideos() {
         </div>
 
         {videos.length > 0 ? (
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
+          <ScrollRevealGroup className="mt-12 grid gap-8 md:grid-cols-2">
             {videos.map((video) => (
-              <article key={video.id} className="flex flex-col gap-4">
+              <article key={video.id} data-reveal-item className="flex flex-col gap-4">
                 <VideoEmbed embedUrl={video.embedUrl} title={video.title} />
                 <div>
                   {video.published && (
@@ -77,7 +70,7 @@ export default async function LatestVideos() {
                 </div>
               </article>
             ))}
-          </div>
+          </ScrollRevealGroup>
         ) : (
           // Graceful fallback when the RSS feed is unavailable.
           <div className="mt-12 rounded-2xl border border-line bg-panel-2 p-10 text-center">
@@ -109,10 +102,11 @@ export default async function LatestVideos() {
             </p>
           </div>
 
-          <div className="mt-7 grid gap-5 lg:grid-cols-3">
+          <ScrollRevealGroup direction="side" className="mt-7 grid gap-5 lg:grid-cols-3">
             {playlists.slice(0, 3).map((playlist, index) => (
               <article
                 key={playlist.title}
+                data-reveal-item
                 className="group overflow-hidden border border-line bg-bg/75 transition-all hover:-translate-y-0.5 hover:border-accent/50"
               >
                 <a
@@ -151,7 +145,7 @@ export default async function LatestVideos() {
                 </a>
               </article>
             ))}
-          </div>
+          </ScrollRevealGroup>
         </div>
       </div>
     </section>

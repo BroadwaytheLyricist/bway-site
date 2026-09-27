@@ -163,6 +163,29 @@ body {
   transform: scale(1.04);
 }
 
+/* Cards settle into place once when they enter the viewport. */
+.scroll-reveal-group[data-ready="true"] [data-reveal-item] {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0);
+  transition: opacity 650ms ease, transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--card-order, 0) * 100ms);
+}
+
+@media (min-width: 640px) {
+  .scroll-reveal-group[data-direction="side"][data-ready="true"] [data-reveal-item] {
+    transform: translate3d(42px, 8px, 0);
+  }
+}
+
+.scroll-reveal-group [data-reveal-item]:nth-child(2) { --card-order: 1; }
+.scroll-reveal-group [data-reveal-item]:nth-child(3) { --card-order: 2; }
+
+.scroll-reveal-group[data-ready="true"] [data-reveal-item][data-visible="true"],
+.scroll-reveal-group[data-direction="side"][data-ready="true"] [data-reveal-item][data-visible="true"] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
 .about-subject {
   opacity: var(--about-opacity, 0.18);
   transform: translate3d(var(--about-x, -180px), 0, 0);
@@ -238,6 +261,11 @@ body {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+  .scroll-reveal-group[data-ready="true"] [data-reveal-item] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
