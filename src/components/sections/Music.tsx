@@ -82,7 +82,7 @@ export default function Music() {
           title={<>Broadway <span className="text-accent">On Record</span></>}
         />
 
-        <div className="mt-[440px] grid overflow-hidden border border-line bg-bg/85 shadow-2xl backdrop-blur-[3px] sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[920px] lg:grid-cols-[minmax(350px,0.9fr)_1fr]">
+        <div className="music-player-card mt-[440px] grid overflow-hidden border border-line bg-bg/85 shadow-2xl backdrop-blur-[3px] sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[880px] lg:grid-cols-[minmax(350px,0.9fr)_1fr]">
           <div className="flex items-center justify-center bg-[#101827] px-4 py-8 sm:px-8">
             <iframe
               title="Off Broadway EP (Unmastered) Deluxe Edition on Bandcamp"

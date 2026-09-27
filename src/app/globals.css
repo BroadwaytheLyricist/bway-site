@@ -259,6 +259,12 @@ body {
   mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
 }
 
+@media (min-width: 1280px) {
+  .music-player-card {
+    transform: translateX(clamp(0px, calc(25vw - 320px), 175px));
+  }
+}
+
 .hero-cta-primary,
 .hero-cta-secondary {
   min-height: 3.5rem;
