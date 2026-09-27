@@ -109,9 +109,6 @@ export default async function PostPage({ params }: PostPageProps) {
       )}
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 hidden xl:block">
-        <div className="article-watermark-left absolute top-[880px] h-[220px] w-[220px] opacity-[0.06]">
-          <Image src="/images/logo.png" alt="" fill sizes="220px" className="scale-[1.9] object-contain" />
-        </div>
         <div className="article-watermark-right absolute top-[1740px] h-[220px] w-[220px] opacity-[0.045]">
           <Image src="/images/logo.png" alt="" fill sizes="220px" className="scale-[1.9] object-contain" />
         </div>
@@ -166,8 +163,11 @@ export default async function PostPage({ params }: PostPageProps) {
             </p>
           ))}
 
-          {post.sections.map((section) => (
-            <section key={section.heading} className="pt-8 sm:pt-12">
+          {post.sections.map((section, index) => (
+            <section key={section.heading ?? index} className="relative pt-8 sm:pt-12">
+              {index === post.sections.length - 1 && (
+                <div aria-hidden="true" className="article-watermark-orange pointer-events-none absolute -left-[255px] top-7 hidden h-[220px] w-[220px] opacity-[0.06] 2xl:block" />
+              )}
               {section.heading && (
                 <h2 className="mb-7 font-display text-4xl leading-none text-white sm:text-5xl">
                   {section.heading}
