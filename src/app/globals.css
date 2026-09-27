@@ -245,7 +245,7 @@ body {
 }
 
 .music-subject img {
-  filter: brightness(0.9) contrast(1.09) sepia(0.08) hue-rotate(173deg) saturate(0.8);
+  filter: brightness(0.9) contrast(1.09) sepia(0.22) hue-rotate(173deg) saturate(1.05);
 }
 
 @media (max-width: 1023px) {
