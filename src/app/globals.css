@@ -120,6 +120,10 @@ body {
   opacity: var(--hero-scroll-opacity);
 }
 
+.hero-subject-layer img {
+  filter: blur(0.45px) contrast(0.96) saturate(0.96);
+}
+
 @media (max-width: 767px) {
   .hero-subject-layer {
     right: -25%;
