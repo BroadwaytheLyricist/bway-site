@@ -154,6 +154,12 @@ body {
 .about-subject-image {
   -webkit-mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
   mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
+  filter:
+    brightness(0.95)
+    saturate(0.91)
+    contrast(1.02)
+    drop-shadow(-2px 0 4px rgba(245, 103, 42, 0.11))
+    drop-shadow(2px 0 4px rgba(42, 132, 210, 0.09));
 }
 
 .hero-cta-primary,
