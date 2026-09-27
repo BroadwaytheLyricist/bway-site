@@ -356,8 +356,12 @@ body {
   max-width: none;
   animation: media-kit-profile-subject-enter 1s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: 120ms;
-  -webkit-mask-image: radial-gradient(ellipse 90% 100% at 34% 20%, black 0%, black 65%, transparent 100%);
-  mask-image: radial-gradient(ellipse 90% 100% at 34% 20%, black 0%, black 65%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%),
+    linear-gradient(to right, black 0%, black 69%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%),
+    linear-gradient(to right, black 0%, black 69%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 @media (max-width: 639px) {
