@@ -70,8 +70,8 @@ export default function Music() {
       <div aria-hidden="true" className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_25%_50%,rgba(255,90,31,.12),transparent_42%)]" />
 
       <div aria-hidden="true" className="music-art pointer-events-none absolute inset-0 -z-10">
-        <div ref={subjectRef} className="music-subject absolute top-[145px] -left-[60vw] w-[190vw] sm:-left-[36vw] sm:w-[155vw] lg:top-auto lg:bottom-0 lg:-left-[280px] lg:w-[1650px]">
-          <Image src="/images/music-subject.webp" alt="" width={2048} height={1152} sizes="(max-width: 640px) 190vw, (max-width: 1024px) 155vw, 1650px" className="block h-auto w-full" />
+        <div ref={subjectRef} className="music-subject absolute top-[145px] -left-[60vw] w-[190vw] sm:-left-[36vw] sm:w-[155vw] lg:top-auto lg:bottom-0 lg:-left-[360px] lg:w-[1450px]">
+          <Image src="/images/music-subject.webp" alt="" width={2048} height={1152} sizes="(max-width: 640px) 190vw, (max-width: 1024px) 155vw, 1450px" className="block h-auto w-full" />
         </div>
       </div>
 
