@@ -163,6 +163,14 @@ body {
   transform: scale(1.04);
 }
 
+.article-watermark-left {
+  left: max(1rem, calc(50% - 42rem));
+}
+
+.article-watermark-right {
+  right: max(1rem, calc(50% - 42rem));
+}
+
 /* Cards settle into place once when they enter the viewport. */
 .scroll-reveal-group[data-ready="true"] [data-reveal-item] {
   opacity: 0;

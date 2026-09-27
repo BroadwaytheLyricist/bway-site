@@ -108,6 +108,15 @@ export default async function PostPage({ params }: PostPageProps) {
         </div>
       )}
 
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 hidden xl:block">
+        <div className="article-watermark-left absolute top-[880px] h-[220px] w-[220px] opacity-[0.06]">
+          <Image src="/images/logo.png" alt="" fill sizes="220px" className="scale-[1.9] object-contain" />
+        </div>
+        <div className="article-watermark-right absolute top-[1740px] h-[220px] w-[220px] opacity-[0.045]">
+          <Image src="/images/logo.png" alt="" fill sizes="220px" className="scale-[1.9] object-contain" />
+        </div>
+      </div>
+
       <header className="mx-auto max-w-5xl px-5 sm:px-8">
         <Link
           href="/blog"
