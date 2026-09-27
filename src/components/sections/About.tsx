@@ -59,17 +59,17 @@ export default function About() {
       <div className="absolute inset-0 -z-20 bg-gradient-to-l from-bg/84 via-bg/42 to-transparent" />
       <div className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/48 via-transparent to-bg/10" />
 
-      <div aria-hidden="true" className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden lg:w-[52%]">
+      <div aria-hidden="true" className="about-art absolute inset-y-0 left-0 -z-10 w-full overflow-hidden lg:w-[58%]">
         <div
           ref={subjectRef}
-          className="about-subject absolute bottom-0 -left-[42vw] w-[154vw] sm:-left-[30vw] sm:w-[132vw] lg:-left-[18vw] lg:w-[88vw] lg:max-w-[1690px]"
+          className="about-subject absolute bottom-0 -left-[42vw] w-[154vw] sm:-left-[30vw] sm:w-[132vw] lg:-left-[23vw] lg:w-[112vw] lg:max-w-[1700px]"
         >
           <Image
-            src="/images/about-subject-v3.png"
+            src="/images/about-subject-v4.png"
             alt=""
             width={2048}
             height={1152}
-            sizes="(max-width: 640px) 154vw, (max-width: 1024px) 132vw, 88vw"
+            sizes="(max-width: 640px) 154vw, (max-width: 1024px) 132vw, 112vw"
             className="about-subject-image block h-auto w-full"
           />
         </div>

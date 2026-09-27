@@ -94,36 +94,12 @@ body {
   box-shadow: 0 10px 30px -10px rgba(255, 90, 31, 0.55);
 }
 
-/* The uploaded smoke is a separate moving plate over the static hero. The mask
-   keeps the brightest motion away from the portrait while letting it roll
-   through the open copy-side and lower edge of the frame. */
+/* The keyed smoke moves over the stage and behind the portrait. */
 .hero-smoke-video {
   mix-blend-mode: screen;
-  filter: contrast(1.18) brightness(0.92) saturate(0.82);
-  transform: scale(1.04);
-  will-change: opacity;
-  -webkit-mask-image: linear-gradient(to right, black 0%, black 52%, transparent 88%);
-  mask-image: linear-gradient(to right, black 0%, black 52%, transparent 88%);
-}
-
-@keyframes smoke-crossfade-a {
-  0%, 42% { opacity: 0.2; }
-  50%, 92% { opacity: 0.06; }
-  100% { opacity: 0.2; }
-}
-
-@keyframes smoke-crossfade-b {
-  0%, 42% { opacity: 0.06; }
-  50%, 92% { opacity: 0.2; }
-  100% { opacity: 0.06; }
-}
-
-.hero-smoke-a {
-  animation: smoke-crossfade-a 18s ease-in-out infinite;
-}
-
-.hero-smoke-b {
-  animation: smoke-crossfade-b 18s ease-in-out infinite;
+  opacity: 0.65;
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 48%, transparent 82%);
+  mask-image: linear-gradient(to right, black 0%, black 48%, transparent 82%);
 }
 
 .hero-stage-layer {
@@ -144,6 +120,15 @@ body {
   opacity: var(--hero-scroll-opacity);
 }
 
+@media (max-width: 767px) {
+  .hero-subject-layer {
+    right: -25%;
+    width: 115%;
+    height: 82%;
+    bottom: 0;
+  }
+}
+
 .section-media-backdrop {
   position: absolute;
   inset: -4%;
@@ -159,22 +144,16 @@ body {
   opacity: var(--about-opacity, 0.18);
   transform: translate3d(var(--about-x, -180px), 0, 0);
   will-change: transform, opacity;
-  filter:
-    drop-shadow(-3px 0 8px rgba(28, 167, 255, 0.2))
-    drop-shadow(3px 0 8px rgba(255, 90, 31, 0.14));
+}
+
+.about-art {
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 69%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 69%, transparent 100%);
 }
 
 .about-subject-image {
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 94%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 0%, black 94%, transparent 100%);
-}
-
-@media (max-width: 1023px) {
-  .about-subject {
-    filter:
-      drop-shadow(-2px 0 6px rgba(28, 167, 255, 0.16))
-      drop-shadow(2px 0 6px rgba(255, 90, 31, 0.1));
-  }
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
+  mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
 }
 
 .hero-cta-primary,
