@@ -149,7 +149,7 @@ export default async function MediaKitPage() {
           <div className="media-kit-profile relative isolate min-h-[370px] overflow-hidden rounded-3xl border border-line shadow-2xl sm:min-h-[510px] lg:min-h-[570px]">
             <div aria-hidden="true" className="media-kit-profile-backdrop absolute inset-0 -z-10" />
             <Image
-              src="/images/media-kit/profile-shadow-cutout.png"
+              src="/images/media-kit/profile-shadow-cutout.webp"
               alt="Broadway The Lyricist in a dark blue side profile facing left"
               fill
               preload
