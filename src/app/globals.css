@@ -224,12 +224,18 @@ body {
 }
 
 .music-subject {
-  opacity: var(--music-opacity, 0.2);
-  transform: translate3d(var(--music-x, -150px), 0, 0);
+  opacity: var(--music-opacity, 0.12);
+  transform: translate3d(var(--music-x, -440px), 0, 0);
   will-change: transform, opacity;
-  filter: contrast(1.1) brightness(0.88) drop-shadow(-3px 0 7px rgba(255, 90, 31, 0.16));
+  filter: contrast(1.1) brightness(0.98) drop-shadow(-3px 0 7px rgba(255, 90, 31, 0.2));
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
+}
+
+@media (max-width: 1023px) {
+  .music-subject {
+    transform: translate3d(var(--music-x, -220px), 0, 0);
+  }
 }
 
 .music-art {

@@ -35,10 +35,11 @@ export default function Music() {
       frame = 0;
       const rect = section.getBoundingClientRect();
       const viewport = window.innerHeight;
-      const progress = Math.min(1, Math.max(0, (viewport - rect.top) / (viewport * 0.75)));
+      const progress = Math.min(1, Math.max(0, (viewport - rect.top) / (viewport * 1.15)));
       const eased = 1 - Math.pow(1 - progress, 3);
-      subject.style.setProperty("--music-x", `${(eased - 1) * 150}px`);
-      subject.style.setProperty("--music-opacity", `${0.2 + eased * 0.8}`);
+      const entranceDistance = window.innerWidth >= 1024 ? 440 : Math.min(240, window.innerWidth * 0.55);
+      subject.style.setProperty("--music-x", `${(eased - 1) * entranceDistance}px`);
+      subject.style.setProperty("--music-opacity", `${0.12 + eased * 0.88}`);
       studio.style.setProperty("--music-bg-y", `${(0.5 - progress) * 26}px`);
     };
     const onScroll = () => {
@@ -60,7 +61,8 @@ export default function Music() {
       <div ref={studioRef} aria-hidden="true" className="music-studio absolute inset-0 -z-30">
         <Image src="/images/music-studio-bg.jpg" alt="" fill sizes="100vw" className="object-cover object-center" />
       </div>
-      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-r from-bg/35 via-bg/55 to-bg/75" />
+      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-[#081527]/55" />
+      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-r from-bg/20 via-bg/42 to-bg/75" />
       <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/85 via-transparent to-bg/25" />
       <div aria-hidden="true" className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_25%_50%,rgba(255,90,31,.12),transparent_42%)]" />
 
