@@ -102,13 +102,6 @@ body {
   mask-image: linear-gradient(to right, black 0%, black 48%, transparent 82%);
 }
 
-.about-smoke-video {
-  mix-blend-mode: screen;
-  opacity: 0.28;
-  -webkit-mask-image: linear-gradient(to right, black 0%, black 42%, transparent 78%);
-  mask-image: linear-gradient(to right, black 0%, black 42%, transparent 78%);
-}
-
 .hero-stage-layer {
   transform: translate3d(0, var(--hero-parallax-y, 0px), 0) scale(1.025);
 }
@@ -215,9 +208,6 @@ body {
     animation: none;
   }
   .hero-smoke-video {
-    display: none;
-  }
-  .about-smoke-video {
     display: none;
   }
   .hero-subject-layer,
