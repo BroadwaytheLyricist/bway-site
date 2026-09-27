@@ -15,7 +15,19 @@ export default function BlogPage() {
   const sortedPosts = [...posts].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
   return (
-    <div className="min-h-screen bg-bg pb-24 pt-32 sm:pb-32 sm:pt-40">
+    <div className="relative isolate min-h-screen overflow-hidden bg-bg pb-24 pt-32 sm:pb-32 sm:pt-40">
+      <div className="blog-background absolute inset-0 -z-10" aria-hidden="true">
+        <Image
+          src="/images/media-kit/studio/desk-shure.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-bottom"
+        />
+      </div>
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(7,14,32,0.84)_0%,rgba(7,17,39,0.62)_58%,rgba(7,17,39,0.67)_100%)]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-b from-transparent to-bg" />
       <section className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           kicker="On The Record"
@@ -86,19 +98,6 @@ export default function BlogPage() {
               </div>
             </article>
           ))}
-          {sortedPosts.length === 1 && (
-            <div className="blog-portrait relative hidden min-h-96 overflow-hidden rounded-2xl lg:block" aria-hidden="true">
-              <Image
-                src="/images/media-kit/studio/desk-shure.jpg"
-                alt=""
-                fill
-                sizes="(min-width: 1024px) 50vw, 1px"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-bg/30 via-transparent to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent" />
-            </div>
-          )}
         </div>
       </section>
     </div>

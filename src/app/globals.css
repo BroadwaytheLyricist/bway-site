@@ -277,7 +277,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .blog-portrait {
+  .blog-background {
     animation: none !important;
   }
   html {
@@ -311,13 +311,13 @@ body {
   }
 }
 
-@keyframes blog-portrait-enter {
-  from { opacity: 0; transform: translateX(90px); }
+@keyframes blog-background-enter {
+  from { opacity: 0.6; transform: translateX(55px) scale(1.06); }
   to { opacity: 1; transform: translateX(0); }
 }
 
-.blog-portrait {
-  animation: blog-portrait-enter 1.1s ease-out both;
+.blog-background {
+  animation: blog-background-enter 1.2s ease-out both;
 }
 
 /* Print / Save-as-PDF: keep the dark theme, drop chrome and interactive bits */
