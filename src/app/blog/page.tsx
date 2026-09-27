@@ -30,7 +30,7 @@ export default function BlogPage() {
         </p>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
-          {posts.map((post) => (
+          {[...posts].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).map((post) => (
             <article
               key={post.slug}
               className="group flex min-h-96 flex-col justify-between overflow-hidden rounded-2xl border border-line bg-panel-2 p-7 transition-colors hover:border-accent/50 sm:p-10"

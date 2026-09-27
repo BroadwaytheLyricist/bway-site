@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
+import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 import { ArrowIcon } from "@/components/icons";
-import { formatPostDate, posts } from "@/lib/posts";
+import { formatPostDate, getLatestPost } from "@/lib/posts";
 
 export default function LatestBlog() {
-  const post = posts[0];
+  const post = getLatestPost();
   if (!post) return null;
 
   return (
@@ -17,10 +18,10 @@ export default function LatestBlog() {
           fill
           sizes="100vw"
           aria-hidden="true"
-          className="pointer-events-none object-cover opacity-[0.25] blur-[3px] saturate-75"
+          className="pointer-events-none scale-105 object-cover object-center opacity-[0.55] blur-[2px] saturate-90"
         />
       )}
-      <div className="absolute inset-0 bg-bg/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-bg/55 via-bg/65 to-bg/80" />
       <div className="pointer-events-none absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-accent/10 blur-[120px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -34,7 +35,8 @@ export default function LatestBlog() {
           </Link>
         </div>
 
-        <article className="group mt-12 grid overflow-hidden border border-line bg-panel lg:grid-cols-[1.15fr_1fr]">
+        <ScrollRevealGroup className="mt-12">
+        <article data-reveal-item className="group grid overflow-hidden border border-line bg-panel lg:grid-cols-[1.15fr_1fr]">
           <Link href={`/blog/${post.slug}`} className="relative min-h-80 overflow-hidden lg:min-h-[30rem]">
             {post.thumbnail && (
               <Image
@@ -61,6 +63,7 @@ export default function LatestBlog() {
             </Link>
           </div>
         </article>
+        </ScrollRevealGroup>
       </div>
     </section>
   );

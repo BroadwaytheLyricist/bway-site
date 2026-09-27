@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import VideoEmbed from "@/components/VideoEmbed";
@@ -88,11 +89,24 @@ export default async function PostPage({ params }: PostPageProps) {
   };
 
   return (
-    <article className="min-h-screen bg-bg pb-24 pt-28 sm:pb-32 sm:pt-36">
+    <article className="relative isolate min-h-screen overflow-hidden bg-bg pb-24 pt-28 sm:pb-32 sm:pt-36">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+      {post.thumbnail && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[680px] overflow-hidden sm:h-[840px]">
+          <Image
+            src={post.thumbnail}
+            alt=""
+            fill
+            sizes="100vw"
+            className="scale-105 object-cover object-center opacity-70 blur-[5px] saturate-80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg/60 via-bg/72 to-bg" />
+        </div>
+      )}
 
       <header className="mx-auto max-w-5xl px-5 sm:px-8">
         <Link

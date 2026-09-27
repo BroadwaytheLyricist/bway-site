@@ -87,6 +87,10 @@ export function getPost(slug: string) {
   return posts.find((post) => post.slug === slug);
 }
 
+export function getLatestPost() {
+  return [...posts].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))[0];
+}
+
 export function formatPostDate(date: string) {
   return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
