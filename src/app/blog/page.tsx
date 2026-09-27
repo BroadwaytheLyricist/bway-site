@@ -12,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const sortedPosts = [...posts].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+
   return (
     <div className="min-h-screen bg-bg pb-24 pt-32 sm:pb-32 sm:pt-40">
       <section className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -30,7 +32,7 @@ export default function BlogPage() {
         </p>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
-          {[...posts].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).map((post) => (
+          {sortedPosts.map((post) => (
             <article
               key={post.slug}
               className="group flex min-h-96 flex-col justify-between overflow-hidden rounded-2xl border border-line bg-panel-2 p-7 transition-colors hover:border-accent/50 sm:p-10"
@@ -84,6 +86,19 @@ export default function BlogPage() {
               </div>
             </article>
           ))}
+          {sortedPosts.length === 1 && (
+            <div className="blog-portrait relative hidden min-h-96 overflow-hidden rounded-2xl lg:block" aria-hidden="true">
+              <Image
+                src="/images/blog-side-profile.jpg"
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 50vw, 1px"
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-bg/75 via-transparent to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent" />
+            </div>
+          )}
         </div>
       </section>
     </div>
