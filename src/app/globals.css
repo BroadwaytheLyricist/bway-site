@@ -94,12 +94,31 @@ body {
   box-shadow: 0 10px 30px -10px rgba(255, 90, 31, 0.55);
 }
 
-/* The keyed smoke moves over the stage and behind the portrait. */
+/* Diffuse smoke travels down the angled stage lights, behind the portrait. */
 .hero-smoke-video {
+  filter: blur(7px) brightness(0.8) contrast(0.7);
+  transform: rotate(180deg) scale(1.06);
+}
+
+.hero-haze-left,
+.hero-haze-right {
   mix-blend-mode: screen;
-  opacity: 0.65;
-  -webkit-mask-image: linear-gradient(to right, black 0%, black 48%, transparent 82%);
-  mask-image: linear-gradient(to right, black 0%, black 48%, transparent 82%);
+}
+
+.hero-haze-right .hero-smoke-video {
+  transform: rotate(180deg) scaleX(-1) scale(1.06);
+}
+
+.hero-haze-left {
+  opacity: 0.32;
+  -webkit-mask-image: radial-gradient(ellipse 78% 105% at 0% 0%, black 0%, rgba(0, 0, 0, 0.55) 36%, transparent 76%);
+  mask-image: radial-gradient(ellipse 78% 105% at 0% 0%, black 0%, rgba(0, 0, 0, 0.55) 36%, transparent 76%);
+}
+
+.hero-haze-right {
+  opacity: 0.24;
+  -webkit-mask-image: radial-gradient(ellipse 62% 94% at 100% 0%, black 0%, rgba(0, 0, 0, 0.45) 37%, transparent 78%);
+  mask-image: radial-gradient(ellipse 62% 94% at 100% 0%, black 0%, rgba(0, 0, 0, 0.45) 37%, transparent 78%);
 }
 
 .hero-stage-layer {
