@@ -299,7 +299,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .media-kit-profile-backdrop,
   .media-kit-profile-subject {
     animation: none !important;
   }
@@ -338,19 +337,14 @@ body {
   }
 }
 
-@keyframes media-kit-profile-background-enter {
-  from { opacity: 0.6; transform: scale(1.09); }
-  to { opacity: 1; transform: scale(1); }
-}
-
 @keyframes media-kit-profile-subject-enter {
   from { opacity: 0; transform: translate3d(110px, 0, 0); }
   to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
-.media-kit-profile-backdrop {
-  background: radial-gradient(ellipse at 75% 30%, #15516a 0%, #0c334d 46%, #091a31 100%);
-  animation: media-kit-profile-background-enter 1.4s ease-out both;
+.media-kit-hero {
+  background: radial-gradient(ellipse 60% 95% at 78% 42%, #103c51 0%, #0b293f 52%, transparent 100%),
+    linear-gradient(to bottom, #091a31 0%, #0a1a2c 65%, var(--color-bg) 100%);
 }
 
 .media-kit-profile-subject {

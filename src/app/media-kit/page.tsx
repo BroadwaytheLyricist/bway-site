@@ -100,8 +100,7 @@ export default async function MediaKitPage() {
   return (
     <main className="bg-bg">
       {/* ── Hero ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-panel to-bg" />
+      <section className="media-kit-hero relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
             <p className="kicker flex items-center gap-3">
@@ -146,8 +145,7 @@ export default async function MediaKitPage() {
             </div>
           </div>
 
-          <div className="media-kit-profile relative isolate min-h-[370px] overflow-hidden rounded-3xl border border-line shadow-2xl sm:min-h-[510px] lg:min-h-[570px]">
-            <div aria-hidden="true" className="media-kit-profile-backdrop absolute inset-0 -z-10" />
+          <div className="media-kit-profile relative min-h-[370px] sm:min-h-[510px] lg:min-h-[570px]">
             <Image
               src="/images/media-kit/profile-shadow-cutout.webp"
               alt="Broadway The Lyricist in a dark blue side profile facing left"
