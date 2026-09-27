@@ -61,7 +61,7 @@ export default function Music() {
       <div ref={studioRef} aria-hidden="true" className="music-studio absolute inset-0 -z-30">
         <Image src="/images/music-studio-bg.jpg" alt="" fill sizes="100vw" className="object-cover object-center" />
       </div>
-      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-[#081527]/55" />
+      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-[#081527]/42" />
       <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-r from-bg/20 via-bg/42 to-bg/75" />
       <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/85 via-transparent to-bg/25" />
       <div aria-hidden="true" className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_25%_50%,rgba(255,90,31,.12),transparent_42%)]" />

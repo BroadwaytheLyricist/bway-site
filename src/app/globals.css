@@ -220,16 +220,32 @@ body {
 
 .music-studio {
   transform: translate3d(0, var(--music-bg-y, 0px), 0) scale(1.06);
-  filter: grayscale(1) contrast(1.06) brightness(0.67) blur(1.5px);
+}
+
+.music-studio img {
+  filter: contrast(1.06) brightness(0.76) blur(1.2px);
+}
+
+.music-studio::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #183458;
+  mix-blend-mode: color;
+  opacity: 0.78;
 }
 
 .music-subject {
   opacity: var(--music-opacity, 0.12);
   transform: translate3d(var(--music-x, -440px), 0, 0);
   will-change: transform, opacity;
-  filter: contrast(1.1) brightness(0.98) drop-shadow(-3px 0 7px rgba(255, 90, 31, 0.2));
+  filter: drop-shadow(-2px 0 5px rgba(236, 100, 45, 0.14)) drop-shadow(3px 0 7px rgba(46, 122, 191, 0.18));
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
+}
+
+.music-subject img {
+  filter: brightness(0.9) contrast(1.09) sepia(0.08) hue-rotate(173deg) saturate(0.8);
 }
 
 @media (max-width: 1023px) {
