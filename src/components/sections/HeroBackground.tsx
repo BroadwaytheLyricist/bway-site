@@ -55,7 +55,7 @@ export default function HeroBackground() {
           />
         </div>
 
-        <div className="hero-haze-left absolute inset-0 z-10 overflow-hidden">
+        <div className="hero-haze-left absolute inset-0 z-[25] overflow-hidden">
         <video
           className="hero-smoke-video absolute inset-0 h-full w-full object-cover"
           autoPlay
@@ -68,7 +68,7 @@ export default function HeroBackground() {
           <source src="/videos/hero-smoke-layer.mp4" type="video/mp4" />
         </video>
         </div>
-        <div className="hero-haze-right absolute inset-0 z-10 overflow-hidden">
+        <div className="hero-haze-right absolute inset-0 z-[25] overflow-hidden">
         <video
           className="hero-smoke-video absolute inset-0 h-full w-full object-cover"
           autoPlay

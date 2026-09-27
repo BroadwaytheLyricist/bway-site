@@ -96,7 +96,7 @@ body {
 
 /* Diffuse smoke travels down the angled stage lights, behind the portrait. */
 .hero-smoke-video {
-  filter: blur(7px) brightness(0.8) contrast(0.7);
+  filter: blur(4px) brightness(1.12) contrast(0.88);
   transform: rotate(180deg) scale(1.06);
 }
 
@@ -110,15 +110,15 @@ body {
 }
 
 .hero-haze-left {
-  opacity: 0.32;
-  -webkit-mask-image: radial-gradient(ellipse 78% 105% at 0% 0%, black 0%, rgba(0, 0, 0, 0.55) 36%, transparent 76%);
-  mask-image: radial-gradient(ellipse 78% 105% at 0% 0%, black 0%, rgba(0, 0, 0, 0.55) 36%, transparent 76%);
+  opacity: 0.52;
+  -webkit-mask-image: radial-gradient(ellipse 78% 105% at 0% 0%, black 0%, rgba(0, 0, 0, 0.7) 42%, transparent 83%);
+  mask-image: radial-gradient(ellipse 78% 105% at 0% 0%, black 0%, rgba(0, 0, 0, 0.7) 42%, transparent 83%);
 }
 
 .hero-haze-right {
-  opacity: 0.24;
-  -webkit-mask-image: radial-gradient(ellipse 62% 94% at 100% 0%, black 0%, rgba(0, 0, 0, 0.45) 37%, transparent 78%);
-  mask-image: radial-gradient(ellipse 62% 94% at 100% 0%, black 0%, rgba(0, 0, 0, 0.45) 37%, transparent 78%);
+  opacity: 0.38;
+  -webkit-mask-image: radial-gradient(ellipse 62% 94% at 100% 0%, black 0%, rgba(0, 0, 0, 0.62) 42%, transparent 83%);
+  mask-image: radial-gradient(ellipse 62% 94% at 100% 0%, black 0%, rgba(0, 0, 0, 0.62) 42%, transparent 83%);
 }
 
 .hero-stage-layer {
