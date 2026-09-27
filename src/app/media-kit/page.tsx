@@ -146,18 +146,16 @@ export default async function MediaKitPage() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="overflow-hidden rounded-3xl border border-line shadow-2xl">
-              <Image
-                src={mediaKit.portrait.src}
-                alt={mediaKit.portrait.alt}
-                width={1320}
-                height={981}
-                preload
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                className="h-full w-full object-cover"
-              />
-            </div>
+          <div className="media-kit-profile relative isolate min-h-[370px] overflow-hidden rounded-3xl border border-line shadow-2xl sm:min-h-[510px] lg:min-h-[570px]">
+            <div aria-hidden="true" className="media-kit-profile-backdrop absolute inset-0 -z-10" />
+            <Image
+              src="/images/media-kit/profile-shadow-cutout.png"
+              alt="Broadway The Lyricist in a dark blue side profile facing left"
+              fill
+              preload
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="media-kit-profile-subject object-contain object-bottom"
+            />
           </div>
         </div>
       </section>
