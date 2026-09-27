@@ -50,7 +50,7 @@ export default function Footer() {
                     ? "noopener noreferrer"
                     : undefined
                 }
-                className="text-sm font-medium text-muted transition-colors hover:text-white"
+                className="text-sm font-medium text-muted transition-colors hover:text-accent focus-visible:text-accent"
               >
                 {item.label}
               </Link>
