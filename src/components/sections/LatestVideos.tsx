@@ -3,7 +3,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 import VideoEmbed from "@/components/VideoEmbed";
 import { ArrowIcon, PlayIcon } from "@/components/icons";
-import { links, playlists } from "@/lib/site";
+import { featuredVideos, links, playlists } from "@/lib/site";
 import { getLatestVideos } from "@/lib/youtube";
 
 function formatDate(iso: string) {
@@ -18,7 +18,15 @@ function formatDate(iso: string) {
 }
 
 export default async function LatestVideos() {
-  const videos = await getLatestVideos(2);
+  const latest = await getLatestVideos(2);
+  const videos = latest.length > 0
+    ? latest
+    : featuredVideos.map((video) => ({
+        ...video,
+        published: "",
+        url: `https://www.youtube.com/watch?v=${video.id}`,
+        embedUrl: `https://www.youtube.com/embed/${video.id}`,
+      }));
 
   return (
     <section id="videos" className="relative isolate overflow-hidden bg-bg py-24 sm:py-32">
@@ -28,7 +36,7 @@ export default async function LatestVideos() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             index="02"
-            kicker="Latest Uploads"
+            kicker={latest.length > 0 ? "Latest Uploads" : "Featured Videos"}
             title={
               <>
                 Fresh From <span className="text-accent">The Channel</span>
