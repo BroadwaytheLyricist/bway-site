@@ -217,6 +217,10 @@ export const mediaKit = {
       src: "/images/media-kit/studio/canon-shelf.jpg",
       alt: "Canon EOS R50 on an RGB-lit shelf",
     },
+    {
+      src: "/images/media-kit/studio/production-workspace.jpg",
+      alt: "Creator workspace with camera, Shure microphone, laptop, and audio console",
+    },
   ],
 
   capabilities: [
