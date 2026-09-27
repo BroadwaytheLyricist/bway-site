@@ -277,7 +277,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .blog-background {
+  .blog-background,
+  .blog-desk {
     animation: none !important;
   }
   html {
@@ -318,6 +319,23 @@ body {
 
 .blog-background {
   animation: blog-background-enter 1.2s ease-out both;
+}
+
+@keyframes blog-desk-enter {
+  from { opacity: 0; transform: translateX(180px); }
+  to { opacity: var(--blog-desk-opacity, 1); transform: translateX(0); }
+}
+
+.blog-desk {
+  animation: blog-desk-enter 1.25s ease-out both;
+}
+
+@media (max-width: 767px) {
+  .blog-desk {
+    --blog-desk-opacity: 0.55;
+    width: 110vw;
+    right: -38vw;
+  }
 }
 
 /* Print / Save-as-PDF: keep the dark theme, drop chrome and interactive bits */

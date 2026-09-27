@@ -18,15 +18,28 @@ export default function BlogPage() {
     <div className="relative isolate min-h-screen overflow-hidden bg-bg pb-24 pt-32 sm:pb-32 sm:pt-40">
       <div className="blog-background absolute inset-0 -z-10" aria-hidden="true">
         <Image
-          src="/images/media-kit/studio/desk-shure.jpg"
+          src="/images/blog-studio-bg.webp"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-bottom"
+          className="object-cover object-center"
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(7,14,32,0.84)_0%,rgba(7,17,39,0.62)_58%,rgba(7,17,39,0.67)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(4,10,27,0.88)_0%,rgba(4,11,31,0.78)_55%,rgba(4,11,31,0.82)_100%)]" />
+      {sortedPosts.length === 1 && (
+        <div className="blog-desk pointer-events-none absolute bottom-0 right-[-3vw] -z-10 w-[min(74vw,1100px)]" aria-hidden="true">
+          <Image
+            src="/images/blog-desk-layer.webp"
+            alt=""
+            width={2048}
+            height={1152}
+            priority
+            sizes="(min-width: 768px) 74vw, 110vw"
+            className="h-auto w-full"
+          />
+        </div>
+      )}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-b from-transparent to-bg" />
       <section className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
