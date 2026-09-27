@@ -56,8 +56,11 @@ export default function About() {
         sizes="100vw"
         className="-z-30 object-cover object-center"
       />
-      <div className="absolute inset-0 -z-20 bg-gradient-to-l from-bg/84 via-bg/42 to-transparent" />
-      <div className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/48 via-transparent to-bg/10" />
+      <video className="about-smoke-video pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover" autoPlay muted loop playsInline preload="none" aria-hidden="true">
+        <source src="/videos/hero-smoke-layer.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 -z-20 bg-gradient-to-l from-bg/75 via-bg/20 to-transparent" />
+      <div className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/30 via-transparent to-bg/10" />
 
       <div aria-hidden="true" className="about-art absolute inset-y-0 left-0 -z-10 w-full overflow-hidden lg:w-[58%]">
         <div

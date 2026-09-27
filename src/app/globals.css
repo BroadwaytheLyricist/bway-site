@@ -102,6 +102,13 @@ body {
   mask-image: linear-gradient(to right, black 0%, black 48%, transparent 82%);
 }
 
+.about-smoke-video {
+  mix-blend-mode: screen;
+  opacity: 0.28;
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 42%, transparent 78%);
+  mask-image: linear-gradient(to right, black 0%, black 42%, transparent 78%);
+}
+
 .hero-stage-layer {
   transform: translate3d(0, var(--hero-parallax-y, 0px), 0) scale(1.025);
 }
@@ -155,11 +162,11 @@ body {
   -webkit-mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
   mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
   filter:
-    brightness(0.95)
-    saturate(0.91)
-    contrast(1.02)
-    drop-shadow(-2px 0 4px rgba(245, 103, 42, 0.11))
-    drop-shadow(2px 0 4px rgba(42, 132, 210, 0.09));
+    brightness(0.98)
+    saturate(0.98)
+    contrast(1.06)
+    drop-shadow(-2px 0 5px rgba(245, 103, 42, 0.09))
+    drop-shadow(2px 0 5px rgba(42, 132, 210, 0.09));
 }
 
 .hero-cta-primary,
@@ -208,6 +215,9 @@ body {
     animation: none;
   }
   .hero-smoke-video {
+    display: none;
+  }
+  .about-smoke-video {
     display: none;
   }
   .hero-subject-layer,
