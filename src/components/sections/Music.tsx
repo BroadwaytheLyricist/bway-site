@@ -3,11 +3,10 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
-import { ArrowIcon, PlayIcon } from "@/components/icons";
+import { ArrowIcon } from "@/components/icons";
 import { links } from "@/lib/site";
 
 const destinations = [
-  { label: "Bandcamp", href: links.bandcamp },
   { label: "Spotify", href: links.spotify },
   { label: "Apple Music", href: links.appleMusic },
   { label: "Amazon Music", href: links.amazonMusic },
@@ -83,46 +82,36 @@ export default function Music() {
           title={<>Broadway <span className="text-accent">On Record</span></>}
         />
 
-        <div className="mt-[440px] grid overflow-hidden border border-line bg-bg/85 shadow-2xl backdrop-blur-[3px] sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[730px] lg:grid-cols-[0.75fr_1.25fr]">
-          <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-[#15100e] p-10">
-            <div className="absolute h-72 w-72 rounded-full border border-white/10 bg-[repeating-radial-gradient(circle,#171717_0,#171717_3px,#0b0b0b_4px,#0b0b0b_6px)] shadow-2xl sm:h-80 sm:w-80" />
-            <div className="absolute h-28 w-28 rounded-full bg-accent shadow-[0_0_50px_rgba(255,90,31,.35)]" />
-            <div className="relative z-10 text-center">
-              <p className="font-display text-3xl leading-none text-white">Broadway</p>
-              <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.32em] text-white/70">The Lyricist</p>
-            </div>
+        <div className="mt-[440px] grid overflow-hidden border border-line bg-bg/85 shadow-2xl backdrop-blur-[3px] sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[920px] lg:grid-cols-[minmax(350px,0.9fr)_1fr]">
+          <div className="flex items-center justify-center bg-[#101827] px-4 py-8 sm:px-8">
+            <iframe
+              title="Off Broadway EP (Unmastered) Deluxe Edition on Bandcamp"
+              src="https://bandcamp.com/EmbeddedPlayer/album=2215040601/size=large/bgcol=101827/linkcol=ff5a1f/tracklist=false/transparent=true/"
+              className="h-[470px] w-full max-w-[350px] border-0"
+              loading="lazy"
+              allow="autoplay; encrypted-media"
+            />
           </div>
 
-          <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
+          <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
             <p className="kicker">Featured Release</p>
-            <h3 className="mt-3 font-display text-4xl leading-none text-white sm:text-5xl">God Is the Only GOAT</h3>
+            <h3 className="mt-3 font-display text-4xl leading-none text-white sm:text-5xl">Off Broadway EP</h3>
+            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.14em] text-accent">Unmastered Deluxe Edition</p>
             <p className="mt-5 max-w-xl leading-relaxed text-muted">
-              The recording artist behind the commentary. Stream the featured release and explore Broadway&apos;s catalog across your preferred platform.
+              Listen to the EP here, then explore more of Broadway&apos;s music on Bandcamp or your preferred platform.
             </p>
 
-            <div className="mt-8 border border-line bg-panel/80 p-5">
-              <div className="flex items-center gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-white">
-                  <PlayIcon className="h-5 w-5" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-semibold text-white">God Is the Only GOAT</p>
-                  <p className="mt-1 text-xs text-muted">Player connection ready</p>
-                  <div className="mt-3 h-px bg-white/10"><div className="h-px w-1/3 bg-accent" /></div>
-                </div>
-              </div>
-            </div>
+            <a href={links.bandcamp} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex w-fit items-center gap-2 border-b border-accent pb-2 text-sm font-semibold text-white hover:text-accent">
+              Explore the full catalog on Bandcamp <ArrowIcon className="h-4 w-4" />
+            </a>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               {destinations.map((destination) => (
                 <a key={destination.label} href={destination.href} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 border border-white/15 px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:border-accent hover:text-accent">
                   {destination.label}<ArrowIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                 </a>
               ))}
             </div>
-            <p className="mt-5 text-xs leading-relaxed text-muted">
-              The on-page player will be activated when the master audio or an embeddable SoundCloud/Bandcamp track is connected.
-            </p>
           </div>
         </div>
       </div>
