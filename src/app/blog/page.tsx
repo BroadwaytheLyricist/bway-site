@@ -28,14 +28,14 @@ export default function BlogPage() {
       </div>
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(4,10,27,0.88)_0%,rgba(4,11,31,0.78)_55%,rgba(4,11,31,0.82)_100%)]" />
       {sortedPosts.length === 1 && (
-        <div className="blog-desk pointer-events-none absolute bottom-0 right-[-3vw] -z-10 w-[min(74vw,1100px)]" aria-hidden="true">
+        <div className="blog-desk pointer-events-none absolute bottom-0 right-[4vw] -z-10 w-[min(70vw,1000px)]" aria-hidden="true">
           <Image
             src="/images/blog-desk-layer.webp"
             alt=""
             width={2048}
             height={1152}
             priority
-            sizes="(min-width: 768px) 74vw, 110vw"
+            sizes="(min-width: 768px) 70vw, 110vw"
             className="h-auto w-full"
           />
         </div>
