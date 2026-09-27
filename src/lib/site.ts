@@ -14,6 +14,10 @@ export const links = {
   email: "Ramcorpmanagement@gmail.com",
   mediaKit: "/media-kit",
   appleMusic: "https://music.apple.com/us/album/off-broadway-single/1482177233",
+  spotify: "https://open.spotify.com/track/6NZC3g6b925SCiDpL55Chf",
+  amazonMusic: "https://www.amazon.com/music/player/artists/B00OET00HG/broadway-the-lyricist",
+  youtubeMusic: "https://music.youtube.com/@BroadwaytheLyricist",
+  bandcamp: "https://broadwaythelyricist.bandcamp.com",
   tidal: "https://tidal.com/video/356030437",
   deezer: "https://www.deezer.com/en/artist/6865951",
 } as const;

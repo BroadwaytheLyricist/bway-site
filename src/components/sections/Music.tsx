@@ -7,7 +7,11 @@ import { ArrowIcon, PlayIcon } from "@/components/icons";
 import { links } from "@/lib/site";
 
 const destinations = [
+  { label: "Bandcamp", href: links.bandcamp },
+  { label: "Spotify", href: links.spotify },
   { label: "Apple Music", href: links.appleMusic },
+  { label: "Amazon Music", href: links.amazonMusic },
+  { label: "YouTube Music", href: links.youtubeMusic },
   { label: "TIDAL", href: links.tidal },
   { label: "Deezer", href: links.deezer },
 ] as const;
