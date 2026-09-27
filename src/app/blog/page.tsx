@@ -89,13 +89,13 @@ export default function BlogPage() {
           {sortedPosts.length === 1 && (
             <div className="blog-portrait relative hidden min-h-96 overflow-hidden rounded-2xl lg:block" aria-hidden="true">
               <Image
-                src="/images/blog-side-profile.jpg"
+                src="/images/media-kit/studio/desk-shure.jpg"
                 alt=""
                 fill
                 sizes="(min-width: 1024px) 50vw, 1px"
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-bg/75 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-bg/30 via-transparent to-transparent" />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent" />
             </div>
           )}
