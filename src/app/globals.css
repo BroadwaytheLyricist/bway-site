@@ -218,6 +218,25 @@ body {
     drop-shadow(4px 0 9px rgba(30, 125, 220, 0.26));
 }
 
+.music-studio {
+  transform: translate3d(0, var(--music-bg-y, 0px), 0) scale(1.06);
+  filter: grayscale(1) contrast(1.06) brightness(0.67) blur(1.5px);
+}
+
+.music-subject {
+  opacity: var(--music-opacity, 0.2);
+  transform: translate3d(var(--music-x, -150px), 0, 0);
+  will-change: transform, opacity;
+  filter: contrast(1.1) brightness(0.88) drop-shadow(-3px 0 7px rgba(255, 90, 31, 0.16));
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 100%);
+}
+
+.music-art {
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
+}
+
 .hero-cta-primary,
 .hero-cta-secondary {
   min-height: 3.5rem;
@@ -267,10 +286,14 @@ body {
     display: none;
   }
   .hero-subject-layer,
-  .about-subject {
+  .about-subject,
+  .music-subject {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+  .music-studio {
+    transform: scale(1.06);
   }
   .scroll-reveal-group[data-ready="true"] [data-reveal-item] {
     opacity: 1;
