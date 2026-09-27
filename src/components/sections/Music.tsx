@@ -70,8 +70,8 @@ export default function Music() {
       <div aria-hidden="true" className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_25%_50%,rgba(255,90,31,.12),transparent_42%)]" />
 
       <div aria-hidden="true" className="music-art pointer-events-none absolute inset-0 -z-10">
-        <div ref={subjectRef} className="music-subject absolute top-[145px] -left-[60vw] w-[190vw] sm:-left-[36vw] sm:w-[155vw] lg:top-auto lg:bottom-0 lg:-left-[360px] lg:w-[1450px]">
-          <Image src="/images/music-subject.webp" alt="" width={2048} height={1152} sizes="(max-width: 640px) 190vw, (max-width: 1024px) 155vw, 1450px" className="block h-auto w-full" />
+        <div ref={subjectRef} className="music-subject absolute top-[145px] -left-[60vw] w-[190vw] sm:-left-[36vw] sm:w-[155vw] lg:top-auto lg:bottom-0 lg:-left-[280px] lg:w-[1650px]">
+          <Image src="/images/music-subject.webp" alt="" width={2048} height={1152} sizes="(max-width: 640px) 190vw, (max-width: 1024px) 155vw, 1650px" className="block h-auto w-full" />
         </div>
       </div>
 
@@ -82,8 +82,8 @@ export default function Music() {
           title={<>Broadway <span className="text-accent">On Record</span></>}
         />
 
-        <div className="music-player-card mt-[440px] grid overflow-hidden border border-line bg-bg/85 shadow-2xl backdrop-blur-[3px] sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[880px] lg:grid-cols-[minmax(350px,0.9fr)_1fr]">
-          <div className="flex items-center justify-center bg-[#101827] px-4 py-8 sm:px-8">
+        <div className="music-player-card mt-[440px] grid overflow-hidden border border-line shadow-2xl sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[880px] lg:grid-cols-[minmax(350px,0.9fr)_1fr]">
+          <div className="flex items-center justify-center bg-[#101827]/45 px-4 py-8 backdrop-blur-[1px] sm:px-8">
             <iframe
               title="Off Broadway EP (Unmastered) Deluxe Edition on Bandcamp"
               src="https://bandcamp.com/EmbeddedPlayer/album=2215040601/size=large/bgcol=101827/linkcol=ff5a1f/tracklist=false/transparent=true/"
@@ -93,7 +93,7 @@ export default function Music() {
             />
           </div>
 
-          <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
+          <div className="flex flex-col justify-center bg-bg/90 p-7 backdrop-blur-[3px] sm:p-10 lg:p-12">
             <p className="kicker">Featured Release</p>
             <h3 className="mt-3 font-display text-4xl leading-none text-white sm:text-5xl">Off Broadway EP</h3>
             <p className="mt-3 text-sm font-semibold uppercase tracking-[0.14em] text-accent">Unmastered Deluxe Edition</p>
