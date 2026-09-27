@@ -333,7 +333,19 @@ body {
 }
 
 .blog-desk img {
-  filter: brightness(0.58) saturate(0.72);
+  filter: brightness(0.46) saturate(0.7) drop-shadow(-3px 0 10px rgba(227, 88, 31, 0.13));
+}
+
+.blog-desk::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 78% 43%, rgba(227, 90, 37, 0.3), transparent 53%);
+  -webkit-mask: url("/images/blog-desk-layer.webp") center / 100% 100% no-repeat;
+  mask: url("/images/blog-desk-layer.webp") center / 100% 100% no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0.42;
 }
 
 @media (max-width: 767px) {
