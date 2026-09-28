@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import { ArrowIcon } from "@/components/icons";
@@ -15,7 +16,7 @@ const destinations = [
   { label: "Deezer", href: links.deezer },
 ] as const;
 
-export default function Music() {
+export default function Music({ standalone = false }: { standalone?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
   const subjectRef = useRef<HTMLDivElement>(null);
   const studioRef = useRef<HTMLDivElement>(null);
@@ -86,7 +87,8 @@ export default function Music() {
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          index="04"
+          as={standalone ? "h1" : "h2"}
+          index={standalone ? undefined : "04"}
           kicker="Original Music"
           title={<>Broadway <span className="text-accent">On Record</span></>}
         />
@@ -123,6 +125,11 @@ export default function Music() {
             </div>
           </div>
         </div>
+        {!standalone && (
+          <Link href="/music" className="mt-8 inline-flex items-center gap-2 border-b border-accent pb-2 text-sm font-semibold text-white transition-colors hover:text-accent">
+            Explore the music <ArrowIcon className="h-4 w-4" />
+          </Link>
+        )}
       </div>
     </section>
   );

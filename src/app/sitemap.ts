@@ -15,6 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: siteUpdatedAt,
     },
     {
+      url: "https://broadwaythelyricist.com/about",
+      lastModified: siteUpdatedAt,
+    },
+    {
       url: "https://broadwaythelyricist.com/blog",
       lastModified: blogIndexUpdatedAt,
     },
@@ -24,6 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     {
       url: "https://broadwaythelyricist.com/media-kit",
+      lastModified: siteUpdatedAt,
+    },
+    {
+      url: "https://broadwaythelyricist.com/music",
       lastModified: siteUpdatedAt,
     },
   ];

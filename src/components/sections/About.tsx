@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 
-export default function About() {
+export default function About({ standalone = false }: { standalone?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
   const subjectRef = useRef<HTMLDivElement>(null);
 
@@ -78,7 +79,8 @@ export default function About() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="ml-auto max-w-xl lg:max-w-[34rem]">
           <SectionHeading
-            index="01"
+            as={standalone ? "h1" : "h2"}
+            index={standalone ? undefined : "01"}
             kicker="About"
             title={
               <>
@@ -109,6 +111,11 @@ export default function About() {
               should be having.
             </p>
           </blockquote>
+          {!standalone && (
+            <Link href="/about" className="mt-8 inline-flex border-b border-accent pb-2 text-sm font-semibold text-white transition-colors hover:text-accent">
+              More about Broadway →
+            </Link>
+          )}
         </div>
       </div>
     </section>

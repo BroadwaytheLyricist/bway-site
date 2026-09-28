@@ -25,10 +25,10 @@ export const links = {
 
 export const nav = [
   { label: "Home", href: "/#home" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
   { label: "Videos", href: "/#videos" },
   { label: "Blog", href: "/blog" },
-  { label: "Music", href: "/#music" },
+  { label: "Music", href: "/music" },
   { label: "Contact", href: "/#contact" },
   { label: "Media Kit", href: "/media-kit" },
 ] as const;
