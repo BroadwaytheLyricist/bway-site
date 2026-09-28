@@ -228,10 +228,10 @@ body {
   mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
   filter:
     brightness(0.76)
-    contrast(1.1)
+    contrast(1.13)
     saturate(0.82)
-    drop-shadow(-2px 0 4px rgba(230, 90, 32, 0.05))
-    drop-shadow(2px 0 4px rgba(45, 112, 175, 0.32));
+    drop-shadow(-2px 0 3px rgba(230, 90, 32, 0.2))
+    drop-shadow(2px 0 3px rgba(45, 112, 175, 0.38));
 }
 
 /* A shaped cool shadow adds direction without changing the portrait itself. */
