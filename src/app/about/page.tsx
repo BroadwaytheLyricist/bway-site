@@ -5,7 +5,7 @@ import { links } from "@/lib/site";
 
 const title = "About Broadway the Lyricist | Artist & Hip-Hop Storyteller";
 const description =
-  "Meet Broadway the Lyricist, a Tampa-based recording artist from East New York, Brooklyn, whose original music and cultural storytelling spark conversations about Hip-Hop.";
+  "Meet Broadway the Lyricist, a Tampa-based artist from the East New York section of Brooklyn, New York, whose music, live performances, and storytelling spark Hip-Hop conversations.";
 
 export const metadata: Metadata = {
   title,
@@ -40,13 +40,16 @@ export default function AboutPage() {
           </div>
           <div className="space-y-6 text-base leading-8 text-white/75 sm:text-lg">
             <p>
-              Broadway the Lyricist is a Tampa-based solo artist from East New York, Brooklyn. Inspired by Nas, Jay-Z, Jadakiss, Prodigy, Ghostface Killah, and Black Thought, he makes intimate, honest music built on thoughtful bars and strong songwriting.
+              Broadway the Lyricist is a Tampa-based solo artist from the East New York section of Brooklyn, New York. Inspired by Nas, Jay-Z, Jadakiss, Prodigy, Ghostface Killah, and Black Thought, he makes intimate, honest music built on thoughtful bars and strong songwriting.
             </p>
             <p>
-              His path has included collaborating with producer Domingo and performing his music for Jadakiss at a Pass the Aux event in Tampa. Through it all, his focus has stayed on writing about his life and experiences in a way people can connect with personally.
+              He performed regularly at End of the Weak, the long-running New York City open mic that has welcomed both aspiring and veteran MCs. He also took the stage at Maria Davis&apos; Monday Night Madness showcase. Davis is the New York Hip-Hop promoter heard on Jay-Z&apos;s &ldquo;22 Two&apos;s&rdquo; from <em>Reasonable Doubt</em>.
             </p>
             <p>
-              That same artist&apos;s perspective now shapes his videos and writing about Hip-Hop history, albums, artists, and the culture around them. He brings a fan&apos;s curiosity to the conversation, making room for context, disagreement, and stories that deserve another listen.
+              His performances have also taken him to Roxboro Raceway in North Carolina and to a Pass the Aux event in Tampa, where he performed his music for Jadakiss. In the studio, he has worked with producer Domingo, DJ PF Cuttin, and Blahzay Martell of Blahzay Blahzay, the duo behind &ldquo;Danger.&rdquo;
+            </p>
+            <p>
+              Those years making music and performing shape his videos and writing about Hip-Hop history, albums, artists, and the culture around them. He brings an artist&apos;s ear and a fan&apos;s curiosity to the conversation, making room for context, disagreement, and stories that deserve another listen.
             </p>
             <p>
               His goal is to make the Hip-Hop conversations we should be having, and invite you into them.
