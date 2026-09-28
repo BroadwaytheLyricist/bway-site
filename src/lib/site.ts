@@ -28,8 +28,8 @@ export const nav = [
   { label: "Videos", href: "/#videos" },
   { label: "Blog", href: "/blog" },
   { label: "Music", href: "/#music" },
-  { label: "Media Kit", href: "/media-kit" },
   { label: "Contact", href: "/#contact" },
+  { label: "Media Kit", href: "/media-kit" },
 ] as const;
 
 export const brandTagline = "The Hip-Hop Conversations We Should Be Having";
