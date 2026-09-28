@@ -387,7 +387,7 @@ body {
 }
 
 .media-kit-hero {
-  background: #040408;
+  background: #0a1425;
 }
 
 .media-kit-scene-layer {
@@ -402,7 +402,7 @@ body {
 
 .media-kit-scene-background {
   z-index: 0;
-  filter: hue-rotate(-8deg);
+  filter: hue-rotate(-55deg) saturate(0.7) brightness(0.82);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 17%, black 72%, transparent 100%),
     linear-gradient(to right, transparent 0%, black 22%, black 72%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 17%, black 72%, transparent 100%),
