@@ -415,7 +415,7 @@ body {
   --scene-enter-x: -75px;
   z-index: 1;
   animation-delay: 180ms;
-  filter: hue-rotate(-8deg);
+  filter: grayscale(1) sepia(0.65) hue-rotate(170deg) saturate(0.55) brightness(0.68) contrast(1.12);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 13%, black 76%, transparent 100%),
     linear-gradient(to right, transparent 0%, black 22%, black 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 13%, black 76%, transparent 100%),
