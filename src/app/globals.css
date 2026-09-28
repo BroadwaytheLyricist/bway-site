@@ -332,7 +332,12 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .media-kit-scene-layer {
+  .media-kit-scene {
+  isolation: isolate;
+  background: radial-gradient(ellipse 68% 70% at 53% 51%, #172238 0%, #101929 52%, transparent 86%);
+}
+
+.media-kit-scene-layer {
     animation: none !important;
   }
   .blog-background,
@@ -400,11 +405,13 @@ body {
 
 .media-kit-scene-background {
   z-index: 0;
-  filter: hue-rotate(-65deg) saturate(0.8) brightness(0.64);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 17%, black 72%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 22%, black 72%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 17%, black 72%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 22%, black 72%, transparent 100%);
+  mix-blend-mode: luminosity;
+  opacity: 0.62;
+  filter: grayscale(1) brightness(0.55);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 69%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 32%, black 64%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 69%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 32%, black 64%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
