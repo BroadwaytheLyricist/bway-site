@@ -241,7 +241,7 @@ export default async function MediaKitPage() {
       </div>
 
       {/* ── Top content ────────────────────────────────────── */}
-      <section className="bg-panel py-20 sm:py-24">
+      <section className="media-kit-content-stage py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             kicker="Performance & Proof"
@@ -311,7 +311,7 @@ export default async function MediaKitPage() {
       </section>
 
       {/* ── Industry recognition ───────────────────────────── */}
-      <section className="py-20 sm:py-24">
+      <section className="media-kit-recognition-stage py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             kicker="Cultural Credibility"
@@ -326,13 +326,13 @@ export default async function MediaKitPage() {
             voices across hip-hop, media, film, and culture.
           </p>
 
-          <div className="mt-10 columns-1 gap-6 lg:columns-2">
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {mediaKit.recognition.map((r) => (
               <article
                 key={r.name}
-                className="mb-6 break-inside-avoid overflow-hidden rounded-2xl border border-line bg-panel shadow-2xl shadow-black/10"
+                className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-panel shadow-2xl shadow-black/10"
               >
-                <div className="flex items-center justify-center bg-[#070707] p-3">
+                <div className="flex h-[340px] flex-col items-center justify-center gap-3 bg-[#070b13] p-4 sm:h-[400px]">
                   <Image
                     src={r.proof.src}
                     alt={r.proof.alt}
@@ -340,10 +340,20 @@ export default async function MediaKitPage() {
                     height={r.proof.height}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     loading="eager"
-                    className="max-h-[460px] max-w-full rounded-xl object-contain sm:max-h-[560px]"
+                    className={`max-w-full rounded-xl object-contain ${"secondaryProof" in r ? "max-h-[32%]" : "max-h-full"}`}
                   />
+                  {"secondaryProof" in r && r.secondaryProof && (
+                    <Image
+                      src={r.secondaryProof.src}
+                      alt={r.secondaryProof.alt}
+                      width={r.secondaryProof.width}
+                      height={r.secondaryProof.height}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="max-h-[62%] max-w-full rounded-xl object-contain"
+                    />
+                  )}
                 </div>
-                <div className="p-6">
+                <div className="flex flex-1 flex-col p-6">
                   <p className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent">
                     Featured Recognition
                   </p>
@@ -351,7 +361,7 @@ export default async function MediaKitPage() {
                     {r.name}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{r.credit}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-white/80">
+                  <p className="mt-auto pt-4 text-sm leading-relaxed text-white/80">
                     {r.note}
                   </p>
                 </div>
@@ -366,7 +376,7 @@ export default async function MediaKitPage() {
       </section>
 
       {/* ── Studio & gear ──────────────────────────────────── */}
-      <section className="bg-panel py-20 sm:py-24">
+      <section className="media-kit-ecosystem-stage py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             kicker="Studio & Distribution"
@@ -428,7 +438,7 @@ export default async function MediaKitPage() {
       </section>
 
       {/* ── Partnerships ───────────────────────────────────── */}
-      <section className="py-20 sm:py-24">
+      <section className="media-kit-partnership-stage py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             kicker="Creator Partnership Opportunities"
@@ -459,7 +469,7 @@ export default async function MediaKitPage() {
       </section>
 
       {/* ── Contact ────────────────────────────────────────── */}
-      <section className="border-t border-line bg-panel py-20 sm:py-24">
+      <section className="media-kit-contact-stage border-t border-line py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="rounded-3xl border border-line bg-panel-2 p-8 sm:p-12">
             <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">

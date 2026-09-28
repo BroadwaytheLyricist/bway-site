@@ -189,6 +189,23 @@ export const mediaKit = {
       },
     },
     {
+      name: "Buckwild",
+      credit: "Producer • D.I.T.C.",
+      note: "Commented on Broadway The Lyricist's Hip-Hop discussion and followed the account.",
+      proof: {
+        src: "/images/media-kit/social/buckwild-follow.webp",
+        alt: "Verified producer Buckwild following Broadway The Lyricist on Instagram",
+        width: 1320,
+        height: 262,
+      },
+      secondaryProof: {
+        src: "/images/media-kit/social/buckwild-comment.webp",
+        alt: "Buckwild commenting on Broadway The Lyricist's Instagram discussion",
+        width: 1320,
+        height: 498,
+      },
+    },
+    {
       name: "Lyric Perez",
       credit: "Creative Producer • Revolt • Complex Networks • Red Bull Media House",
       note: "Verified creative producer engaged with Broadway The Lyricist content.",

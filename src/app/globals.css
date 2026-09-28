@@ -140,7 +140,7 @@ body {
 }
 
 .hero-subject-layer img {
-  filter: blur(0.45px) brightness(0.74) contrast(0.96) saturate(0.96);
+  filter: blur(0.45px) brightness(0.86) contrast(0.96) saturate(0.96);
 }
 
 /* The crowd and stage connect both audience sections without covering the data. */
@@ -157,6 +157,34 @@ body {
   z-index: -1;
   background: linear-gradient(180deg, rgba(10, 14, 23, 0.22), rgba(10, 14, 23, 0.64)), url('/images/media-kit/audience-stage.webp') center bottom / cover no-repeat;
   opacity: 0.72;
+}
+
+/* Media Kit sections share the stage palette while leaving proof and copy legible. */
+.media-kit-content-stage {
+  background: linear-gradient(180deg, rgba(10, 15, 27, 0.78), rgba(10, 15, 27, 0.9)),
+    url('/images/media-kit/audience-stage.webp') center 60% / cover no-repeat;
+}
+
+.media-kit-recognition-stage {
+  background: radial-gradient(ellipse 48% 45% at 2% 30%, rgba(226, 91, 28, 0.09), transparent 85%),
+    radial-gradient(ellipse 46% 52% at 98% 75%, rgba(29, 79, 142, 0.16), transparent 85%),
+    #080d19;
+}
+
+.media-kit-ecosystem-stage {
+  background: linear-gradient(180deg, rgba(9, 15, 27, 0.83), rgba(9, 15, 27, 0.91)),
+    url('/images/media-kit/studio/production-workspace.jpg') center center / cover no-repeat;
+}
+
+.media-kit-partnership-stage {
+  background: radial-gradient(ellipse 45% 70% at 82% 25%, rgba(26, 64, 114, 0.18), transparent 82%),
+    radial-gradient(ellipse 38% 65% at 13% 80%, rgba(219, 89, 30, 0.1), transparent 85%),
+    #090e19;
+}
+
+.media-kit-contact-stage {
+  background: radial-gradient(ellipse 65% 95% at 50% 30%, rgba(25, 48, 88, 0.19), transparent 75%),
+    #0b1020;
 }
 
 @media (max-width: 767px) {
@@ -219,30 +247,19 @@ body {
 }
 
 .about-art {
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 83%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 0%, black 83%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 69%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 69%, transparent 100%);
 }
 
 .about-subject-image {
   -webkit-mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
   mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
   filter:
-    brightness(0.76)
+    brightness(0.91)
     contrast(1.13)
-    saturate(0.82)
-    drop-shadow(-2px 0 3px rgba(230, 90, 32, 0.2))
-    drop-shadow(2px 0 3px rgba(45, 112, 175, 0.38));
-}
-
-/* A shaped cool shadow adds direction without changing the portrait itself. */
-.about-subject::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(90deg, transparent 33%, rgba(6, 22, 48, 0.1) 42%, rgba(8, 31, 67, 0.32) 55%, transparent 64%);
-  -webkit-mask: url('/images/about-subject-v4.png') center / 100% 100% no-repeat;
-  mask: url('/images/about-subject-v4.png') center / 100% 100% no-repeat;
+    saturate(1.06)
+    drop-shadow(-4px 0 7px rgba(230, 90, 32, 0.14))
+    drop-shadow(4px 0 9px rgba(30, 125, 220, 0.26));
 }
 
 .music-studio {
@@ -286,15 +303,9 @@ body {
   mask-image: linear-gradient(to bottom, black 0%, black 92%, transparent 100%);
 }
 
-.music-player-card {
-  opacity: var(--music-player-opacity, 1);
-  transform: translate3d(var(--music-player-x, 0px), 0, 0);
-  will-change: transform, opacity;
-}
-
 @media (min-width: 1280px) {
   .music-player-card {
-    transform: translate3d(calc(clamp(0px, calc(25vw - 320px), 175px) + var(--music-player-x, 0px)), 0, 0);
+    transform: translateX(clamp(0px, calc(25vw - 320px), 175px));
   }
 }
 
@@ -332,12 +343,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .media-kit-scene {
-  isolation: isolate;
-  background: radial-gradient(ellipse 68% 70% at 53% 51%, #172238 0%, #101929 52%, transparent 86%);
-}
-
-.media-kit-scene-layer {
+  .media-kit-scene-layer {
     animation: none !important;
   }
   .blog-background,
@@ -368,15 +374,6 @@ body {
   .music-studio {
     transform: scale(1.06);
   }
-  .music-player-card {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  @media (min-width: 1280px) {
-    .music-player-card {
-      transform: translateX(clamp(0px, calc(25vw - 320px), 175px)) !important;
-    }
-  }
   .scroll-reveal-group[data-ready="true"] [data-reveal-item] {
     opacity: 1;
     transform: none;
@@ -390,7 +387,7 @@ body {
 }
 
 .media-kit-hero {
-  background: var(--color-panel);
+  background: #040408;
 }
 
 .media-kit-scene-layer {
@@ -405,13 +402,11 @@ body {
 
 .media-kit-scene-background {
   z-index: 0;
-  mix-blend-mode: luminosity;
-  opacity: 0.62;
-  filter: grayscale(1) brightness(0.55);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 69%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 32%, black 64%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 69%, transparent 100%),
-    linear-gradient(to right, transparent 0%, black 32%, black 64%, transparent 100%);
+  filter: hue-rotate(-8deg);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 17%, black 72%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 22%, black 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 17%, black 72%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 22%, black 72%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
@@ -420,7 +415,7 @@ body {
   --scene-enter-x: -75px;
   z-index: 1;
   animation-delay: 180ms;
-  filter: hue-rotate(-65deg) saturate(0.85) brightness(0.94);
+  filter: hue-rotate(-8deg);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 13%, black 76%, transparent 100%),
     linear-gradient(to right, transparent 0%, black 22%, black 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 13%, black 76%, transparent 100%),
@@ -466,14 +461,9 @@ body {
 }
 
 .blog-profile {
-  bottom: 120px;
   animation: blog-profile-enter 1.25s ease-out both;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 73%, transparent 100%),
-    linear-gradient(to right, black 0%, black 75%, transparent 90%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 73%, transparent 100%),
-    linear-gradient(to right, black 0%, black 75%, transparent 90%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 73%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 73%, transparent 100%);
 }
 
 .blog-profile img {
@@ -482,7 +472,6 @@ body {
 
 @media (max-width: 767px) {
   .blog-profile {
-    bottom: 0;
     width: 80vw;
     height: 65vh;
     right: -25vw;
