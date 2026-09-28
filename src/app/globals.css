@@ -374,8 +374,7 @@ body {
 
 .media-kit-scene-background {
   z-index: 0;
-  opacity: 0.76;
-  filter: hue-rotate(-65deg) saturate(0.8) brightness(0.72);
+  filter: hue-rotate(-65deg) saturate(0.8) brightness(0.64);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 17%, black 72%, transparent 100%),
     linear-gradient(to right, transparent 0%, black 22%, black 72%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 17%, black 72%, transparent 100%),
