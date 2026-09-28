@@ -140,7 +140,7 @@ body {
 }
 
 .hero-subject-layer img {
-  filter: blur(0.45px) brightness(0.86) contrast(0.96) saturate(0.96);
+  filter: blur(0.45px) brightness(0.74) contrast(0.96) saturate(0.96);
 }
 
 /* The crowd and stage connect both audience sections without covering the data. */
