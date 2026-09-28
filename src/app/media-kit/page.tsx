@@ -176,7 +176,8 @@ export default async function MediaKitPage() {
       </section>
 
       {/* ── Stats ──────────────────────────────────────────── */}
-      <section className="border-y border-line bg-panel py-16 sm:py-20">
+      <div className="media-kit-audience-stage border-y border-line">
+      <section className="relative z-10 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             kicker="Audience & Performance"
@@ -202,7 +203,7 @@ export default async function MediaKitPage() {
       </section>
 
       {/* ── Audience profile ───────────────────────────────── */}
-      <section className="py-20 sm:py-24">
+      <section className="relative z-10 border-t border-line py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeading
@@ -233,6 +234,8 @@ export default async function MediaKitPage() {
           </ul>
         </div>
       </section>
+
+      </div>
 
       {/* ── Top content ────────────────────────────────────── */}
       <section className="bg-panel py-20 sm:py-24">

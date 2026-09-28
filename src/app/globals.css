@@ -140,7 +140,23 @@ body {
 }
 
 .hero-subject-layer img {
-  filter: blur(0.45px) contrast(0.96) saturate(0.96);
+  filter: blur(0.45px) brightness(0.86) contrast(0.96) saturate(0.96);
+}
+
+/* The crowd and stage connect both audience sections without covering the data. */
+.media-kit-audience-stage {
+  position: relative;
+  isolation: isolate;
+  background: var(--color-bg);
+}
+
+.media-kit-audience-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(10, 14, 23, 0.22), rgba(10, 14, 23, 0.64)), url('/images/media-kit/audience-stage.webp') center bottom / cover no-repeat;
+  opacity: 0.72;
 }
 
 @media (max-width: 767px) {
