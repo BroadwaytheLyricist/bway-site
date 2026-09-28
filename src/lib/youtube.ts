@@ -138,6 +138,32 @@ export async function getChannelStats(): Promise<ChannelStats | null> {
   }
 }
 
+/** Public view counts for curated Media Kit videos, cached for one hour. */
+export async function getFeaturedVideoViews(ids: string[]): Promise<Record<string, number>> {
+  const key = process.env.YOUTUBE_API_KEY;
+  if (!key || ids.length === 0) return {};
+
+  try {
+    const url = new URL("https://www.googleapis.com/youtube/v3/videos");
+    url.searchParams.set("part", "statistics");
+    url.searchParams.set("id", ids.join(","));
+    url.searchParams.set("key", key);
+    const res = await fetch(url.toString(), { next: { revalidate: 3600 } });
+    if (!res.ok) return {};
+
+    const data = (await res.json()) as {
+      items?: { id: string; statistics?: { viewCount?: string } }[];
+    };
+    return Object.fromEntries(
+      (data.items ?? [])
+        .filter((video) => video.statistics?.viewCount !== undefined)
+        .map((video) => [video.id, Number(video.statistics?.viewCount)]),
+    );
+  } catch {
+    return {};
+  }
+}
+
 /** Compact number formatting: 859 → "859", 123417 → "123.4K", 1_200_000 → "1.2M". */
 export function formatCompact(n: number): string {
   if (n >= 1_000_000) {

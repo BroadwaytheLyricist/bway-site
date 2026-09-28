@@ -12,7 +12,7 @@ import {
 } from "@/components/icons";
 import { links } from "@/lib/site";
 import { mediaKit } from "@/lib/media-kit";
-import { getChannelStats, formatCompact } from "@/lib/youtube";
+import { getChannelStats, getFeaturedVideoViews, formatCompact } from "@/lib/youtube";
 
 export const revalidate = 3600;
 
@@ -71,7 +71,10 @@ function StatCard({ label, value, live }: Stat) {
 }
 
 export default async function MediaKitPage() {
-  const stats = await getChannelStats();
+  const [stats, featuredViews] = await Promise.all([
+    getChannelStats(),
+    getFeaturedVideoViews(mediaKit.topContent.flatMap((v) => "youtubeId" in v && v.youtubeId ? [v.youtubeId] : [])),
+  ]);
 
   const youtubeStats: Stat[] = [
     {
@@ -253,7 +256,7 @@ export default async function MediaKitPage() {
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
               {platform === "YouTube" ? "YouTube Videos" : "Instagram Reels"}
             </h3>
-            <div className={`grid gap-5 ${platform === "YouTube" ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+            <div className="grid gap-5 md:grid-cols-3">
             {mediaKit.topContent.filter((v) => v.platform === platform).map((v) => {
               const cardClass =
                 "group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-gradient-to-br from-accent/15 via-panel-2 to-bg";
@@ -266,7 +269,11 @@ export default async function MediaKitPage() {
                   </div>
                   <div className="flex flex-1 flex-col justify-between p-5">
                     <div className="flex items-start justify-between gap-3">
-                      <p className="font-display text-4xl leading-none text-white">{v.views}</p>
+                      <p className="font-display text-4xl leading-none text-white">
+                        {"youtubeId" in v && v.youtubeId && featuredViews[v.youtubeId] !== undefined
+                          ? formatCompact(featuredViews[v.youtubeId])
+                          : v.views}
+                      </p>
                       <ArrowIcon className="h-5 w-5 shrink-0 -rotate-45 text-muted transition-colors group-hover:text-accent" />
                     </div>
                     <div className="mt-4">

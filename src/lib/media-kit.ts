@@ -48,7 +48,7 @@ export const mediaKit = {
   /**
    * Top-performing content (client-selected), Instagram + YouTube.
    * A `url` makes the card link out; cards without a `url` render static.
-   * Featured video counts are curated and updated manually.
+   * Reel counts are curated manually. YouTube video counts refresh via the API.
    */
   topContent: [
     {
@@ -73,18 +73,28 @@ export const mediaKit = {
       thumbnail: "/images/media-kit/content/not-the-dusky.webp",
     },
     {
+      title: "Wait...Tom Hardy Can Actually Rap?!",
+      views: "13K",
+      platform: "YouTube",
+      url: "https://www.youtube.com/watch?v=ewvHgIO3RGQ",
+      thumbnail: "https://i.ytimg.com/vi/ewvHgIO3RGQ/hqdefault.jpg",
+      youtubeId: "ewvHgIO3RGQ",
+    },
+    {
       title: "Drake Was Supposed To Be Over",
-      views: "4.4K",
+      views: "6.8K",
       platform: "YouTube",
       url: "https://www.youtube.com/watch?v=tU0TyPqz8kc",
       thumbnail: "https://i.ytimg.com/vi/tU0TyPqz8kc/hqdefault.jpg",
+      youtubeId: "tU0TyPqz8kc",
     },
     {
       title: "The Genius Behind Liquid Swords",
-      views: "2.7K",
+      views: "5.6K",
       platform: "YouTube",
       url: "https://www.youtube.com/watch?v=9d8_mX0TNvU",
       thumbnail: "https://i.ytimg.com/vi/9d8_mX0TNvU/hqdefault.jpg",
+      youtubeId: "9d8_mX0TNvU",
     },
   ],
 
