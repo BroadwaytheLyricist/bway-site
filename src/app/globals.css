@@ -286,9 +286,15 @@ body {
   mask-image: linear-gradient(to bottom, black 0%, black 92%, transparent 100%);
 }
 
+.music-player-card {
+  opacity: var(--music-player-opacity, 1);
+  transform: translate3d(var(--music-player-x, 0px), 0, 0);
+  will-change: transform, opacity;
+}
+
 @media (min-width: 1280px) {
   .music-player-card {
-    transform: translateX(clamp(0px, calc(25vw - 320px), 175px));
+    transform: translate3d(calc(clamp(0px, calc(25vw - 320px), 175px) + var(--music-player-x, 0px)), 0, 0);
   }
 }
 
@@ -356,6 +362,15 @@ body {
   }
   .music-studio {
     transform: scale(1.06);
+  }
+  .music-player-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  @media (min-width: 1280px) {
+    .music-player-card {
+      transform: translateX(clamp(0px, calc(25vw - 320px), 175px)) !important;
+    }
   }
   .scroll-reveal-group[data-ready="true"] [data-reveal-item] {
     opacity: 1;
