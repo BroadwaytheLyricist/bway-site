@@ -435,8 +435,12 @@ body {
 .blog-profile {
   bottom: 120px;
   animation: blog-profile-enter 1.25s ease-out both;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 73%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 73%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 73%, transparent 100%),
+    linear-gradient(to right, black 0%, black 83%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 73%, transparent 100%),
+    linear-gradient(to right, black 0%, black 83%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 .blog-profile img {
