@@ -433,6 +433,7 @@ body {
 }
 
 .blog-profile {
+  bottom: 120px;
   animation: blog-profile-enter 1.25s ease-out both;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 73%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 73%, transparent 100%);
@@ -444,6 +445,7 @@ body {
 
 @media (max-width: 767px) {
   .blog-profile {
+    bottom: 0;
     width: 80vw;
     height: 65vh;
     right: -25vw;
