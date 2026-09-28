@@ -16,27 +16,16 @@ export default function BlogPage() {
 
   return (
     <div className="relative isolate min-h-screen overflow-hidden bg-bg pb-24 pt-32 sm:pb-32 sm:pt-40">
-      <div className="blog-background absolute inset-0 -z-10" aria-hidden="true">
-        <Image
-          src="/images/blog-studio-bg.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-      </div>
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(4,10,27,0.88)_0%,rgba(4,11,31,0.78)_55%,rgba(4,11,31,0.82)_100%)]" />
+      <div className="blog-background absolute inset-0 -z-10" aria-hidden="true" />
       {sortedPosts.length === 1 && (
-        <div className="blog-desk pointer-events-none absolute bottom-0 right-[4vw] -z-10 w-[min(70vw,1000px)]" aria-hidden="true">
+        <div className="blog-profile pointer-events-none absolute bottom-0 right-[2vw] -z-10 h-[min(88vh,880px)] w-[min(52vw,620px)]" aria-hidden="true">
           <Image
-            src="/images/blog-desk-layer.webp"
+            src="/images/media-kit/profile-shadow-cutout.webp"
             alt=""
-            width={2048}
-            height={1152}
+            fill
             priority
-            sizes="(min-width: 768px) 70vw, 110vw"
-            className="h-auto w-full"
+            sizes="(min-width: 768px) 52vw, 80vw"
+            className="object-contain object-bottom"
           />
         </div>
       )}
