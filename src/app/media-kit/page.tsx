@@ -145,15 +145,31 @@ export default async function MediaKitPage() {
             </div>
           </div>
 
-          <div className="media-kit-profile relative min-h-[370px] sm:min-h-[510px] lg:min-h-[570px]">
+          <div className="media-kit-scene relative min-h-[370px] sm:min-h-[510px] lg:min-h-[570px]">
             <Image
-              src="/images/media-kit/profile-shadow-cutout.webp"
-              alt="Broadway The Lyricist in a dark blue side profile facing left"
-              width={1040}
-              height={1513}
+              src="/images/media-kit/scene-curtain.webp"
+              alt=""
+              width={1080}
+              height={1350}
               preload
               sizes="(max-width: 1024px) 100vw, 45vw"
-              className="media-kit-profile-subject"
+              className="media-kit-scene-layer media-kit-scene-background"
+            />
+            <Image
+              src="/images/media-kit/scene-camera.webp"
+              alt="Camera and monitor in Broadway The Lyricist's studio"
+              width={1638}
+              height={2048}
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="media-kit-scene-layer media-kit-scene-camera"
+            />
+            <Image
+              src="/images/media-kit/scene-portrait.webp"
+              alt="Broadway The Lyricist in a hooded portrait facing his camera"
+              width={1638}
+              height={2048}
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="media-kit-scene-layer media-kit-scene-subject"
             />
           </div>
         </div>
