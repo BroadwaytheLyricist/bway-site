@@ -64,10 +64,9 @@ export default function Contact() {
               }
             />
             <p className="mt-6 text-lg leading-relaxed text-muted">
-              Interviews, podcast appearances, brand partnerships, bookings, or
-              just want to weigh in on the culture? Send a message and it&apos;ll
-              land straight in the inbox — partnership and media materials are in
-              the kit below.
+              For interviews, appearances, bookings, and brand partnerships,
+              send a message or email me directly. Want to join the Hip-Hop
+              conversation? Follow along on the channels below.
             </p>
 
             {/* Contact detail cards — matched surfaces so the column carries weight */}
@@ -202,7 +201,7 @@ export default function Contact() {
                 name="subject"
                 type="text"
                 required
-                placeholder="What's this about?"
+                placeholder="Interview, booking, or partnership?"
                 className={`${fieldBase} ${
                   state.errors?.subject ? "border-red-500" : "border-line"
                 }`}
@@ -221,7 +220,7 @@ export default function Contact() {
                 name="message"
                 required
                 rows={5}
-                placeholder="Tell us more…"
+                placeholder="Tell me about your idea and timeline…"
                 className={`${fieldBase} resize-y ${
                   state.errors?.message ? "border-red-500" : "border-line"
                 }`}
