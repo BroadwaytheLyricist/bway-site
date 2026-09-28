@@ -19,17 +19,21 @@ export default function Music() {
   const sectionRef = useRef<HTMLElement>(null);
   const subjectRef = useRef<HTMLDivElement>(null);
   const studioRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const subject = subjectRef.current;
     const studio = studioRef.current;
-    if (!section || !subject || !studio) return;
+    const player = playerRef.current;
+    if (!section || !subject || !studio || !player) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       subject.style.setProperty("--music-x", "0px");
       subject.style.setProperty("--music-opacity", "1");
       studio.style.setProperty("--music-bg-y", "0px");
+      player.style.setProperty("--music-player-x", "0px");
+      player.style.setProperty("--music-player-opacity", "1");
       return;
     }
 
@@ -43,6 +47,11 @@ export default function Music() {
       const entranceDistance = window.innerWidth >= 1024 ? 440 : Math.min(240, window.innerWidth * 0.55);
       subject.style.setProperty("--music-x", `${(eased - 1) * entranceDistance}px`);
       subject.style.setProperty("--music-opacity", `${0.12 + eased * 0.88}`);
+      const playerProgress = Math.min(1, Math.max(0, (progress - 0.1) / 0.78));
+      const playerEased = 1 - Math.pow(1 - playerProgress, 3);
+      const playerDistance = window.innerWidth >= 1024 ? 96 : 44;
+      player.style.setProperty("--music-player-x", `${(1 - playerEased) * playerDistance}px`);
+      player.style.setProperty("--music-player-opacity", `${0.38 + playerEased * 0.62}`);
       studio.style.setProperty("--music-bg-y", `${(0.5 - progress) * 26}px`);
     };
     const onScroll = () => {
@@ -82,7 +91,7 @@ export default function Music() {
           title={<>Broadway <span className="text-accent">On Record</span></>}
         />
 
-        <div className="music-player-card mt-[440px] grid overflow-hidden border border-line shadow-2xl sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[880px] lg:grid-cols-[minmax(350px,0.9fr)_1fr]">
+        <div ref={playerRef} className="music-player-card mt-[440px] grid overflow-hidden border border-line shadow-2xl sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[880px] lg:grid-cols-[minmax(350px,0.9fr)_1fr]">
           <div className="flex items-center justify-center bg-[#101827]/45 px-4 py-8 backdrop-blur-[1px] sm:px-8">
             <iframe
               title="Off Broadway EP (Unmastered) Deluxe Edition on Bandcamp"
