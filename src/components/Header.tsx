@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { nav } from "@/lib/site";
+import { links, nav } from "@/lib/site";
 import { CloseIcon, MenuIcon } from "@/components/icons";
 
 export default function Header() {
@@ -74,10 +74,12 @@ export default function Header() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/#contact"
+            href={links.youtubeSubscribe}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-accent hidden rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 lg:inline-flex"
           >
-            Contact
+            Subscribe on YouTube
           </Link>
 
           <button
@@ -124,11 +126,13 @@ export default function Header() {
           ))}
 
           <Link
-            href="/#contact"
+            href={links.youtubeSubscribe}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className="btn-accent mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
           >
-            Contact
+            Subscribe on YouTube
           </Link>
         </nav>
       </div>
