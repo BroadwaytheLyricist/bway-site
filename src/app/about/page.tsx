@@ -49,6 +49,9 @@ export default function AboutPage() {
               His performances have also taken him to Roxboro Raceway in North Carolina and to a Pass the Aux event in Tampa, where he performed his music for Jadakiss. In the studio, he has worked with producer Domingo, DJ PF Cuttin, and Blahzay Martell of Blahzay Blahzay, the duo behind &ldquo;Danger.&rdquo;
             </p>
             <p>
+              In 2009, his music reached Wilt Wallace at Warner Bros. Records. Wallace later became the label&apos;s VP of Urban &amp; Rhythmic Promotion. No deal resulted.
+            </p>
+            <p>
               Those years making music and performing shape his videos and writing about Hip-Hop history, albums, artists, and the culture around them. He brings an artist&apos;s ear and a fan&apos;s curiosity to the conversation, making room for context, disagreement, and stories that deserve another listen.
             </p>
             <p>
