@@ -359,7 +359,7 @@ body {
 }
 
 .media-kit-hero {
-  background: #040408;
+  background: var(--color-panel);
 }
 
 .media-kit-scene-layer {
