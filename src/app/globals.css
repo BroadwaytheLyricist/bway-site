@@ -384,7 +384,7 @@ body {
   --scene-enter-x: 190px;
   z-index: 2;
   animation-delay: 300ms;
-  filter: brightness(1.12) saturate(0.92) hue-rotate(-8deg);
+  filter: grayscale(1) brightness(0.88) contrast(1.12);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 13%, black 76%, transparent 100%),
     linear-gradient(to right, black 0%, black 76%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 13%, black 76%, transparent 100%),
