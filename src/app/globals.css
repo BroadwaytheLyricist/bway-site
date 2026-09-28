@@ -171,6 +171,32 @@ body {
     #080d19;
 }
 
+.media-kit-recognition-watermarks {
+  display: none;
+}
+
+@media (min-width: 1760px) {
+  .media-kit-recognition-watermarks {
+    display: block;
+  }
+
+  .media-kit-recognition-watermark {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+  }
+
+  .media-kit-recognition-watermark-left {
+    top: 28%;
+    left: calc(50% - 860px);
+  }
+
+  .media-kit-recognition-watermark-right {
+    top: 70%;
+    right: calc(50% - 860px);
+  }
+}
+
 .media-kit-ecosystem-stage {
   background: linear-gradient(180deg, rgba(9, 18, 34, 0.81), rgba(9, 18, 34, 0.9)),
     url('/images/media-kit/studio/clean-studio.webp') center center / cover no-repeat;

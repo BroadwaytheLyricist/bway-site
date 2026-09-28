@@ -311,8 +311,14 @@ export default async function MediaKitPage() {
       </section>
 
       {/* ── Industry recognition ───────────────────────────── */}
-      <section className="media-kit-recognition-stage py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="media-kit-recognition-stage relative isolate overflow-hidden py-20 sm:py-24">
+        <div aria-hidden="true" className="media-kit-recognition-watermarks pointer-events-none absolute inset-0">
+          <div className="article-watermark-orange media-kit-recognition-watermark media-kit-recognition-watermark-left opacity-[0.06]" />
+          <div className="media-kit-recognition-watermark media-kit-recognition-watermark-right opacity-[0.045]">
+            <Image src="/images/logo.png" alt="" fill sizes="220px" className="scale-[1.9] object-contain" />
+          </div>
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             kicker="Cultural Credibility"
             title={
