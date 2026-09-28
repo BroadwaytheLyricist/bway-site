@@ -358,6 +358,7 @@ body {
 
 .media-kit-scene-background {
   z-index: 0;
+  filter: hue-rotate(-8deg);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 17%, black 72%, transparent 100%),
     linear-gradient(to right, transparent 0%, black 22%, black 72%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 17%, black 72%, transparent 100%),
@@ -370,6 +371,7 @@ body {
   --scene-enter-x: -75px;
   z-index: 1;
   animation-delay: 180ms;
+  filter: hue-rotate(-8deg);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 13%, black 76%, transparent 100%),
     linear-gradient(to right, transparent 0%, black 22%, black 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 13%, black 76%, transparent 100%),
@@ -382,6 +384,7 @@ body {
   --scene-enter-x: 190px;
   z-index: 2;
   animation-delay: 300ms;
+  filter: brightness(1.12) saturate(0.92) hue-rotate(-8deg);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 13%, black 76%, transparent 100%),
     linear-gradient(to right, black 0%, black 76%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 13%, black 76%, transparent 100%),
