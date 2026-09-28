@@ -172,8 +172,8 @@ body {
 }
 
 .media-kit-ecosystem-stage {
-  background: linear-gradient(180deg, rgba(9, 15, 27, 0.83), rgba(9, 15, 27, 0.91)),
-    url('/images/media-kit/studio/production-workspace.jpg') center center / cover no-repeat;
+  background: linear-gradient(180deg, rgba(9, 18, 34, 0.81), rgba(9, 18, 34, 0.9)),
+    url('/images/media-kit/studio/clean-studio.webp') center center / cover no-repeat;
 }
 
 .media-kit-partnership-stage {
