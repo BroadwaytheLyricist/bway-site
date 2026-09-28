@@ -489,34 +489,36 @@ export default async function MediaKitPage() {
                   }
                 />
                 <p className="mt-5 text-lg leading-relaxed text-muted">
-                  For sponsorships, integrations, and partnership inquiries,
-                  reach out directly.
+                  Have a partnership in mind? Share the brand, the idea, and
+                  your timeline. Let&apos;s make something that resonates.
                 </p>
                 <a
-                  href={`mailto:${links.email}`}
-                  className="mt-6 inline-flex items-center gap-3 text-sm font-medium text-white transition-colors hover:text-accent"
+                  href={`mailto:${links.email}?subject=Partnership%20Inquiry`}
+                  className="btn-accent mt-7 inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
                 >
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
-                    <MailIcon className="h-5 w-5" />
-                  </span>
-                  {links.email}
+                  <MailIcon className="h-5 w-5" />
+                  Email a Partnership Inquiry
                 </a>
+                <p className="mt-4 text-sm text-muted">{links.email}</p>
               </div>
 
-              <div className="flex flex-col gap-3">
+              <div className="border-t border-line pt-7 lg:border-l lg:border-t-0 lg:py-2 lg:pl-10">
+                <p className="kicker mb-3">See the Work</p>
+                <p className="mb-5 text-sm leading-relaxed text-muted">
+                  Explore the videos and conversations behind the numbers.
+                </p>
+                <div className="flex flex-col gap-3">
                 <a
                   href={links.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-4 rounded-2xl border border-line bg-panel p-5 transition-colors hover:border-accent/50"
+                  className="group flex items-center justify-between gap-4 rounded-xl border border-line bg-panel/60 px-4 py-3 transition-colors hover:border-accent/50"
                 >
-                  <span className="flex items-center gap-4">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-white">
-                      <YouTubeIcon className="h-6 w-6" />
+                  <span className="flex items-center gap-3">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent/10 text-accent">
+                      <YouTubeIcon className="h-5 w-5" />
                     </span>
-                    <span className="text-sm font-medium text-white">
-                      Broadway The Lyricist
-                    </span>
+                    <span className="text-sm font-medium text-white">Watch on YouTube</span>
                   </span>
                   <ArrowIcon className="h-5 w-5 -rotate-45 text-muted transition-colors group-hover:text-accent" />
                 </a>
@@ -524,18 +526,17 @@ export default async function MediaKitPage() {
                   href={links.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-4 rounded-2xl border border-line bg-panel p-5 transition-colors hover:border-accent/50"
+                  className="group flex items-center justify-between gap-4 rounded-xl border border-line bg-panel/60 px-4 py-3 transition-colors hover:border-accent/50"
                 >
-                  <span className="flex items-center gap-4">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-white">
-                      <InstagramIcon className="h-6 w-6" />
+                  <span className="flex items-center gap-3">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent/10 text-accent">
+                      <InstagramIcon className="h-5 w-5" />
                     </span>
-                    <span className="text-sm font-medium text-white">
-                      @broadwaythelyricist
-                    </span>
+                    <span className="text-sm font-medium text-white">See the Reels on Instagram</span>
                   </span>
                   <ArrowIcon className="h-5 w-5 -rotate-45 text-muted transition-colors group-hover:text-accent" />
                 </a>
+                </div>
               </div>
             </div>
           </div>
