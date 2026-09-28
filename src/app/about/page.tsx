@@ -5,7 +5,7 @@ import { links } from "@/lib/site";
 
 const title = "About Broadway the Lyricist | Artist & Hip-Hop Storyteller";
 const description =
-  "Meet Broadway the Lyricist, a Brooklyn-rooted recording artist and Hip-Hop cultural storyteller creating conversations about the artists, albums, and history behind the music.";
+  "Meet Broadway the Lyricist, a Tampa-based recording artist from East New York, Brooklyn, whose original music and cultural storytelling spark conversations about Hip-Hop.";
 
 export const metadata: Metadata = {
   title,
@@ -36,17 +36,20 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div>
             <p className="kicker">The Story</p>
-            <h2 className="mt-4 font-display text-4xl leading-tight text-white sm:text-5xl">Brooklyn roots. <span className="text-accent">A lifelong connection to Hip-Hop.</span></h2>
+            <h2 className="mt-4 font-display text-4xl leading-tight text-white sm:text-5xl">An artist&apos;s ear. <span className="text-accent">A storyteller&apos;s voice.</span></h2>
           </div>
           <div className="space-y-6 text-base leading-8 text-white/75 sm:text-lg">
             <p>
-              Broadway the Lyricist comes from East New York, Brooklyn. Music came first: he is a recording artist as well as a voice in the conversations around Hip-Hop. That perspective shapes how he talks about the records and people that matter to him.
+              Broadway the Lyricist is a Tampa-based solo artist from East New York, Brooklyn. Inspired by Nas, Jay-Z, Jadakiss, Prodigy, Ghostface Killah, and Black Thought, he makes intimate, honest music built on thoughtful bars and strong songwriting.
             </p>
             <p>
-              Now based in Tampa, he brings an artist&apos;s ear and a fan&apos;s curiosity to videos about Hip-Hop history, albums, artists, and the culture around them. His work makes room for context, disagreement, and stories that deserve another listen.
+              His path has included collaborating with producer Domingo and performing his music for Jadakiss at a Pass the Aux event in Tampa. Through it all, his focus has stayed on writing about his life and experiences in a way people can connect with personally.
             </p>
             <p>
-              The goal is to make the Hip-Hop conversations we should be having, and invite you into them.
+              That same artist&apos;s perspective now shapes his videos and writing about Hip-Hop history, albums, artists, and the culture around them. He brings a fan&apos;s curiosity to the conversation, making room for context, disagreement, and stories that deserve another listen.
+            </p>
+            <p>
+              His goal is to make the Hip-Hop conversations we should be having, and invite you into them.
             </p>
           </div>
         </div>
