@@ -10,9 +10,9 @@
 
 export const mediaKit = {
   edition: "Media Kit · 2026",
-  tagline: "Hip-Hop Commentary • Music Journalism • Cultural Storytelling",
+  tagline: "Hip-Hop Commentary • Original Music • Cultural Storytelling",
   positioning:
-    "Broadway the Lyricist blends documentary-style storytelling, music journalism, premium studio production, and creator-tech expertise into content built for long-form engagement and high-retention short-form discovery — connecting with passionate hip-hop audiences across every platform.",
+    "Broadway the Lyricist blends documentary-style storytelling, Hip-Hop commentary, original music, premium studio production, and creator-tech expertise into content built for long-form engagement and high-retention short-form discovery — connecting with passionate Hip-Hop audiences across every platform.",
 
   portrait: {
     src: "/images/media-kit/portrait.jpg",
