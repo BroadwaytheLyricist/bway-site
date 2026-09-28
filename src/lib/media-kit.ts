@@ -34,7 +34,7 @@ export const mediaKit = {
     instagramFollowers: "2,746",
     instagramViews30d: "37K+",
     instagramReached: "26.7K",
-    topReel: "95.9K+",
+    topReel: "96.2K+",
   },
 
   audience: [
@@ -48,38 +48,43 @@ export const mediaKit = {
   /**
    * Top-performing content (client-selected), Instagram + YouTube.
    * A `url` makes the card link out; cards without a `url` render static.
-   * YouTube view counts are live-verified; Instagram counts are reported.
+   * Featured video counts are curated and updated manually.
    */
   topContent: [
     {
       title: "5 Songs Fans Made Me Hate",
-      views: "95.9K",
+      views: "96.2K",
       platform: "Instagram Reel",
-      url: "https://www.instagram.com/p/DTZCg5IDjOp/",
+      url: "https://www.instagram.com/reel/DTZCg5IDjOp/",
+      thumbnail: "/images/media-kit/content/five-songs.webp",
     },
     {
-      title: "Knicks In 4",
-      views: "65K",
+      title: "The Goal Post Keeps Moving",
+      views: "78.3K",
       platform: "Instagram Reel",
-      url: "https://www.instagram.com/p/DaBmUJRPdlR/",
+      url: "https://www.instagram.com/reel/DaBmUJRPdlR/",
+      thumbnail: "/images/media-kit/content/goal-post.webp",
     },
     {
       title: "Not The Dusky!?",
-      views: "23.3K",
+      views: "23.5K",
       platform: "Instagram Reel",
-      url: "https://www.instagram.com/p/DX-kj1AOWHA/",
+      url: "https://www.instagram.com/reel/DX-kj1AOWHA/",
+      thumbnail: "/images/media-kit/content/not-the-dusky.webp",
     },
     {
       title: "Drake Was Supposed To Be Over",
       views: "4.4K",
       platform: "YouTube",
       url: "https://www.youtube.com/watch?v=tU0TyPqz8kc",
+      thumbnail: "https://i.ytimg.com/vi/tU0TyPqz8kc/hqdefault.jpg",
     },
     {
       title: "The Genius Behind Liquid Swords",
       views: "2.7K",
       platform: "YouTube",
       url: "https://www.youtube.com/watch?v=9d8_mX0TNvU",
+      thumbnail: "https://i.ytimg.com/vi/9d8_mX0TNvU/hqdefault.jpg",
     },
   ],
 

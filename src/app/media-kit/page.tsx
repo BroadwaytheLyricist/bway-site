@@ -248,27 +248,35 @@ export default async function MediaKitPage() {
               </>
             }
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-            {mediaKit.topContent.map((v) => {
+          {(["Instagram Reel", "YouTube"] as const).map((platform) => (
+          <div key={platform} className="mt-10">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+              {platform === "YouTube" ? "YouTube Videos" : "Instagram Reels"}
+            </h3>
+            <div className={`grid gap-5 ${platform === "YouTube" ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+            {mediaKit.topContent.filter((v) => v.platform === platform).map((v) => {
               const cardClass =
-                "group flex h-full flex-col justify-between rounded-2xl border border-line bg-gradient-to-br from-accent/25 via-panel-2 to-bg p-5";
+                "group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-gradient-to-br from-accent/15 via-panel-2 to-bg";
               const body = (
                 <>
-                  <div className="flex items-start justify-between">
-                    <p className="font-display text-4xl leading-none text-white">
-                      {v.views}
-                    </p>
-                    {v.url && (
-                      <ArrowIcon className="h-5 w-5 -rotate-45 text-muted transition-colors group-hover:text-accent" />
-                    )}
+                  <div className={`relative flex items-center justify-center overflow-hidden bg-[#080d19] ${platform === "YouTube" ? "aspect-video" : "aspect-[4/5]"}`}>
+                    {/* Native img supports the YouTube thumbnail host without changing the app image configuration. */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={v.thumbnail} alt={`${v.title} thumbnail`} loading="lazy" className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.025]" />
                   </div>
-                  <div className="mt-6">
+                  <div className="flex flex-1 flex-col justify-between p-5">
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="font-display text-4xl leading-none text-white">{v.views}</p>
+                      <ArrowIcon className="h-5 w-5 shrink-0 -rotate-45 text-muted transition-colors group-hover:text-accent" />
+                    </div>
+                    <div className="mt-4">
                     <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-accent">
                       {v.platform}
                     </p>
                     <h3 className="mt-1.5 text-sm font-semibold leading-snug text-white">
                       {v.title}
                     </h3>
+                    </div>
                   </div>
                 </>
               );
@@ -289,7 +297,9 @@ export default async function MediaKitPage() {
                 </div>
               );
             })}
+            </div>
           </div>
+          ))}
         </div>
       </section>
 
