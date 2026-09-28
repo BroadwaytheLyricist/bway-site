@@ -7,6 +7,7 @@ export const YOUTUBE_CHANNEL_ID = "UCSReMFrM5-41HxZoT5FAmSg";
 
 export const links = {
   youtube: `https://www.youtube.com/channel/${YOUTUBE_CHANNEL_ID}`,
+  youtubeSubscribe: `https://www.youtube.com/channel/${YOUTUBE_CHANNEL_ID}?sub_confirmation=1`,
   instagram: "https://www.instagram.com/broadwaythelyricist",
   tiktok: "https://www.tiktok.com/@broadwaythelyricist",
   facebook:
