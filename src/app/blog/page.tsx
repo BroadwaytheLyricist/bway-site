@@ -18,13 +18,13 @@ export default function BlogPage() {
     <div className="relative isolate min-h-screen overflow-hidden bg-bg pb-24 pt-32 sm:pb-32 sm:pt-40">
       <div className="blog-background absolute inset-0 -z-10" aria-hidden="true" />
       {sortedPosts.length === 1 && (
-        <div className="blog-profile pointer-events-none absolute bottom-0 right-[2vw] -z-10 h-[min(88vh,880px)] w-[min(52vw,620px)]" aria-hidden="true">
+        <div className="blog-profile pointer-events-none absolute right-[2vw] -z-10 h-[min(98vh,1000px)] w-[min(60vw,720px)]" aria-hidden="true">
           <Image
             src="/images/media-kit/profile-shadow-cutout.webp"
             alt=""
             fill
             priority
-            sizes="(min-width: 768px) 52vw, 80vw"
+            sizes="(min-width: 768px) 60vw, 80vw"
             className="object-contain object-bottom"
           />
         </div>
