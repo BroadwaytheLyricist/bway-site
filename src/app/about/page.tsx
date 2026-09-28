@@ -55,7 +55,7 @@ export default function AboutPage() {
               In 2009, his music reached Wilt Wallace at Warner Bros. Records. Wallace later became the label&apos;s VP of Urban &amp; Rhythmic Promotion, though that contact did not lead to a deal. Broadway kept writing, recording, and performing.
             </p>
             <p>
-              That experience now informs the videos and stories he makes about Hip-Hop history, albums, artists, and culture. He brings an artist&apos;s ear and a fan&apos;s curiosity to the records, leaving room for context, disagreement, and a closer listen. The goal is to make the Hip-Hop conversations we should be having, and invite you into them.
+              That experience now informs the videos and stories he makes about Hip-Hop history, albums, artists, and culture. He brings an artist&apos;s ear and a fan&apos;s curiosity to the records, leaving room for context, disagreement, and a closer listen. The goal is to create the Hip-Hop conversations we should be having, and invite you into them.
             </p>
           </div>
         </div>
