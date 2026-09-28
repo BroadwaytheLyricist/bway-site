@@ -40,22 +40,22 @@ export default function AboutPage() {
           </div>
           <div className="space-y-6 text-base leading-8 text-white/75 sm:text-lg">
             <p>
-              Broadway the Lyricist is a Tampa-based solo artist from the East New York section of Brooklyn, New York. Inspired by Nas, Jay-Z, Jadakiss, Prodigy, Ghostface Killah, and Black Thought, he makes intimate, honest music built on thoughtful bars and strong songwriting.
+              Music was Broadway the Lyricist&apos;s first way of telling a story. A Tampa-based solo artist from the East New York section of Brooklyn, New York, he writes from his own life, putting honest detail and strong songwriting alongside the bars. Nas, Jay-Z, Jadakiss, Prodigy, Ghostface Killah, and Black Thought are among the MCs who shaped his ear.
             </p>
             <p>
-              He performed regularly at End of the Weak, the long-running New York City open mic that has welcomed both aspiring and veteran MCs. He also took the stage at Maria Davis&apos; Monday Night Madness showcase. Davis is the New York Hip-Hop promoter heard on Jay-Z&apos;s &ldquo;22 Two&apos;s&rdquo; from <em>Reasonable Doubt</em>.
+              He brought that music to New York audiences through several weekly performances at End of the Weak, one of the city&apos;s longest-running Hip-Hop open mics. It is a space for rising MCs and veterans alike; over the years, its stage has also welcomed KRS-One, Talib Kweli, and Lupe Fiasco.
             </p>
             <p>
-              His performances have also taken him to Roxboro Raceway in North Carolina and to a Pass the Aux event in Tampa, where he performed his music for Jadakiss. In the studio, he has worked with producer Domingo, DJ PF Cuttin, and Blahzay Martell of Blahzay Blahzay, the duo behind &ldquo;Danger.&rdquo;
+              Broadway also performed at Maria Davis&apos; Monday Night Madness. Davis built showcases that brought unsigned artists before industry audiences. Her separate Mad Wednesdays nights became part of Hip-Hop history through her appearance on Jay-Z&apos;s &ldquo;22 Two&apos;s&rdquo; from <em>Reasonable Doubt</em>.
             </p>
             <p>
-              In 2009, his music reached Wilt Wallace at Warner Bros. Records. Wallace later became the label&apos;s VP of Urban &amp; Rhythmic Promotion. No deal resulted.
+              His stages extended beyond New York, including Roxboro Raceway in North Carolina and a Pass the Aux event in Tampa where he performed his music for Jadakiss. His studio work connected him with Domingo, a fellow East New York producer whose credits include Big Pun and Rakim, as well as DJ PF Cuttin and Blahzay Martell, the Blahzay Blahzay duo behind &ldquo;Danger.&rdquo;
             </p>
             <p>
-              Those years making music and performing shape his videos and writing about Hip-Hop history, albums, artists, and the culture around them. He brings an artist&apos;s ear and a fan&apos;s curiosity to the conversation, making room for context, disagreement, and stories that deserve another listen.
+              In 2009, his music reached Wilt Wallace at Warner Bros. Records. Wallace later became the label&apos;s VP of Urban &amp; Rhythmic Promotion, though that contact did not lead to a deal. Broadway kept writing, recording, and performing.
             </p>
             <p>
-              His goal is to make the Hip-Hop conversations we should be having, and invite you into them.
+              That experience now informs the videos and stories he makes about Hip-Hop history, albums, artists, and culture. He brings an artist&apos;s ear and a fan&apos;s curiosity to the records, leaving room for context, disagreement, and a closer listen. The goal is to make the Hip-Hop conversations we should be having, and invite you into them.
             </p>
           </div>
         </div>
