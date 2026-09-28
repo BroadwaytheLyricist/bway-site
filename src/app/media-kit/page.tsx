@@ -340,7 +340,7 @@ export default async function MediaKitPage() {
           </div>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
             Recognition includes engagement from respected voices across music,
-            media, film, television, journalism, and hip-hop culture.
+            media, film, television, and Hip-Hop culture.
           </p>
         </div>
       </section>
