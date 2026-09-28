@@ -38,7 +38,7 @@ const jsonLd = {
       url: siteUrl,
       jobTitle: "Hip-Hop Commentator & Content Creator",
       description:
-        "Hip-hop history, commentary, and cultural storytelling — deep dives, reactions, and debates.",
+        "Hip-Hop commentary, original music, and cultural storytelling from Broadway the Lyricist.",
       knowsAbout: [
         "Hip-hop",
         "Hip-hop history",
@@ -58,7 +58,7 @@ const jsonLd = {
       url: siteUrl,
       name: "Broadway The Lyricist",
       description:
-        "Deep dives. Reactions. Debates. The hip-hop conversations we should be having.",
+        "Hip-Hop commentary, original music, and the conversations we should be having.",
       inLanguage: "en-US",
       publisher: { "@id": `${siteUrl}/#person` },
     },
@@ -67,16 +67,10 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Broadway The Lyricist — Hip-Hop History & Commentary",
+  title: "Broadway the Lyricist | Hip-Hop Commentary & Original Music",
   description:
-    "Deep dives. Reactions. Debates. The hip-hop conversations we should be having — long-form, unfiltered, on record.",
-  keywords: [
-    "Broadway The Lyricist",
-    "hip-hop commentary",
-    "hip-hop history",
-    "hip-hop deep dives",
-    "music reactions",
-  ],
+    "Hip-Hop commentary, cultural storytelling, and original music from Broadway the Lyricist. Watch videos, explore series, read the blog, and hear the music.",
+  alternates: { canonical: "/" },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -87,9 +81,9 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Broadway The Lyricist — Hip-Hop History & Commentary",
+    title: "Broadway the Lyricist | Hip-Hop Commentary & Original Music",
     description:
-      "Deep dives. Reactions. Debates. The hip-hop conversations we should be having — long-form, unfiltered, on record.",
+      "Hip-Hop commentary, cultural storytelling, and original music. The Hip-Hop conversations we should be having.",
     url: siteUrl,
     siteName: "Broadway The Lyricist",
     images: [socialPreviewImage],
@@ -97,9 +91,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Broadway The Lyricist — Hip-Hop History & Commentary",
+    title: "Broadway the Lyricist | Hip-Hop Commentary & Original Music",
     description:
-      "Deep dives. Reactions. Debates. The hip-hop conversations we should be having.",
+      "Hip-Hop commentary, cultural storytelling, and original music from Broadway the Lyricist.",
     images: [socialPreviewImage],
   },
 };

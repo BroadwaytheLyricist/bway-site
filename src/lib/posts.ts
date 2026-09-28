@@ -6,6 +6,7 @@ export type PostSection = {
 export type Post = {
   slug: string;
   title: string;
+  seoTitle?: string;
   dek: string;
   description: string;
   publishedAt: string;
@@ -22,12 +23,13 @@ export const posts: Post[] = [
   {
     slug: "tom-hardy-frankie-pulitzer-czarface",
     title: "Tom Hardy Was Rapping Before He Was Tom Hardy",
+    seoTitle: "Tom Hardy, Frankie Pulitzer & Czarface",
     dek: "The worst-kept secret in Hip-Hop, the Tommy No. 1 tapes, and how Bane ended up on a Czarface album.",
     description:
-      "Long before Bane, Tom Hardy was a teenage rapper named Tommy No. 1. Now, as Frankie Pulitzer, he's dropped a full album with Czarface, and here's the whole story.",
+      "Tom Hardy's teenage rap tapes, the Frankie Pulitzer mystery, and Czarface's collaboration bring a surprising Hip-Hop story into focus.",
     publishedAt: "2026-09-24",
     readTime: "6 min read",
-    category: "Deep Dive",
+    category: "Hip-Hop Story",
     youtubeId: "ewvHgIO3RGQ",
     thumbnail: "/images/tom-hardy-frankie-pulitzer-czarface.png",
     opening: [

@@ -83,7 +83,7 @@ export default async function LatestVideos() {
           // Graceful fallback when the RSS feed is unavailable.
           <div className="mt-12 rounded-2xl border border-line bg-panel-2 p-10 text-center">
             <p className="text-lg text-muted">
-              New deep dives drop regularly on YouTube.
+              New Hip-Hop conversations drop regularly on YouTube.
             </p>
             <a
               href={links.youtube}

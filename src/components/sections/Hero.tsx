@@ -31,7 +31,7 @@ export default function Hero() {
             className="hero-reveal mt-6 max-w-xl text-lg leading-relaxed text-muted"
             style={{ "--reveal-delay": "260ms" } as CSSProperties}
           >
-            Deep dives. Reactions. Debates. The hip-hop conversations we should be
+            Stories. Reactions. Debates. The Hip-Hop conversations we should be
             having — long-form, unfiltered, on record.
           </p>
 

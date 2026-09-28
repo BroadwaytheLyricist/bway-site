@@ -2,30 +2,29 @@ import type { MetadataRoute } from "next";
 import { posts } from "@/lib/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Update this after a substantive homepage or Media Kit content change.
+  const siteUpdatedAt = "2026-09-28";
+  const latestPostDate = posts.reduce(
+    (latest, post) => post.publishedAt > latest ? post.publishedAt : latest,
+    "",
+  ) || siteUpdatedAt;
+  const blogIndexUpdatedAt = latestPostDate > siteUpdatedAt ? latestPostDate : siteUpdatedAt;
   return [
     {
       url: "https://broadwaythelyricist.com/",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
+      lastModified: siteUpdatedAt,
     },
     {
       url: "https://broadwaythelyricist.com/blog",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
+      lastModified: blogIndexUpdatedAt,
     },
     ...posts.map((post) => ({
       url: `https://broadwaythelyricist.com/blog/${post.slug}`,
-      lastModified: new Date(post.publishedAt),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
+      lastModified: post.publishedAt,
     })),
     {
       url: "https://broadwaythelyricist.com/media-kit",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
+      lastModified: siteUpdatedAt,
     },
   ];
 }

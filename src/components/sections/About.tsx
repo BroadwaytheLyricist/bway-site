@@ -91,22 +91,21 @@ export default function About() {
 
           <div className="mt-8 space-y-5 text-base leading-relaxed text-white/72 sm:text-lg lg:pr-4">
             <p>
-              Broadway The Lyricist is a hip-hop commentator, content creator,
-              and recording artist dedicated to preserving and discussing
-              hip-hop culture through thoughtful analysis, artist
-              retrospectives, album discussions, reactions, and historical deep
-              dives.
+              Broadway The Lyricist is a Hip-Hop commentator, content creator,
+              and recording artist dedicated to preserving Hip-Hop history and
+              discussing the culture through artist retrospectives, album
+              conversations, and reactions.
             </p>
             <p>
               Through long-form YouTube content, short-form social media
               content, and community engagement, Broadway explores the stories,
-              albums, artists, and moments that helped shape hip-hop culture.
+              albums, artists, and moments that helped shape Hip-Hop culture.
             </p>
           </div>
 
           <blockquote className="mt-8 border-l-2 border-accent bg-bg/20 py-1 pl-5 backdrop-blur-[2px]">
             <p className="font-display text-xl leading-snug text-white sm:text-2xl">
-              His mission is simple: to create the hip-hop conversations we
+              His mission is simple: to create the Hip-Hop conversations we
               should be having.
             </p>
           </blockquote>

@@ -5,10 +5,24 @@ import SectionHeading from "@/components/SectionHeading";
 import { formatPostDate, posts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Blog | Broadway The Lyricist",
+  title: "On the Record: Hip-Hop Stories | Broadway the Lyricist",
   description:
-    "Hip-Hop history, commentary, deep dives, and the conversations the culture should be having.",
+    "Read Broadway the Lyricist's stories on Hip-Hop history, artists, albums, and the culture behind the music.",
   alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "On the Record: Hip-Hop Stories | Broadway the Lyricist",
+    description: "Hip-Hop history, artists, albums, and cultural commentary from Broadway the Lyricist.",
+    url: "/blog",
+    siteName: "Broadway The Lyricist",
+    type: "website",
+    images: [{ url: "/images/og/broadway-social-preview.jpg", width: 1200, height: 630, alt: "Broadway the Lyricist" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "On the Record: Hip-Hop Stories | Broadway the Lyricist",
+    description: "Hip-Hop stories and cultural commentary from Broadway the Lyricist.",
+    images: ["/images/og/broadway-social-preview.jpg"],
+  },
 };
 
 export default function BlogPage() {
@@ -32,6 +46,7 @@ export default function BlogPage() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-b from-transparent to-bg" />
       <section className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
+          as="h1"
           kicker="On The Record"
           title={
             <>

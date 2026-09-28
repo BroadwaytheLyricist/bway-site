@@ -24,14 +24,14 @@ const socialPreviewImage = {
 };
 
 export const metadata: Metadata = {
-  title: "Media Kit — Broadway The Lyricist",
+  title: "Media Kit & Brand Partnerships | Broadway the Lyricist",
   description:
-    "Partnership media kit for Broadway The Lyricist — audience, performance, industry recognition, studio setup, and collaboration opportunities.",
+    "Explore Broadway the Lyricist's audience, selected content, industry recognition, production capabilities, and brand partnership opportunities.",
   alternates: { canonical: "/media-kit" },
   openGraph: {
-    title: "Media Kit — Broadway The Lyricist",
+    title: "Media Kit & Brand Partnerships | Broadway the Lyricist",
     description:
-      "Partnership media kit for Broadway The Lyricist — audience, performance, industry recognition, studio setup, and collaboration opportunities.",
+      "Audience, selected work, industry recognition, and ways to partner with Broadway the Lyricist.",
     url: "/media-kit",
     siteName: "Broadway The Lyricist",
     images: [socialPreviewImage],
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Media Kit — Broadway The Lyricist",
+    title: "Media Kit & Brand Partnerships | Broadway the Lyricist",
     description:
-      "Partnership media kit for Broadway The Lyricist — audience, performance, industry recognition, studio setup, and collaboration opportunities.",
+      "Audience, selected work, industry recognition, and ways to partner with Broadway the Lyricist.",
     images: [socialPreviewImage],
   },
 };
@@ -101,7 +101,7 @@ export default async function MediaKitPage() {
   ];
 
   return (
-    <main className="bg-bg">
+    <div className="bg-bg">
       {/* ── Hero ───────────────────────────────────────────── */}
       <section className="media-kit-hero relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
@@ -551,6 +551,6 @@ export default async function MediaKitPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

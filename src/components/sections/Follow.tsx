@@ -49,7 +49,7 @@ export default function Follow() {
           }
         />
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-          New deep dives, reactions, and debates across every platform. Follow
+          New stories, reactions, and debates across every platform. Follow
           along and add your voice.
         </p>
 

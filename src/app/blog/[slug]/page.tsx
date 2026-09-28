@@ -34,7 +34,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   return {
-    title: `${post.title} | Broadway The Lyricist`,
+    title: `${post.seoTitle ?? post.title} | Broadway the Lyricist`,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
@@ -74,6 +74,7 @@ export default async function PostPage({ params }: PostPageProps) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
+    image: post.thumbnail ? `https://broadwaythelyricist.com${post.thumbnail}` : undefined,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
     mainEntityOfPage: url,

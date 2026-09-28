@@ -108,6 +108,6 @@ export const stats = [
 ] as const;
 
 export const channelTagline =
-  "Deep dives. Reactions. Debates. The Hip-Hop conversations we should be having.";
+  "Stories. Reactions. Debates. The Hip-Hop conversations we should be having.";
 
 export const businessEmail = links.email;
