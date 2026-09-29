@@ -70,7 +70,7 @@ export const playlists: Playlist[] = [
   },
   {
     title: "Hip Hop, Sports & Culture",
-    url: "https://www.youtube.com/playlist?list=PLH_y27XKyoFE",
+    url: "https://www.youtube.com/watch?v=MtVdCjdLVaM&list=PLH_y27XKyoFE",
     image: "/images/playlists-v3/hip-hop-sports-culture.webp",
   },
   {
