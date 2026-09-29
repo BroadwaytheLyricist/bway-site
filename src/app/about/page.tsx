@@ -71,7 +71,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <p className="kicker">Explore Broadway&apos;s Work</p>
           <h2 className="mt-4 font-display text-4xl text-white sm:text-5xl">The stories. <span className="text-accent">The music.</span> The conversation.</h2>
-          <AboutArtReveal className="about-work-art relative mt-4 h-[250px] overflow-hidden sm:h-[390px] lg:h-[460px]">
+          <AboutArtReveal className="about-work-art relative mt-5 h-[285px] overflow-hidden sm:h-[430px] lg:h-[560px]">
             <Image src="/images/about/performance-crowd.webp" alt="" fill sizes="(max-width: 1279px) 100vw, 1280px" className="about-work-foreground object-contain object-bottom" />
           </AboutArtReveal>
           <div className="relative z-10 mt-5 grid gap-5 md:grid-cols-3">
