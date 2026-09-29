@@ -227,15 +227,10 @@ export default function Contact() {
         </div>
 
         <div className="mt-20 border-t border-white/15 pt-14 sm:mt-24 sm:pt-16">
-          <p className="kicker">Stay Connected</p>
-          <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
-            <h2 className="max-w-3xl font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-6xl">
-              Follow Me On <span className="text-accent">Social Media</span>
-            </h2>
-            <p className="max-w-sm text-base leading-relaxed text-muted lg:pb-1">
-              Join the Hip-Hop conversations, share your take, and see what&apos;s next.
-            </p>
-          </div>
+          <p className="kicker text-center">Stay Connected</p>
+          <h2 className="mx-auto mt-4 max-w-5xl text-center font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-6xl">
+            Follow Me On <span className="text-accent">Social Media</span>
+          </h2>
 
           <ScrollRevealGroup className="mt-10 grid gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-4" direction="up">
             {socials.map(({ label, handle, href, Icon }) => (
