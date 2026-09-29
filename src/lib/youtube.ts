@@ -164,7 +164,7 @@ export async function getFeaturedVideoViews(ids: string[]): Promise<Record<strin
   }
 }
 
-/** Current public playlist artwork, cached for one hour. Keeps the saved image as fallback. */
+/** Current public playlist artwork, refreshed every minute. Keeps the saved image as fallback. */
 export async function getPlaylistThumbnail(id: string): Promise<string | null> {
   const key = process.env.YOUTUBE_API_KEY;
   if (!key) return null;
@@ -173,8 +173,9 @@ export async function getPlaylistThumbnail(id: string): Promise<string | null> {
     const url = new URL("https://www.googleapis.com/youtube/v3/playlists");
     url.searchParams.set("part", "snippet");
     url.searchParams.set("id", id);
+    url.searchParams.set("maxResults", "1");
     url.searchParams.set("key", key);
-    const res = await fetch(url.toString(), { next: { revalidate: 3600 } });
+    const res = await fetch(url.toString(), { next: { revalidate: 60 } });
     if (!res.ok) return null;
 
     const data = (await res.json()) as {

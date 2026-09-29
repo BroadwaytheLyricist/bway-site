@@ -7,6 +7,8 @@ import Music from "@/components/sections/Music";
 import Contact from "@/components/sections/Contact";
 import AnchorLanding from "@/components/AnchorLanding";
 
+export const revalidate = 60;
+
 export default function Home() {
   return (
     <>
