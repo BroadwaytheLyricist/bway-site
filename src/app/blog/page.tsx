@@ -60,10 +60,6 @@ export default function BlogPage() {
           more than a hot take.
         </p>
 
-        <Link href="/bar-lounge" className="mt-10 inline-flex items-center gap-3 border-b border-accent pb-2 text-sm font-bold uppercase tracking-[0.12em] text-white transition-colors hover:text-accent">
-          Enter The Bar Lounge <span aria-hidden="true">→</span>
-        </Link>
-
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
           {sortedPosts.map((post) => (
             <article

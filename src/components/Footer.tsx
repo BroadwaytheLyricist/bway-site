@@ -55,8 +55,6 @@ export default function Footer() {
             })}
           </nav>
 
-          <Link href="/bar-lounge" className="mt-6 text-sm font-medium text-muted transition-colors hover:text-accent">The Bar Lounge</Link>
-
           <div className="mt-8 flex items-center gap-3">
             {socials.map(({ label, href, Icon }) => (
               <a

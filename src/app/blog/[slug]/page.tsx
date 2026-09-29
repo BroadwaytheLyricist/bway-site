@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import VideoEmbed from "@/components/VideoEmbed";
-import { barLoungeRounds } from "@/lib/bar-lounge";
 import { formatPostDate, getPost, posts } from "@/lib/posts";
 
 function renderInline(text: string) {
@@ -68,7 +67,6 @@ export default async function PostPage({ params }: PostPageProps) {
   const post = getPost(slug);
 
   if (!post) notFound();
-  const loungeRound = barLoungeRounds.find((round) => round.articleSlug === post.slug && round.status === "open");
 
   const url = `https://broadwaythelyricist.com/blog/${post.slug}`;
   const jsonLd = {
@@ -184,15 +182,6 @@ export default async function PostPage({ params }: PostPageProps) {
             </section>
           ))}
         </div>
-
-        {loungeRound && (
-          <aside className="mt-16 border-y border-accent/40 bg-[#0b1729]/80 px-6 py-10 sm:px-9" aria-label="The Bar Lounge challenge">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">The Bar Lounge · Round 01</p>
-            <h2 className="mt-4 font-display text-4xl leading-none text-white sm:text-5xl">Caught The Detail?</h2>
-            <p className="mt-5 text-lg leading-8 text-[#d8dde6]">{loungeRound.question} You&apos;ve got the story. Now tell Broadway what you found.</p>
-            <Link href="/bar-lounge#current-round" className="mt-6 inline-flex border-b border-accent pb-2 text-sm font-bold uppercase tracking-[0.12em] text-white transition-colors hover:text-accent">Make Your Call →</Link>
-          </aside>
-        )}
 
         <blockquote className="mt-16 border-l-4 border-accent bg-panel-2 px-6 py-8 font-display text-3xl leading-tight text-white sm:px-9 sm:text-4xl">
           {post.closing}

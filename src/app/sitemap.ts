@@ -23,10 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: "https://broadwaythelyricist.com/blog",
       lastModified: latestBlogIndexDate,
     },
-    {
-      url: "https://broadwaythelyricist.com/bar-lounge",
-      lastModified: currentPageUpdatedAt,
-    },
     ...posts.map((post) => ({
       url: `https://broadwaythelyricist.com/blog/${post.slug}`,
       lastModified: post.publishedAt,
