@@ -66,12 +66,12 @@ export default function AboutPage() {
         </div>
       </section>
       <section className="about-work-section relative isolate overflow-hidden border-t border-line bg-[#0b1423] py-20 sm:py-28">
-        <div aria-hidden="true" className="about-work-stage absolute inset-0 -z-20" />
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,18,34,.78),rgba(8,18,34,.76)_45%,rgba(8,18,34,.94)),linear-gradient(90deg,rgba(8,18,34,.82),transparent_75%)]" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_48%,rgba(25,55,86,.24),transparent_68%)]" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <p className="kicker">Explore Broadway&apos;s Work</p>
           <h2 className="mt-4 font-display text-4xl text-white sm:text-5xl">The stories. <span className="text-accent">The music.</span> The conversation.</h2>
           <AboutArtReveal className="about-work-art relative mt-5 h-[285px] overflow-hidden sm:h-[430px] lg:h-[560px]">
+            <Image src="/images/about/performance-stage.webp" alt="" fill sizes="(max-width: 1279px) 100vw, 1280px" className="about-work-backdrop object-contain object-bottom" />
             <Image src="/images/about/performance-crowd.webp" alt="" fill sizes="(max-width: 1279px) 100vw, 1280px" className="about-work-foreground object-contain object-bottom" />
           </AboutArtReveal>
           <div className="relative z-10 mt-5 grid gap-5 md:grid-cols-3">

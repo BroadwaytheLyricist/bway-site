@@ -311,15 +311,15 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-.about-work-stage {
-  background: url('/images/about/performance-full.webp') center 42% / cover no-repeat;
-  filter: grayscale(1) blur(2px) brightness(.74) contrast(1.06);
-  opacity: .44;
+.about-work-art {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 84%, transparent 100%), linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 84%, transparent 100%), linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
-.about-work-art {
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 83%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 83%, transparent 100%);
+.about-work-backdrop {
+  filter: grayscale(1) brightness(.48) contrast(1.12);
 }
 
 .about-work-foreground {
