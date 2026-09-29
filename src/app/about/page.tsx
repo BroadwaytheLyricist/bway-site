@@ -65,8 +65,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="about-work-section relative isolate overflow-hidden border-t border-line bg-[#0b1423] py-20 sm:py-28">
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_48%,rgba(25,55,86,.24),transparent_68%)]" />
+      <section className="about-work-section relative isolate overflow-hidden border-t border-line bg-black py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <p className="kicker">Explore Broadway&apos;s Work</p>
           <h2 className="mt-4 font-display text-4xl text-white sm:text-5xl">The stories. <span className="text-accent">The music.</span> The conversation.</h2>
