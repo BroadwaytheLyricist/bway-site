@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { posts } from "@/lib/posts";
-
 export default function sitemap(): MetadataRoute.Sitemap {
   // Keep lastmod tied to substantive changes on each page.
   const currentPageUpdatedAt = "2026-09-29";
@@ -23,6 +22,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: "https://broadwaythelyricist.com/blog",
       lastModified: latestBlogIndexDate,
+    },
+    {
+      url: "https://broadwaythelyricist.com/bar-lounge",
+      lastModified: currentPageUpdatedAt,
     },
     ...posts.map((post) => ({
       url: `https://broadwaythelyricist.com/blog/${post.slug}`,
