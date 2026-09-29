@@ -243,11 +243,10 @@ export default function Contact() {
                 aria-label={`Follow Broadway the Lyricist on ${label}`}
                 className="group flex min-h-40 flex-col justify-between border-t border-white/25 py-5 transition-colors hover:border-accent focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
-                <span className="flex items-start justify-between">
+                <span className="flex items-start">
                   <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-accent/50 bg-accent/10 text-accent transition-transform duration-300 group-hover:-translate-y-1 group-hover:border-accent group-hover:bg-accent/20 group-focus-visible:bg-accent/20">
                     <Icon className="h-6 w-6" />
                   </span>
-                  <ArrowIcon className="h-5 w-5 -rotate-45 text-muted transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent" />
                 </span>
                 <span className="block">
                   <span className="block font-display text-2xl leading-none text-white transition-colors group-hover:text-accent sm:text-3xl">{label}</span>
