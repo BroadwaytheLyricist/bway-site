@@ -346,7 +346,8 @@ body {
   pointer-events: none;
   background:
     linear-gradient(90deg, #0b1423 0%, transparent 16%, transparent 82%, #0b1423 100%),
-    linear-gradient(180deg, #0b1423 0%, transparent 11%, transparent 58%, #0b1423 100%);
+    linear-gradient(180deg, #0b1423 0%, transparent 11%, transparent 58%, #0b1423 100%),
+    linear-gradient(115deg, rgba(5, 18, 38, .56), rgba(8, 29, 56, .45) 52%, rgba(5, 19, 40, .58));
 }
 
 .music-cover-wall {
