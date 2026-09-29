@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import HomeSectionLink from "@/components/HomeSectionLink";
 import Music from "@/components/sections/Music";
 import MusicPlatformCarousel from "@/components/MusicPlatformCarousel";
 import ScrollRevealGroup from "@/components/ScrollRevealGroup";
@@ -86,7 +87,7 @@ export default function MusicPage() {
           <h2 className="mt-4 font-display text-4xl text-white sm:text-5xl">Find Broadway&apos;s <span className="text-accent">music.</span></h2>
           <p className="mt-5 max-w-2xl leading-8 text-muted">The embedded player features the Off Broadway EP. Availability of other releases varies by platform; Bandcamp carries the broader catalog.</p>
           <MusicPlatformCarousel />
-          <p className="mt-12 text-sm leading-7 text-muted">Here for the conversation too? <Link href="/#videos" className="text-white underline decoration-accent underline-offset-4 hover:text-accent">Watch the channel</Link> or <Link href="/about" className="text-white underline decoration-accent underline-offset-4 hover:text-accent">meet Broadway</Link>.</p>
+          <p className="mt-12 text-sm leading-7 text-muted">Here for the conversation too? <HomeSectionLink href="/#videos" className="text-white underline decoration-accent underline-offset-4 hover:text-accent">Watch the channel</HomeSectionLink> or <Link href="/about" className="text-white underline decoration-accent underline-offset-4 hover:text-accent">meet Broadway</Link>.</p>
         </div>
       </section>
     </>

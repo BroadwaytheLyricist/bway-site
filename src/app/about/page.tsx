@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import HomeSectionLink from "@/components/HomeSectionLink";
 import Image from "next/image";
 import About from "@/components/sections/About";
 import AboutArtReveal from "@/components/AboutArtReveal";
@@ -73,11 +74,11 @@ export default function AboutPage() {
             <Image src="/images/about/performance-full.webp" alt="Broadway the Lyricist performing and reaching toward the crowd" fill sizes="(max-width: 1279px) 100vw, 1280px" className="about-work-full object-cover" />
           </AboutArtReveal>
           <div className="relative z-10 mt-5 grid gap-5 md:grid-cols-3">
-            <Link href="/#videos" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
+            <HomeSectionLink href="/#videos" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
               <h3 className="font-display text-2xl text-white group-hover:text-accent">Watch the Channel</h3>
               <p className="mt-4 leading-7 text-muted">Videos on Hip-Hop history, artists, albums, sports, and culture.</p>
               <span className="mt-6 inline-block text-sm font-semibold text-accent">Watch videos →</span>
-            </Link>
+            </HomeSectionLink>
             <Link href="/music" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
               <h3 className="font-display text-2xl text-white group-hover:text-accent">Hear the Music</h3>
               <p className="mt-4 leading-7 text-muted">Listen to Broadway&apos;s original recordings and find the full catalog.</p>
