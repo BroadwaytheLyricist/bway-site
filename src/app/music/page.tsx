@@ -66,7 +66,7 @@ export default function MusicPage() {
                 alt="Broadway the Lyricist and four others in Broadway hoodies on a stage"
                 fill
                 sizes="(max-width: 1400px) 100vw, 1400px"
-                className="object-cover object-center"
+                className="object-cover object-[center_35%]"
               />
             </div>
           </div>
