@@ -12,6 +12,7 @@ const featuredVideos = [
 const moreVideos = [
   { id: "DPy9_eAPQEE", title: "The Zeitgeist", type: "Official Music Video" },
   { id: "UEsiXRfogks", title: "Sleeping Giant", type: "Music Video" },
+  { id: "h1O7FL7OMcc", title: "Get Some", type: "Lyric Video" },
 ] as const;
 
 export default function MusicVideoCards({ more = false }: { more?: boolean }) {
