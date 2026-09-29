@@ -36,8 +36,7 @@ export default function AboutPage() {
     <>
       <AnchorLanding />
       <About standalone />
-      <section id="story" className="relative isolate overflow-hidden border-t border-line bg-black py-20 sm:py-28">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_28%,rgba(18,40,66,.16),transparent_48%)]" />
+      <section id="story" className="about-story-section relative isolate overflow-hidden border-t border-line py-20 sm:py-28">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div className="relative lg:sticky lg:top-32 lg:self-start">
             <p className="kicker">The Story</p>
@@ -68,7 +67,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="about-work-section relative isolate overflow-hidden border-t border-line bg-black py-20 sm:py-28">
+      <section className="about-work-section relative isolate overflow-hidden border-t border-line py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <p className="kicker">Explore Broadway&apos;s Work</p>
           <h2 className="mt-4 font-display text-4xl text-white sm:text-5xl">The stories. <span className="text-accent">The music.</span> The conversation.</h2>

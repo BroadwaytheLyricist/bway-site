@@ -289,6 +289,16 @@ body {
 }
 
 /* The About story and performance scene use separate foreground cutouts. */
+.about-story-section {
+  background:
+    radial-gradient(ellipse 42% 50% at 27% 48%, rgba(32, 72, 121, 0.29), transparent 100%),
+    linear-gradient(105deg, #08111f 0%, #070d17 56%, #05080e 100%);
+}
+
+.about-work-section {
+  background: linear-gradient(180deg, #000 0%, #000 51%, #060d18 74%, #0b182b 100%);
+}
+
 .about-story-art {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 78%, transparent 100%), linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 78%, transparent 100%), linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
