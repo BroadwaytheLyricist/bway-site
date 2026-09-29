@@ -4,7 +4,7 @@ import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 import VideoEmbed from "@/components/VideoEmbed";
 import { ArrowIcon, PlayIcon } from "@/components/icons";
 import { featuredVideos, links, playlists } from "@/lib/site";
-import { getLatestVideos } from "@/lib/youtube";
+import { getLatestVideos, getPlaylistThumbnail } from "@/lib/youtube";
 
 function formatDate(iso: string) {
   if (!iso) return "";
@@ -18,7 +18,10 @@ function formatDate(iso: string) {
 }
 
 export default async function LatestVideos() {
-  const latest = await getLatestVideos(2);
+  const [latest, sportsThumbnail] = await Promise.all([
+    getLatestVideos(2),
+    getPlaylistThumbnail("PLH_y27XKyoFE"),
+  ]);
   const videos = latest.length > 0
     ? latest
     : featuredVideos.map((video) => ({
@@ -126,9 +129,12 @@ export default async function LatestVideos() {
                 >
                   {playlist.image && (
                     <Image
-                      src={playlist.image}
+                      src={playlist.url.includes("list=PLH_y27XKyoFE") && sportsThumbnail
+                        ? sportsThumbnail
+                        : playlist.image}
                       alt={playlist.title}
                       fill
+                      unoptimized={playlist.url.includes("list=PLH_y27XKyoFE") && Boolean(sportsThumbnail)}
                       sizes="(max-width: 1024px) 100vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                     />

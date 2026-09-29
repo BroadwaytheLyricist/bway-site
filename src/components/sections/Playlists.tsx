@@ -3,12 +3,15 @@ import SectionHeading from "@/components/SectionHeading";
 import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 import { ArrowIcon, PlayIcon } from "@/components/icons";
 import { links, playlists } from "@/lib/site";
+import { getPlaylistThumbnail } from "@/lib/youtube";
 
 type Playlist = (typeof playlists)[number];
 const hasImage = (p: Playlist): p is Playlist & { image: string } =>
   "image" in p && typeof p.image === "string";
 
-export default function Playlists() {
+export default async function Playlists() {
+  const sportsThumbnail = await getPlaylistThumbnail("PLH_y27XKyoFE");
+
   return (
     <section id="playlists" className="relative isolate overflow-hidden bg-bg py-24 sm:py-32">
       <Image src="/images/stage-bg-v2.jpg" alt="" fill sizes="100vw" className="-z-30 object-cover object-[58%_center]" />
@@ -52,9 +55,12 @@ export default function Playlists() {
               <div className="relative aspect-[3/2] overflow-hidden">
                 {hasImage(playlist) ? (
                   <Image
-                    src={playlist.image}
+                    src={playlist.url.includes("list=PLH_y27XKyoFE") && sportsThumbnail
+                      ? sportsThumbnail
+                      : playlist.image}
                     alt={playlist.title}
                     fill
+                    unoptimized={playlist.url.includes("list=PLH_y27XKyoFE") && Boolean(sportsThumbnail)}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
