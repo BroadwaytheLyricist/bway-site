@@ -54,11 +54,11 @@ export default function MusicPage() {
       <section className="relative isolate overflow-hidden border-t border-line bg-[#080d19] py-20 sm:py-28">
         <div aria-hidden="true" className="music-cover-wall pointer-events-none absolute inset-0 -z-20">
           {[
-            ["off-broadway", "Off Broadway EP"],
-            ["american-musical", "American Musical"],
-            ["fly-like-an-eagle", "Fly Like An Eagle"],
+            ["god-is-the-only-goat", "God Is the Only GOAT"],
+            ["off-broadway-single", "Off Broadway"],
+            ["get-some", "Get Some"],
+            ["superstar-status", "Superstar Status"],
             ["superstar-status-2", "Superstar Status 2"],
-            ["big-money", "Big Money"],
           ].map(([cover, title]) => (
             <div key={cover} className="music-cover-card">
               <Image src={`/images/music-covers/${cover}.jpg`} alt={title} fill sizes="(max-width: 640px) 170px, 280px" className="object-cover" />

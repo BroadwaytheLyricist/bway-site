@@ -378,47 +378,35 @@ body {
 .music-platforms-group {
   display: flex;
   flex: none;
-  gap: 16px;
-  padding-right: 16px;
+  gap: 20px;
+  padding-right: 20px;
 }
 
 .music-platform-link {
   display: flex;
-  width: 245px;
-  min-height: 126px;
+  width: 260px;
+  min-height: 104px;
   flex: none;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 13px;
-  border: 1px solid rgba(255, 255, 255, .24);
-  background: rgba(8, 17, 32, .86);
-  color: white;
-  font-size: .875rem;
-  font-weight: 700;
-  letter-spacing: .04em;
-  backdrop-filter: blur(8px);
-  transition: border-color .2s ease, color .2s ease, background .2s ease;
+  border-radius: 4px;
 }
 
-.music-platform-link:hover,
 .music-platform-link:focus-visible {
-  border-color: var(--color-accent);
-  background: rgba(16, 32, 49, .96);
-  color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
 }
 
-.music-platform-icon {
-  display: block;
-  width: 42px;
-  height: 42px;
-  background: currentColor;
-  -webkit-mask: var(--platform-icon) center / contain no-repeat;
-  mask: var(--platform-icon) center / contain no-repeat;
+.music-platform-logo {
+  object-fit: contain;
+  transition: transform .2s ease, filter .2s ease;
+  filter: drop-shadow(0 5px 14px rgba(0, 0, 0, .35));
 }
 
-.music-platform-icon-wide {
-  width: 100px;
+.music-platform-link:hover .music-platform-logo,
+.music-platform-link:focus-visible .music-platform-logo {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 14px rgba(255, 100, 40, .38));
 }
 
 @keyframes music-platform-drift {

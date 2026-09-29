@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import Image from "next/image";
 import { links } from "@/lib/site";
 
 const platforms = [
@@ -22,15 +22,17 @@ export default function MusicPlatformCarousel() {
                 target="_blank"
                 rel="noopener noreferrer"
                 tabIndex={copy === 1 ? -1 : undefined}
-                className="music-platform-link group"
+                aria-label={`Listen on ${label} (opens in a new tab)`}
+                className="music-platform-link"
               >
-                <span
+                <Image
                   aria-hidden="true"
-                  className={`music-platform-icon ${icon === "amazonmusic" ? "music-platform-icon-wide" : ""}`}
-                  style={{ "--platform-icon": `url('/images/music-platforms/${icon}.svg')` } as CSSProperties}
+                  alt=""
+                  src={`/images/music-platforms/${icon}.png`}
+                  width={icon === "amazonmusic" ? 160 : 68}
+                  height={icon === "amazonmusic" ? 32 : 68}
+                  className="music-platform-logo"
                 />
-                <span>{label}</span>
-                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             ))}
           </div>
