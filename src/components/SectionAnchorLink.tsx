@@ -12,6 +12,9 @@ export default function SectionAnchorLink({ onClick, scroll, ...props }: Props) 
     ? props.href.split("#")[0] || "/"
     : props.href.pathname || "/";
   const crossingPages = pathname !== destination;
+  const hasHash = typeof props.href === "string"
+    ? props.href.includes("#")
+    : Boolean(props.href.hash);
 
   return (
     <Link
@@ -20,7 +23,6 @@ export default function SectionAnchorLink({ onClick, scroll, ...props }: Props) 
       onClick={(event) => {
         onClick?.(event);
         if (
-          crossingPages &&
           !event.defaultPrevented &&
           event.button === 0 &&
           !event.metaKey &&
@@ -28,8 +30,17 @@ export default function SectionAnchorLink({ onClick, scroll, ...props }: Props) 
           !event.shiftKey &&
           !event.altKey
         ) {
-          // Cross-page anchors should arrive directly, without a long vertical scroll.
-          document.documentElement.style.scrollBehavior = "auto";
+          const html = document.documentElement;
+          if (crossingPages) {
+            // Cross-page anchors arrive directly, without sweeping through the old page.
+            html.style.scrollBehavior = "auto";
+          } else if (hasHash && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            // Only movement to a section on this page should be smooth.
+            html.style.scrollBehavior = "smooth";
+            window.setTimeout(() => {
+              if (html.style.scrollBehavior === "smooth") html.style.scrollBehavior = "";
+            }, 900);
+          }
         }
       }}
     />

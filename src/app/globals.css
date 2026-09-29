@@ -52,7 +52,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   /* Offset anchored scroll for the sticky header */
   scroll-padding-top: 5rem;
 }
