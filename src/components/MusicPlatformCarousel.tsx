@@ -7,6 +7,8 @@ const platforms = [
   { label: "Apple Music", href: links.appleMusic, icon: "applemusic" },
   { label: "Amazon Music", href: links.amazonMusic, icon: "amazonmusic" },
   { label: "YouTube Music", href: links.youtubeMusic, icon: "youtubemusic" },
+  { label: "TIDAL", href: links.tidal, icon: "tidal" },
+  { label: "Deezer", href: links.deezer, icon: "deezer" },
 ] as const;
 
 export default function MusicPlatformCarousel() {

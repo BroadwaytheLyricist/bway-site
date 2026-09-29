@@ -380,7 +380,7 @@ body {
 .music-platforms-track {
   display: flex;
   width: max-content;
-  animation: music-platform-drift 48s linear infinite;
+  animation: music-platform-drift 62s linear infinite;
 }
 
 .music-platforms:hover .music-platforms-track {

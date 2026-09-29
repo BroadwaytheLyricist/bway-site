@@ -109,20 +109,24 @@ export default function Music({ standalone = false }: { standalone?: boolean }) 
             <h3 className="mt-3 font-display text-4xl leading-none text-white sm:text-5xl">Off Broadway EP</h3>
             <p className="mt-3 text-sm font-semibold uppercase tracking-[0.14em] text-accent">Unmastered Deluxe Edition</p>
             <p className="mt-5 max-w-xl leading-relaxed text-muted">
-              Listen to the EP here, then explore more of Broadway&apos;s music on Bandcamp or your preferred platform.
+              {standalone
+                ? "Start with the EP here. More releases and listening platforms are just below."
+                : "Listen to the EP here, then explore more of Broadway’s music on Bandcamp or your preferred platform."}
             </p>
 
             <a href={links.bandcamp} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex w-fit items-center gap-2 border-b border-accent pb-2 text-sm font-semibold text-white hover:text-accent">
               Explore the full catalog on Bandcamp <ArrowIcon className="h-4 w-4" />
             </a>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              {destinations.map((destination) => (
-                <a key={destination.label} href={destination.href} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 border border-white/15 px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:border-accent hover:text-accent">
-                  {destination.label}<ArrowIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                </a>
-              ))}
-            </div>
+            {!standalone && (
+              <div className="mt-8 flex flex-wrap gap-3">
+                {destinations.map((destination) => (
+                  <a key={destination.label} href={destination.href} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 border border-white/15 px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:border-accent hover:text-accent">
+                    {destination.label}<ArrowIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
         {!standalone && (
