@@ -300,7 +300,7 @@ body {
 }
 
 .about-work-section {
-  background: linear-gradient(180deg, #000 0%, #000 51%, #060d18 74%, #0b182b 100%);
+  background: linear-gradient(180deg, #0b1423 0%, #0b1423 55%, #0a1729 100%);
 }
 
 .about-story-art {
@@ -334,31 +334,16 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-.about-work-art {
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%), linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%), linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
+.about-story-performance {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 85%, transparent 100%), linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 85%, transparent 100%), linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
 
-.about-work-full {
-  filter: brightness(.96) contrast(1.04);
-}
-
-.about-work-art[data-ready="true"] .about-work-full {
-  opacity: 0;
-  transform: translate3d(-55px, 0, 0) scale(1.015);
-  transition: opacity 1s ease, transform 1.3s cubic-bezier(.22, 1, .36, 1);
-}
-
-.about-work-art[data-visible="true"] .about-work-full {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
 /* Real release artwork adds texture behind the music platform choices. */
 .music-artist-panorama {
-  height: clamp(240px, 24vw, 360px);
+  height: clamp(180px, 20vw, 280px);
   background: #0b1423;
 }
 
@@ -603,8 +588,7 @@ body {
     transform: none;
     transition: none;
   }
-  .about-story-art[data-ready="true"] .about-story-portrait,
-  .about-work-art[data-ready="true"] .about-work-full {
+  .about-story-art[data-ready="true"] .about-story-portrait {
     opacity: 1;
     transform: none;
     transition: none;
