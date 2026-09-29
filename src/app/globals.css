@@ -312,27 +312,23 @@ body {
 }
 
 .about-work-art {
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 84%, transparent 100%), linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 84%, transparent 100%), linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%), linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 90%, transparent 100%), linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
 
-.about-work-backdrop {
-  filter: grayscale(1) brightness(.48) contrast(1.12);
+.about-work-full {
+  filter: brightness(.96) contrast(1.04);
 }
 
-.about-work-foreground {
-  filter: brightness(.76) contrast(1.13);
-}
-
-.about-work-art[data-ready="true"] .about-work-foreground {
+.about-work-art[data-ready="true"] .about-work-full {
   opacity: 0;
-  transform: translate3d(-110px, 0, 0);
-  transition: opacity 1s ease, transform 1.25s cubic-bezier(.22, 1, .36, 1);
+  transform: translate3d(-55px, 0, 0) scale(1.015);
+  transition: opacity 1s ease, transform 1.3s cubic-bezier(.22, 1, .36, 1);
 }
 
-.about-work-art[data-visible="true"] .about-work-foreground {
+.about-work-art[data-visible="true"] .about-work-full {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
@@ -465,7 +461,7 @@ body {
     transition: none;
   }
   .about-story-art[data-ready="true"] .about-story-portrait,
-  .about-work-art[data-ready="true"] .about-work-foreground {
+  .about-work-art[data-ready="true"] .about-work-full {
     opacity: 1;
     transform: none;
     transition: none;

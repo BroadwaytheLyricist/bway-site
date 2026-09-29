@@ -70,9 +70,8 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <p className="kicker">Explore Broadway&apos;s Work</p>
           <h2 className="mt-4 font-display text-4xl text-white sm:text-5xl">The stories. <span className="text-accent">The music.</span> The conversation.</h2>
-          <AboutArtReveal className="about-work-art relative mt-5 h-[285px] overflow-hidden sm:h-[430px] lg:h-[560px]">
-            <Image src="/images/about/performance-stage.webp" alt="" fill sizes="(max-width: 1279px) 100vw, 1280px" className="about-work-backdrop object-contain object-bottom" />
-            <Image src="/images/about/performance-crowd.webp" alt="" fill sizes="(max-width: 1279px) 100vw, 1280px" className="about-work-foreground object-contain object-bottom" />
+          <AboutArtReveal className="about-work-art relative mt-8 aspect-[2048/1151] w-full overflow-hidden">
+            <Image src="/images/about/performance-full.webp" alt="Broadway the Lyricist performing and reaching toward the crowd" fill sizes="(max-width: 1279px) 100vw, 1280px" className="about-work-full object-cover" />
           </AboutArtReveal>
           <div className="relative z-10 mt-5 grid gap-5 md:grid-cols-3">
             <Link href="/#videos" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
