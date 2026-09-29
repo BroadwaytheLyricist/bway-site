@@ -4,9 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { DailyPuzzle, Mystery, Outcome, Question, Reveal, RoundResult, TileState } from "@/lib/bar-lounge/types";
 import styles from "./lounge.module.css";
+import LoungeLobby, { LoungeIcon, TIERS } from "./lobby";
 
 const API = "/api/bar-lounge/game";
-const TIERS = ["On The Radio", "The Mixtape", "Deep Cuts", "The Vault", "Broadway's Floor"];
 type Mode = "lobby" | "cipher" | "practice" | "clues";
 type Phase = "question" | "checking" | "feedback" | "reveal" | "result";
 const kindLabel = { knowledge: "On the Record", finish_bar: "Finish the Bar", who_said_bar: "Who Said This Bar?" };
@@ -33,29 +33,21 @@ function tierIndex(correct: number, total: number) {
 
 export default function BarLoungeDemo() {
   const [mode, setMode] = useState<Mode>("lobby");
-  return <section className={"relative isolate min-h-screen overflow-hidden px-5 pb-24 pt-28 sm:pt-36 " + styles.stage}>
-    <div aria-hidden="true" className={styles.performer} /><div aria-hidden="true" className={styles.crowd} /><div aria-hidden="true" className={styles.stageWash} />
-    <div className="relative z-10 mx-auto max-w-6xl">
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-3 border-b border-white/15 pb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-300"><span>The Bar Lounge / Broadway the Lyricist</span><span className="text-accent">Preview · Practice Scores</span></div>
-      {mode === "lobby" && <div className="mx-auto max-w-5xl text-center">
-        <div className="relative py-7"><RisingBars level={5} hero /><p className="kicker relative z-10 mb-2">Raise Your Bar</p><h1 className="font-display relative z-10 text-[clamp(4rem,11vw,9rem)] leading-[0.86] tracking-wide">THE BAR<br/><span className="text-accent">LOUNGE</span></h1></div>
-        <p className="mx-auto mt-7 max-w-xl text-lg leading-8 text-slate-200">Crack the daily cipher. Raise your bar. Name the legend before the room catches on.</p>
-        <div className="mt-10 grid gap-4 text-left md:grid-cols-3">
-          <ModeCard number="01" title="The Daily Cipher" note="One puzzle each day. Six guesses. Five letters. Read the tiles and find the Hip-Hop answer." action="Crack the Cipher" onClick={() => setMode("cipher")} />
-          <ModeCard number="02" title="Raise the Bar" note="Eight questions from a growing bank. Fresh selections, original sample bars, speed points and streaks." action="Play a Fresh Round" onClick={() => setMode("practice")} />
-          <ModeCard number="03" title="Name That Legend" note="Five clues. One guess per mystery. Lock in early for more points, or wait for a clearer clue." action="Read the Room" onClick={() => setMode("clues")} />
-        </div>
-        <div className="mt-8 border-t border-white/15 pt-5 text-left"><p className="kicker mb-3">Working five-level ladder · eight-question round</p><div className="grid grid-cols-2 gap-3 text-xs text-slate-200 sm:grid-cols-5">{TIERS.map((tier, i) => <div key={tier} className="border-l-2 border-accent/70 pl-3"><span className="block font-bold text-accent">{"0" + (i + 1) + " / " + ["0–2", "3", "4–5", "6–7", "8"][i] + " right"}</span>{tier}</div>)}</div></div>
-        <p className="mt-5 text-xs text-slate-400">Tier names are provisional. Artist lyric rounds will use verified, approved excerpts.</p>
-      </div>}
+  return <section className={"relative isolate min-h-screen overflow-hidden px-4 pb-16 pt-24 sm:px-8 sm:pt-28 " + styles.stage}>
+    <div className="relative z-10 mx-auto max-w-7xl">
+      <div className={styles.loungeHeader}>
+        <button className={styles.loungeBrand} onClick={() => setMode("lobby")} aria-label="The Bar Lounge home"><span>THE</span><strong>BAR <LoungeIcon name="mic"/></strong><strong>LOUNGE</strong><small>BY BROADWAY THE LYRICIST</small></button>
+        <nav aria-label="Bar Lounge modes" className={styles.loungeNav}>{([["lobby", "The Lounge"], ["cipher", "Daily Cipher"], ["practice", "Raise the Bar"], ["clues", "Name That Legend"]] as const).map(([value, label]) => <button key={value} onClick={() => setMode(value)} aria-current={mode === value ? "page" : undefined} className={mode === value ? styles.navActive : undefined}>{label}</button>)}</nav>
+        <span className={styles.previewBadge}>Practice Preview</span>
+      </div>
+      {mode === "lobby" && <LoungeLobby onPlay={setMode} />}
+      <div className={mode === "lobby" ? undefined : styles.playArea}>
       {mode === "practice" && <PracticeGame onExit={() => setMode("lobby")} />}
       {mode === "clues" && <ClueGame onExit={() => setMode("lobby")} />}
       {mode === "cipher" && <DailyCipher onExit={() => setMode("lobby")} />}
+      </div>
     </div>
   </section>;
-}
-function ModeCard(props: { number: string; title: string; note: string; action: string; onClick: () => void }) {
-  return <button onClick={props.onClick} className={styles.modeCard + " group"}><span className="kicker">{props.number + " / Free to Play"}</span><strong className="font-display mt-5 block text-4xl">{props.title}</strong><span className="mt-3 block text-sm leading-6 text-slate-300">{props.note}</span><span className="mt-7 inline-block text-sm font-bold text-accent transition-transform group-hover:translate-x-1">{props.action + " →"}</span></button>;
 }
 
 function PracticeGame({ onExit }: { onExit: () => void }) {
@@ -143,7 +135,7 @@ function PracticeGame({ onExit }: { onExit: () => void }) {
         const right = phase === "reveal" && option === result?.reveal.title;
         const pickedCorrect = phase === "feedback" && result?.outcome === "correct" && option === selected;
         const wrong = (phase === "feedback" || phase === "reveal") && result?.outcome === "wrong" && option === selected;
-        return <button key={option} onClick={() => { void settle("answer", option); }} disabled={phase !== "question"} className={"rounded-xl border px-5 py-4 text-left font-semibold transition-colors disabled:cursor-default " + (right || pickedCorrect ? "border-green-500 bg-green-950/70 text-green-200" : wrong ? "border-rose-500 bg-rose-950/70 text-rose-200" : "border-white/10 bg-[#14213a] hover:border-accent/60")}>{option}{right && " ✓"}{wrong && " ×"}</button>;
+        return <button key={option} onClick={() => { void settle("answer", option); }} disabled={phase !== "question"} className={"rounded-xl border px-5 py-4 text-left font-semibold transition-colors disabled:cursor-default " + (right || pickedCorrect ? "border-green-500 bg-green-950/70 text-green-200" : wrong ? "border-rose-500 bg-rose-950/70 text-rose-200" : "border-white/10 bg-[#211a14] hover:border-accent/60")}>{option}{right && " ✓"}{wrong && " ×"}</button>;
       })}</div>
       {phase === "checking" && <p role="status" className="mt-5 text-slate-300">Checking your answer…</p>}
       {(phase === "feedback" || phase === "reveal") && result && <Feedback result={result}/>}
@@ -213,7 +205,7 @@ function ClueGame({ onExit }: { onExit: () => void }) {
       <p className="my-5 text-sm text-slate-300">{"Mystery " + (index + 1) + "/" + mysteries.length + ". One guess. Five clues. Earlier means more points."}</p>
       <Timer seconds={seconds} total={20}/>
       <ol className="mt-7 grid gap-3">{mystery.clues.slice(0, clue + 1).map((text, i) => <li key={i} className={"rounded-lg border p-4 " + (i === clue ? "border-accent/50 bg-accent/10" : "border-white/10 bg-white/5")}><span className="kicker">{"Clue " + (i + 1) + " / " + (5 - i) * 200 + " points"}</span><p className="mt-2">{text}</p></li>)}</ol>
-      {phase === "question" && <form onSubmit={(e) => { e.preventDefault(); if (draft.trim()) void settle(draft.trim()); }} className="mt-6 flex gap-2"><input aria-label="Your one guess" value={draft} onChange={(e) => setDraft(e.target.value)} maxLength={150} className="min-w-0 flex-1 rounded-lg border border-white/20 bg-[#0b172b] px-4 py-3 outline-none focus:border-accent" placeholder={mystery.category}/><button disabled={!draft.trim()} className="rounded-lg bg-accent px-5 font-bold text-[#0a0e17] disabled:opacity-40">Lock In</button></form>}
+      {phase === "question" && <form onSubmit={(e) => { e.preventDefault(); if (draft.trim()) void settle(draft.trim()); }} className="mt-6 flex gap-2"><input aria-label="Your one guess" value={draft} onChange={(e) => setDraft(e.target.value)} maxLength={150} className="min-w-0 flex-1 rounded-lg border border-white/20 bg-[#17120e] px-4 py-3 outline-none focus:border-accent" placeholder={mystery.category}/><button disabled={!draft.trim()} className="rounded-lg bg-accent px-5 font-bold text-[#0a0e17] disabled:opacity-40">Lock In</button></form>}
       {phase === "checking" && <p role="status" className="mt-5">Checking your guess…</p>}
       {(phase === "feedback" || phase === "reveal") && result && <Feedback result={result}/>}
       {phase === "reveal" && result && <><RevealCard reveal={result.reveal}/><button onClick={next} className="btn-accent mt-6 w-full rounded-lg px-6 py-4 font-bold text-[#0a0e17]">{index + 1 === mysteries.length ? "See My Scorecard →" : "Next Mystery →"}</button></>}
@@ -272,7 +264,7 @@ function DailyCipher({ onExit }: { onExit: () => void }) {
         return <span key={col} aria-label={(word[col] || "empty") + (tile ? ", " + tile : "")} className={styles.tile + " " + (tile === "hit" ? styles.tileHit : tile === "near" ? styles.tileNear : tile === "miss" ? styles.tileMiss : "")}>{word[col] || ""}</span>;
       })}</div>;
     })}</div>
-    {!finished && <form onSubmit={(e) => { e.preventDefault(); void send(); }} className="mx-auto mt-7 flex max-w-[340px] gap-2"><input aria-label="Five-letter answer" autoComplete="off" autoCapitalize="characters" maxLength={5} value={draft} onChange={(e) => { setDraft(e.target.value.replace(/[^a-z]/gi, "").toUpperCase()); setError(""); }} disabled={!puzzle || loading} className="min-w-0 flex-1 rounded-lg border border-white/20 bg-[#0b172b] px-4 py-3 text-center font-bold uppercase tracking-[0.24em] outline-none focus:border-accent" placeholder="TYPE A WORD"/><button disabled={!puzzle || loading} className="rounded-lg bg-accent px-5 font-bold text-[#0a0e17] disabled:opacity-40">{loading ? "…" : "Enter"}</button></form>}
+    {!finished && <form onSubmit={(e) => { e.preventDefault(); void send(); }} className="mx-auto mt-7 flex max-w-[340px] gap-2"><input aria-label="Five-letter answer" autoComplete="off" autoCapitalize="characters" maxLength={5} value={draft} onChange={(e) => { setDraft(e.target.value.replace(/[^a-z]/gi, "").toUpperCase()); setError(""); }} disabled={!puzzle || loading} className="min-w-0 flex-1 rounded-lg border border-white/20 bg-[#17120e] px-4 py-3 text-center font-bold uppercase tracking-[0.24em] outline-none focus:border-accent" placeholder="TYPE A WORD"/><button disabled={!puzzle || loading} className="rounded-lg bg-accent px-5 font-bold text-[#0a0e17] disabled:opacity-40">{loading ? "…" : "Enter"}</button></form>}
     {error && <p role="alert" className="mt-3 text-sm text-rose-300">{error}</p>}
     {finished && <div role="status" className="mt-7"><RisingBars level={won ? 5 : 1}/><p className={"text-xl font-bold " + (won ? "text-green-300" : "text-rose-300")}>{won ? "Cipher cracked." : "No guesses left."}</p><p className="mt-3 font-display text-4xl text-accent">{answer}</p><div className="mt-5 grid grid-cols-2 gap-3 border-y border-white/15 py-5"><div className="text-2xl font-bold">{won ? (7 - rows.length) * 100 : 0}<span className="block text-xs font-normal text-slate-300">POINTS</span></div><div className="text-2xl font-bold">{rows.length + "/6"}<span className="block text-xs font-normal text-slate-300">GUESSES USED</span></div></div><button onClick={share} className="mt-6 rounded-lg bg-[#316ec3] px-6 py-3 font-bold">{copied ? "Copied ✓" : "Copy Your Scorecard"}</button></div>}
     <Back onExit={onExit}/>
@@ -287,9 +279,9 @@ function Feedback({ result }: { result: RoundResult }) {
   return <div role="status" className={"mt-5 rounded-lg border p-4 text-center font-bold " + (result.outcome === "correct" ? "border-green-500/60 bg-green-950/70 text-green-200" : "border-rose-500/60 bg-rose-950/70 text-rose-200")}>{outcomeLabel[result.outcome]}{result.outcome === "correct" && <span className={"ml-3 inline-block " + styles.pointPop}>{"+" + result.points + " pts 🔥"}</span>}</div>;
 }
 function RevealCard({ reveal }: { reveal: Reveal }) {
-  return <article className={"mt-6 overflow-hidden rounded-xl border border-white/15 bg-[#101e33] " + styles.revealCard}>
+  return <article className={"mt-6 overflow-hidden rounded-xl border border-white/15 bg-[#171310] " + styles.revealCard}>
     <div className="flex flex-col sm:flex-row">
-      {reveal.image ? <div className="relative mx-auto aspect-square w-full max-w-[240px] shrink-0 sm:w-40"><Image src={reveal.image} alt={reveal.title + " artwork"} fill sizes="(min-width:640px) 160px, 240px" className="object-contain"/></div> : <div aria-hidden="true" className="flex w-full items-center justify-center bg-gradient-to-br from-[#1e426a] to-[#0e1728] p-5 sm:w-32"><RisingBars level={5}/></div>}
+      {reveal.image ? <div className="relative mx-auto aspect-square w-full max-w-[240px] shrink-0 sm:w-40"><Image src={reveal.image} alt={reveal.title + " artwork"} fill sizes="(min-width:640px) 160px, 240px" className="object-contain"/></div> : <div aria-hidden="true" className="flex w-full items-center justify-center bg-gradient-to-br from-[#5b351a] to-[#17120c] p-5 sm:w-32"><RisingBars level={5}/></div>}
       <div className="p-5"><p className="kicker">The Reveal</p><h2 className="mt-2 text-2xl font-bold text-accent">{reveal.title}</h2><p className="mt-3 text-sm leading-6 text-slate-200">{reveal.context}</p>{reveal.sourceUrl && <a href={reveal.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-xs font-semibold text-slate-300 underline decoration-accent underline-offset-4">{reveal.sourceLabel + " ↗"}</a>}</div>
     </div>
   </article>;
@@ -304,7 +296,7 @@ function Scorecard({ title, results, onReplay, onExit }: { title: string; result
   return <div className={styles.gamePanel + " mx-auto max-w-3xl"}>
     <div className="text-center"><RisingBars level={tier + 1}/><p className="kicker">{title + " / Your Scorecard"}</p><h1 className="font-display mt-3 text-5xl text-accent">{TIERS[tier]}</h1></div>
     <div className="my-8 grid grid-cols-3 gap-2 border-y border-white/15 py-6 text-center">{[[points, "POINTS"], [correct + "/" + results.length, "CORRECT"], [best, "BEST STREAK"]].map(([value, label]) => <div key={label}><strong className="block text-3xl">{value}</strong><span className="text-[10px] tracking-widest text-slate-300">{label}</span></div>)}</div>
-    <div className="grid gap-3">{results.map((r, i) => <details key={r.id} className="rounded-lg border border-white/15 bg-[#101e33] p-4"><summary className="cursor-pointer list-none"><div className="flex items-start justify-between gap-4"><div><span className={"text-xs font-bold " + (r.outcome === "correct" ? "text-green-300" : "text-rose-300")}>{"0" + (i + 1) + " / " + outcomeLabel[r.outcome]}</span><p className="mt-1 text-sm font-semibold">{r.prompt}</p></div><span className="shrink-0 text-sm font-bold text-accent">{r.points + " pts"}</span></div></summary><p className="mt-4 text-xs text-slate-300">{"Your answer: " + (r.submitted || "No answer") + " · " + r.seconds.toFixed(1) + "s"}</p><RevealCard reveal={r.reveal}/></details>)}</div>
+    <div className="grid gap-3">{results.map((r, i) => <details key={r.id} className="rounded-lg border border-white/15 bg-[#171310] p-4"><summary className="cursor-pointer list-none"><div className="flex items-start justify-between gap-4"><div><span className={"text-xs font-bold " + (r.outcome === "correct" ? "text-green-300" : "text-rose-300")}>{"0" + (i + 1) + " / " + outcomeLabel[r.outcome]}</span><p className="mt-1 text-sm font-semibold">{r.prompt}</p></div><span className="shrink-0 text-sm font-bold text-accent">{r.points + " pts"}</span></div></summary><p className="mt-4 text-xs text-slate-300">{"Your answer: " + (r.submitted || "No answer") + " · " + r.seconds.toFixed(1) + "s"}</p><RevealCard reveal={r.reveal}/></details>)}</div>
     <button onClick={share} className="mt-7 w-full rounded-lg bg-[#316ec3] px-6 py-4 font-bold">{copied ? "Copied ✓" : "Copy My Scorecard"}</button><button onClick={onReplay} className="btn-accent mt-3 w-full rounded-lg px-6 py-4 font-bold text-[#0a0e17]">Play a Fresh Round →</button><Back onExit={onExit}/>
   </div>;
 }
