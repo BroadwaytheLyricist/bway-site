@@ -30,7 +30,7 @@ export default function LatestBlog() {
             kicker="From the Blog"
             title={<>More Than <span className="text-accent">The Video</span></>}
           />
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-accent">
+          <Link href="/blog" className="inline-flex items-center gap-2 border-b border-accent pb-2 text-base font-semibold text-white transition-colors hover:text-accent">
             View all stories <ArrowIcon className="h-4 w-4" />
           </Link>
         </div>

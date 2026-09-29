@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Music from "@/components/sections/Music";
 import MusicPlatformCarousel from "@/components/MusicPlatformCarousel";
+import AnchorLanding from "@/components/AnchorLanding";
 
 const title = "Original Music & Releases | Broadway the Lyricist";
 const description =
@@ -30,8 +31,9 @@ export const metadata: Metadata = {
 export default function MusicPage() {
   return (
     <>
+      <AnchorLanding />
       <Music standalone />
-      <section className="relative isolate overflow-hidden border-t border-line bg-[#080d19] py-20 sm:py-28">
+      <section id="listen-platforms" className="relative isolate overflow-hidden border-t border-line bg-[#080d19] py-20 sm:py-28">
         <div aria-hidden="true" className="music-cover-wall pointer-events-none absolute inset-0 -z-20">
           {[
             { cover: "god-is-the-only-goat.jpg", title: "God Is the Only GOAT" },
@@ -47,7 +49,7 @@ export default function MusicPage() {
           ))}
         </div>
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(8,13,25,.8),rgba(8,13,25,.58)_58%,rgba(8,13,25,.72)),linear-gradient(180deg,rgba(8,13,25,.58),transparent_46%,rgba(8,13,25,.85))]" />
-        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="music-platform-content relative mx-auto max-w-7xl px-5 sm:px-8">
           <p className="kicker">Listen Your Way</p>
           <h2 className="mt-4 font-display text-4xl text-white sm:text-5xl">Find Broadway&apos;s <span className="text-accent">music.</span></h2>
           <p className="mt-5 max-w-2xl leading-8 text-muted">Beyond the featured Off Broadway EP, find more of Broadway&apos;s music on Bandcamp or choose your preferred platform. Availability varies by service.</p>

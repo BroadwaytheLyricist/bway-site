@@ -59,9 +59,6 @@ export default function AboutPage() {
             <p>
               His stages extended beyond New York, including Roxboro Raceway in North Carolina and a Pass the Aux event in Tampa where he performed his music for Jadakiss. His studio work connected him with Domingo, a fellow East New York producer whose credits include Big Pun and Rakim, as well as DJ PF Cuttin and Blahzay Martell, the Blahzay Blahzay duo behind &ldquo;Danger.&rdquo;
             </p>
-            <figure className="about-story-performance relative aspect-[2048/1151] w-full overflow-hidden">
-              <Image src="/images/about/performance-full.webp" alt="Broadway the Lyricist performing and reaching toward the crowd" fill sizes="(max-width: 1023px) 100vw, 56vw" className="object-cover" />
-            </figure>
             <p>
               In 2009, his music reached Wilt Wallace at Warner Bros. Records. Wallace later became the label&apos;s VP of Urban &amp; Rhythmic Promotion, though that contact did not lead to a deal. Broadway kept writing, recording, and performing.
             </p>
@@ -74,7 +71,7 @@ export default function AboutPage() {
       <section className="about-work-section relative isolate overflow-hidden border-t border-line bg-[#0b1423] pb-20 sm:pb-28">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_34%,rgba(29,81,137,.18),transparent_46%),radial-gradient(circle_at_88%_82%,rgba(255,90,31,.09),transparent_40%)]" />
         <ScrollRevealGroup className="w-full">
-          <div data-reveal-item className="music-artist-panorama relative -mb-4 overflow-hidden sm:-mb-8">
+          <div data-reveal-item className="music-artist-panorama relative mb-8 overflow-hidden sm:mb-10">
             <div className="music-artist-image absolute inset-y-0 left-1/2 w-full max-w-[1400px] -translate-x-1/2">
               <Image src="/images/music-artist-lineup.jpg" alt="Five artists in Broadway hoodies posing together on a stage" fill sizes="(max-width: 1400px) 100vw, 1400px" className="object-cover object-[center_35%]" />
             </div>
@@ -86,14 +83,14 @@ export default function AboutPage() {
             <h2 className="mt-4 font-display text-4xl leading-tight text-white sm:text-5xl">The artist behind <span className="text-accent">the conversations.</span></h2>
           </div>
           <div className="text-base leading-8 text-white/75 sm:text-lg">
-            <p>The music came first. The stage, the camera, and the page became different ways to tell the story. Keep the conversation going wherever you prefer.</p>
-            <nav aria-label="Explore Broadway's work" className="mt-7 flex flex-wrap gap-x-8 gap-y-4 text-sm font-semibold">
-              <SectionAnchorLink href="/#videos" className="border-b border-accent pb-1 text-white transition-colors hover:text-accent">Watch videos →</SectionAnchorLink>
-              <Link href="/music" className="border-b border-accent pb-1 text-white transition-colors hover:text-accent">Hear the music →</Link>
-              <Link href="/blog" className="border-b border-accent pb-1 text-white transition-colors hover:text-accent">Read the stories →</Link>
-            </nav>
+            <p>Music came first for Broadway. The stage, the camera, and the page now give him different ways to tell a story and invite you into the conversation.</p>
           </div>
         </div>
+        <nav aria-label="Explore Broadway's work" className="mx-auto mt-12 grid max-w-7xl gap-6 px-5 sm:grid-cols-3 sm:px-8">
+          <SectionAnchorLink href="/#videos" className="group flex items-center justify-between gap-4 border-t border-white/20 pt-4 text-lg font-semibold text-white transition-colors hover:border-accent hover:text-accent">Watch the channel <span className="text-accent transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></SectionAnchorLink>
+          <Link href="/music" className="group flex items-center justify-between gap-4 border-t border-white/20 pt-4 text-lg font-semibold text-white transition-colors hover:border-accent hover:text-accent">Hear the music <span className="text-accent transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></Link>
+          <Link href="/blog" className="group flex items-center justify-between gap-4 border-t border-white/20 pt-4 text-lg font-semibold text-white transition-colors hover:border-accent hover:text-accent">Read the stories <span className="text-accent transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></Link>
+        </nav>
         <div className="mx-auto mt-12 max-w-7xl px-5 text-sm leading-7 text-muted sm:px-8">For collaborations and inquiries, visit the <Link href="/media-kit" className="text-white underline decoration-accent underline-offset-4 hover:text-accent">Media Kit</Link> or <a href={`mailto:${links.email}`} className="text-white underline decoration-accent underline-offset-4 hover:text-accent">get in touch</a>.</div>
       </section>
     </>

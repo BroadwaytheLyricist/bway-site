@@ -47,7 +47,7 @@ export default async function LatestVideos() {
             href={links.youtube}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-accent"
+            className="inline-flex items-center gap-2 border-b border-accent pb-2 text-base font-semibold text-white transition-colors hover:text-accent"
           >
             View all on YouTube
             <ArrowIcon className="h-4 w-4" />

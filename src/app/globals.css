@@ -323,6 +323,10 @@ body {
   animation: about-story-arrive .7s cubic-bezier(.22, 1, .36, 1) both;
 }
 
+#listen-platforms:target .music-platform-content {
+  animation: about-story-arrive .7s cubic-bezier(.22, 1, .36, 1) both;
+}
+
 .about-story-art[data-ready="true"] .about-story-portrait {
   opacity: 0;
   transform: translate3d(-90px, 0, 0);
@@ -332,13 +336,6 @@ body {
 .about-story-art[data-visible="true"] .about-story-portrait {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-}
-
-.about-story-performance {
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 85%, transparent 100%), linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 85%, transparent 100%), linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
 }
 
 /* Real release artwork adds texture behind the music platform choices. */
@@ -593,7 +590,8 @@ body {
     transform: none;
     transition: none;
   }
-  #story:target .about-story-copy {
+  #story:target .about-story-copy,
+  #listen-platforms:target .music-platform-content {
     animation: none;
   }
 }

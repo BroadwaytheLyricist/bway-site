@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import SectionAnchorLink from "@/components/SectionAnchorLink";
 import { useEffect, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import { ArrowIcon } from "@/components/icons";
@@ -130,9 +130,9 @@ export default function Music({ standalone = false }: { standalone?: boolean }) 
           </div>
         </div>
         {!standalone && (
-          <Link href="/music" className="mt-8 inline-flex items-center gap-2 border-b border-accent pb-2 text-sm font-semibold text-white transition-colors hover:text-accent">
+          <SectionAnchorLink href="/music#listen-platforms" className="mt-8 inline-flex items-center gap-2 border-b border-accent pb-2 text-base font-semibold text-white transition-colors hover:text-accent">
             Explore the music <ArrowIcon className="h-4 w-4" />
-          </Link>
+          </SectionAnchorLink>
         )}
       </div>
     </section>

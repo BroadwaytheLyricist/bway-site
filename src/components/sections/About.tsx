@@ -112,7 +112,7 @@ export default function About({ standalone = false }: { standalone?: boolean }) 
             </p>
           </blockquote>
           {!standalone && (
-            <SectionAnchorLink href="/about#story" className="mt-8 inline-flex border-b border-accent pb-2 text-sm font-semibold text-white transition-colors hover:text-accent">
+            <SectionAnchorLink href="/about#story" className="mt-8 inline-flex border-b border-accent pb-2 text-base font-semibold text-white transition-colors hover:text-accent">
               More about Broadway →
             </SectionAnchorLink>
           )}
