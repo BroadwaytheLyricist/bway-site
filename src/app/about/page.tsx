@@ -86,12 +86,24 @@ export default function AboutPage() {
             <p>Music came first for Broadway. The stage, the camera, and the page now give him different ways to tell a story and invite you into the conversation.</p>
           </div>
         </div>
-        <nav aria-label="Explore Broadway's work" className="mx-auto mt-12 grid max-w-7xl gap-6 px-5 sm:grid-cols-3 sm:px-8">
-          <SectionAnchorLink href="/#videos" className="group flex items-center justify-between gap-4 border-t border-white/20 pt-4 text-lg font-semibold text-white transition-colors hover:border-accent hover:text-accent">Watch the channel <span className="text-accent transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></SectionAnchorLink>
-          <Link href="/music" className="group flex items-center justify-between gap-4 border-t border-white/20 pt-4 text-lg font-semibold text-white transition-colors hover:border-accent hover:text-accent">Hear the music <span className="text-accent transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></Link>
-          <Link href="/blog" className="group flex items-center justify-between gap-4 border-t border-white/20 pt-4 text-lg font-semibold text-white transition-colors hover:border-accent hover:text-accent">Read the stories <span className="text-accent transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></Link>
-        </nav>
-        <div className="mx-auto mt-12 max-w-7xl px-5 text-sm leading-7 text-muted sm:px-8">For collaborations and inquiries, visit the <Link href="/media-kit" className="text-white underline decoration-accent underline-offset-4 hover:text-accent">Media Kit</Link> or <a href={`mailto:${links.email}`} className="text-white underline decoration-accent underline-offset-4 hover:text-accent">get in touch</a>.</div>
+        <div className="relative z-10 mx-auto mt-12 grid max-w-7xl gap-5 px-5 sm:px-8 md:grid-cols-3">
+          <SectionAnchorLink href="/#videos" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
+            <h3 className="font-display text-2xl text-white group-hover:text-accent">Watch the Channel</h3>
+            <p className="mt-4 leading-7 text-muted">Videos on Hip-Hop history, artists, albums, sports, and culture.</p>
+            <span className="mt-6 inline-block text-sm font-semibold text-accent">Watch videos →</span>
+          </SectionAnchorLink>
+          <Link href="/music" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
+            <h3 className="font-display text-2xl text-white group-hover:text-accent">Hear the Music</h3>
+            <p className="mt-4 leading-7 text-muted">Listen to Broadway&apos;s original recordings and find the full catalog.</p>
+            <span className="mt-6 inline-block text-sm font-semibold text-accent">Explore music →</span>
+          </Link>
+          <Link href="/blog" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
+            <h3 className="font-display text-2xl text-white group-hover:text-accent">Read the Stories</h3>
+            <p className="mt-4 leading-7 text-muted">Go beyond the clip with written Hip-Hop stories and commentary.</p>
+            <span className="mt-6 inline-block text-sm font-semibold text-accent">Read the blog →</span>
+          </Link>
+        </div>
+        <div className="mx-auto mt-12 max-w-7xl px-5 text-sm leading-7 text-muted sm:px-8">For collaborations and inquiries, visit the <Link href="/media-kit" className="text-white underline decoration-accent underline-offset-4 hover:text-accent">Media Kit</Link> or <a href={`mailto:${links.email}`} className="text-white underline decoration-accent underline-offset-4 hover:text-accent">Get In Touch</a>.</div>
       </section>
     </>
   );
