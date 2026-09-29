@@ -3,6 +3,8 @@ import Image from "next/image";
 import Music from "@/components/sections/Music";
 import MusicPlatformCarousel from "@/components/MusicPlatformCarousel";
 import AnchorLanding from "@/components/AnchorLanding";
+import MusicVideoCards from "@/components/MusicVideoCards";
+import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 
 const title = "Original Music & Releases | Broadway the Lyricist";
 const description =
@@ -33,6 +35,13 @@ export default function MusicPage() {
     <>
       <AnchorLanding />
       <Music standalone />
+      <section aria-label="More music videos" className="relative isolate overflow-hidden border-t border-line bg-[#080d19] py-12 sm:py-16">
+        <Image src="/images/music-studio-bg.jpg" alt="" fill sizes="100vw" className="-z-20 object-cover opacity-20" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-[#080d19]/80 via-[#081527]/70 to-[#080d19]" />
+        <ScrollRevealGroup className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div data-reveal-item><MusicVideoCards more /></div>
+        </ScrollRevealGroup>
+      </section>
       <section id="listen-platforms" className="relative isolate overflow-hidden border-t border-line bg-[#080d19] py-20 sm:py-28">
         <div aria-hidden="true" className="music-cover-wall pointer-events-none absolute inset-0 -z-20">
           {[
