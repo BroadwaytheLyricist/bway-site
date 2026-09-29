@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import SectionHeading from "@/components/SectionHeading";
+import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 import {
   ArrowIcon,
   DocIcon,
@@ -20,10 +21,10 @@ import { links } from "@/lib/site";
 const initialState: ContactState = { status: "idle", message: "" };
 
 const socials = [
-  { label: "YouTube", href: links.youtube, Icon: YouTubeIcon },
-  { label: "Instagram", href: links.instagram, Icon: InstagramIcon },
-  { label: "TikTok", href: links.tiktok, Icon: TikTokIcon },
-  { label: "Facebook", href: links.facebook, Icon: FacebookIcon },
+  { label: "YouTube", handle: "Broadway the Lyricist", href: links.youtube, Icon: YouTubeIcon },
+  { label: "Instagram", handle: "@broadwaythelyricist", href: links.instagram, Icon: InstagramIcon },
+  { label: "TikTok", handle: "@broadwaythelyricist", href: links.tiktok, Icon: TikTokIcon },
+  { label: "Facebook", handle: "Broadway The Lyricist", href: links.facebook, Icon: FacebookIcon },
 ];
 
 const fieldBase =
@@ -65,8 +66,7 @@ export default function Contact() {
             />
             <p className="mt-6 text-lg leading-relaxed text-muted">
               For interviews, appearances, bookings, and brand partnerships,
-              send a message or email me directly. Want to join the Hip-Hop
-              conversation? Follow along on the channels below.
+              send a message or email me directly.
             </p>
 
             {/* Contact detail cards — matched surfaces so the column carries weight */}
@@ -108,26 +108,6 @@ export default function Contact() {
               </Link>
             </div>
 
-            {/* Follow — merged in so "reach out" and "follow along" live together */}
-            <div className="mt-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
-                Follow Me
-              </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                {socials.map(({ label, href, Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-panel-2 text-accent transition-all hover:-translate-y-1 hover:border-accent hover:bg-accent/10"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Right: form card */}
@@ -244,6 +224,43 @@ export default function Contact() {
               )}
             </div>
           </form>
+        </div>
+
+        <div className="mt-20 border-t border-white/15 pt-14 sm:mt-24 sm:pt-16">
+          <p className="kicker">Stay Connected</p>
+          <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+            <h2 className="max-w-3xl font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-6xl">
+              Follow Me On <span className="text-accent">Social Media</span>
+            </h2>
+            <p className="max-w-sm text-base leading-relaxed text-muted lg:pb-1">
+              Join the Hip-Hop conversations, share your take, and see what&apos;s next.
+            </p>
+          </div>
+
+          <ScrollRevealGroup className="mt-10 grid gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-4" direction="up">
+            {socials.map(({ label, handle, href, Icon }) => (
+              <a
+                key={label}
+                data-reveal-item
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Follow Broadway the Lyricist on ${label}`}
+                className="group flex min-h-40 flex-col justify-between border-t border-white/25 py-5 transition-colors hover:border-accent focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+              >
+                <span className="flex items-start justify-between">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-accent/50 bg-accent/10 text-accent transition-transform duration-300 group-hover:-translate-y-1 group-hover:border-accent group-hover:bg-accent/20 group-focus-visible:bg-accent/20">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <ArrowIcon className="h-5 w-5 -rotate-45 text-muted transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent" />
+                </span>
+                <span className="block">
+                  <span className="block font-display text-2xl leading-none text-white transition-colors group-hover:text-accent sm:text-3xl">{label}</span>
+                  <span className="mt-2 block text-sm text-muted">{handle}</span>
+                </span>
+              </a>
+            ))}
+          </ScrollRevealGroup>
         </div>
       </div>
     </section>
