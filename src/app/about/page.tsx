@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import HomeSectionLink from "@/components/HomeSectionLink";
+import SectionAnchorLink from "@/components/SectionAnchorLink";
+import AnchorLanding from "@/components/AnchorLanding";
 import Image from "next/image";
 import About from "@/components/sections/About";
 import AboutArtReveal from "@/components/AboutArtReveal";
@@ -33,8 +34,9 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      <AnchorLanding />
       <About standalone />
-      <section className="relative isolate overflow-hidden border-t border-line bg-black py-20 sm:py-28">
+      <section id="story" className="relative isolate overflow-hidden border-t border-line bg-black py-20 sm:py-28">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_28%,rgba(18,40,66,.16),transparent_48%)]" />
         <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div className="relative lg:sticky lg:top-32 lg:self-start">
@@ -44,7 +46,7 @@ export default function AboutPage() {
               <Image src="/images/about/story-hooded.webp" alt="" fill sizes="(max-width: 1023px) 100vw, 42vw" className="about-story-portrait object-contain object-bottom" />
             </AboutArtReveal>
           </div>
-          <div className="space-y-6 text-base leading-8 text-white/75 sm:text-lg">
+          <div className="about-story-copy space-y-6 text-base leading-8 text-white/75 sm:text-lg">
             <p>
               Music was Broadway the Lyricist&apos;s first way of telling a story. A Tampa-based solo artist from the East New York section of Brooklyn, New York, he writes from his own life, putting honest detail and strong songwriting alongside the bars. Nas, Jay-Z, Jadakiss, Prodigy, Ghostface Killah, and Black Thought are among the MCs who shaped his ear.
             </p>
@@ -74,11 +76,11 @@ export default function AboutPage() {
             <Image src="/images/about/performance-full.webp" alt="Broadway the Lyricist performing and reaching toward the crowd" fill sizes="(max-width: 1279px) 100vw, 1280px" className="about-work-full object-cover" />
           </AboutArtReveal>
           <div className="relative z-10 mt-5 grid gap-5 md:grid-cols-3">
-            <HomeSectionLink href="/#videos" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
+            <SectionAnchorLink href="/#videos" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
               <h3 className="font-display text-2xl text-white group-hover:text-accent">Watch the Channel</h3>
               <p className="mt-4 leading-7 text-muted">Videos on Hip-Hop history, artists, albums, sports, and culture.</p>
               <span className="mt-6 inline-block text-sm font-semibold text-accent">Watch videos →</span>
-            </HomeSectionLink>
+            </SectionAnchorLink>
             <Link href="/music" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
               <h3 className="font-display text-2xl text-white group-hover:text-accent">Hear the Music</h3>
               <p className="mt-4 leading-7 text-muted">Listen to Broadway&apos;s original recordings and find the full catalog.</p>

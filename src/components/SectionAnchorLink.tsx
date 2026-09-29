@@ -6,9 +6,12 @@ import { usePathname } from "next/navigation";
 
 type Props = ComponentProps<typeof Link>;
 
-export default function HomeSectionLink({ onClick, scroll, ...props }: Props) {
+export default function SectionAnchorLink({ onClick, scroll, ...props }: Props) {
   const pathname = usePathname();
-  const crossingPages = pathname !== "/";
+  const destination = typeof props.href === "string"
+    ? props.href.split("#")[0] || "/"
+    : props.href.pathname || "/";
+  const crossingPages = pathname !== destination;
 
   return (
     <Link
@@ -25,7 +28,7 @@ export default function HomeSectionLink({ onClick, scroll, ...props }: Props) {
           !event.shiftKey &&
           !event.altKey
         ) {
-          // Keep the route transition from animating through the whole homepage.
+          // Cross-page anchors should arrive directly, without a long vertical scroll.
           document.documentElement.style.scrollBehavior = "auto";
         }
       }}

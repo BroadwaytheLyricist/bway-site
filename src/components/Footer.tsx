@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import HomeSectionLink from "@/components/HomeSectionLink";
+import SectionAnchorLink from "@/components/SectionAnchorLink";
 import { links, nav } from "@/lib/site";
 import {
   FacebookIcon,
@@ -21,7 +21,7 @@ export default function Footer() {
     <footer className="border-t border-line bg-panel">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="flex flex-col items-center text-center">
-          <HomeSectionLink href="/#home" aria-label="Broadway The Lyricist home">
+          <SectionAnchorLink href="/#home" aria-label="Broadway The Lyricist home">
             <Image
               src="/images/logo.png"
               alt="Broadway The Lyricist"
@@ -29,7 +29,7 @@ export default function Footer() {
               height={64}
               className="h-14 w-auto"
             />
-          </HomeSectionLink>
+          </SectionAnchorLink>
 
           <p className="mt-8 max-w-3xl font-display text-2xl leading-tight tracking-wide text-white sm:text-3xl lg:text-4xl">
             &ldquo;The Hip-Hop Conversations We{" "}
@@ -42,7 +42,7 @@ export default function Footer() {
             aria-label="Footer"
           >
             {nav.map((item) => {
-              const NavLink = item.href.startsWith("/#") ? HomeSectionLink : Link;
+              const NavLink = item.href.startsWith("/#") ? SectionAnchorLink : Link;
               return (
                 <NavLink
                   key={item.label}

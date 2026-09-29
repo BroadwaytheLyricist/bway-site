@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import SectionAnchorLink from "@/components/SectionAnchorLink";
 import { useEffect, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 
@@ -112,9 +112,9 @@ export default function About({ standalone = false }: { standalone?: boolean }) 
             </p>
           </blockquote>
           {!standalone && (
-            <Link href="/about" className="mt-8 inline-flex border-b border-accent pb-2 text-sm font-semibold text-white transition-colors hover:text-accent">
+            <SectionAnchorLink href="/about#story" className="mt-8 inline-flex border-b border-accent pb-2 text-sm font-semibold text-white transition-colors hover:text-accent">
               More about Broadway →
-            </Link>
+            </SectionAnchorLink>
           )}
         </div>
       </div>

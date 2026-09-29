@@ -5,12 +5,12 @@ import LatestVideos from "@/components/sections/LatestVideos";
 import LatestBlog from "@/components/sections/LatestBlog";
 import Music from "@/components/sections/Music";
 import Contact from "@/components/sections/Contact";
-import HomeAnchorLanding from "@/components/HomeAnchorLanding";
+import AnchorLanding from "@/components/AnchorLanding";
 
 export default function Home() {
   return (
     <>
-      <HomeAnchorLanding />
+      <AnchorLanding />
       <Hero />
       <Marquee />
       <About />

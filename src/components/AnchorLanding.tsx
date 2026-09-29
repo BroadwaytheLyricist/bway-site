@@ -2,7 +2,7 @@
 
 import { useLayoutEffect } from "react";
 
-export default function HomeAnchorLanding() {
+export default function AnchorLanding() {
   useLayoutEffect(() => {
     const id = decodeURIComponent(window.location.hash.slice(1));
     const target = id && document.getElementById(id);

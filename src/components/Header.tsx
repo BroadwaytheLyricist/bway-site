@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { links, nav } from "@/lib/site";
 import { CloseIcon, MenuIcon } from "@/components/icons";
-import HomeSectionLink from "@/components/HomeSectionLink";
+import SectionAnchorLink from "@/components/SectionAnchorLink";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -37,7 +37,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 lg:h-20">
-        <HomeSectionLink
+        <SectionAnchorLink
           href="/#home"
           className="flex items-center gap-3"
           aria-label="Broadway The Lyricist home"
@@ -50,14 +50,14 @@ export default function Header() {
             priority
             className="h-14 w-auto lg:h-16"
           />
-        </HomeSectionLink>
+        </SectionAnchorLink>
 
         <nav
           className="hidden items-center gap-8 lg:flex"
           aria-label="Primary"
         >
           {nav.map((item) => {
-            const NavLink = item.href.startsWith("/#") ? HomeSectionLink : Link;
+            const NavLink = item.href.startsWith("/#") ? SectionAnchorLink : Link;
             return (
               <NavLink
                 key={item.label}
@@ -107,7 +107,7 @@ export default function Header() {
           aria-label="Mobile"
         >
           {nav.map((item) => {
-            const NavLink = item.href.startsWith("/#") ? HomeSectionLink : Link;
+            const NavLink = item.href.startsWith("/#") ? SectionAnchorLink : Link;
             return (
               <NavLink
                 key={item.label}
