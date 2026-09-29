@@ -334,6 +334,11 @@ body {
 }
 
 /* Real release artwork adds texture behind the music platform choices. */
+.music-artist-panorama {
+  aspect-ratio: 2.1;
+  background: #0b1423;
+}
+
 .music-cover-wall {
   opacity: .62;
   filter: brightness(.78) saturate(.84);
@@ -353,6 +358,7 @@ body {
 .music-cover-card:nth-child(3) { left: 47%; top: 25%; transform: rotate(-5deg); }
 .music-cover-card:nth-child(4) { right: 12%; top: -12%; transform: rotate(8deg); }
 .music-cover-card:nth-child(5) { right: -4%; top: 38%; transform: rotate(-8deg); }
+.music-cover-card:nth-child(6) { left: 28%; top: 51%; transform: rotate(8deg); }
 
 .music-platforms {
   overflow: hidden;
@@ -414,6 +420,7 @@ body {
 }
 
 @media (max-width: 767px) {
+  .music-artist-panorama { aspect-ratio: 2.1; }
   .music-cover-card { width: 170px; }
   .music-cover-card:nth-child(2) { left: 36%; }
   .music-cover-card:nth-child(3),

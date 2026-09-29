@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Music from "@/components/sections/Music";
 import MusicPlatformCarousel from "@/components/MusicPlatformCarousel";
+import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 import { links } from "@/lib/site";
 
 const title = "Original Music & Releases | Broadway the Lyricist";
@@ -35,6 +36,18 @@ export default function MusicPage() {
       <Music standalone />
       <section className="relative isolate overflow-hidden border-t border-line bg-[#0b1423] py-20 sm:py-28">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_34%,rgba(29,81,137,.18),transparent_46%),radial-gradient(circle_at_88%_82%,rgba(255,90,31,.09),transparent_40%)]" />
+        <ScrollRevealGroup className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div data-reveal-item className="music-artist-panorama relative mb-12 overflow-hidden sm:mb-16">
+            <Image
+              src="/images/music-artist-lineup.jpg"
+              alt="Broadway the Lyricist and four others in Broadway hoodies on a stage"
+              fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover object-center"
+            />
+            <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,20,35,.06)_60%,rgba(11,20,35,.88)),linear-gradient(90deg,rgba(11,20,35,.28),transparent_18%,transparent_82%,rgba(11,20,35,.28))]" />
+          </div>
+        </ScrollRevealGroup>
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div>
             <p className="kicker">More Than Commentary</p>
@@ -54,14 +67,15 @@ export default function MusicPage() {
       <section className="relative isolate overflow-hidden border-t border-line bg-[#080d19] py-20 sm:py-28">
         <div aria-hidden="true" className="music-cover-wall pointer-events-none absolute inset-0 -z-20">
           {[
-            ["god-is-the-only-goat", "God Is the Only GOAT"],
-            ["off-broadway-single", "Off Broadway"],
-            ["get-some", "Get Some"],
-            ["superstar-status", "Superstar Status"],
-            ["superstar-status-2", "Superstar Status 2"],
-          ].map(([cover, title]) => (
+            { cover: "god-is-the-only-goat.jpg", title: "God Is the Only GOAT" },
+            { cover: "american-hustler.webp", title: "American Hustler" },
+            { cover: "off-broadway-single.jpg", title: "Off Broadway" },
+            { cover: "get-some.jpg", title: "Get Some" },
+            { cover: "superstar-status.jpg", title: "Superstar Status" },
+            { cover: "superstar-status-2.jpg", title: "Superstar Status Part II" },
+          ].map(({ cover, title }) => (
             <div key={cover} className="music-cover-card">
-              <Image src={`/images/music-covers/${cover}.jpg`} alt={title} fill sizes="(max-width: 640px) 170px, 280px" className="object-cover" />
+              <Image src={`/images/music-covers/${cover}`} alt={title} fill sizes="(max-width: 640px) 170px, 280px" className="object-cover" />
             </div>
           ))}
         </div>
