@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import About from "@/components/sections/About";
+import AboutArtReveal from "@/components/AboutArtReveal";
 import { links } from "@/lib/site";
 
 const title = "About Broadway the Lyricist | Artist & Hip-Hop Storyteller";
@@ -32,11 +34,14 @@ export default function AboutPage() {
     <>
       <About standalone />
       <section className="relative isolate overflow-hidden border-t border-line bg-[#0b1423] py-20 sm:py-28">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_85%_30%,rgba(30,90,145,.16),transparent_44%),radial-gradient(circle_at_12%_80%,rgba(255,90,31,.08),transparent_40%)]" />
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div>
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_32%,rgba(30,90,145,.18),transparent_47%),radial-gradient(circle_at_16%_64%,rgba(44,82,111,.2),transparent_45%)]" />
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <div className="relative flex min-h-[480px] flex-col sm:min-h-[610px] lg:min-h-0">
             <p className="kicker">The Story</p>
-            <h2 className="mt-4 font-display text-4xl leading-tight text-white sm:text-5xl">An artist&apos;s ear. <span className="text-accent">A storyteller&apos;s voice.</span></h2>
+            <h2 className="relative z-10 mt-4 font-display text-4xl leading-tight text-white sm:text-5xl">An artist&apos;s ear. <span className="text-accent">A storyteller&apos;s voice.</span></h2>
+            <AboutArtReveal className="about-story-art relative mt-8 min-h-[340px] flex-1 overflow-hidden sm:min-h-[470px] lg:mt-10">
+              <Image src="/images/about/story-hooded.webp" alt="" fill sizes="(max-width: 1023px) 100vw, 42vw" className="about-story-portrait object-contain object-bottom" />
+            </AboutArtReveal>
           </div>
           <div className="space-y-6 text-base leading-8 text-white/75 sm:text-lg">
             <p>
@@ -60,22 +65,27 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="border-t border-line bg-bg py-20 sm:py-28">
+      <section className="about-work-section relative isolate overflow-hidden border-t border-line bg-[#0b1423] py-20 sm:py-28">
+        <div aria-hidden="true" className="about-work-stage absolute inset-0 -z-20" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,18,34,.78),rgba(8,18,34,.76)_45%,rgba(8,18,34,.94)),linear-gradient(90deg,rgba(8,18,34,.82),transparent_75%)]" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <p className="kicker">Explore Broadway&apos;s Work</p>
           <h2 className="mt-4 font-display text-4xl text-white sm:text-5xl">The stories. <span className="text-accent">The music.</span> The conversation.</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            <Link href="/#videos" className="group border border-line bg-panel p-7 transition-colors hover:border-accent/60">
+          <AboutArtReveal className="about-work-art relative mt-4 h-[250px] overflow-hidden sm:h-[390px] lg:h-[460px]">
+            <Image src="/images/about/performance-crowd.webp" alt="" fill sizes="(max-width: 1279px) 100vw, 1280px" className="about-work-foreground object-contain object-bottom" />
+          </AboutArtReveal>
+          <div className="relative z-10 mt-5 grid gap-5 md:grid-cols-3">
+            <Link href="/#videos" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
               <h3 className="font-display text-2xl text-white group-hover:text-accent">Watch the Channel</h3>
               <p className="mt-4 leading-7 text-muted">Videos on Hip-Hop history, artists, albums, sports, and culture.</p>
               <span className="mt-6 inline-block text-sm font-semibold text-accent">Watch videos →</span>
             </Link>
-            <Link href="/music" className="group border border-line bg-panel p-7 transition-colors hover:border-accent/60">
+            <Link href="/music" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
               <h3 className="font-display text-2xl text-white group-hover:text-accent">Hear the Music</h3>
               <p className="mt-4 leading-7 text-muted">Listen to Broadway&apos;s original recordings and find the full catalog.</p>
               <span className="mt-6 inline-block text-sm font-semibold text-accent">Explore music →</span>
             </Link>
-            <Link href="/blog" className="group border border-line bg-panel p-7 transition-colors hover:border-accent/60">
+            <Link href="/blog" className="group border border-white/15 bg-[#0b1729]/90 p-7 backdrop-blur-sm transition-colors hover:border-accent/60">
               <h3 className="font-display text-2xl text-white group-hover:text-accent">Read the Stories</h3>
               <p className="mt-4 leading-7 text-muted">Go beyond the clip with written Hip-Hop stories and commentary.</p>
               <span className="mt-6 inline-block text-sm font-semibold text-accent">Read the blog →</span>
