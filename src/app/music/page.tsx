@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Music from "@/components/sections/Music";
+import MusicPlatformCarousel from "@/components/MusicPlatformCarousel";
 import { links } from "@/lib/site";
 
 const title = "Original Music & Releases | Broadway the Lyricist";
@@ -49,22 +51,26 @@ export default function MusicPage() {
           </div>
         </div>
       </section>
-      <section className="border-t border-line bg-bg py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section className="relative isolate overflow-hidden border-t border-line bg-[#080d19] py-20 sm:py-28">
+        <div aria-hidden="true" className="music-cover-wall pointer-events-none absolute inset-0 -z-20">
+          {[
+            ["off-broadway", "Off Broadway EP"],
+            ["american-musical", "American Musical"],
+            ["fly-like-an-eagle", "Fly Like An Eagle"],
+            ["superstar-status-2", "Superstar Status 2"],
+            ["big-money", "Big Money"],
+          ].map(([cover, title]) => (
+            <div key={cover} className="music-cover-card">
+              <Image src={`/images/music-covers/${cover}.jpg`} alt={title} fill sizes="(max-width: 640px) 170px, 280px" className="object-cover" />
+            </div>
+          ))}
+        </div>
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(8,13,25,.8),rgba(8,13,25,.58)_58%,rgba(8,13,25,.72)),linear-gradient(180deg,rgba(8,13,25,.58),transparent_46%,rgba(8,13,25,.85))]" />
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <p className="kicker">Listen Your Way</p>
           <h2 className="mt-4 font-display text-4xl text-white sm:text-5xl">Find Broadway&apos;s <span className="text-accent">music.</span></h2>
           <p className="mt-5 max-w-2xl leading-8 text-muted">The embedded player features the Off Broadway EP. Availability of other releases varies by platform; Bandcamp carries the broader catalog.</p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            {[
-              { label: "Bandcamp", href: links.bandcamp },
-              { label: "Spotify", href: links.spotify },
-              { label: "Apple Music", href: links.appleMusic },
-              { label: "Amazon Music", href: links.amazonMusic },
-              { label: "YouTube Music", href: links.youtubeMusic },
-            ].map(({ label, href }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="border border-white/15 bg-panel px-5 py-4 text-sm font-semibold text-white transition-colors hover:border-accent hover:text-accent">{label} ↗</a>
-            ))}
-          </div>
+          <MusicPlatformCarousel />
           <p className="mt-12 text-sm leading-7 text-muted">Here for the conversation too? <Link href="/#videos" className="text-white underline decoration-accent underline-offset-4 hover:text-accent">Watch the channel</Link> or <Link href="/about" className="text-white underline decoration-accent underline-offset-4 hover:text-accent">meet Broadway</Link>.</p>
         </div>
       </section>
