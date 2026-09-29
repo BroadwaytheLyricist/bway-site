@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import styles from "./lounge.module.css";
+import { XP_TIERS } from "@/lib/bar-lounge/progression";
 
 export const TIERS = ["On The Radio", "In The Whip", "On The Block", "In The Crates", "Broadway's Floor"];
 export type LoungeIconName = "mic" | "calendar" | "record" | "bars" | "fire" | "score" | "radio" | "car" | "city" | "crate" | "crown";
@@ -27,7 +28,7 @@ export default function LoungeLobby({ onPlay }: { onPlay: (mode: "cipher" | "pra
   return <>
     <div className={styles.loungeHero}>
       <div aria-hidden="true" className={styles.heroBackdrop}/>
-      <div aria-hidden="true" className={styles.heroPortrait}><Image src="/images/about-subject-v3.png" alt="" fill sizes="(min-width:900px) 780px, 700px" className="object-cover object-center" priority /></div>
+      <div aria-hidden="true" className={styles.heroPortrait}><Image src="/images/bar-lounge-intro.jpg" alt="" fill sizes="(min-width:900px) 650px, 100vw" className="object-contain object-center" priority /></div>
       <div className={styles.heroCopy}>
         <p className={styles.eyebrow + " font-display"}>Welcome To</p>
         <h1 className="font-display">THE BAR <span>LOUNGE</span></h1>
@@ -57,10 +58,10 @@ export default function LoungeLobby({ onPlay }: { onPlay: (mode: "cipher" | "pra
         <h2 className={styles.panelHeading + " font-display"}>Raise Your Level</h2>
         <div className={styles.tierGrid}>
           {TIERS.map((name, i) => <div key={name} className={styles.tierTile} style={{ "--tier-color": ["#69a147", "#cf9a30", "#d5742c", "#be4a35", "#9a68b3"][i] } as React.CSSProperties}>
-            <strong className="font-display">{i + 1}</strong><span className="font-display">{name}</span><LoungeIcon name={(["radio", "car", "city", "crate", "crown"] as const)[i]}/><small>{["0–2", "3", "4–5", "6–7", "8"][i]} correct</small>
+            <strong className="font-display">{i + 1}</strong><span className="font-display">{name}</span><LoungeIcon name={(["radio", "car", "city", "crate", "crown"] as const)[i]}/><small>{XP_TIERS[i].xp.toLocaleString()}+ XP</small>
           </div>)}
         </div>
-        <p className={styles.tierNote}>Your eight-question score sets your level. Tier names are a working idea.</p>
+        <p className={styles.tierNote}>Your total XP raises your tier across all three modes. Each finished round earns 25 XP, plus 1 XP per 10 points.</p>
       </div>
     </div>
 
@@ -72,6 +73,6 @@ export default function LoungeLobby({ onPlay }: { onPlay: (mode: "cipher" | "pra
         { icon: "record" as const, title: "See the Reveal", note: "The answer, artwork and context." },
       ].map((item) => <div key={item.title}><LoungeIcon name={item.icon}/><span><strong className="font-display">{item.title}</strong><small>{item.note}</small></span></div>)}
     </div>
-    <div className={styles.loungeFootnote}><span>Free to play. No signup required.</span><span>Practice preview · lyric examples are original sample lines.</span></div>
+    <div className={styles.loungeFootnote}><span>Free to play. Sign in to save progress across devices.</span><span>Lyric examples are original practice lines.</span></div>
   </>;
 }
