@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import { ArrowIcon } from "@/components/icons";
 import { links } from "@/lib/site";
+import MusicVideoCards from "@/components/MusicVideoCards";
 
 const destinations = [
   { label: "Spotify", href: links.spotify },
@@ -93,7 +94,18 @@ export default function Music({ standalone = false }: { standalone?: boolean }) 
           title={<>Broadway <span className="text-accent">On Record</span></>}
         />
 
-        <div ref={playerRef} className="music-player-card mt-[440px] grid overflow-hidden border border-line shadow-2xl sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[880px] lg:grid-cols-[minmax(350px,0.9fr)_1fr]">
+        {standalone ? <div ref={playerRef} className="music-player-card music-player-card-with-videos mt-[440px] grid overflow-hidden border border-line shadow-2xl sm:mt-[520px] md:grid-cols-2 lg:ml-auto lg:mt-16 lg:max-w-[880px]">
+          <div className="flex flex-col items-center justify-center bg-[#101827]/45 px-5 py-7 backdrop-blur-[1px] sm:px-7">
+            <div className="mb-5 w-full max-w-[300px]">
+              <p className="kicker">Featured Release</p>
+              <h2 className="mt-3 font-display text-3xl leading-none text-white sm:text-4xl">Off Broadway EP</h2>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent">Unmastered Deluxe Edition</p>
+            </div>
+            <iframe title="Off Broadway EP (Unmastered) Deluxe Edition on Bandcamp" src="https://bandcamp.com/EmbeddedPlayer/album=2215040601/size=large/bgcol=101827/linkcol=ff5a1f/tracklist=false/transparent=true/" className="h-[420px] w-full max-w-[300px] border-0" loading="lazy" allow="autoplay; encrypted-media" />
+            <a href={links.bandcamp} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 border-b border-accent pb-2 text-sm font-semibold text-white hover:text-accent">Full catalog on Bandcamp <ArrowIcon className="h-4 w-4" /></a>
+          </div>
+          <MusicVideoCards />
+        </div> : <div ref={playerRef} className="music-player-card mt-[440px] grid overflow-hidden border border-line shadow-2xl sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[880px] lg:grid-cols-[minmax(350px,0.9fr)_1fr]">
           <div className="flex items-center justify-center bg-[#101827]/45 px-4 py-8 backdrop-blur-[1px] sm:px-8">
             <iframe
               title="Off Broadway EP (Unmastered) Deluxe Edition on Bandcamp"
@@ -128,7 +140,7 @@ export default function Music({ standalone = false }: { standalone?: boolean }) 
               </div>
             )}
           </div>
-        </div>
+        </div>}
         {!standalone && (
           <SectionAnchorLink href="/music#listen-platforms" className="mt-8 inline-flex items-center gap-2 border-b border-accent pb-2 text-base font-semibold text-white transition-colors hover:text-accent">
             Explore the music <ArrowIcon className="h-4 w-4" />

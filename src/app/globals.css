@@ -505,6 +505,10 @@ body {
   will-change: transform, opacity;
 }
 
+.music-player-card.music-player-card-with-videos {
+  transform: translate3d(var(--music-player-x, 96px), 0, 0);
+}
+
 @media (min-width: 1280px) {
   .music-player-card {
     transform: translate3d(calc(clamp(0px, calc(25vw - 320px), 175px) + var(--music-player-x, 96px)), 0, 0);
