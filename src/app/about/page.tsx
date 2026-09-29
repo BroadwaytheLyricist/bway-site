@@ -33,13 +33,13 @@ export default function AboutPage() {
   return (
     <>
       <About standalone />
-      <section className="relative isolate overflow-hidden border-t border-line bg-[#0b1423] py-20 sm:py-28">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_32%,rgba(30,90,145,.18),transparent_47%),radial-gradient(circle_at_16%_64%,rgba(44,82,111,.2),transparent_45%)]" />
+      <section className="relative isolate overflow-hidden border-t border-line bg-black py-20 sm:py-28">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_28%,rgba(18,40,66,.16),transparent_48%)]" />
         <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <div className="relative flex min-h-[480px] flex-col sm:min-h-[610px] lg:min-h-0">
+          <div className="relative lg:sticky lg:top-32 lg:self-start">
             <p className="kicker">The Story</p>
             <h2 className="relative z-10 mt-4 font-display text-4xl leading-tight text-white sm:text-5xl">An artist&apos;s ear. <span className="text-accent">A storyteller&apos;s voice.</span></h2>
-            <AboutArtReveal className="about-story-art relative mt-8 min-h-[340px] flex-1 overflow-hidden sm:min-h-[470px] lg:mt-10">
+            <AboutArtReveal className="about-story-art relative mt-7 h-[360px] max-w-[440px] overflow-hidden sm:h-[500px] lg:mt-8 lg:h-[540px]">
               <Image src="/images/about/story-hooded.webp" alt="" fill sizes="(max-width: 1023px) 100vw, 42vw" className="about-story-portrait object-contain object-bottom" />
             </AboutArtReveal>
           </div>
