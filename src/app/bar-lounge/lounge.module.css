@@ -1,0 +1,25 @@
+.stage { background: #080d18; }
+.performer, .crowd { position: absolute; top: 0; bottom: 0; width: 44%; background-image: url('/images/about/performance-full.webp'); background-size: auto 82vh; background-repeat: no-repeat; opacity: .29; filter: grayscale(1) sepia(.22) hue-rotate(175deg) saturate(1.8) contrast(1.25); pointer-events: none; }
+.performer { left: 0; background-position: left top 5rem; mask-image: linear-gradient(to right, #000 0%, #000 37%, transparent 100%), linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%); mask-composite: intersect; animation: enterLeft 1.2s cubic-bezier(.2,.8,.2,1) both; }
+.crowd { right: 0; background-position: right top 5rem; mask-image: linear-gradient(to left, #000 0%, #000 42%, transparent 100%), linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%); mask-composite: intersect; animation: enterRight 1.2s cubic-bezier(.2,.8,.2,1) both; }
+.stageWash { position: absolute; inset: 0; background: radial-gradient(ellipse 52% 50% at 50% 28%, rgba(18,48,86,.8), transparent 90%), linear-gradient(90deg, transparent, #08111f 38%, #08111f 62%, transparent), linear-gradient(to bottom, transparent 60%, #080d18 100%); pointer-events: none; }
+.risingBars { height: 78px; display: flex; justify-content: center; align-items: flex-end; gap: 7px; margin: 0 auto 22px; }
+.heroBars { height: 190px; position: absolute; inset: 0 0 auto; opacity: .36; gap: 20px; z-index: 0; }
+.risingBar { width: 19px; border-radius: 3px 3px 0 0; background: #173254; border-top: 2px solid #3f6c9b; transform-origin: bottom center; animation: barRise .75s ease-out both; transition: height .5s ease, background .4s ease; }
+.heroBars .risingBar { width: clamp(28px, 7vw, 80px); }
+.risingActive { background: linear-gradient(to top, #a33213, #ff5a1f 65%, #ff9a4d); border-top-color: #ffc393; box-shadow: 0 0 23px rgba(255,90,31,.35); }
+.modeCard { padding: 27px; border: 1px solid rgba(255,255,255,.19); border-top: 3px solid #ff5a1f; background: linear-gradient(135deg, rgba(16,34,58,.94), rgba(8,17,31,.93)); border-radius: 3px; text-align: left; transition: transform .24s ease, background .24s ease; }
+.modeCard:hover { transform: translateY(-5px); background: linear-gradient(135deg, rgba(24,52,84,.97), rgba(8,17,31,.97)); }
+.gamePanel { position: relative; border: 1px solid rgba(255,255,255,.17); border-top: 3px solid #ff5a1f; background: linear-gradient(160deg, rgba(13,31,53,.97), rgba(8,15,28,.97)); padding: clamp(24px, 5vw, 50px); box-shadow: 0 25px 100px rgba(0,0,0,.35); }
+.tile { display: flex; align-items: center; justify-content: center; aspect-ratio: 1; border: 1px solid rgba(170,198,228,.35); background: rgba(7,17,32,.9); color: #fff; font: 700 clamp(1.5rem, 4vw, 2rem)/1 var(--font-inter), sans-serif; }
+.tileHit { background: #ed5b22; border-color: #ffab7f; color: #071324; animation: tileFlip .45s ease-out both; }
+.tileNear { background: #356aa6; border-color: #8db8e9; animation: tileFlip .45s ease-out both; }
+.tileMiss { background: #2a3647; border-color: #4b5d73; animation: tileFlip .45s ease-out both; }
+.pointBurst { position: absolute; top: 35%; right: 6%; color: #ff9a4d; font-weight: 900; letter-spacing: .12em; text-shadow: 0 0 20px #ff5a1f; animation: pointRise .85s ease-out both; pointer-events: none; }
+@keyframes enterLeft { from { transform: translateX(-18%); opacity: 0; } to { transform: none; opacity: .29; } }
+@keyframes enterRight { from { transform: translateX(18%); opacity: 0; } to { transform: none; opacity: .29; } }
+@keyframes barRise { from { transform: scaleY(.1); opacity: 0; } to { transform: scaleY(1); opacity: 1; } }
+@keyframes tileFlip { from { transform: rotateX(80deg); } to { transform: rotateX(0deg); } }
+@keyframes pointRise { from { opacity: 0; transform: translateY(12px) scale(.85); } 35% { opacity: 1; } to { opacity: 0; transform: translateY(-20px) scale(1.1); } }
+@media (max-width: 740px) { .performer, .crowd { width: 55%; opacity: .16; background-size: auto 60vh; } .performer { background-position: left top 5rem; } .crowd { background-position: right top 5rem; } .stageWash { background: linear-gradient(90deg, rgba(8,17,31,.65), rgba(8,17,31,.9) 48%, rgba(8,17,31,.65)), linear-gradient(to bottom, transparent 45%, #080d18); } }
+@media (prefers-reduced-motion: reduce) { .performer, .crowd, .risingBar, .tileHit, .tileNear, .tileMiss, .pointBurst { animation: none; } .modeCard { transition: none; } }
