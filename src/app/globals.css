@@ -738,3 +738,10 @@ html[data-lounge-transition="arriving"] [data-lounge-room] { transform-origin:65
  .lounge-entrance { display:none; }
  html[data-lounge-transition="leaving"] #home, html[data-lounge-transition="arriving"] [data-lounge-room] { animation:none; }
 }
+
+/* The same doorway is available from every page and from a scrolled footer. */
+html[data-lounge-source="page"][data-lounge-transition="leaving"] #home { animation:none; }
+html[data-lounge-source="page"][data-lounge-transition="leaving"] main { transform-origin:75% var(--lounge-departure-y,48vh); animation:lounge-page-push 520ms cubic-bezier(.4,0,.8,1) both; }
+@keyframes lounge-page-push { from { transform:perspective(1400px) scale(1); } to { transform:perspective(1400px) scale(1.09) rotateY(-5deg) translateX(-2%); } }
+@media(max-width:767px) { html[data-lounge-source="page"][data-lounge-transition="leaving"] main { animation-name:lounge-mobile-push; } }
+@media(prefers-reduced-motion:reduce) { html[data-lounge-source="page"][data-lounge-transition="leaving"] main { animation:none; } }

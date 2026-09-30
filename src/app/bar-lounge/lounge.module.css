@@ -249,3 +249,6 @@
  .loungeHero::before { background:radial-gradient(ellipse at 25% 25%,#23140fc4,transparent 75%); }
  .heroPortrait { mask-image:linear-gradient(to bottom,black 0%,black 76%,transparent 100%); }
 }
+
+/* Programmatic arrival focus announces the title without a visible box. */
+.heroCopy h1[tabindex="-1"]:focus { outline:none; }

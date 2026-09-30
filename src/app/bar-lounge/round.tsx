@@ -39,7 +39,7 @@ function BarLounge() {
     <div className={styles.pageBackdrop}><Image src="/images/bar-lounge-room.jpg" alt="" fill sizes="100vw" className={styles.roomBackdrop} priority/><div className={styles.pageScrim}/></div>
     <div className="relative z-10 mx-auto max-w-7xl">
       <div className={styles.loungeHeader}>
-        <button className={styles.loungeBrand} onClick={() => setMode("lobby")} aria-label="The Bar Lounge home"><span>THE</span><strong>BAR <LoungeIcon name="mic"/></strong><strong>LOUNGE</strong><small>BY BROADWAY THE LYRICIST</small></button>
+        <button className={styles.loungeBrand} onClick={() => setMode("lobby")} aria-label="The Bar Lounge home"><span>THE</span><strong>BAR <LoungeIcon name="bars"/></strong><strong>LOUNGE</strong><small>BY BROADWAY THE LYRICIST</small></button>
         <nav aria-label="Bar Lounge modes" className={styles.loungeNav}>{([["lobby", "The Lounge"], ["cipher", "Daily Cipher"], ["practice", "Raise the Bar"], ["clues", "Name That Legend"], ["progress", "My Record"], ["leaderboard", "Leaderboard"]] as const).map(([value, label]) => <button key={value} onClick={() => setMode(value)} aria-current={mode === value ? "page" : undefined} className={mode === value ? styles.navActive : undefined}>{label}</button>)}</nav>
         <span className={styles.previewBadge}>The Bar Lounge</span>
       </div>

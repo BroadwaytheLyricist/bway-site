@@ -5,14 +5,13 @@ import styles from "./lounge.module.css";
 import { XP_TIERS } from "@/lib/bar-lounge/progression";
 
 export const TIERS = ["On The Radio", "In The Whip", "On The Block", "In The Crates", "Broadway's Floor"];
-export type LoungeIconName = "mic" | "calendar" | "record" | "bars" | "fire" | "score" | "radio" | "car" | "city" | "crate" | "crown";
+export type LoungeIconName = "calendar" | "record" | "bars" | "fire" | "score" | "radio" | "car" | "city" | "crate" | "crown";
 
 export function LoungeIcon({ name, className }: { name: LoungeIconName; className?: string }) {
   const paths: Record<LoungeIconName, React.ReactNode> = {
-    mic: <><rect x="15" y="3" width="14" height="24" rx="7" transform="rotate(35 22 15)"/><path d="m15 24-9 13 6-2 9-9M17 8l10 7M15 12l10 7"/></>,
     calendar: <><rect x="5" y="8" width="30" height="28" rx="3"/><path d="M12 4v9M28 4v9M5 17h30M12 24h4M24 24h4M12 30h4M24 30h4"/></>,
     record: <><circle cx="20" cy="20" r="16"/><circle cx="20" cy="20" r="5"/><path d="M20 9a11 11 0 0 1 11 11M20 13a7 7 0 0 1 7 7M9 20a11 11 0 0 0 11 11M13 20a7 7 0 0 0 7 7"/></>,
-    bars: <><path d="M5 35V27h5v8M13 35V22h5v13M21 35V16h5v19M29 35V7h5v28M3 36h34"/></>,
+    bars: <>{["#69a147", "#cf9a30", "#d5742c", "#be4a35", "#9a68b3"].map((color, i) => <rect key={color} x={3 + i * 7} y={28 - i * 6} width="5" height={8 + i * 6} rx="1" fill={color} stroke="none"/>)}</>,
     fire: <path d="M23 3c1 9-5 10-5 17-3-1-4-4-4-8-5 6-8 12-6 18 3 10 22 11 25-1 2-8-2-14-7-18 1 6-2 8-4 9 2-6 3-11 1-17Z"/>,
     score: <><path d="m20 3 15 6v12c0 8-8 13-15 17C13 34 5 29 5 21V9Z"/><path d="m12 21 5 5 11-12"/></>,
     radio: <><rect x="4" y="16" width="32" height="19" rx="2"/><path d="m9 16 20-11M8 20h10v5H8zM8 29h10M26 21v9M22 24h8"/></>,
@@ -21,7 +20,7 @@ export function LoungeIcon({ name, className }: { name: LoungeIconName; classNam
     crate: <><path d="m5 14 15-8 15 8v20H5ZM5 14h30M10 18v12M15 18v12M20 18v12M25 18v12M30 18v12M12 10v4M20 6v8M28 10v4"/></>,
     crown: <><path d="m5 12 8 8 7-14 7 14 8-8-4 20H9ZM9 36h22"/></>,
   };
-  return <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className}>{paths[name]}</svg>;
+  return <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" data-lounge-icon={name} className={className}>{paths[name]}</svg>;
 }
 
 export default function LoungeLobby({ onPlay }: { onPlay: (mode: "cipher" | "practice" | "clues") => void }) {
@@ -46,7 +45,7 @@ export default function LoungeLobby({ onPlay }: { onPlay: (mode: "cipher" | "pra
         <div className={styles.modeGrid}>
           {[
             { mode: "cipher" as const, icon: "calendar" as const, title: "Daily Cipher", note: "One daily puzzle. Five letters. Six guesses.", action: "Play Today" },
-            { mode: "practice" as const, icon: "mic" as const, title: "Raise the Bar", note: "Knowledge and original practice bars. Eight questions.", action: "Start a Round" },
+            { mode: "practice" as const, icon: "bars" as const, title: "Raise the Bar", note: "Knowledge and original practice bars. Eight questions.", action: "Start a Round" },
             { mode: "clues" as const, icon: "record" as const, title: "Name That Legend", note: "Five clues. One guess. Earlier earns more.", action: "Read the Room" },
           ].map((item) => <button key={item.mode} onClick={() => onPlay(item.mode)} className={styles.loungeMode}>
             <LoungeIcon name={item.icon}/><h3 className="font-display">{item.title}</h3><p>{item.note}</p><span className={styles.modeAction}>{item.action} <span aria-hidden="true">→</span></span>

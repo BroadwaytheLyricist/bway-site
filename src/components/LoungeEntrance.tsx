@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-/** A brief room entrance for ordinary homepage links; native link behavior remains available. */
+/** A brief room entrance for links across the site; native link behavior remains available. */
 export default function LoungeEntrance() {
   const pathname = usePathname();
   const router = useRouter();
@@ -13,12 +13,14 @@ export default function LoungeEntrance() {
 
   useEffect(() => {
     const enter = (event: MouseEvent) => {
-      if (pathname !== "/" || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (pathname === "/bar-lounge" || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const link = (event.target as Element).closest<HTMLAnchorElement>('a[href="/bar-lounge"]');
       if (!link || link.target === "_blank" || link.hasAttribute("download") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       event.preventDefault();
       if (busy.current) return;
       busy.current = true;
+      document.documentElement.dataset.loungeSource = pathname === "/" && window.scrollY < window.innerHeight ? "home" : "page";
+      document.documentElement.style.setProperty("--lounge-departure-y", `${window.scrollY + window.innerHeight * .48}px`);
       router.prefetch("/bar-lounge");
       setPhase("leaving");
       timers.current.push(setTimeout(() => router.push("/bar-lounge"), 520));
@@ -46,7 +48,11 @@ export default function LoungeEntrance() {
 
   useEffect(() => {
     if (phase) document.documentElement.dataset.loungeTransition = phase;
-    else delete document.documentElement.dataset.loungeTransition;
+    else {
+      delete document.documentElement.dataset.loungeTransition;
+      delete document.documentElement.dataset.loungeSource;
+      document.documentElement.style.removeProperty("--lounge-departure-y");
+    }
     return () => { delete document.documentElement.dataset.loungeTransition; };
   }, [phase]);
 
