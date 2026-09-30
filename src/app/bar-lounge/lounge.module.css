@@ -211,3 +211,25 @@
   .statGrid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .badgeGrid { grid-template-columns:1fr; }
 }
+
+/* Reuse the homepage's stage photo, diagonal lighting and moving haze. */
+.stage { background:var(--color-bg); }
+.pageBackdrop { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.pageScrim { position:absolute; inset:0; z-index:35; background:linear-gradient(to bottom,#0a0e1740,#0a0e1788 40%,#0a0e17c9); }
+.loungeHero { overflow:hidden; }
+.loungeHero::before { background:linear-gradient(90deg,#0a0e17c9, #0a0e1766 35%,transparent 70%); }
+.heroPortrait { width:74%; height:460px; right:-5%; bottom:0; mask-image:none; }
+.heroCopy { max-width:47%; }
+.heroPortrait img { object-position:right bottom; }
+.loungeMode { background:linear-gradient(145deg,#111827d9,#0d1320ed); border-color:var(--color-line); }
+.loungeMode:hover { border-color:var(--color-accent); }
+.featureStrip { background:#0d1320c9; border-color:var(--color-line); }
+.gamePanel { background:linear-gradient(160deg,#111827f2,#0d1320f5); border-color:var(--color-line); border-top-color:var(--color-accent); }
+@media(max-width:1000px) {
+ .heroPortrait { width:82%; right:-9%; }
+}
+@media(max-width:600px) {
+ .heroPortrait { width:145%; height:auto; aspect-ratio:2/1; right:auto; bottom:auto; margin-left:-27%; margin-top:-20px; }
+ .heroCopy { max-width:100%; }
+ .loungeHero::before { display:none; }
+}

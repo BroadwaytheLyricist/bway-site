@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import HeroBackground from "@/components/sections/HeroBackground";
 import type { DailyPuzzle, Mystery, Outcome, Question, Reveal, RoundResult, TileState } from "@/lib/bar-lounge/types";
 import styles from "./lounge.module.css";
 import LoungeLobby, { LoungeIcon } from "./lobby";
@@ -36,6 +37,7 @@ export default function BarLoungeDemo() { return <ProgressProvider><BarLounge />
 function BarLounge() {
   const [mode, setMode] = useState<Mode>("lobby");
   return <section className={"relative isolate min-h-screen overflow-hidden px-4 pb-16 pt-24 sm:px-8 sm:pt-28 " + styles.stage}>
+    <div className={styles.pageBackdrop}><HeroBackground showPortrait={false}/><div className={styles.pageScrim}/></div>
     <div className="relative z-10 mx-auto max-w-7xl">
       <div className={styles.loungeHeader}>
         <button className={styles.loungeBrand} onClick={() => setMode("lobby")} aria-label="The Bar Lounge home"><span>THE</span><strong>BAR <LoungeIcon name="mic"/></strong><strong>LOUNGE</strong><small>BY BROADWAY THE LYRICIST</small></button>

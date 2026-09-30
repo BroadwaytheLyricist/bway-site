@@ -1,8 +1,12 @@
 # The Bar Lounge: player records and launch setup
 
+## Start here
+
+You do not need Supabase or Kit to launch guest play. Launch the visual update and guest games first. Later, connect Supabase for player accounts and shared rankings. Add Kit only when you want to send email updates. The detailed configuration below is a reference for that later stage.
+
 ## What is ready
 
-The preview includes guest XP, cumulative tier progression, seven achievement badges, a player record screen, weekly/all-time leaderboard screens, email-code sign-in, and a server-scored database implementation. The supplied studio JPG replaces the Lounge intro image. It uses contain sizing to preserve the photograph; a transparent PNG is only needed for a background-free cutout.
+The preview includes guest XP, cumulative tier progression, seven achievement badges, a player record screen, weekly/all-time leaderboard screens, email-code sign-in, and a server-scored database implementation. The supplied transparent PNG replaces the Lounge hero portrait. The page reuses the homepage stage photograph, diagonal lighting and moving smoke, while the portrait pixels remain unchanged. The Bar Lounge appears in the shared desktop/mobile navigation and footer.
 
 Guest XP and badges work immediately in the same browser. Accounts and shared rankings require the Supabase setup below. Kit is optional, and Google Forms is not needed. Guest progress is separate from verified account progress and is not imported into competitive rankings.
 
@@ -14,7 +18,7 @@ Guest XP and badges work immediately in the same browser. Accounts and shared ra
 | Primary buttons | Gradient `#ff6a2b` to `#ff4d0f` | Same shared gradient tokens |
 | Display font | Anton | Anton for headings, tier labels, Lounge branding and mode navigation |
 | Body and controls | Inter | Inter for body copy, forms, and primary/secondary buttons |
-| Main surfaces | Midnight navy `#0a0e17`, panels `#0d1320` | Warm black/amber play area; navy record panels tie back to the site |
+| Main surfaces | Midnight navy `#0a0e17`, panels `#0d1320` | Same homepage stage photo, diagonal lighting and smoke; navy play and record panels |
 | Tier colors | Not used | Green, gold, orange, red and purple indicate the five tiers |
 | Global navigation/footer | Shared components | Same components, unchanged |
 

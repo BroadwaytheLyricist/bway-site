@@ -53,7 +53,7 @@ export default function Header() {
         </SectionAnchorLink>
 
         <nav
-          className="hidden items-center gap-8 lg:flex"
+          className="hidden items-center gap-4 xl:gap-6 lg:flex"
           aria-label="Primary"
         >
           {nav.map((item) => {

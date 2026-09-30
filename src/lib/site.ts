@@ -29,6 +29,7 @@ export const nav = [
   { label: "Videos", href: "/#videos" },
   { label: "Blog", href: "/blog" },
   { label: "Music", href: "/music" },
+  { label: "The Bar Lounge", href: "/bar-lounge" },
   { label: "Contact", href: "/#contact" },
   { label: "Media Kit", href: "/media-kit" },
 ] as const;

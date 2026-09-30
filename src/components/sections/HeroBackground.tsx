@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 /** Independent stage, moving smoke, and foreground portrait layers. */
-export default function HeroBackground() {
+export default function HeroBackground({ showPortrait = true }: { showPortrait?: boolean }) {
   const layerRef = useRef<HTMLDivElement>(null);
   const portraitRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
@@ -84,9 +84,9 @@ export default function HeroBackground() {
 
         <div className="absolute inset-0 z-20 bg-gradient-to-r from-bg/75 via-bg/20 to-transparent" />
         <div className="absolute inset-0 z-20 bg-gradient-to-t from-bg/30 via-transparent to-bg/10" />
-        <div ref={portraitRef} data-ready={ready} className="hero-subject-layer absolute bottom-[-2%] right-[-4%] z-30 h-[104%] w-[88%]">
+        {showPortrait && <div ref={portraitRef} data-ready={ready} className="hero-subject-layer absolute bottom-[-2%] right-[-4%] z-30 h-[104%] w-[88%]">
           <Image src="/images/hero-subject-v2.png" alt="" fill preload sizes="(max-width: 767px) 115vw, 88vw" className="object-contain object-right-bottom" />
-        </div>
+        </div>}
     </div>
   );
 }
