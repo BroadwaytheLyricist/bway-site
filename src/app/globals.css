@@ -420,14 +420,7 @@ body {
 }
 
 .music-platform-logo {
-  display: block;
-  background-color: var(--color-accent);
-  mask-size: contain;
-  mask-position: center;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  -webkit-mask-position: center;
-  -webkit-mask-repeat: no-repeat;
+  object-fit: contain;
   transition: transform .2s ease, filter .2s ease;
   filter: drop-shadow(0 5px 14px rgba(0, 0, 0, .35));
 }

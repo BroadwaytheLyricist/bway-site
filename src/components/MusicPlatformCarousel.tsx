@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { links } from "@/lib/site";
 
 const platforms = [
@@ -26,14 +27,12 @@ export default function MusicPlatformCarousel() {
                 aria-label={`Listen on ${label} (opens in a new tab)`}
                 className="music-platform-link"
               >
-                <span
+                <Image
                   aria-hidden="true"
-                  style={{
-                    width: icon === "amazonmusic" ? 160 : 68,
-                    height: icon === "amazonmusic" ? 32 : 68,
-                    maskImage: `url(/images/music-platforms/${icon}.png)`,
-                    WebkitMaskImage: `url(/images/music-platforms/${icon}.png)`,
-                  }}
+                  alt=""
+                  src={`/images/music-platforms/${icon}.png`}
+                  width={icon === "amazonmusic" ? 160 : 68}
+                  height={icon === "amazonmusic" ? 32 : 68}
                   className="music-platform-logo"
                 />
               </a>
