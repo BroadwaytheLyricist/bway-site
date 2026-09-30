@@ -5,12 +5,12 @@ import SectionHeading from "@/components/SectionHeading";
 import { formatPostDate, posts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "On the Record: Hip-Hop Stories | Broadway the Lyricist",
+  title: "On The Record (Blog): Hip-Hop Stories | Broadway the Lyricist",
   description:
     "Read Broadway the Lyricist's stories on Hip-Hop history, artists, albums, and the culture behind the music.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "On the Record: Hip-Hop Stories | Broadway the Lyricist",
+    title: "On The Record (Blog): Hip-Hop Stories | Broadway the Lyricist",
     description: "Hip-Hop history, artists, albums, and cultural commentary from Broadway the Lyricist.",
     url: "/blog",
     siteName: "Broadway The Lyricist",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "On the Record: Hip-Hop Stories | Broadway the Lyricist",
+    title: "On The Record (Blog): Hip-Hop Stories | Broadway the Lyricist",
     description: "Hip-Hop stories and cultural commentary from Broadway the Lyricist.",
     images: ["/images/og/broadway-social-preview.jpg"],
   },
