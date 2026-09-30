@@ -37,7 +37,7 @@ export default function LatestBlog() {
 
         <ScrollRevealGroup className="mt-12">
         <article data-reveal-item className="group grid overflow-hidden border border-line bg-panel lg:grid-cols-[1.15fr_1fr]">
-          <Link href={`/blog/${post.slug}`} className="relative min-h-80 overflow-hidden lg:min-h-[30rem]">
+          <Link href={`/blog/${post.slug}`} aria-label={`Read ${post.title}`} className="relative min-h-80 overflow-hidden lg:min-h-[30rem]">
             {post.thumbnail && (
               <Image
                 src={post.thumbnail}

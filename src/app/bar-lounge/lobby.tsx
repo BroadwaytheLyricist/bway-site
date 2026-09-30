@@ -72,6 +72,6 @@ export default function LoungeLobby({ onPlay }: { onPlay: (mode: "cipher" | "pra
         { icon: "record" as const, title: "See the Reveal", note: "The answer, artwork and context." },
       ].map((item) => <div key={item.title}><LoungeIcon name={item.icon}/><span><strong className="font-display">{item.title}</strong><small>{item.note}</small></span></div>)}
     </div>
-    <div className={styles.loungeFootnote}><span>Free to play. Sign in to save progress across devices.</span><span>Lyric examples are original practice lines.</span></div>
+    <div className={styles.loungeFootnote}><span>Free to play. Guest progress stays in this browser.</span><span>Lyric examples are original practice lines.</span></div>
   </>;
 }

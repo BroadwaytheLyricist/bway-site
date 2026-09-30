@@ -33,6 +33,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: mediaKitUpdatedAt,
     },
     {
+      url: "https://broadwaythelyricist.com/bar-lounge",
+      lastModified: currentPageUpdatedAt,
+    },
+    {
       url: "https://broadwaythelyricist.com/music",
       lastModified: currentPageUpdatedAt,
     },

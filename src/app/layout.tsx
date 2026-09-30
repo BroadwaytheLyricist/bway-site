@@ -68,6 +68,7 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  robots: process.env.VERCEL_ENV === "preview" ? { index: false, follow: false } : { index: true, follow: true },
   title: "Broadway the Lyricist | Hip-Hop Commentary & Original Music",
   description:
     "Hip-Hop commentary, cultural storytelling, and original music from Broadway the Lyricist. Watch videos, explore series, read the blog, and hear the music.",
