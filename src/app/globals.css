@@ -717,31 +717,25 @@ body {
   }
 }
 
-/* Homepage to speakeasy: push toward the portrait, turn right through amber light. */
-html[data-lounge-transition] { overflow:hidden; }
-.lounge-entrance { position:fixed; inset:0; z-index:100; pointer-events:none; overflow:hidden; background:#24130b; animation:lounge-door-close 520ms ease-in both; }
-.lounge-entrance-light { position:absolute; inset:-20%; background:linear-gradient(100deg,transparent 32%,#ff5a1f24 48%,#ff9a445c 55%,#2b160df5 68%); transform-origin:right center; animation:lounge-corner-turn 520ms cubic-bezier(.4,0,.8,1) both; }
-html[data-lounge-transition="leaving"] #home { transform-origin:75% 48%; animation:lounge-home-push 520ms cubic-bezier(.4,0,.8,1) both; }
-html[data-lounge-transition="arriving"] .lounge-entrance { animation:lounge-door-open 480ms ease-out both; }
-html[data-lounge-transition="arriving"] [data-lounge-room] { transform-origin:65% 25%; animation:lounge-room-settle 480ms ease-out both; }
-@keyframes lounge-home-push { 0% { transform:perspective(1400px) scale(1); } 60% { transform:perspective(1400px) scale(1.18); } 100% { transform:perspective(1400px) scale(1.3) rotateY(-9deg) translateX(-4%); } }
-@keyframes lounge-corner-turn { from { transform:translateX(65%) skewX(-12deg); } to { transform:translateX(-12%) skewX(6deg); } }
-@keyframes lounge-door-close { 0% { opacity:0; } 45% { opacity:.12; } 100% { opacity:1; } }
-@keyframes lounge-door-open { from { opacity:1; } to { opacity:0; } }
-@keyframes lounge-room-settle { from { transform:scale(1.06); } to { transform:scale(1); } }
+/* Shared zoom between pages and homepage sections. Amber light belongs to the Lounge. */
+html[data-page-transition] { overflow:hidden; }
+.page-entrance { position:fixed; inset:0; z-index:100; pointer-events:none; overflow:hidden; background:var(--color-bg); animation:page-cover-in 260ms ease-in both; }
+html[data-page-transition="leaving"] main { transform-origin:65% var(--page-zoom-y,48vh); animation:page-zoom-in 260ms cubic-bezier(.4,0,.8,1) both; }
+html[data-page-transition="arriving"] main { transform-origin:65% var(--page-zoom-y,48vh); animation:page-zoom-out 320ms ease-out both; }
+html[data-page-transition="arriving"] .page-entrance { animation:page-cover-out 320ms ease-out both; }
+html[data-page-destination="lounge"] .page-entrance { background:#24130b; animation-duration:520ms; }
+html[data-page-destination="lounge"][data-page-transition="leaving"] main { animation-duration:520ms; }
+html[data-page-destination="lounge"][data-page-transition="arriving"] main,
+html[data-page-destination="lounge"][data-page-transition="arriving"] .page-entrance { animation-duration:480ms; }
+.page-entrance-light { position:absolute; inset:-20%; background:linear-gradient(100deg,transparent 32%,#ff5a1f24 48%,#ff9a445c 55%,#2b160df5 68%); animation:page-amber-light 520ms cubic-bezier(.4,0,.8,1) both; }
+main h1[tabindex="-1"]:focus, main h2[tabindex="-1"]:focus { outline:none; }
+@keyframes page-zoom-in { from { transform:scale(1); } to { transform:scale(1.12); } }
+@keyframes page-zoom-out { from { transform:scale(1.08); } to { transform:scale(1); } }
+@keyframes page-cover-in { 0% { opacity:0; } 45% { opacity:.1; } 100% { opacity:1; } }
+@keyframes page-cover-out { from { opacity:1; } to { opacity:0; } }
+@keyframes page-amber-light { from { transform:translateX(65%); } to { transform:translateX(-12%); } }
 @media(max-width:767px) {
- html[data-lounge-transition="leaving"] #home { animation-name:lounge-mobile-push; }
- .lounge-entrance-light { animation:none; }
- @keyframes lounge-mobile-push { from { transform:scale(1); } to { transform:scale(1.08); } }
+ @keyframes page-zoom-in { from { transform:scale(1); } to { transform:scale(1.06); } }
+ @keyframes page-zoom-out { from { transform:scale(1.04); } to { transform:scale(1); } }
 }
-@media(prefers-reduced-motion:reduce) {
- .lounge-entrance { display:none; }
- html[data-lounge-transition="leaving"] #home, html[data-lounge-transition="arriving"] [data-lounge-room] { animation:none; }
-}
-
-/* The same doorway is available from every page and from a scrolled footer. */
-html[data-lounge-source="page"][data-lounge-transition="leaving"] #home { animation:none; }
-html[data-lounge-source="page"][data-lounge-transition="leaving"] main { transform-origin:75% var(--lounge-departure-y,48vh); animation:lounge-page-push 520ms cubic-bezier(.4,0,.8,1) both; }
-@keyframes lounge-page-push { from { transform:perspective(1400px) scale(1); } to { transform:perspective(1400px) scale(1.09) rotateY(-5deg) translateX(-2%); } }
-@media(max-width:767px) { html[data-lounge-source="page"][data-lounge-transition="leaving"] main { animation-name:lounge-mobile-push; } }
-@media(prefers-reduced-motion:reduce) { html[data-lounge-source="page"][data-lounge-transition="leaving"] main { animation:none; } }
+@media(prefers-reduced-motion:reduce) { .page-entrance { display:none; } html[data-page-transition] main { animation:none; } }

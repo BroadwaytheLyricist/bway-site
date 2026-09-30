@@ -5,13 +5,14 @@ import styles from "./lounge.module.css";
 import { XP_TIERS } from "@/lib/bar-lounge/progression";
 
 export const TIERS = ["On The Radio", "In The Whip", "On The Block", "In The Crates", "Broadway's Floor"];
-export type LoungeIconName = "calendar" | "record" | "bars" | "fire" | "score" | "radio" | "car" | "city" | "crate" | "crown";
+export type LoungeIconName = "calendar" | "record" | "bars" | "barsSolid" | "fire" | "score" | "radio" | "car" | "city" | "crate" | "crown";
 
 export function LoungeIcon({ name, className }: { name: LoungeIconName; className?: string }) {
   const paths: Record<LoungeIconName, React.ReactNode> = {
     calendar: <><rect x="5" y="8" width="30" height="28" rx="3"/><path d="M12 4v9M28 4v9M5 17h30M12 24h4M24 24h4M12 30h4M24 30h4"/></>,
     record: <><circle cx="20" cy="20" r="16"/><circle cx="20" cy="20" r="5"/><path d="M20 9a11 11 0 0 1 11 11M20 13a7 7 0 0 1 7 7M9 20a11 11 0 0 0 11 11M13 20a7 7 0 0 0 7 7"/></>,
-    bars: <>{["#69a147", "#cf9a30", "#d5742c", "#be4a35", "#9a68b3"].map((color, i) => <rect key={color} x={3 + i * 7} y={28 - i * 6} width="5" height={8 + i * 6} rx="1" fill={color} stroke="none"/>)}</>,
+    bars: <>{Array.from({ length: 5 }, (_, i) => <rect key={i} x={3 + i * 7} y={28 - i * 6} width="5" height={8 + i * 6} rx=".5" fill="none" stroke="var(--color-accent)"/>)}</>,
+    barsSolid: <>{Array.from({ length: 5 }, (_, i) => <rect key={i} x={2 + i * 7} y={28 - i * 6} width="5.8" height={8 + i * 6} rx=".7" fill="var(--color-accent)" stroke="none"/>)}</>,
     fire: <path d="M23 3c1 9-5 10-5 17-3-1-4-4-4-8-5 6-8 12-6 18 3 10 22 11 25-1 2-8-2-14-7-18 1 6-2 8-4 9 2-6 3-11 1-17Z"/>,
     score: <><path d="m20 3 15 6v12c0 8-8 13-15 17C13 34 5 29 5 21V9Z"/><path d="m12 21 5 5 11-12"/></>,
     radio: <><rect x="4" y="16" width="32" height="19" rx="2"/><path d="m9 16 20-11M8 20h10v5H8zM8 29h10M26 21v9M22 24h8"/></>,

@@ -3,60 +3,98 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-/** A brief room entrance for links across the site; native link behavior remains available. */
+type Journey = { path: string; hash: string; lounge: boolean; label: string };
+
+/** Shared zoom between site destinations, with amber light only at the Lounge entrance. */
 export default function LoungeEntrance() {
   const pathname = usePathname();
   const router = useRouter();
   const [phase, setPhase] = useState<"leaving" | "arriving" | null>(null);
-  const busy = useRef(false);
+  const [journey, setJourney] = useState<Journey | null>(null);
+  const destination = useRef<Journey | null>(null);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const previousScrollBehavior = useRef("");
+
+  const reset = () => {
+    timers.current.forEach(clearTimeout);
+    timers.current = [];
+    destination.current = null;
+    delete document.documentElement.dataset.pageTransition;
+    delete document.documentElement.dataset.pageDestination;
+    document.documentElement.style.removeProperty("--page-zoom-y");
+    document.documentElement.style.scrollBehavior = previousScrollBehavior.current;
+    setPhase(null);
+    setJourney(null);
+  };
+
+  const arrive = () => {
+    const target = destination.current;
+    if (!target) return;
+    const section = target.hash ? document.getElementById(decodeURIComponent(target.hash.slice(1))) : null;
+    if (section) section.scrollIntoView({ behavior: "instant", block: "start" });
+    else window.scrollTo({ top: 0, behavior: "instant" });
+    document.documentElement.style.setProperty("--page-zoom-y", `${window.scrollY + window.innerHeight * .48}px`);
+    setPhase("arriving");
+    timers.current.push(setTimeout(() => {
+      const heading = section?.querySelector<HTMLElement>("h1, h2") ?? document.querySelector<HTMLElement>("main h1");
+      heading?.setAttribute("tabindex", "-1");
+      heading?.focus({ preventScroll: true });
+      reset();
+    }, target.lounge ? 480 : 320));
+  };
+  const arriveRef = useRef(arrive);
+  useEffect(() => { arriveRef.current = arrive; });
 
   useEffect(() => {
     const enter = (event: MouseEvent) => {
-      if (pathname === "/bar-lounge" || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      const link = (event.target as Element).closest<HTMLAnchorElement>('a[href="/bar-lounge"]');
-      if (!link || link.target === "_blank" || link.hasAttribute("download") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>("a[href]") : null;
+      if (!link || (link.target && link.target !== "_self") || link.hasAttribute("download") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const url = new URL(link.href, window.location.href);
+      if (url.origin !== window.location.origin || !["http:", "https:"].includes(url.protocol) || url.pathname.startsWith("/api/") || /\.[a-z0-9]+$/i.test(url.pathname)) return;
+      const samePage = url.pathname === pathname && url.search === window.location.search;
+      if (samePage && !url.hash) return;
+      if (samePage && !document.getElementById(decodeURIComponent(url.hash.slice(1)))) return;
       event.preventDefault();
-      if (busy.current) return;
-      busy.current = true;
-      document.documentElement.dataset.loungeSource = pathname === "/" && window.scrollY < window.innerHeight ? "home" : "page";
-      document.documentElement.style.setProperty("--lounge-departure-y", `${window.scrollY + window.innerHeight * .48}px`);
-      router.prefetch("/bar-lounge");
+      if (destination.current) return;
+      const target = { path: url.pathname, hash: url.hash, lounge: url.pathname === "/bar-lounge", label: link.textContent?.trim() || "Home" };
+      destination.current = target;
+      setJourney(target);
+      previousScrollBehavior.current = document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior = "auto";
+      document.documentElement.style.setProperty("--page-zoom-y", `${window.scrollY + window.innerHeight * .48}px`);
+      document.documentElement.dataset.pageDestination = target.lounge ? "lounge" : "page";
+      router.prefetch(url.pathname);
       setPhase("leaving");
-      timers.current.push(setTimeout(() => router.push("/bar-lounge"), 520));
-      // Never leave the entrance overlay up if navigation is interrupted or fails.
-      timers.current.push(setTimeout(() => { busy.current = false; setPhase(null); }, 4500));
+      timers.current.push(setTimeout(() => {
+        router.push(url.pathname + url.search + url.hash, { scroll: false });
+        if (samePage) arriveRef.current();
+      }, target.lounge ? 520 : 260));
+      // Recover cleanly if a navigation is interrupted or cannot complete.
+      timers.current.push(setTimeout(reset, 4500));
     };
     document.addEventListener("click", enter, true);
     return () => document.removeEventListener("click", enter, true);
   }, [pathname, router]);
 
   useEffect(() => {
-    if (pathname !== "/bar-lounge" || !busy.current) return;
-    const frame = requestAnimationFrame(() => setPhase("arriving"));
-    timers.current.push(setTimeout(() => {
-      timers.current.forEach(clearTimeout);
-      timers.current = [];
-      busy.current = false;
-      setPhase(null);
-      const title = document.querySelector<HTMLElement>("[data-lounge-room] h1");
-      title?.setAttribute("tabindex", "-1");
-      title?.focus({ preventScroll: true });
-    }, 480));
+    if (!destination.current || pathname !== destination.current.path) return;
+    const frame = requestAnimationFrame(() => arriveRef.current());
     return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   useEffect(() => {
-    if (phase) document.documentElement.dataset.loungeTransition = phase;
-    else {
-      delete document.documentElement.dataset.loungeTransition;
-      delete document.documentElement.dataset.loungeSource;
-      document.documentElement.style.removeProperty("--lounge-departure-y");
-    }
-    return () => { delete document.documentElement.dataset.loungeTransition; };
+    if (phase) document.documentElement.dataset.pageTransition = phase;
+    else delete document.documentElement.dataset.pageTransition;
+    return () => { delete document.documentElement.dataset.pageTransition; };
   }, [phase]);
 
-  useEffect(() => () => { timers.current.forEach(clearTimeout); delete document.documentElement.dataset.loungeTransition; }, []);
+  useEffect(() => () => {
+    timers.current.forEach(clearTimeout);
+    delete document.documentElement.dataset.pageTransition;
+    delete document.documentElement.dataset.pageDestination;
+    document.documentElement.style.removeProperty("--page-zoom-y");
+  }, []);
 
-  return phase ? <div className="lounge-entrance" aria-live="polite" role="status"><span className="sr-only">Entering The Bar Lounge</span><div className="lounge-entrance-light" aria-hidden="true" /></div> : null;
+  return phase && journey ? <div className="page-entrance" aria-live="polite" role="status"><span className="sr-only">Entering {journey.label}</span>{journey.lounge && <div className="page-entrance-light" aria-hidden="true" />}</div> : null;
 }
