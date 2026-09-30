@@ -212,19 +212,21 @@
   .badgeGrid { grid-template-columns:1fr; }
 }
 
-/* Reuse the homepage's stage photo, diagonal lighting and moving haze. */
-.stage { background:var(--color-bg); }
+/* A warm bar room, with the shared brand orange and typography. */
+.stage { background:#20140f; }
 .pageBackdrop { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
-.pageScrim { position:absolute; inset:0; z-index:35; background:linear-gradient(to bottom,#0a0e1740,#0a0e1788 40%,#0a0e17c9); }
-.loungeHero { overflow:hidden; }
-.loungeHero::before { background:linear-gradient(90deg,#0a0e17c9, #0a0e1766 35%,transparent 70%); }
+.pageScrim { position:absolute; inset:0; z-index:35; background:linear-gradient(to bottom,#23140c33,#21130e80 55%,#1b110ce0); }
+.roomBackdrop { object-fit:cover; object-position:center; }
+.heroBackdrop { background:none; filter:none; opacity:1; z-index:-2; }
+.loungeHero { overflow:hidden; border-radius:6px; }
+.loungeHero::before { background:linear-gradient(90deg,#23140fe8, #23140f80 35%,transparent 68%); }
 .heroPortrait { width:74%; height:460px; right:-5%; bottom:0; mask-image:none; }
 .heroCopy { max-width:47%; }
 .heroPortrait img { object-position:right bottom; }
-.loungeMode { background:linear-gradient(145deg,#111827d9,#0d1320ed); border-color:var(--color-line); }
+.loungeMode { background:linear-gradient(145deg,#2b1d15e8,#1d1510ed); border-color:var(--color-line); }
 .loungeMode:hover { border-color:var(--color-accent); }
-.featureStrip { background:#0d1320c9; border-color:var(--color-line); }
-.gamePanel { background:linear-gradient(160deg,#111827f2,#0d1320f5); border-color:var(--color-line); border-top-color:var(--color-accent); }
+.featureStrip { background:#241912df; border-color:var(--color-line); }
+.gamePanel { background:linear-gradient(160deg,#2b1d15f2,#1d1510f5); border-color:var(--color-line); border-top-color:var(--color-accent); }
 @media(max-width:1000px) {
  .heroPortrait { width:82%; right:-9%; }
 }
@@ -232,4 +234,9 @@
  .heroPortrait { width:145%; height:auto; aspect-ratio:2/1; right:auto; bottom:auto; margin-left:-27%; margin-top:-20px; }
  .heroCopy { max-width:100%; }
  .loungeHero::before { display:none; }
+}
+
+@media(max-width:600px) {
+ .heroBackdrop .roomBackdrop { object-position:62% bottom; }
+ .loungeHero::before { display:block; background:linear-gradient(to bottom,#23140fe6, #23140f99 42%,transparent 72%); }
 }
