@@ -13,6 +13,7 @@ import {
 import { links } from "@/lib/site";
 import { mediaKit } from "@/lib/media-kit";
 import { getChannelStats, getFeaturedVideoViews, formatCompact } from "@/lib/youtube";
+import { getInstagramStats, getReelViews, shortcodeOf } from "@/lib/instagram";
 
 export const revalidate = 3600;
 
@@ -71,10 +72,18 @@ function StatCard({ label, value, live }: Stat) {
 }
 
 export default async function MediaKitPage() {
-  const [stats, featuredViews] = await Promise.all([
+  const [stats, featuredViews, igStats, reelViews] = await Promise.all([
     getChannelStats(),
     getFeaturedVideoViews(mediaKit.topContent.flatMap((v) => "youtubeId" in v && v.youtubeId ? [v.youtubeId] : [])),
+    getInstagramStats(),
+    getReelViews(mediaKit.topContent.flatMap((v) => v.platform === "Instagram Reel" && v.url ? [v.url] : [])),
   ]);
+
+  // Live Instagram number when available, otherwise the saved figure from media-kit.ts.
+  const igStat = (label: string, live: number | null | undefined, fallback: string): Stat =>
+    typeof live === "number"
+      ? { label, value: label === "Instagram Followers" ? live.toLocaleString("en-US") : formatCompact(live), live: true }
+      : { label, value: fallback };
 
   const youtubeStats: Stat[] = [
     {
@@ -95,9 +104,9 @@ export default async function MediaKitPage() {
   ];
 
   const socialStats: Stat[] = [
-    { label: "Instagram Followers", value: mediaKit.manualStats.instagramFollowers },
-    { label: "Instagram Views (30 Days)", value: mediaKit.manualStats.instagramViews30d },
-    { label: "Accounts Reached (30 Days)", value: mediaKit.manualStats.instagramReached },
+    igStat("Instagram Followers", igStats?.followers, mediaKit.manualStats.instagramFollowers),
+    igStat("Instagram Views (30 Days)", igStats?.views30d, mediaKit.manualStats.instagramViews30d),
+    igStat("Accounts Reached (30 Days)", igStats?.reach30d, mediaKit.manualStats.instagramReached),
   ];
 
   return (
@@ -199,8 +208,10 @@ export default async function MediaKitPage() {
             ))}
           </div>
           <p className="mt-6 text-xs text-muted">
-            YouTube figures update automatically via the YouTube Data API.
-            Instagram figures are reported from the latest 30-day insights.
+            YouTube figures update automatically via the YouTube Data API.{" "}
+            {igStats
+              ? "Instagram figures update automatically from Instagram's 30-day insights."
+              : "Instagram figures are reported from the latest 30-day insights."}
           </p>
         </div>
       </section>
@@ -272,7 +283,9 @@ export default async function MediaKitPage() {
                       <p className="font-display text-4xl leading-none text-white">
                         {"youtubeId" in v && v.youtubeId && featuredViews[v.youtubeId] !== undefined
                           ? formatCompact(featuredViews[v.youtubeId])
-                          : v.views}
+                          : v.url && shortcodeOf(v.url) && reelViews[shortcodeOf(v.url)!] !== undefined
+                            ? formatCompact(reelViews[shortcodeOf(v.url)!])
+                            : v.views}
                       </p>
                       <ArrowIcon className="h-5 w-5 shrink-0 -rotate-45 text-muted transition-colors group-hover:text-accent" />
                     </div>
