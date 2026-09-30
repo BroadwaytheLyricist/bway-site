@@ -27,7 +27,6 @@ export function LoungeIcon({ name, className }: { name: LoungeIconName; classNam
 export default function LoungeLobby({ onPlay }: { onPlay: (mode: "cipher" | "practice" | "clues") => void }) {
   return <>
     <div className={styles.loungeHero}>
-      <div aria-hidden="true" className={styles.heroBackdrop}><Image src="/images/bar-lounge-room.jpg" alt="" fill sizes="(min-width:1280px) 1280px, 100vw" className={styles.roomBackdrop} priority/></div>
       <div aria-hidden="true" className={styles.heroPortrait}><Image src="/images/bar-lounge-hero.png" alt="" fill sizes="(min-width:900px) 850px, 130vw" className="object-contain object-center" priority /></div>
       <div className={styles.heroCopy}>
         <p className={styles.eyebrow + " font-display"}>Welcome To</p>

@@ -35,7 +35,7 @@ function tierIndex(correct: number, total: number) {
 export default function BarLoungeDemo() { return <ProgressProvider><BarLounge /></ProgressProvider>; }
 function BarLounge() {
   const [mode, setMode] = useState<Mode>("lobby");
-  return <section className={"relative isolate min-h-screen overflow-hidden px-4 pb-16 pt-24 sm:px-8 sm:pt-28 " + styles.stage}>
+  return <section data-lounge-room className={"relative isolate min-h-screen overflow-hidden px-4 pb-16 pt-24 sm:px-8 sm:pt-28 " + styles.stage}>
     <div className={styles.pageBackdrop}><Image src="/images/bar-lounge-room.jpg" alt="" fill sizes="100vw" className={styles.roomBackdrop} priority/><div className={styles.pageScrim}/></div>
     <div className="relative z-10 mx-auto max-w-7xl">
       <div className={styles.loungeHeader}>

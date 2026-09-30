@@ -240,3 +240,12 @@
  .heroBackdrop .roomBackdrop { object-position:62% bottom; }
  .loungeHero::before { display:block; background:linear-gradient(to bottom,#23140fe6, #23140f99 42%,transparent 72%); }
 }
+
+/* Let the portrait and title live in the room instead of an inset image panel. */
+.loungeHero { overflow:visible; border:0; border-radius:0; }
+.loungeHero::before { background:radial-gradient(ellipse at 12% 48%,#23140faa,transparent 66%); }
+.heroPortrait { mask-image:linear-gradient(to bottom,black 0%,black 78%,transparent 100%); mask-composite:add; }
+@media(max-width:600px) {
+ .loungeHero::before { background:radial-gradient(ellipse at 25% 25%,#23140fc4,transparent 75%); }
+ .heroPortrait { mask-image:linear-gradient(to bottom,black 0%,black 76%,transparent 100%); }
+}

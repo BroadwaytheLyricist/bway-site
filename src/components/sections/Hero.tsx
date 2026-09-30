@@ -58,6 +58,9 @@ export default function Hero() {
               <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
+          <Link href="/bar-lounge" className="hero-reveal mt-6 inline-flex items-center gap-3 border-b border-accent/60 pb-2 text-sm font-semibold tracking-wide text-accent transition-colors hover:text-white" style={{ "--reveal-delay": "480ms" } as CSSProperties}>
+            Enter The Bar Lounge <ArrowIcon className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>

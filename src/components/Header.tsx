@@ -62,7 +62,7 @@ export default function Header() {
               <NavLink
                 key={item.label}
                 href={item.href}
-                className="text-sm font-medium text-muted transition-colors hover:text-accent"
+                className={`text-sm font-medium transition-colors hover:text-accent ${item.href === "/bar-lounge" ? "text-accent" : "text-muted"}`}
               >
                 {item.label}
               </NavLink>
@@ -113,7 +113,7 @@ export default function Header() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-3 text-base font-medium text-muted transition-colors hover:bg-panel hover:text-accent"
+                className={`rounded-md px-3 py-3 text-base font-medium transition-colors hover:bg-panel hover:text-accent ${item.href === "/bar-lounge" ? "text-accent" : "text-muted"}`}
               >
                 {item.label}
               </NavLink>

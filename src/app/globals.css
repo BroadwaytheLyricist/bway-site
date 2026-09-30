@@ -716,3 +716,25 @@ body {
     padding-bottom: 1.5rem !important;
   }
 }
+
+/* Homepage to speakeasy: push toward the portrait, turn right through amber light. */
+html[data-lounge-transition] { overflow:hidden; }
+.lounge-entrance { position:fixed; inset:0; z-index:100; pointer-events:none; overflow:hidden; background:#24130b; animation:lounge-door-close 520ms ease-in both; }
+.lounge-entrance-light { position:absolute; inset:-20%; background:linear-gradient(100deg,transparent 32%,#ff5a1f24 48%,#ff9a445c 55%,#2b160df5 68%); transform-origin:right center; animation:lounge-corner-turn 520ms cubic-bezier(.4,0,.8,1) both; }
+html[data-lounge-transition="leaving"] #home { transform-origin:75% 48%; animation:lounge-home-push 520ms cubic-bezier(.4,0,.8,1) both; }
+html[data-lounge-transition="arriving"] .lounge-entrance { animation:lounge-door-open 480ms ease-out both; }
+html[data-lounge-transition="arriving"] [data-lounge-room] { transform-origin:65% 25%; animation:lounge-room-settle 480ms ease-out both; }
+@keyframes lounge-home-push { 0% { transform:perspective(1400px) scale(1); } 60% { transform:perspective(1400px) scale(1.18); } 100% { transform:perspective(1400px) scale(1.3) rotateY(-9deg) translateX(-4%); } }
+@keyframes lounge-corner-turn { from { transform:translateX(65%) skewX(-12deg); } to { transform:translateX(-12%) skewX(6deg); } }
+@keyframes lounge-door-close { 0% { opacity:0; } 45% { opacity:.12; } 100% { opacity:1; } }
+@keyframes lounge-door-open { from { opacity:1; } to { opacity:0; } }
+@keyframes lounge-room-settle { from { transform:scale(1.06); } to { transform:scale(1); } }
+@media(max-width:767px) {
+ html[data-lounge-transition="leaving"] #home { animation-name:lounge-mobile-push; }
+ .lounge-entrance-light { animation:none; }
+ @keyframes lounge-mobile-push { from { transform:scale(1); } to { transform:scale(1.08); } }
+}
+@media(prefers-reduced-motion:reduce) {
+ .lounge-entrance { display:none; }
+ html[data-lounge-transition="leaving"] #home, html[data-lounge-transition="arriving"] [data-lounge-room] { animation:none; }
+}
