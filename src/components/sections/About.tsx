@@ -8,15 +8,22 @@ import SectionHeading from "@/components/SectionHeading";
 export default function About({ standalone = false }: { standalone?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
   const subjectRef = useRef<HTMLDivElement>(null);
+  // Phones and tablets show the portrait in the text flow instead of behind it.
+  const mobileSubjectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const subject = subjectRef.current;
     if (!section || !subject) return;
+    const subjects = [subject, mobileSubjectRef.current].filter(
+      (el): el is HTMLDivElement => el !== null,
+    );
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      subject.style.setProperty("--about-x", "0px");
-      subject.style.setProperty("--about-opacity", "1");
+      subjects.forEach((el) => {
+        el.style.setProperty("--about-x", "0px");
+        el.style.setProperty("--about-opacity", "1");
+      });
       return;
     }
 
@@ -29,6 +36,15 @@ export default function About({ standalone = false }: { standalone?: boolean }) 
       const eased = 1 - Math.pow(1 - progress, 3);
       subject.style.setProperty("--about-x", `${(eased - 1) * 180}px`);
       subject.style.setProperty("--about-opacity", `${0.18 + eased * 0.82}`);
+      const mobile = mobileSubjectRef.current;
+      if (mobile) {
+        // The in-flow portrait slides in as it scrolls into view.
+        const rectM = mobile.getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, (viewport - rectM.top) / (viewport * 0.5)));
+        const e = 1 - Math.pow(1 - p, 3);
+        mobile.style.setProperty("--about-x", `${(e - 1) * 140}px`);
+        mobile.style.setProperty("--about-opacity", `${0.18 + e * 0.82}`);
+      }
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -60,7 +76,7 @@ export default function About({ standalone = false }: { standalone?: boolean }) 
       <div className="absolute inset-0 -z-20 bg-gradient-to-l from-bg/75 via-bg/20 to-bg/10" />
       <div className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/30 via-transparent to-bg/10" />
 
-      <div aria-hidden="true" className="about-art absolute inset-y-0 left-0 -z-10 w-full overflow-hidden lg:w-[58%]">
+      <div aria-hidden="true" className="about-art absolute inset-y-0 left-0 -z-10 w-full overflow-hidden max-lg:hidden lg:w-[58%]">
         <div
           ref={subjectRef}
           className="about-subject absolute bottom-0 -left-[42vw] w-[154vw] sm:-left-[30vw] sm:w-[132vw] lg:-left-[23vw] lg:w-[112vw] lg:max-w-[1700px]"
@@ -105,7 +121,20 @@ export default function About({ standalone = false }: { standalone?: boolean }) 
             </p>
           </div>
 
-          <blockquote className="mt-8 border-l-2 border-accent bg-bg/20 py-1 pl-5 backdrop-blur-[2px]">
+          <div aria-hidden="true" className="about-subject-mobile relative -mx-5 mt-6 overflow-hidden sm:-mx-8 lg:hidden">
+            <div ref={mobileSubjectRef} className="about-subject">
+              <Image
+                src="/images/about-subject-v4.png"
+                alt=""
+                width={2048}
+                height={1152}
+                sizes="(max-width: 1024px) 130vw, 1px"
+                className="about-subject-mobile-image block h-auto w-[130%] max-w-none -ml-[18%]"
+              />
+            </div>
+          </div>
+
+          <blockquote className="mt-2 lg:mt-8 border-l-2 border-accent bg-bg/20 py-1 pl-5 backdrop-blur-[2px]">
             <p className="font-display text-xl leading-snug text-white sm:text-2xl">
               His mission is simple: to create the Hip-Hop conversations we
               should be having.
