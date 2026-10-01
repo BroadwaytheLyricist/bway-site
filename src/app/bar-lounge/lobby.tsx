@@ -7,6 +7,24 @@ import { XP_TIERS } from "@/lib/bar-lounge/progression";
 export const TIERS = ["On The Radio", "In The Whip", "On The Block", "In The Crates", "Broadway's Floor"];
 export type LoungeIconName = "calendar" | "record" | "bars" | "barsSolid" | "fire" | "score" | "radio" | "car" | "city" | "crate" | "crown";
 
+/**
+ * The rising-bars mark in "THE BAR LOUNGE" wordmark. Proportions follow the
+ * brand mockup, measured against the capital height of "BAR" (= 100): five
+ * bars 21 wide with 11 gaps, rising 23 / 42 / 70 / 104 / 136. The first bar is
+ * a small square that reads like a period; the tallest clears the letters.
+ * The bars share a flat base so they sit on the text baseline.
+ */
+export function LoungeBarsMark({ className }: { className?: string }) {
+  const heights = [23, 42, 70, 104, 136];
+  return (
+    <svg viewBox="0 0 149 136" aria-hidden="true" className={className}>
+      {heights.map((h, i) => (
+        <rect key={h} x={i * 32} y={136 - h} width="21" height={h} fill="currentColor" />
+      ))}
+    </svg>
+  );
+}
+
 export function LoungeIcon({ name, className }: { name: LoungeIconName; className?: string }) {
   const paths: Record<LoungeIconName, React.ReactNode> = {
     calendar: <><rect x="5" y="8" width="30" height="28" rx="3"/><path d="M12 4v9M28 4v9M5 17h30M12 24h4M24 24h4M12 30h4M24 30h4"/></>,

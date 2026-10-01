@@ -212,12 +212,46 @@ body {
     #0b1020;
 }
 
+/* ---------------------------------------------------------------------
+   Phone layouts (under 768px). Desktop and tablet rules are untouched.
+   --------------------------------------------------------------------- */
 @media (max-width: 767px) {
+  /* Hero: the portrait sits at the top like a poster, face fully visible,
+     and the copy starts below it over the portrait's faded lower edge. */
+  .hero-section {
+    align-items: flex-start;
+  }
   .hero-subject-layer {
-    right: -25%;
-    width: 115%;
-    height: 82%;
-    bottom: 0;
+    top: 64px;
+    bottom: auto;
+    right: -20%;
+    width: 175%;
+    height: auto;
+    aspect-ratio: 1536 / 1024;
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 62%, transparent 96%);
+    mask-image: linear-gradient(to bottom, black 0%, black 62%, transparent 96%);
+  }
+  .hero-content {
+    padding-top: calc(116.67vw - 40px);
+  }
+
+  /* Music: frame the studio's racks and desk right behind the portrait
+     instead of the blank wall in the middle of the photo. */
+  .music-studio {
+    top: 150px;
+    bottom: auto;
+    height: 560px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 78%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 78%, transparent 100%);
+  }
+  .music-studio img {
+    object-position: 6% 72%;
+    filter: contrast(1.08) brightness(0.98) blur(0.6px);
+  }
+  .music-subject {
+    top: 150px;
+    left: -44vw;
+    width: 200vw;
   }
 }
 
@@ -280,6 +314,24 @@ body {
 .about-subject-image {
   -webkit-mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
   mask-image: linear-gradient(to right, black 0%, black 55%, transparent 69%);
+  filter:
+    brightness(0.91)
+    contrast(1.13)
+    saturate(1.06)
+    drop-shadow(-4px 0 7px rgba(230, 90, 32, 0.14))
+    drop-shadow(4px 0 9px rgba(30, 125, 220, 0.26));
+}
+
+/* Phones and tablets: the in-flow About portrait fades out at its cropped bottom edge. */
+.about-subject-mobile {
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+}
+
+.about-subject-mobile-image {
+  /* Fade out the mic arm at the right edge, as the desktop version does. */
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 66%, transparent 77%);
+  mask-image: linear-gradient(to right, black 0%, black 66%, transparent 77%);
   filter:
     brightness(0.91)
     contrast(1.13)
@@ -452,8 +504,61 @@ body {
   .music-platform-link { width: 190px; scroll-snap-align: start; }
 }
 
+/* Phone-only swipe cue for the platform row (hidden on tablet and desktop). */
+.music-swipe-hint { display: none; }
+
+@media (max-width: 767px) {
+  .music-platforms-wrap { position: relative; }
+  .music-platforms-wrap::after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 72px;
+    height: 104px;
+    pointer-events: none;
+    background: linear-gradient(to right, transparent, #080d19 88%);
+    transition: opacity .3s ease;
+  }
+  .music-platforms-wrap[data-at-end]::after { opacity: 0; }
+  .music-swipe-hint {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    margin-top: .9rem;
+    font-size: .6875rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    transition: opacity .45s ease;
+  }
+  .music-swipe-hint[data-hidden] { opacity: 0; }
+  .music-swipe-chevrons { display: inline-flex; }
+  .music-swipe-chevrons svg {
+    width: 12px;
+    height: 12px;
+    margin-left: -3px;
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: .2;
+    animation: swipe-chevron 1.6s ease-in-out infinite;
+  }
+  .music-swipe-chevrons svg:nth-child(2) { animation-delay: .16s; }
+  .music-swipe-chevrons svg:nth-child(3) { animation-delay: .32s; }
+}
+
+@keyframes swipe-chevron {
+  0%, 100% { opacity: .2; transform: translateX(0); }
+  40% { opacity: 1; transform: translateX(3px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .music-platforms { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .music-swipe-chevrons svg { animation: none; opacity: .85; }
   .music-platforms-track { animation: none; }
   .music-platforms-group:nth-child(2) { display: none; }
 }
