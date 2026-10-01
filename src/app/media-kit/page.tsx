@@ -140,18 +140,6 @@ export default async function MediaKitPage() {
               {mediaKit.positioning}
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-2.5">
-              {mediaKit.badges.map((b) => (
-                <span
-                  key={b}
-                  className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-semibold text-accent"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  {b}
-                </span>
-              ))}
-            </div>
-
             <div className="no-print mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <PrintButton className="btn-accent inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5" />
               <a

@@ -19,13 +19,6 @@ export const mediaKit = {
     alt: "Broadway The Lyricist on camera in the studio",
   },
 
-  /** Marketplace status badges from the original deck. */
-  badges: [
-    "Creator Marketplace Access",
-    "Paid Partnership Eligible",
-    "Gifts Eligible",
-  ],
-
   /**
    * Manually-maintained stats. YouTube subscriber/view/video counts are pulled
    * live and override their placeholders here on render.
