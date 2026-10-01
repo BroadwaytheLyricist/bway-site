@@ -504,8 +504,61 @@ body {
   .music-platform-link { width: 190px; scroll-snap-align: start; }
 }
 
+/* Phone-only swipe cue for the platform row (hidden on tablet and desktop). */
+.music-swipe-hint { display: none; }
+
+@media (max-width: 767px) {
+  .music-platforms-wrap { position: relative; }
+  .music-platforms-wrap::after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 72px;
+    height: 104px;
+    pointer-events: none;
+    background: linear-gradient(to right, transparent, #080d19 88%);
+    transition: opacity .3s ease;
+  }
+  .music-platforms-wrap[data-at-end]::after { opacity: 0; }
+  .music-swipe-hint {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    margin-top: .9rem;
+    font-size: .6875rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    transition: opacity .45s ease;
+  }
+  .music-swipe-hint[data-hidden] { opacity: 0; }
+  .music-swipe-chevrons { display: inline-flex; }
+  .music-swipe-chevrons svg {
+    width: 12px;
+    height: 12px;
+    margin-left: -3px;
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: .2;
+    animation: swipe-chevron 1.6s ease-in-out infinite;
+  }
+  .music-swipe-chevrons svg:nth-child(2) { animation-delay: .16s; }
+  .music-swipe-chevrons svg:nth-child(3) { animation-delay: .32s; }
+}
+
+@keyframes swipe-chevron {
+  0%, 100% { opacity: .2; transform: translateX(0); }
+  40% { opacity: 1; transform: translateX(3px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .music-platforms { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .music-swipe-chevrons svg { animation: none; opacity: .85; }
   .music-platforms-track { animation: none; }
   .music-platforms-group:nth-child(2) { display: none; }
 }

@@ -27,12 +27,19 @@ export default function LoungeEntrance() {
     setJourney(null);
   };
 
+  /** Puts the new page at its top, or at the requested section. Uses the plain
+   *  scroll calls every browser supports (iOS Safari included). */
+  const landOn = (target: Journey) => {
+    const section = target.hash ? document.getElementById(decodeURIComponent(target.hash.slice(1))) : null;
+    if (section) section.scrollIntoView(true);
+    else window.scrollTo(0, 0);
+    return section;
+  };
+
   const arrive = () => {
     const target = destination.current;
     if (!target) return;
-    const section = target.hash ? document.getElementById(decodeURIComponent(target.hash.slice(1))) : null;
-    if (section) section.scrollIntoView({ behavior: "instant", block: "start" });
-    else window.scrollTo({ top: 0, behavior: "instant" });
+    const section = landOn(target);
     document.documentElement.style.setProperty("--page-zoom-y", `${window.scrollY + window.innerHeight * .48}px`);
     setPhase("arriving");
     timers.current.push(setTimeout(() => {
@@ -40,6 +47,12 @@ export default function LoungeEntrance() {
       heading?.setAttribute("tabindex", "-1");
       heading?.focus({ preventScroll: true });
       reset();
+      // Safari can ignore a scroll made while the page is locked mid-transition,
+      // leaving the new page at the old page's position. Once scrolling is
+      // unlocked, land again so every page opens at its top (or its section).
+      requestAnimationFrame(() => {
+        if (target.hash || window.scrollY > 0) landOn(target);
+      });
     }, target.lounge ? 480 : 320));
   };
   const arriveRef = useRef(arrive);

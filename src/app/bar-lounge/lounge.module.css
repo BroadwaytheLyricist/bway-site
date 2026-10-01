@@ -2,7 +2,10 @@
 .loungeHeader { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 0; border-bottom: 1px solid #aa68352e; }
 .loungeBrand { text-align: left; color: #eee8df; line-height: .92; letter-spacing: .02em; }
 .loungeBrand > span { display: block; font-size: 10px; letter-spacing: .16em; color: #ff7d30; margin-bottom: 4px; }
-.loungeBrand strong { display: flex; align-items: center; font-size: 26px; font-weight: 700; }
+.loungeBrand strong { display: flex; align-items: baseline; font-size: 26px; font-weight: 700; }
+/* Bars sit on the baseline of "BAR": sized from Anton's cap height (0.86em),
+   tallest bar = 1.36x the letters, gap from the R = 0.17x. */
+.loungeBrand .brandBars { flex: none; width: 1.282em; height: 1.17em; margin-left: .146em; }
 .loungeBrand svg { width: 32px; height: 32px; color: #f17d2d; margin-left: 7px; }
 .loungeBrand small { display: block; margin-top: 8px; font-size: 8px; letter-spacing: .06em; color: #fa7c2e; }
 .loungeNav { display: flex; gap: 26px; flex-wrap: wrap; }
