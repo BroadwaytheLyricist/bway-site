@@ -1,4 +1,5 @@
 type SectionHeadingProps = {
+  as?: "h1" | "h2";
   index?: string;
   kicker: string;
   title: React.ReactNode;
@@ -6,6 +7,7 @@ type SectionHeadingProps = {
 };
 
 export default function SectionHeading({
+  as: Heading = "h2",
   index,
   kicker,
   title,
@@ -18,9 +20,9 @@ export default function SectionHeading({
         <span className="h-px w-8 bg-accent/60" />
         <span>{kicker}</span>
       </p>
-      <h2 className="mt-4 font-display text-4xl leading-[0.95] sm:text-5xl lg:text-6xl">
+      <Heading className="mt-4 font-display text-4xl leading-[0.95] sm:text-5xl lg:text-6xl">
         {title}
-      </h2>
+      </Heading>
     </div>
   );
 }

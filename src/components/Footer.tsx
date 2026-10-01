@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SectionAnchorLink from "@/components/SectionAnchorLink";
 import { links, nav } from "@/lib/site";
 import {
   FacebookIcon,
@@ -20,7 +21,7 @@ export default function Footer() {
     <footer className="border-t border-line bg-panel">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="flex flex-col items-center text-center">
-          <Link href="/#home" aria-label="Broadway The Lyricist home">
+          <SectionAnchorLink href="/#home" aria-label="Broadway The Lyricist home">
             <Image
               src="/images/logo.png"
               alt="Broadway The Lyricist"
@@ -28,7 +29,7 @@ export default function Footer() {
               height={64}
               className="h-14 w-auto"
             />
-          </Link>
+          </SectionAnchorLink>
 
           <p className="mt-8 max-w-3xl font-display text-2xl leading-tight tracking-wide text-white sm:text-3xl lg:text-4xl">
             &ldquo;The Hip-Hop Conversations We{" "}
@@ -40,21 +41,18 @@ export default function Footer() {
             className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
             aria-label="Footer"
           >
-            {nav.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  item.href.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                className="text-sm font-medium text-muted transition-colors hover:text-white"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {nav.map((item) => {
+              const NavLink = item.href.startsWith("/#") ? SectionAnchorLink : Link;
+              return (
+                <NavLink
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm font-medium text-muted transition-colors hover:text-accent focus-visible:text-accent"
+                >
+                  {item.label}
+                </NavLink>
+              );
+            })}
           </nav>
 
           <div className="mt-8 flex items-center gap-3">
@@ -65,7 +63,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-accent"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-accent transition-colors hover:border-accent hover:bg-accent/10"
               >
                 <Icon className="h-5 w-5" />
               </a>

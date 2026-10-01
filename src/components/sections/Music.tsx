@@ -1,0 +1,152 @@
+"use client";
+
+import Image from "next/image";
+import SectionAnchorLink from "@/components/SectionAnchorLink";
+import { useEffect, useRef } from "react";
+import SectionHeading from "@/components/SectionHeading";
+import { ArrowIcon } from "@/components/icons";
+import { links } from "@/lib/site";
+import MusicVideoCards from "@/components/MusicVideoCards";
+
+const destinations = [
+  { label: "Spotify", href: links.spotify },
+  { label: "Apple Music", href: links.appleMusic },
+  { label: "Amazon Music", href: links.amazonMusic },
+  { label: "YouTube Music", href: links.youtubeMusic },
+  { label: "TIDAL", href: links.tidal },
+  { label: "Deezer", href: links.deezer },
+] as const;
+
+export default function Music({ standalone = false }: { standalone?: boolean }) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const subjectRef = useRef<HTMLDivElement>(null);
+  const studioRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const subject = subjectRef.current;
+    const studio = studioRef.current;
+    const player = playerRef.current;
+    if (!section || !subject || !studio || !player) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      subject.style.setProperty("--music-x", "0px");
+      subject.style.setProperty("--music-opacity", "1");
+      studio.style.setProperty("--music-bg-y", "0px");
+      player.style.setProperty("--music-player-x", "0px");
+      player.style.setProperty("--music-player-opacity", "1");
+      return;
+    }
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = section.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      const progress = Math.min(1, Math.max(0, (viewport - rect.top) / (viewport * 1.15)));
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const entranceDistance = window.innerWidth >= 1024 ? 440 : Math.min(240, window.innerWidth * 0.55);
+      subject.style.setProperty("--music-x", `${(eased - 1) * entranceDistance}px`);
+      subject.style.setProperty("--music-opacity", `${0.12 + eased * 0.88}`);
+      const playerProgress = Math.min(1, Math.max(0, (progress - 0.1) / 0.78));
+      const playerEased = 1 - Math.pow(1 - playerProgress, 3);
+      const playerDistance = window.innerWidth >= 1024 ? 96 : 44;
+      player.style.setProperty("--music-player-x", `${(1 - playerEased) * playerDistance}px`);
+      player.style.setProperty("--music-player-opacity", `${0.38 + playerEased * 0.62}`);
+      studio.style.setProperty("--music-bg-y", `${(0.5 - progress) * 26}px`);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  return (
+    <section ref={sectionRef} id="music" className="relative isolate min-h-[990px] overflow-hidden bg-bg py-24 sm:py-32 lg:min-h-[900px]">
+      <div ref={studioRef} aria-hidden="true" className="music-studio absolute inset-0 -z-30">
+        <Image src="/images/music-studio-bg.jpg" alt="" fill sizes="100vw" className="object-cover object-center" />
+      </div>
+      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-[#081527]/42" />
+      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-r from-bg/20 via-bg/42 to-bg/75" />
+      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/85 via-transparent to-bg/25" />
+      <div aria-hidden="true" className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_25%_50%,rgba(255,90,31,.12),transparent_42%)]" />
+
+      <div aria-hidden="true" className="music-art pointer-events-none absolute inset-0 -z-10">
+        <div ref={subjectRef} className="music-subject absolute top-[145px] -left-[60vw] w-[190vw] sm:-left-[36vw] sm:w-[155vw] lg:top-auto lg:bottom-0 lg:-left-[280px] lg:w-[1650px]">
+          <Image src="/images/music-subject.webp" alt="" width={2048} height={1152} sizes="(max-width: 640px) 190vw, (max-width: 1024px) 155vw, 1650px" className="block h-auto w-full" />
+        </div>
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionHeading
+          as={standalone ? "h1" : "h2"}
+          index={standalone ? undefined : "04"}
+          kicker="Original Music"
+          title={<>Broadway <span className="text-accent">On Record</span></>}
+        />
+
+        {standalone ? <div ref={playerRef} className="music-player-card music-player-card-with-videos mt-[440px] grid overflow-hidden border border-line shadow-2xl sm:mt-[520px] md:grid-cols-2 lg:ml-auto lg:mt-16 lg:max-w-[880px]">
+          <div className="flex flex-col items-center justify-center bg-[#101827]/45 px-5 py-7 backdrop-blur-[1px] sm:px-7">
+            <div className="mb-5 w-full max-w-[300px]">
+              <p className="kicker">Featured Release</p>
+              <h2 className="mt-3 font-display text-3xl leading-none text-white sm:text-4xl">Off Broadway EP</h2>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent">Unmastered Deluxe Edition</p>
+            </div>
+            <iframe title="Off Broadway EP (Unmastered) Deluxe Edition on Bandcamp" src="https://bandcamp.com/EmbeddedPlayer/album=2215040601/size=large/bgcol=101827/linkcol=ff5a1f/tracklist=false/transparent=true/" className="h-[420px] w-full max-w-[300px] border-0" loading="lazy" allow="autoplay; encrypted-media" />
+            <a href={links.bandcamp} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 border-b border-accent pb-2 text-sm font-semibold text-white hover:text-accent">Full catalog on Bandcamp <ArrowIcon className="h-4 w-4" /></a>
+          </div>
+          <MusicVideoCards />
+        </div> : <div ref={playerRef} className="music-player-card mt-[440px] grid overflow-hidden border border-line shadow-2xl sm:mt-[520px] lg:ml-auto lg:mt-20 lg:max-w-[880px] lg:grid-cols-[minmax(350px,0.9fr)_1fr]">
+          <div className="flex items-center justify-center bg-[#101827]/45 px-4 py-8 backdrop-blur-[1px] sm:px-8">
+            <iframe
+              title="Off Broadway EP (Unmastered) Deluxe Edition on Bandcamp"
+              src="https://bandcamp.com/EmbeddedPlayer/album=2215040601/size=large/bgcol=101827/linkcol=ff5a1f/tracklist=false/transparent=true/"
+              className="h-[470px] w-full max-w-[350px] border-0"
+              loading="lazy"
+              allow="autoplay; encrypted-media"
+            />
+          </div>
+
+          <div className="flex flex-col justify-center bg-bg/90 p-7 backdrop-blur-[3px] sm:p-10 lg:p-12">
+            <p className="kicker">Featured Release</p>
+            <h3 className="mt-3 font-display text-4xl leading-none text-white sm:text-5xl">Off Broadway EP</h3>
+            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.14em] text-accent">Unmastered Deluxe Edition</p>
+            <p className="mt-5 max-w-xl leading-relaxed text-muted">
+              {standalone
+                ? "Start with the EP here. More releases and listening platforms are just below."
+                : "Listen to the EP here, then explore more of Broadway’s music on Bandcamp or your preferred platform."}
+            </p>
+
+            <a href={links.bandcamp} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex w-fit items-center gap-2 border-b border-accent pb-2 text-sm font-semibold text-white hover:text-accent">
+              Explore the full catalog on Bandcamp <ArrowIcon className="h-4 w-4" />
+            </a>
+
+            {!standalone && (
+              <div className="mt-8 flex flex-wrap gap-3">
+                {destinations.map((destination) => (
+                  <a key={destination.label} href={destination.href} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 border border-white/15 px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:border-accent hover:text-accent">
+                    {destination.label}<ArrowIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>}
+        {!standalone && (
+          <SectionAnchorLink href="/music#listen-platforms" className="mt-8 inline-flex items-center gap-2 border-b border-accent pb-2 text-base font-semibold text-white transition-colors hover:text-accent">
+            Explore the music <ArrowIcon className="h-4 w-4" />
+          </SectionAnchorLink>
+        )}
+      </div>
+    </section>
+  );
+}

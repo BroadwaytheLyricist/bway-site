@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import VideoEmbed from "@/components/VideoEmbed";
@@ -33,7 +34,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   return {
-    title: `${post.title} | Broadway The Lyricist`,
+    title: `${post.seoTitle ?? post.title} | Broadway the Lyricist`,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
@@ -73,6 +74,7 @@ export default async function PostPage({ params }: PostPageProps) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
+    image: post.thumbnail ? `https://broadwaythelyricist.com${post.thumbnail}` : undefined,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
     mainEntityOfPage: url,
@@ -88,11 +90,30 @@ export default async function PostPage({ params }: PostPageProps) {
   };
 
   return (
-    <article className="min-h-screen bg-bg pb-24 pt-28 sm:pb-32 sm:pt-36">
+    <article className="relative isolate min-h-screen overflow-hidden bg-bg pb-24 pt-28 sm:pb-32 sm:pt-36">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+      {post.thumbnail && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[680px] overflow-hidden sm:h-[840px]">
+          <Image
+            src={post.thumbnail}
+            alt=""
+            fill
+            sizes="100vw"
+            className="scale-105 object-cover object-center opacity-70 blur-[5px] saturate-80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg/60 via-bg/72 to-bg" />
+        </div>
+      )}
+
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 hidden xl:block">
+        <div className="article-watermark-right absolute top-[1740px] h-[220px] w-[220px] opacity-[0.045]">
+          <Image src="/images/logo.png" alt="" fill sizes="220px" className="scale-[1.9] object-contain" />
+        </div>
+      </div>
 
       <header className="mx-auto max-w-5xl px-5 sm:px-8">
         <Link
@@ -143,8 +164,11 @@ export default async function PostPage({ params }: PostPageProps) {
             </p>
           ))}
 
-          {post.sections.map((section) => (
-            <section key={section.heading} className="pt-8 sm:pt-12">
+          {post.sections.map((section, index) => (
+            <section key={section.heading ?? index} className="relative pt-8 sm:pt-12">
+              {index === post.sections.length - 1 && (
+                <div aria-hidden="true" className="article-watermark-orange pointer-events-none absolute -left-[255px] top-7 hidden h-[220px] w-[220px] opacity-[0.06] 2xl:block" />
+              )}
               {section.heading && (
                 <h2 className="mb-7 font-display text-4xl leading-none text-white sm:text-5xl">
                   {section.heading}

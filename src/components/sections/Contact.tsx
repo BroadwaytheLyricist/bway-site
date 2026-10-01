@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import SectionHeading from "@/components/SectionHeading";
+import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 import {
   ArrowIcon,
   DocIcon,
@@ -20,10 +21,10 @@ import { links } from "@/lib/site";
 const initialState: ContactState = { status: "idle", message: "" };
 
 const socials = [
-  { label: "YouTube", href: links.youtube, Icon: YouTubeIcon },
-  { label: "Instagram", href: links.instagram, Icon: InstagramIcon },
-  { label: "TikTok", href: links.tiktok, Icon: TikTokIcon },
-  { label: "Facebook", href: links.facebook, Icon: FacebookIcon },
+  { label: "YouTube", handle: "Broadway the Lyricist", href: links.youtube, Icon: YouTubeIcon },
+  { label: "Instagram", handle: "@broadwaythelyricist", href: links.instagram, Icon: InstagramIcon },
+  { label: "TikTok", handle: "@broadwaythelyricist", href: links.tiktok, Icon: TikTokIcon },
+  { label: "Facebook", handle: "Broadway The Lyricist", href: links.facebook, Icon: FacebookIcon },
 ];
 
 const fieldBase =
@@ -47,8 +48,10 @@ export default function Contact() {
   const [state, formAction] = useActionState(submitContact, initialState);
 
   return (
-    <section id="contact" className="bg-panel py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="contact" className="relative isolate overflow-hidden bg-panel py-24 sm:py-32">
+      <div aria-hidden="true" className="absolute inset-0 -z-30 bg-[url('/images/stage-bg-v2.jpg')] bg-cover bg-center opacity-70" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-panel/86 via-panel/74 to-panel/62" />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Left: intro + contact detail cards */}
           <div className="flex flex-col">
@@ -62,10 +65,8 @@ export default function Contact() {
               }
             />
             <p className="mt-6 text-lg leading-relaxed text-muted">
-              Interviews, podcast appearances, brand partnerships, bookings, or
-              just want to weigh in on the culture? Send a message and it&apos;ll
-              land straight in the inbox — partnership and media materials are in
-              the kit below.
+              For interviews, appearances, bookings, and brand partnerships,
+              send a message or email me directly.
             </p>
 
             {/* Contact detail cards — matched surfaces so the column carries weight */}
@@ -107,26 +108,6 @@ export default function Contact() {
               </Link>
             </div>
 
-            {/* Follow — merged in so "reach out" and "follow along" live together */}
-            <div className="mt-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
-                Follow along
-              </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                {socials.map(({ label, href, Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-panel-2 text-white transition-all hover:-translate-y-1 hover:border-accent/50 hover:text-accent"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Right: form card */}
@@ -200,7 +181,7 @@ export default function Contact() {
                 name="subject"
                 type="text"
                 required
-                placeholder="What's this about?"
+                placeholder="Interview, booking, or partnership?"
                 className={`${fieldBase} ${
                   state.errors?.subject ? "border-red-500" : "border-line"
                 }`}
@@ -219,7 +200,7 @@ export default function Contact() {
                 name="message"
                 required
                 rows={5}
-                placeholder="Tell us more…"
+                placeholder="Tell me about your idea and timeline…"
                 className={`${fieldBase} resize-y ${
                   state.errors?.message ? "border-red-500" : "border-line"
                 }`}
@@ -243,6 +224,37 @@ export default function Contact() {
               )}
             </div>
           </form>
+        </div>
+
+        <div className="mt-20 border-t border-white/15 pt-14 sm:mt-24 sm:pt-16">
+          <p className="kicker text-center">Stay Connected</p>
+          <h2 className="mx-auto mt-4 max-w-5xl text-center font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-6xl">
+            Follow Me On <span className="text-accent">Social Media</span>
+          </h2>
+
+          <ScrollRevealGroup className="mt-10 grid gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-4" direction="up">
+            {socials.map(({ label, handle, href, Icon }) => (
+              <a
+                key={label}
+                data-reveal-item
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Follow Broadway the Lyricist on ${label}`}
+                className="group flex min-h-40 flex-col justify-between border-t border-white/25 py-5 transition-colors hover:border-accent focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+              >
+                <span className="flex items-start">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-accent/50 bg-accent/10 text-accent transition-transform duration-300 group-hover:-translate-y-1 group-hover:border-accent group-hover:bg-accent/20 group-focus-visible:bg-accent/20">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                </span>
+                <span className="block">
+                  <span className="block font-display text-2xl leading-none text-white transition-colors group-hover:text-accent sm:text-3xl">{label}</span>
+                  <span className="mt-2 block text-sm text-muted">{handle}</span>
+                </span>
+              </a>
+            ))}
+          </ScrollRevealGroup>
         </div>
       </div>
     </section>

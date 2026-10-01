@@ -1,4 +1,5 @@
 import SectionHeading from "@/components/SectionHeading";
+import InstagramFeed from "@/components/InstagramFeed";
 import {
   ArrowIcon,
   FacebookIcon,
@@ -49,7 +50,7 @@ export default function Follow() {
           }
         />
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-          New deep dives, reactions, and debates across every platform. Follow
+          New stories, reactions, and debates across every platform. Follow
           along and add your voice.
         </p>
 
@@ -63,7 +64,7 @@ export default function Follow() {
               className="group flex flex-col gap-6 rounded-2xl border border-line bg-panel p-6 transition-all hover:-translate-y-1 hover:border-accent/50"
             >
               <div className="flex items-center justify-between">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/5 text-white transition-colors group-hover:bg-accent group-hover:text-white">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/5 text-accent transition-colors group-hover:bg-accent/10">
                   <Icon className="h-6 w-6" />
                 </span>
                 <ArrowIcon className="h-5 w-5 -rotate-45 text-muted transition-colors group-hover:text-accent" />
@@ -77,6 +78,8 @@ export default function Follow() {
             </a>
           ))}
         </div>
+
+        <InstagramFeed />
       </div>
     </section>
   );

@@ -19,13 +19,6 @@ export const mediaKit = {
     alt: "Broadway The Lyricist on camera in the studio",
   },
 
-  /** Marketplace status badges from the original deck. */
-  badges: [
-    "Creator Marketplace Access",
-    "Paid Partnership Eligible",
-    "Gifts Eligible",
-  ],
-
   /**
    * Manually-maintained stats. YouTube subscriber/view/video counts are pulled
    * live and override their placeholders here on render.
@@ -34,7 +27,7 @@ export const mediaKit = {
     instagramFollowers: "2,746",
     instagramViews30d: "37K+",
     instagramReached: "26.7K",
-    topReel: "95.9K+",
+    topReel: "96.2K+",
   },
 
   audience: [
@@ -48,38 +41,53 @@ export const mediaKit = {
   /**
    * Top-performing content (client-selected), Instagram + YouTube.
    * A `url` makes the card link out; cards without a `url` render static.
-   * YouTube view counts are live-verified; Instagram counts are reported.
+   * Reel counts are curated manually. YouTube video counts refresh via the API.
    */
   topContent: [
     {
       title: "5 Songs Fans Made Me Hate",
-      views: "95.9K",
+      views: "96.2K",
       platform: "Instagram Reel",
-      url: "https://www.instagram.com/p/DTZCg5IDjOp/",
+      url: "https://www.instagram.com/reel/DTZCg5IDjOp/",
+      thumbnail: "/images/media-kit/content/five-songs.webp",
     },
     {
-      title: "Knicks In 4",
-      views: "65K",
+      title: "The Goal Post Keeps Moving",
+      views: "78.3K",
       platform: "Instagram Reel",
-      url: "https://www.instagram.com/p/DaBmUJRPdlR/",
+      url: "https://www.instagram.com/reel/DaBmUJRPdlR/",
+      thumbnail: "/images/media-kit/content/goal-post.webp",
     },
     {
       title: "Not The Dusky!?",
-      views: "23.3K",
+      views: "23.5K",
       platform: "Instagram Reel",
-      url: "https://www.instagram.com/p/DX-kj1AOWHA/",
+      url: "https://www.instagram.com/reel/DX-kj1AOWHA/",
+      thumbnail: "/images/media-kit/content/not-the-dusky.webp",
+    },
+    {
+      title: "Wait...Tom Hardy Can Actually Rap?!",
+      views: "13K",
+      platform: "YouTube",
+      url: "https://www.youtube.com/watch?v=ewvHgIO3RGQ",
+      thumbnail: "https://i.ytimg.com/vi/ewvHgIO3RGQ/hqdefault.jpg",
+      youtubeId: "ewvHgIO3RGQ",
     },
     {
       title: "Drake Was Supposed To Be Over",
-      views: "4.4K",
+      views: "6.8K",
       platform: "YouTube",
       url: "https://www.youtube.com/watch?v=tU0TyPqz8kc",
+      thumbnail: "https://i.ytimg.com/vi/tU0TyPqz8kc/hqdefault.jpg",
+      youtubeId: "tU0TyPqz8kc",
     },
     {
       title: "The Genius Behind Liquid Swords",
-      views: "2.7K",
+      views: "5.6K",
       platform: "YouTube",
       url: "https://www.youtube.com/watch?v=9d8_mX0TNvU",
+      thumbnail: "https://i.ytimg.com/vi/9d8_mX0TNvU/hqdefault.jpg",
+      youtubeId: "9d8_mX0TNvU",
     },
   ],
 
@@ -174,6 +182,23 @@ export const mediaKit = {
       },
     },
     {
+      name: "Buckwild",
+      credit: "Producer • D.I.T.C.",
+      note: "Commented on Broadway The Lyricist's Hip-Hop discussion and followed the account.",
+      proof: {
+        src: "/images/media-kit/social/buckwild-follow.webp",
+        alt: "Verified producer Buckwild following Broadway The Lyricist on Instagram",
+        width: 1320,
+        height: 262,
+      },
+      secondaryProof: {
+        src: "/images/media-kit/social/buckwild-comment.webp",
+        alt: "Buckwild commenting on Broadway The Lyricist's Instagram discussion",
+        width: 1320,
+        height: 498,
+      },
+    },
+    {
       name: "Lyric Perez",
       credit: "Creative Producer • Revolt • Complex Networks • Red Bull Media House",
       note: "Verified creative producer engaged with Broadway The Lyricist content.",
@@ -216,6 +241,10 @@ export const mediaKit = {
     {
       src: "/images/media-kit/studio/canon-shelf.jpg",
       alt: "Canon EOS R50 on an RGB-lit shelf",
+    },
+    {
+      src: "/images/media-kit/studio/production-workspace.jpg",
+      alt: "Creator workspace with camera, Shure microphone, laptop, and audio console",
     },
   ],
 

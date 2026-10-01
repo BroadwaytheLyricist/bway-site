@@ -5,17 +5,48 @@ import SectionHeading from "@/components/SectionHeading";
 import { formatPostDate, posts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Blog | Broadway The Lyricist",
+  title: "On The Record (Blog): Hip-Hop Stories | Broadway the Lyricist",
   description:
-    "Hip-Hop history, commentary, deep dives, and the conversations the culture should be having.",
+    "Read Broadway the Lyricist's stories on Hip-Hop history, artists, albums, and the culture behind the music.",
   alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "On The Record (Blog): Hip-Hop Stories | Broadway the Lyricist",
+    description: "Hip-Hop history, artists, albums, and cultural commentary from Broadway the Lyricist.",
+    url: "/blog",
+    siteName: "Broadway The Lyricist",
+    type: "website",
+    images: [{ url: "/images/og/broadway-social-preview.jpg", width: 1200, height: 630, alt: "Broadway the Lyricist" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "On The Record (Blog): Hip-Hop Stories | Broadway the Lyricist",
+    description: "Hip-Hop stories and cultural commentary from Broadway the Lyricist.",
+    images: ["/images/og/broadway-social-preview.jpg"],
+  },
 };
 
 export default function BlogPage() {
+  const sortedPosts = [...posts].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+
   return (
-    <div className="min-h-screen bg-bg pb-24 pt-32 sm:pb-32 sm:pt-40">
+    <div className="relative isolate min-h-screen overflow-hidden bg-bg pb-24 pt-32 sm:pb-32 sm:pt-40">
+      <div className="blog-background absolute inset-0 -z-10" aria-hidden="true" />
+      {sortedPosts.length === 1 && (
+        <div className="blog-profile pointer-events-none absolute right-[2vw] -z-10 h-[min(98vh,1000px)] w-[min(60vw,720px)]" aria-hidden="true">
+          <Image
+            src="/images/media-kit/profile-shadow-cutout.webp"
+            alt=""
+            fill
+            priority
+            sizes="(min-width: 768px) 60vw, 80vw"
+            className="object-contain object-bottom"
+          />
+        </div>
+      )}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-b from-transparent to-bg" />
       <section className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
+          as="h1"
           kicker="On The Record"
           title={
             <>
@@ -30,7 +61,7 @@ export default function BlogPage() {
         </p>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
-          {posts.map((post) => (
+          {sortedPosts.map((post) => (
             <article
               key={post.slug}
               className="group flex min-h-96 flex-col justify-between overflow-hidden rounded-2xl border border-line bg-panel-2 p-7 transition-colors hover:border-accent/50 sm:p-10"

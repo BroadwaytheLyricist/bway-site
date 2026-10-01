@@ -1,63 +1,121 @@
+"use client";
+
 import Image from "next/image";
+import SectionAnchorLink from "@/components/SectionAnchorLink";
+import { useEffect, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 
-export default function About() {
+export default function About({ standalone = false }: { standalone?: boolean }) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const subjectRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const subject = subjectRef.current;
+    if (!section || !subject) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      subject.style.setProperty("--about-x", "0px");
+      subject.style.setProperty("--about-opacity", "1");
+      return;
+    }
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = section.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      const progress = Math.min(1, Math.max(0, (viewport - rect.top) / (viewport * 0.72)));
+      const eased = 1 - Math.pow(1 - progress, 3);
+      subject.style.setProperty("--about-x", `${(eased - 1) * 180}px`);
+      subject.style.setProperty("--about-opacity", `${0.18 + eased * 0.82}`);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <section id="about" className="bg-bg py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
-          {/* Photo */}
-          <div className="relative order-1">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-line">
-              <Image
-                src="/images/about.jpg"
-                alt="Broadway The Lyricist behind the mic in his studio"
-                fill
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg/40 to-transparent" />
-            </div>
-            {/* Accent frame accent */}
-            <div className="absolute -bottom-4 -right-4 -z-10 hidden h-32 w-32 rounded-2xl bg-accent/20 blur-2xl sm:block" />
+    <section
+      ref={sectionRef}
+      id="about"
+      className="relative isolate min-h-[820px] overflow-hidden bg-bg py-24 sm:py-32 lg:min-h-[940px]"
+    >
+      <Image
+        src="/images/stage-bg-v2.jpg"
+        alt="A dark stage lit in teal and orange"
+        fill
+        sizes="100vw"
+        className="-z-30 object-cover object-center"
+      />
+      <div className="absolute inset-0 -z-20 bg-gradient-to-l from-bg/75 via-bg/20 to-bg/10" />
+      <div className="absolute inset-0 -z-20 bg-gradient-to-t from-bg/30 via-transparent to-bg/10" />
+
+      <div aria-hidden="true" className="about-art absolute inset-y-0 left-0 -z-10 w-full overflow-hidden lg:w-[58%]">
+        <div
+          ref={subjectRef}
+          className="about-subject absolute bottom-0 -left-[42vw] w-[154vw] sm:-left-[30vw] sm:w-[132vw] lg:-left-[23vw] lg:w-[112vw] lg:max-w-[1700px]"
+        >
+          <Image
+            src="/images/about-subject-v4.png"
+            alt=""
+            width={2048}
+            height={1152}
+            sizes="(max-width: 640px) 154vw, (max-width: 1024px) 132vw, 112vw"
+            className="about-subject-image block h-auto w-full"
+          />
+        </div>
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="ml-auto max-w-xl lg:max-w-[34rem]">
+          <SectionHeading
+            as={standalone ? "h1" : "h2"}
+            index={standalone ? undefined : "01"}
+            kicker="About"
+            title={
+              <>
+                The Voice Behind
+                <br />
+                The <span className="text-accent">Commentary</span>
+              </>
+            }
+          />
+
+          <div className="mt-8 space-y-5 text-base leading-relaxed text-white/72 sm:text-lg lg:pr-4">
+            <p>
+              Broadway The Lyricist is a Hip-Hop commentator, content creator,
+              and recording artist dedicated to preserving Hip-Hop history and
+              discussing the culture through artist retrospectives, album
+              conversations, and reactions.
+            </p>
+            <p>
+              Through long-form YouTube content, short-form social media
+              content, and community engagement, Broadway explores the stories,
+              albums, artists, and moments that helped shape Hip-Hop culture.
+            </p>
           </div>
 
-          {/* Copy */}
-          <div className="order-2">
-            <SectionHeading
-              index="01"
-              kicker="About"
-              title={
-                <>
-                  The Voice Behind
-                  <br />
-                  The <span className="text-accent">Commentary</span>
-                </>
-              }
-            />
-
-            <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted">
-              <p>
-                Broadway The Lyricist is a hip-hop commentator, content creator,
-                and recording artist dedicated to preserving and discussing
-                hip-hop culture through thoughtful analysis, artist
-                retrospectives, album discussions, reactions, and historical deep
-                dives.
-              </p>
-              <p>
-                Through long-form YouTube content, short-form social media
-                content, and community engagement, Broadway explores the stories,
-                albums, artists, and moments that helped shape hip-hop culture.
-              </p>
-            </div>
-
-            <blockquote className="mt-8 border-l-2 border-accent pl-5">
-              <p className="font-display text-xl leading-snug text-white sm:text-2xl">
-                His mission is simple: to create the hip-hop conversations we
-                should be having.
-              </p>
-            </blockquote>
-          </div>
+          <blockquote className="mt-8 border-l-2 border-accent bg-bg/20 py-1 pl-5 backdrop-blur-[2px]">
+            <p className="font-display text-xl leading-snug text-white sm:text-2xl">
+              His mission is simple: to create the Hip-Hop conversations we
+              should be having.
+            </p>
+          </blockquote>
+          {!standalone && (
+            <SectionAnchorLink href="/about#story" className="mt-8 inline-flex border-b border-accent pb-2 text-base font-semibold text-white transition-colors hover:text-accent">
+              More about Broadway →
+            </SectionAnchorLink>
+          )}
         </div>
       </div>
     </section>

@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { nav } from "@/lib/site";
+import { links, nav } from "@/lib/site";
 import { CloseIcon, MenuIcon } from "@/components/icons";
+import SectionAnchorLink from "@/components/SectionAnchorLink";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -36,7 +37,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 lg:h-20">
-        <Link
+        <SectionAnchorLink
           href="/#home"
           className="flex items-center gap-3"
           aria-label="Broadway The Lyricist home"
@@ -49,35 +50,34 @@ export default function Header() {
             priority
             className="h-14 w-auto lg:h-16"
           />
-        </Link>
+        </SectionAnchorLink>
 
         <nav
-          className="hidden items-center gap-8 lg:flex"
+          className="hidden items-center gap-4 xl:gap-6 lg:flex"
           aria-label="Primary"
         >
-          {nav.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={
-                item.href.startsWith("http")
-                  ? "noopener noreferrer"
-                  : undefined
-              }
-              className="text-sm font-medium text-muted transition-colors hover:text-white"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {nav.map((item) => {
+            const NavLink = item.href.startsWith("/#") ? SectionAnchorLink : Link;
+            return (
+              <NavLink
+                key={item.label}
+                href={item.href}
+                className={`text-sm font-medium transition-colors hover:text-accent ${item.href === "/bar-lounge" ? "text-accent" : "text-muted"}`}
+              >
+                {item.label}
+              </NavLink>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
           <Link
-            href="/#contact"
+            href={links.youtubeSubscribe}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-accent hidden rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 lg:inline-flex"
           >
-            Contact
+            Subscribe on YouTube
           </Link>
 
           <button
@@ -106,29 +106,28 @@ export default function Header() {
           className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4"
           aria-label="Mobile"
         >
-          {nav.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={
-                item.href.startsWith("http")
-                  ? "noopener noreferrer"
-                  : undefined
-              }
-              onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-3 text-base font-medium text-muted transition-colors hover:bg-panel hover:text-white"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {nav.map((item) => {
+            const NavLink = item.href.startsWith("/#") ? SectionAnchorLink : Link;
+            return (
+              <NavLink
+                key={item.label}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className={`rounded-md px-3 py-3 text-base font-medium transition-colors hover:bg-panel hover:text-accent ${item.href === "/bar-lounge" ? "text-accent" : "text-muted"}`}
+              >
+                {item.label}
+              </NavLink>
+            );
+          })}
 
           <Link
-            href="/#contact"
+            href={links.youtubeSubscribe}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className="btn-accent mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
           >
-            Contact
+            Subscribe on YouTube
           </Link>
         </nav>
       </div>

@@ -11,7 +11,7 @@ export default function Featured() {
           kicker="Featured"
           title={
             <>
-              Start With These <span className="text-accent">Deep Dives</span>
+              Start With These <span className="text-accent">Stories</span>
             </>
           }
         />

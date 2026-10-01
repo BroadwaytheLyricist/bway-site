@@ -138,6 +138,68 @@ export async function getChannelStats(): Promise<ChannelStats | null> {
   }
 }
 
+/** Public view counts for curated Media Kit videos, cached for one hour. */
+export async function getFeaturedVideoViews(ids: string[]): Promise<Record<string, number>> {
+  const key = process.env.YOUTUBE_API_KEY;
+  if (!key || ids.length === 0) return {};
+
+  try {
+    const url = new URL("https://www.googleapis.com/youtube/v3/videos");
+    url.searchParams.set("part", "statistics");
+    url.searchParams.set("id", ids.join(","));
+    url.searchParams.set("key", key);
+    const res = await fetch(url.toString(), { next: { revalidate: 3600 } });
+    if (!res.ok) return {};
+
+    const data = (await res.json()) as {
+      items?: { id: string; statistics?: { viewCount?: string } }[];
+    };
+    return Object.fromEntries(
+      (data.items ?? [])
+        .filter((video) => video.statistics?.viewCount !== undefined)
+        .map((video) => [video.id, Number(video.statistics?.viewCount)]),
+    );
+  } catch {
+    return {};
+  }
+}
+
+/** Current public playlist artwork, refreshed every minute. Keeps the saved image as fallback. */
+export async function getPlaylistThumbnail(id: string): Promise<string | null> {
+  const key = process.env.YOUTUBE_API_KEY;
+  if (!key) return null;
+
+  try {
+    const url = new URL("https://www.googleapis.com/youtube/v3/playlists");
+    url.searchParams.set("part", "snippet");
+    url.searchParams.set("id", id);
+    url.searchParams.set("maxResults", "1");
+    url.searchParams.set("key", key);
+    const res = await fetch(url.toString(), { next: { revalidate: 60 } });
+    if (!res.ok) return null;
+
+    const data = (await res.json()) as {
+      items?: {
+        snippet?: {
+          thumbnails?: Record<string, { url?: string }>;
+        };
+      }[];
+    };
+    const thumbnails = data.items?.[0]?.snippet?.thumbnails;
+    const image = thumbnails?.maxres?.url ?? thumbnails?.standard?.url ??
+      thumbnails?.high?.url ?? thumbnails?.medium?.url;
+    if (!image) return null;
+
+    const parsed = new URL(image);
+    return parsed.protocol === "https:" &&
+      ["i.ytimg.com", "yt3.ggpht.com", "yt3.googleusercontent.com"].includes(parsed.hostname)
+      ? image
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 /** Compact number formatting: 859 → "859", 123417 → "123.4K", 1_200_000 → "1.2M". */
 export function formatCompact(n: number): string {
   if (n >= 1_000_000) {
