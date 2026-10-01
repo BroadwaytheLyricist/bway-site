@@ -8,7 +8,7 @@ import ScrollRevealGroup from "@/components/ScrollRevealGroup";
 
 const title = "Original Music & Releases | Broadway the Lyricist";
 const description =
-  "Listen to Broadway the Lyricist's original Hip-Hop music, including the Off Broadway EP, and explore the catalog on Bandcamp, Spotify, Apple Music, Amazon Music, and YouTube Music.";
+  "Listen to Broadway the Lyricist's original music, including the Off Broadway EP, on Bandcamp, Spotify, Apple Music, Amazon Music, and YouTube Music.";
 
 export const metadata: Metadata = {
   title,

@@ -69,7 +69,7 @@ const jsonLd = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   robots: process.env.VERCEL_ENV === "preview" ? { index: false, follow: false } : { index: true, follow: true },
-  title: "Broadway the Lyricist | Hip-Hop Commentary | Cultural Storytelling & Original Music",
+  title: "Broadway the Lyricist | Hip-Hop Commentary & Storytelling",
   description:
     "Hip-Hop commentary, cultural storytelling, and original music from Broadway the Lyricist. Watch videos, explore series, read the blog, and hear the music.",
   alternates: { canonical: "/" },
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Broadway the Lyricist | Hip-Hop Commentary | Cultural Storytelling & Original Music",
+    title: "Broadway the Lyricist | Hip-Hop Commentary & Storytelling",
     description:
       "Hip-Hop commentary, cultural storytelling, and original music. The Hip-Hop conversations we should be having.",
     url: siteUrl,
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Broadway the Lyricist | Hip-Hop Commentary | Cultural Storytelling & Original Music",
+    title: "Broadway the Lyricist | Hip-Hop Commentary & Storytelling",
     description:
       "Hip-Hop commentary, cultural storytelling, and original music from Broadway the Lyricist.",
     images: [socialPreviewImage],

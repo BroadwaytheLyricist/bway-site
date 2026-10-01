@@ -10,7 +10,7 @@ import { links } from "@/lib/site";
 
 const title = "About Broadway the Lyricist | Artist & Hip-Hop Storyteller";
 const description =
-  "Meet Broadway the Lyricist, a Tampa-based artist from the East New York section of Brooklyn, New York, whose music, live performances, and storytelling spark Hip-Hop conversations.";
+  "Broadway the Lyricist is a Hip-Hop artist and content creator sharing music and storytelling to create the Hip-Hop conversations we should be having.";
 
 export const metadata: Metadata = {
   title,
