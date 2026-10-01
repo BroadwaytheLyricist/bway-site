@@ -29,10 +29,16 @@ export default function LoungeEntrance() {
 
   /** Puts the new page at its top, or at the requested section. Uses the plain
    *  scroll calls every browser supports (iOS Safari included). */
+  const toTop = () => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
   const landOn = (target: Journey) => {
     const section = target.hash ? document.getElementById(decodeURIComponent(target.hash.slice(1))) : null;
     if (section) section.scrollIntoView(true);
-    else window.scrollTo(0, 0);
+    else toTop();
     return section;
   };
 
@@ -50,9 +56,10 @@ export default function LoungeEntrance() {
       // Safari can ignore a scroll made while the page is locked mid-transition,
       // leaving the new page at the old page's position. Once scrolling is
       // unlocked, land again so every page opens at its top (or its section).
-      requestAnimationFrame(() => {
-        if (target.hash || window.scrollY > 0) landOn(target);
-      });
+      // Don't trust Safari's reported position here: land unconditionally, then
+      // once more shortly after, in case late layout nudges the page.
+      requestAnimationFrame(() => landOn(target));
+      timers.current.push(setTimeout(() => landOn(target), 150));
     }, target.lounge ? 480 : 320));
   };
   const arriveRef = useRef(arrive);
@@ -80,6 +87,15 @@ export default function LoungeEntrance() {
       router.prefetch(url.pathname);
       setPhase("leaving");
       timers.current.push(setTimeout(() => {
+        if (!samePage) {
+          // The old page is fully hidden behind the transition cover now. Unlock
+          // scrolling and reset to the top *before* the new page loads, so it can
+          // never inherit the old page's scroll position (iOS Safari ignores
+          // scroll changes made while the page is locked).
+          delete document.documentElement.dataset.pageTransition;
+          document.body.style.overflow = "";
+          toTop();
+        }
         router.push(url.pathname + url.search + url.hash, { scroll: false });
         if (samePage) arriveRef.current();
       }, target.lounge ? 520 : 260));
