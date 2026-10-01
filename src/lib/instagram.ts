@@ -1,8 +1,8 @@
 /**
  * Live Instagram numbers for the Media Kit, mirroring src/lib/youtube.ts.
  *
- * Uses the Instagram API with Instagram Login (graph.instagram.com) and the
- * INSTAGRAM_ACCESS_TOKEN environment variable (set in Vercel, never committed).
+ * Uses the Instagram API with Instagram Login (graph.instagram.com). The access
+ * token comes from src/lib/instagram-token.ts, which renews itself weekly.
  * Every function returns null / {} on any failure so the page falls back to
  * the manually maintained numbers in src/lib/media-kit.ts. Results are cached
  * for one hour, the same as the YouTube stats.
@@ -10,6 +10,8 @@
  * Needs the token's permissions to include instagram_business_basic (followers,
  * media list) and instagram_business_manage_insights (views, reach).
  */
+
+import { getInstagramToken } from "@/lib/instagram-token";
 
 const API = "https://graph.instagram.com";
 const CACHE = { next: { revalidate: 3600 } } as const;
@@ -21,12 +23,8 @@ export type InstagramStats = {
   reach30d: number | null;
 };
 
-function token() {
-  return process.env.INSTAGRAM_ACCESS_TOKEN || null;
-}
-
 async function getJson(path: string, params: Record<string, string>) {
-  const key = token();
+  const key = await getInstagramToken();
   if (!key) return null;
   const url = new URL(`${API}/${path}`);
   for (const [k, v] of Object.entries(params)) url.searchParams.set(k, v);
@@ -58,7 +56,7 @@ export function readMetric(payload: unknown, name: string): number | null {
 
 /** Followers plus 30-day views and accounts reached. Null when Instagram isn't configured or fails. */
 export async function getInstagramStats(): Promise<InstagramStats | null> {
-  if (!token()) return null;
+  if (!(await getInstagramToken())) return null;
 
   const until = Math.floor(Date.now() / 1000);
   const since = until - 30 * DAY + 60; // the API rejects ranges longer than 30 days
@@ -96,7 +94,7 @@ export function shortcodeOf(url: string): string | null {
  */
 export async function getReelViews(urls: string[]): Promise<Record<string, number>> {
   const wanted = new Set(urls.map(shortcodeOf).filter((c): c is string => !!c));
-  if (!token() || wanted.size === 0) return {};
+  if (wanted.size === 0 || !(await getInstagramToken())) return {};
 
   const ids: Record<string, string> = {};
   let after: string | undefined;

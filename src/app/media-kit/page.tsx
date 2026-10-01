@@ -47,19 +47,25 @@ export const metadata: Metadata = {
   },
 };
 
-type Stat = { label: string; value: string; live?: boolean };
+type Stat = { label: string; value: string; live?: boolean; platform?: "youtube" | "instagram" };
 
-function StatCard({ label, value, live }: Stat) {
+function StatCard({ label, value, live, platform }: Stat) {
+  const PlatformIcon = platform === "youtube" ? YouTubeIcon : platform === "instagram" ? InstagramIcon : null;
   return (
     <div className="rounded-2xl border border-line bg-panel-2 p-5">
-      <div className="flex items-center gap-2">
-        {live && (
+      <div className="flex min-h-5 items-center justify-between gap-2">
+        {live ? (
           <span className="inline-flex items-center gap-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-accent">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
             Live
+          </span>
+        ) : <span />}
+        {PlatformIcon && (
+          <span className="text-accent" title={platform === "youtube" ? "YouTube" : "Instagram"}>
+            <PlatformIcon className="h-5 w-5" />
           </span>
         )}
       </div>
@@ -82,24 +88,27 @@ export default async function MediaKitPage() {
   // Live Instagram number when available, otherwise the saved figure from media-kit.ts.
   const igStat = (label: string, live: number | null | undefined, fallback: string): Stat =>
     typeof live === "number"
-      ? { label, value: label === "Instagram Followers" ? live.toLocaleString("en-US") : formatCompact(live), live: true }
-      : { label, value: fallback };
+      ? { label, value: label === "Instagram Followers" ? live.toLocaleString("en-US") : formatCompact(live), live: true, platform: "instagram" }
+      : { label, value: fallback, platform: "instagram" };
 
   const youtubeStats: Stat[] = [
     {
       label: "YouTube Subscribers",
       value: stats ? formatCompact(stats.subscribers) : "859",
       live: !!stats,
+      platform: "youtube",
     },
     {
       label: "YouTube Views (All-Time)",
       value: stats ? formatCompact(stats.views) : "123K",
       live: !!stats,
+      platform: "youtube",
     },
     {
       label: "Videos Published",
       value: stats ? formatCompact(stats.videos) : "200",
       live: !!stats,
+      platform: "youtube",
     },
   ];
 
