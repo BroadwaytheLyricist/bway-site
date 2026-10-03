@@ -37,6 +37,10 @@ alter table public.lounge_runs enable row level security;
 alter table public.lounge_rounds enable row level security;
 alter table public.lounge_badges enable row level security;
 revoke all on public.lounge_players, public.lounge_runs, public.lounge_rounds, public.lounge_badges from anon, authenticated;
+-- Newer Supabase projects do not grant table access to the server key automatically.
+-- The site's server (service_role) needs these; browsers (anon, authenticated) stay locked out.
+grant usage on schema public to service_role;
+grant select, insert, update, delete on public.lounge_players, public.lounge_runs, public.lounge_rounds, public.lounge_badges to service_role;
 
 -- A compare-and-swap plus award in one transaction. Concurrent submissions and
 -- retries cannot record a round or XP twice. Called only by the server key.
