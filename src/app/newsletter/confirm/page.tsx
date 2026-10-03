@@ -35,7 +35,7 @@ async function addToList(email: string, source: NewsletterSource): Promise<boole
   }
 
   const resend = new Resend(apiKey);
-  const label = source === "blog" ? "Blog" : "Footer";
+  const label = { blog: "Blog", footer: "Footer", barlounge: "Bar Lounge" }[source];
   const optIn = [{ id: TOPIC_ID, subscription: "opt_in" as const }];
 
   // New fan: create the contact, opted in to the Newsletter topic.

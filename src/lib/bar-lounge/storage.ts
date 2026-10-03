@@ -2,7 +2,6 @@ import "server-only";
 import { cookies } from "next/headers";
 
 export function storageReady() { return !!(process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY && process.env.SUPABASE_SERVICE_ROLE_KEY); }
-export function kitReady() { return !!(process.env.KIT_API_KEY && process.env.KIT_FORM_ID); }
 export async function db<T>(path: string, method = "GET", body?: unknown): Promise<T> {
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY!;
   const res = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${path}`, { method, cache: "no-store", headers: { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json", Prefer: "return=representation" }, body: body === undefined ? undefined : JSON.stringify(body), signal: AbortSignal.timeout(10000) });
@@ -33,16 +32,4 @@ export async function currentPlayer(): Promise<AuthUser | null> {
 }
 export async function clearSession() { const jar = await cookies(); for (const name of ["lounge-access", "lounge-refresh"]) jar.set(name, "", { path: "/api/bar-lounge", maxAge: 0 }); }
 export function sameOrigin(request: Request) { const origin = request.headers.get("origin"); return origin === new URL(request.url).origin; }
-export async function subscribeToKit(email: string, name: string) {
-  if (!kitReady()) return false;
-  const send = async (path: string, body: object) => {
-    const res = await fetch(`https://api.kit.com/v4/${path}`, { method: "POST", headers: { "Content-Type": "application/json", "X-Kit-Api-Key": process.env.KIT_API_KEY! }, body: JSON.stringify(body), signal: AbortSignal.timeout(10000) });
-    if (!res.ok) throw new Error("Your player profile is saved, but newsletter signup failed. Please try again.");
-  };
-  // New addresses remain inactive until confirmation. Existing subscriber state
-  // is preserved by Kit's upsert, including prior unsubscribe preferences.
-  await send("subscribers", { email_address: email, first_name: name, state: "inactive" });
-  await send(`forms/${encodeURIComponent(process.env.KIT_FORM_ID!)}/subscribers`, { email_address: email });
-  return true;
-}
 export type { AuthUser, Session };
