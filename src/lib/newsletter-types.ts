@@ -7,4 +7,6 @@ export type NewsletterSource = (typeof NEWSLETTER_SOURCES)[number];
 export type NewsletterState = {
   status: "idle" | "success" | "error";
   message: string;
+  // Echoed back on errors so the email box keeps what the fan typed.
+  email?: string;
 };

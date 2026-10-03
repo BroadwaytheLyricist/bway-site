@@ -67,6 +67,7 @@ export default function NewsletterForm({ source, finePrint, className = "" }: Ne
           inputMode="email"
           autoComplete="email"
           required
+          defaultValue={state.email ?? ""}
           placeholder="you@email.com"
           aria-invalid={state.status === "error"}
           aria-describedby={state.status === "error" ? `${inputId}-error` : undefined}

@@ -73,9 +73,10 @@ export async function subscribeNewsletter(
     return { status: "success", message: CHECK_INBOX };
   }
 
-  const parsed = emailSchema.safeParse(String(formData.get("email") ?? "").trim().toLowerCase());
+  const typed = String(formData.get("email") ?? "").trim();
+  const parsed = emailSchema.safeParse(typed.toLowerCase());
   if (!parsed.success) {
-    return { status: "error", message: "Enter a valid email address." };
+    return { status: "error", message: "Enter a valid email address.", email: typed };
   }
   const email = parsed.data;
 
@@ -87,7 +88,7 @@ export async function subscribeNewsletter(
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey || !process.env.NEWSLETTER_SECRET) {
     console.warn("[newsletter] RESEND_API_KEY or NEWSLETTER_SECRET not set.");
-    return { status: "error", message: "Signups aren't open yet. Check back soon." };
+    return { status: "error", message: "Signups aren't open yet. Check back soon.", email };
   }
 
   try {
@@ -107,12 +108,12 @@ export async function subscribeNewsletter(
 
     if (error) {
       console.error("[newsletter] Resend error:", error);
-      return { status: "error", message: "That didn't go through. Try again in a minute." };
+      return { status: "error", message: "That didn't go through. Try again in a minute.", email };
     }
 
     return { status: "success", message: CHECK_INBOX };
   } catch (err) {
     console.error("[newsletter] Unexpected error:", err);
-    return { status: "error", message: "That didn't go through. Try again in a minute." };
+    return { status: "error", message: "That didn't go through. Try again in a minute.", email };
   }
 }
