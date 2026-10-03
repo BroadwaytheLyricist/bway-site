@@ -28,6 +28,11 @@ function confirmEmailHtml(confirmUrl: string) {
   return `
 <!doctype html>
 <html>
+  <head>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <style>:root { color-scheme: light dark; supported-color-schemes: light dark; }</style>
+  </head>
   <body style="margin:0;padding:0;background:#0a0e17;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0a0e17;">
       <tr>
