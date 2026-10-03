@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import SectionAnchorLink from "@/components/SectionAnchorLink";
+import FooterNewsletter from "@/components/FooterNewsletter";
 import { links, nav } from "@/lib/site";
 import {
   FacebookIcon,
@@ -36,6 +37,8 @@ export default function Footer() {
             <span className="text-accent">Should</span> Be Having
             <span className="text-accent">.</span>&rdquo;
           </p>
+
+          <FooterNewsletter />
 
           <nav
             className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"

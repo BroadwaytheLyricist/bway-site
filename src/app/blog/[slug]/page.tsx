@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BlogNewsletterCard from "@/components/BlogNewsletterCard";
 import VideoEmbed from "@/components/VideoEmbed";
 import { formatPostDate, getPost, posts } from "@/lib/posts";
 
@@ -192,6 +193,8 @@ export default async function PostPage({ params }: PostPageProps) {
             Written by Broadway The Lyricist
           </p>
         </div>
+
+        <BlogNewsletterCard />
       </div>
     </article>
   );
